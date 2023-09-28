@@ -23,7 +23,6 @@ jobs:
         uses: alexandregv/norminette-action@v3
         with:
           flags: '.'
-        run: make norm
 
       - name: Fsanitize Test
         if: github.event_name == 'pull_request'
