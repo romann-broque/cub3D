@@ -1,0 +1,42 @@
+name: github-actions
+on:
+  push:
+  pull_request:
+    branches:
+      - "main"
+
+jobs:
+  check-bats-version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: 'recursive' # Include submodules when checking out the repository
+
+      - name: Initialize libft submodule
+        run: git submodule update --init libft
+
+      - name: Update libft submodule
+        run: git submodule update --remote libft
+
+      # - name: 42 NORM
+      #   run: python3 -m venv venv
+      #        source venv/bin/activate
+      #        pip install norminette
+
+      - name: Install CUnit
+        run: sudo apt-get update && sudo apt-get install -y libcunit1-dev
+
+      - name: Fsanitize Test
+        if: github.event_name == 'pull_request'
+        run: make debug=true test
+
+      - name: Classic Test
+        if: github.event_name == 'pull_request'
+        run: make re test
+
+      - name: Install Valgrind
+        run: sudo apt-get install valgrind
+      - name: Valgrind Test
+        if: github.event_name == 'pull_request'
+        run: make valgrind=true test
