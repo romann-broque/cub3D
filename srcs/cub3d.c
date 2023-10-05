@@ -6,13 +6,28 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:14 by rbroque           #+#    #+#             */
-/*   Updated: 2023/09/28 14:19:51 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/05 16:20:41 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main(void)
+static int	start_game(const char *const filename)
 {
+	char *const	content = get_file(filename);
+
+	if (content == NULL)
+		return (EXIT_FAILURE);
+	free(content);
 	return (EXIT_SUCCESS);
+}
+
+int	main(int ac, char **av)
+{
+	int	ret_val;
+
+	ret_val = EXIT_FAILURE;
+	if (ac == EXPECTED_ARG_COUNT)
+		ret_val = start_game(av[1]);
+	return (ret_val);
 }

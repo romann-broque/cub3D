@@ -9,10 +9,15 @@ SHELL		= /usr/bin/bash
 ##############
 
 PATH_SRCS	+=	srcs/
+PATH_SRCS	+=	srcs/read_map/
 
 ### srcs/
 
 SRCS	 	+=	cub3d.c
+
+### srcs/read_map/
+
+SRCS	 	+=	get_file.c
 
 vpath %.c $(PATH_SRCS)
 
