@@ -4,6 +4,7 @@ on:
   pull_request:
     branches:
       - "main"
+      - "MVE1-READ_MAP"
 
 jobs:
   check-bats-version:
