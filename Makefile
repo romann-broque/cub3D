@@ -13,6 +13,7 @@ PATH_SRCS	+=	srcs/
 ### srcs/
 
 SRCS	 	+=	cub3d.c
+SRCS		+= read_map_access.c
 
 vpath %.c $(PATH_SRCS)
 
