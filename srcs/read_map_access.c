@@ -6,7 +6,7 @@
 /*   By: jrouillo <jrouillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 14:05:03 by jrouillo          #+#    #+#             */
-/*   Updated: 2023/10/05 14:22:44 by jrouillo         ###   ########.fr       */
+/*   Updated: 2023/10/05 14:29:26 by jrouillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static bool	are_permission_granted(const char *const filename)
 bool	read_map_access(const char *const filename)
 {
 	if (are_permission_granted(filename) == false
-		|| is_name_fromat_valid(filename) == false)
+		|| is_name_format_valid(filename) == false)
 		return (false);
 	return (true);
 }
