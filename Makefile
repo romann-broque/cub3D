@@ -19,6 +19,7 @@ SRCS	 	+=	cub3d.c
 
 SRCS	 	+=	get_file.c
 SRCS		+=	is_file_valid.c
+SRCS		+=	is_map_valid.c
 
 vpath %.c $(PATH_SRCS)
 
