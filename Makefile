@@ -18,6 +18,7 @@ SRCS	 	+=	cub3d.c
 ### srcs/read_map/
 
 SRCS	 	+=	get_file.c
+SRCS		+=	is_file_valid.c
 
 vpath %.c $(PATH_SRCS)
 
