@@ -1,48 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_map_access.c                                  :+:      :+:    :+:   */
+/*   is_file_valid.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jrouillo <jrouillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 14:05:03 by jrouillo          #+#    #+#             */
-/*   Updated: 2023/10/05 14:29:26 by jrouillo         ###   ########.fr       */
+/*   Updated: 2023/10/06 11:08:56 by jrouillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static bool	is_name_format_valid(const char *const filename)
+static bool	is_suffix_valid(const char *const str, const char *const suffix)
 {
-	size_t	i;
+	const size_t	len_str = ft_strlen(str);
+	const size_t	len_suffix = ft_strlen(suffix);
+	size_t			offset;
 
-	i = 0;
-	while (filename[i])
-		i++;
-	if (filename[i - 1] != 'b' || filename[i - 2] != 'u'
-		|| filename[i - 3] != 'c' || filename[i - 4] != '.')
+	if (len_str < len_suffix)
 		return (false);
-	return (true);
+	offset = len_str - len_suffix;
+	return (streq(str + offset, suffix));
 }
 
-static bool	are_permission_granted(const char *const filename)
+static bool	is_filename_valid(const char *const filename)
 {
-	int	fd;
-
-	fd = open(filename, O_RDONLY);
-	if (fd == -1)
-	{
-		close(fd);
-		return (false);
-	}
-	close(fd);
-	return (true);
+	return (is_suffix_valid(filename, FILE_EXTENSION));
 }
 
-bool	read_map_access(const char *const filename)
+static bool	is_file_readable(const int fd)
 {
-	if (are_permission_granted(filename) == false
-		|| is_name_format_valid(filename) == false)
-		return (false);
-	return (true);
+	return (fd != INVALID_FD);
+}
+
+bool	is_file_valid(const char *const filename, const int fd)
+{
+	return (is_filename_valid(filename) && is_file_readable(fd));
 }
