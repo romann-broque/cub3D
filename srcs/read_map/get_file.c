@@ -3,23 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_file.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jrouillo <jrouillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 15:13:34 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/05 16:27:41 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/06 11:46:29 by jrouillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-/*
-** remplacer par is_readable_file && is_filename_valid
-*/
-
-static bool	is_file_valid(const int fd)
-{
-	return (fd != INVALID_FD);
-}
 
 static char	*get_file_content(const int fd)
 {
@@ -43,7 +34,7 @@ char	*get_file(const char *const filename)
 	char		*file_content;
 
 	file_content = NULL;
-	if (is_file_valid(fd) == true)
+	if (is_file_valid(filename, fd) == true)
 		file_content = get_file_content(fd);
 	else if (fd != INVALID_FD)
 		close(fd);
