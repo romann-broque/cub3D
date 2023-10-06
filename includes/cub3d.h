@@ -28,12 +28,6 @@
 # define EXPECTED_ARG_COUNT	2
 # define INVALID_FD			-1
 
-/////////////
-// TYPEDEF //
-/////////////
-
-typedef int	t_error_status;
-
 //// read_map ////
 
 // get_file.c
