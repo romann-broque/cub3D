@@ -9,13 +9,24 @@ SHELL		= /usr/bin/bash
 ##############
 
 PATH_SRCS	+=	srcs/
-PATH_SRCS	+=	srcs/read_map/
+PATH_SRCS	+=	srcs/map/
+PATH_SRCS	+=	srcs/map/init_map/
+PATH_SRCS	+=	srcs/read_file/
 
 ### srcs/
 
 SRCS	 	+=	cub3d.c
 
-### srcs/read_map/
+### srcs/map/
+
+SRCS	 	+=	free_map.c
+
+### srcs/map/init_map/
+
+SRCS	 	+=	init_map.c
+SRCS	 	+=	init_matrix.c
+
+### srcs/read_file/
 
 SRCS	 	+=	get_file.c
 SRCS		+=	is_file_valid.c
