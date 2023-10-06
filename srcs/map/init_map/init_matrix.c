@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 14:15:46 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/06 14:34:18 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/06 16:16:22 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,20 +33,21 @@ static void	fill_matrix(
 {
 	size_t	i;
 	size_t	j;
+	size_t	offset;
 
+	offset = 0;
 	i = 0;
 	while (i < height)
 	{
-		printf("i -> %zu\n", i);
 		j = 0;
-		while (j < width && lines[i * width + j] != '\n')
+		while (j < width
+			&& lines[offset + j] != '\0' && lines[offset + j] != '\n')
 		{
-			printf("-> %c\n", matrix[i][j]);
-			matrix[i][j] = lines[i * width + j];
-			printf("j -> %zu\n", j);
+			matrix[i][j] = lines[offset + j];
 			++j;
 		}
 		fill_with_empty_case(matrix[i] + j, width - j);
+		offset += j + (lines[offset + j] == '\n');
 		++i;
 	}
 }
@@ -57,10 +58,22 @@ char	**init_matrix(
 	const char *const lines
 	)
 {
-	char **const	matrix = (char **)ft_calloc(height * width, sizeof(char *));
+	char **const	matrix = (char **)malloc(height * sizeof(char *));
+	size_t			i;
 
 	if (matrix == NULL)
 		return (NULL);
+	i = 0;
+	while (i < height)
+	{
+		matrix[i] = (char *)malloc((width + 1) * sizeof(char));
+		if (matrix[i] == NULL)
+		{
+			free_strs(matrix);
+			return (NULL);
+		}
+		++i;
+	}
 	fill_matrix(matrix, height, width, lines);
 	return (matrix);
 }

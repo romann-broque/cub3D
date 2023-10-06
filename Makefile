@@ -20,6 +20,7 @@ SRCS	 	+=	cub3d.c
 ### srcs/map/
 
 SRCS	 	+=	free_map.c
+SRCS	 	+=	print_map.c
 
 ### srcs/map/init_map/
 

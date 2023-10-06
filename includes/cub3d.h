@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/06 14:24:36 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/06 15:24:16 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,10 @@ char	**init_matrix(
 // free_map.c
 
 void	free_map(t_map *const map);
+
+// print_map.c
+
+void	print_map(const t_map *const map);
 
 //// read_file ////
 
