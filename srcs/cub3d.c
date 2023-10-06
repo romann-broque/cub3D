@@ -6,7 +6,7 @@
 /*   By: jrouillo <jrouillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:14 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/06 14:56:08 by jrouillo         ###   ########.fr       */
+/*   Updated: 2023/10/06 15:24:34 by jrouillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ static int	start_game(const char *const filename)
 
 	if (content == NULL)
 		return (EXIT_FAILURE);
+	printf("%d\n", are_characters_valid(content));
 	free(content);
 	return (EXIT_SUCCESS);
 }
