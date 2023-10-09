@@ -36,6 +36,7 @@ SRCS	 	+=	init_matrix.c
 
 ### srcs/map/is_map_valid/
 
+SRCS		+=	is_map_valid.c
 SRCS	 	+=	is_map_closed.c
 SRCS	 	+=	is_map_closed_utils.c
 SRCS		+=	is_map_content_valid.c

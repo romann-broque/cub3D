@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_map_closed_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jrouillo <jrouillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 08:39:37 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/09 09:43:30 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/09 16:26:59 by jrouillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ bool	is_marked(
 }
 
 void	mark_as_viewed(
-	t_map *const map,
+	const t_map *const map,
 	const size_t x,
 	const size_t y
 	)

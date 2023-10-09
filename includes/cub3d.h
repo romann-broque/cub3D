@@ -6,7 +6,7 @@
 /*   By: jrouillo <jrouillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/09 15:29:45 by jrouillo         ###   ########.fr       */
+/*   Updated: 2023/10/09 16:27:05 by jrouillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ t_tile	**init_matrix(
 
 	// is_map_closed.c
 
-bool	is_map_closed(t_map *const map);
+bool	is_map_closed(const t_map *const map);
 
 	// is_map_closed_utils.c
 
@@ -112,8 +112,16 @@ bool	is_marked(
 			const t_map *const map,
 			const size_t x, const size_t y);
 void	mark_as_viewed(
-			t_map *const map,
+			const t_map *const map,
 			const size_t x, const size_t y);
+
+	// is_map_content_valid.c
+
+bool	is_map_content_valid(const t_map *map);
+
+	// is_map_valid.c
+
+bool	is_map_valid(const t_map *map);
 
 // free_map.c
 
@@ -134,8 +142,5 @@ char	*get_file(const char *const file_name);
 
 bool	is_file_valid(const char *const filename, const int fd);
 
-// is_map_valid.c
-
-bool	is_map_content_valid(const char *const content);
 
 #endif

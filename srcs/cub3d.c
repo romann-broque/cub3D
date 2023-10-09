@@ -6,7 +6,7 @@
 /*   By: jrouillo <jrouillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:14 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/09 15:24:08 by jrouillo         ###   ########.fr       */
+/*   Updated: 2023/10/09 16:18:49 by jrouillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	start_game(const char *const filename)
 	map = init_map(content);
 	if (map != NULL)
 	{
-		if (is_map_closed(map) == true)
+		if (is_map_valid(map) == true)
 			ret_val = EXIT_SUCCESS;
 		else
 			print_format_error(MAP_NOT_CLOSED);
