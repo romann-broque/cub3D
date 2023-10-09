@@ -11,6 +11,7 @@ SHELL		= /usr/bin/bash
 PATH_SRCS	+=	srcs/
 PATH_SRCS	+=	srcs/map/
 PATH_SRCS	+=	srcs/map/init_map/
+PATH_SRCS	+=	srcs/map/is_map_valid/
 PATH_SRCS	+=	srcs/read_file/
 
 ### srcs/
@@ -26,6 +27,10 @@ SRCS	 	+=	print_map.c
 
 SRCS	 	+=	init_map.c
 SRCS	 	+=	init_matrix.c
+
+### srcs/map/is_map_valid/
+
+SRCS	 	+=	is_map_closed.c
 
 ### srcs/read_file/
 

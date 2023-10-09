@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:14 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/06 15:00:42 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/06 16:58:13 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ static int	start_game(const char *const filename)
 	if (content == NULL)
 		return (EXIT_FAILURE);
 	map = init_map(content);
+	print_map(map);
+	printf("\n\nIs map closed? -> %d\n\n", is_map_closed(map));
 	print_map(map);
 	free_map(map);
 	free(content);
