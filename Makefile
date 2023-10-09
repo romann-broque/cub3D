@@ -9,13 +9,37 @@ SHELL		= /usr/bin/bash
 ##############
 
 PATH_SRCS	+=	srcs/
-PATH_SRCS	+=	srcs/read_map/
+PATH_SRCS	+=	srcs/print/
+PATH_SRCS	+=	srcs/map/
+PATH_SRCS	+=	srcs/map/init_map/
+PATH_SRCS	+=	srcs/map/is_map_valid/
+PATH_SRCS	+=	srcs/read_file/
 
 ### srcs/
 
 SRCS	 	+=	cub3d.c
 
-### srcs/read_map/
+### srcs/print/
+
+
+SRCS		+=	print_format_error.c
+
+### srcs/map/
+
+SRCS	 	+=	free_map.c
+SRCS	 	+=	print_map.c
+
+### srcs/map/init_map/
+
+SRCS	 	+=	init_map.c
+SRCS	 	+=	init_matrix.c
+
+### srcs/map/is_map_valid/
+
+SRCS	 	+=	is_map_closed.c
+SRCS	 	+=	is_map_closed_utils.c
+
+### srcs/read_file/
 
 SRCS	 	+=	get_file.c
 SRCS		+=	is_file_valid.c
@@ -72,6 +96,11 @@ TESTER			= $(TESTER_FOLDER)/tester.sh
 
 NORM			= $(TESTER_FOLDER)/norminette/norm.sh
 
+### CUNIT
+
+CUNIT_FOLDER	= $(TESTER_FOLDER)/CUNIT/
+CUNIT			= $(CUNIT_FOLDER)/run_cunit.sh
+
 ### VALGRIND
 
 ifeq ($(valgrind), true)
@@ -94,6 +123,10 @@ endif
 
 ifeq ($(debug), true)
 	CFLAGS	+= -fsanitize=address,undefined
+endif
+
+ifeq ($(print_debug), true)
+	CFLAGS	+= -D PRINT_DEBUG=true
 endif
 
 ##############
@@ -150,17 +183,20 @@ norm	:
 
 test	:
 	$(MAKE) -s
-	echo -e $(BLUE) "\n====> MINISHELL TESTS"$(NC)"\n"
-	$(TESTER) $(VALGRIND)
+	echo -e $(BLUE) "\n====> CUB3D TESTS"$(NC)"\n"
+	$(MAKE) -sC $(CUNIT_FOLDER)
+	$(CUNIT) $(VALGRIND)
 
 clean	:
 	$(RM) -r $(PATH_OBJS)
 	$(MAKE) -sC $(LIBFT_FOLDER) clean > /dev/null
+	$(MAKE) -sC $(CUNIT_FOLDER) clean > /dev/null
 	$(ECHOC) $(GREEN) "--> .o files deleted !"$(NC)"\n"
 
 fclean	:	clean
-	# $(ECHOC) $(YELLOW) "Cleaning up $(NAME)..." $(NC)
+	$(ECHOC) $(YELLOW) "Cleaning up $(NAME)..." $(NC)
 	$(MAKE) -sC $(LIBFT_FOLDER) fclean > /dev/null
+	$(MAKE) -sC $(CUNIT_FOLDER) fclean > /dev/null
 	$(RM) $(NAME)
 	$(ECHOC) $(GREEN) "--> $(NAME) deleted !"$(NC)"\n"
 
