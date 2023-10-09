@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_map_valid.c                                     :+:      :+:    :+:   */
+/*   is_map_content_valid.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jrouillo <jrouillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 13:33:53 by jrouillo          #+#    #+#             */
-/*   Updated: 2023/10/09 10:35:19 by jrouillo         ###   ########.fr       */
+/*   Updated: 2023/10/09 15:29:45 by jrouillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static bool	is_charset_valid(const char *const content)
 	return (true);
 }
 
-bool	are_characters_valid(const char *const content)
+bool	is_map_content_valid(const char *const content)
 {
 	return (is_charset_valid(content) && is_unique_direction(content));
 }
