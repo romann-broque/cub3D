@@ -26,11 +26,11 @@ jobs:
           flags: 'srcs/ includes/ libft/'
 
       - name: Fsanitize Test
-        if: github.event_name == 'pull_request'
+        # if: github.event_name == 'pull_request'
         run: make debug=true test
 
       - name: Classic Test
-        if: github.event_name == 'pull_request'
+        # if: github.event_name == 'pull_request'
         run: make re test
 
       # - name: Install Valgrind
