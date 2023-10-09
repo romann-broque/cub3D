@@ -6,7 +6,7 @@
 /*   By: jrouillo <jrouillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/06 14:31:15 by jrouillo         ###   ########.fr       */
+/*   Updated: 2023/10/06 17:23:26 by jrouillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,6 @@ bool	is_file_valid(const char *const filename, const int fd);
 
 // is_map_valid.c
 
-bool	are_characters_valid(char *const content);
+bool	are_characters_valid(const char *const content);
 
 #endif
