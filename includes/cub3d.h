@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/09 09:44:39 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/09 20:50:23 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@
 // Errors
 
 # define MAP_NOT_CLOSED		"MAP NOT CLOSED"
+# define MAP_NOT_UNIQUE		"MAP NOT UNIQUE"
 
 // Colors
 
@@ -112,6 +113,14 @@ bool	is_marked(
 void	mark_as_viewed(
 			t_map *const map,
 			const size_t x, const size_t y);
+
+	// is_map_unique.c
+
+bool	is_map_unique(const t_map *const map);
+
+	// is_map_valid.c
+
+bool	is_map_valid(t_map *const map);
 
 // free_map.c
 

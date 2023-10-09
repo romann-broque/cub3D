@@ -38,6 +38,8 @@ SRCS	 	+=	init_matrix.c
 
 SRCS	 	+=	is_map_closed.c
 SRCS	 	+=	is_map_closed_utils.c
+SRCS	 	+=	is_map_unique.c
+SRCS	 	+=	is_map_valid.c
 
 ### srcs/read_file/
 

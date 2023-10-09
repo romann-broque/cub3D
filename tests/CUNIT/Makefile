@@ -19,12 +19,14 @@ SRCS	 	+=	cub3d.test.c
 
 ### srcs/tests/
 
+SRCS	 	+=	is_map_unique.test.c
 SRCS	 	+=	is_map_closed.test.c
 
 ### srcs/utils/
 
 SRCS	 	+=	test_utils.test.c
 SRCS	 	+=	list_test.test.c
+SRCS	 	+=	get_map_from_file.test.c
 
 vpath %.c $(PATH_SRCS)
 

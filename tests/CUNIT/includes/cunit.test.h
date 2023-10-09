@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 00:44:31 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/09 09:11:38 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/09 21:01:13 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,10 @@ typedef struct s_suite
 	t_test		tests[MAX_TESTS_COUNT];
 }				t_suite;
 
+// is_map_unique.test.c
+
+void	is_map_unique__test(void);
+
 // is_map_valid.test.c
 
 void	is_map_closed__test(void);
@@ -51,5 +55,9 @@ void	exit_tests(void);
 // list_test.test.c
 
 char	**dup_strs_from_lst(t_list *lst);
+
+// get_map_from_file.c
+
+t_map	*get_map_from_file(const char *const filename);
 
 #endif
