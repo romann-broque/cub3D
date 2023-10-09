@@ -99,7 +99,7 @@ NORM			= $(TESTER_FOLDER)/norminette/norm.sh
 ### CUNIT
 
 CUNIT_FOLDER	= $(TESTER_FOLDER)/CUNIT/
-CUNIT			= $(CUNIT_FOLDER)/cunit
+CUNIT			= $(CUNIT_FOLDER)/run_cunit.sh
 
 ### VALGRIND
 
@@ -185,7 +185,7 @@ test	:
 	$(MAKE) -s
 	echo -e $(BLUE) "\n====> CUB3D TESTS"$(NC)"\n"
 	$(MAKE) -sC $(CUNIT_FOLDER)
-	$(CUNIT)
+	$(CUNIT) $(VALGRIND)
 
 clean	:
 	$(RM) -r $(PATH_OBJS)
@@ -196,7 +196,7 @@ clean	:
 fclean	:	clean
 	$(ECHOC) $(YELLOW) "Cleaning up $(NAME)..." $(NC)
 	$(MAKE) -sC $(LIBFT_FOLDER) fclean > /dev/null
-	$(RM) $(CUNIT)
+	$(MAKE) -sC $(CUNIT_FOLDER) fclean > /dev/null
 	$(RM) $(NAME)
 	$(ECHOC) $(GREEN) "--> $(NAME) deleted !"$(NC)"\n"
 

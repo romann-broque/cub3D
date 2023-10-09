@@ -37,8 +37,8 @@ jobs:
         if: github.event_name == 'pull_request'
         run: make re test
 
-      # - name: Install Valgrind
-      #   run: sudo apt-get install valgrind
-      # - name: Valgrind Test
-      #   if: github.event_name == 'pull_request'
-      #   run: make valgrind=true test
+      - name: Install Valgrind
+        run: sudo apt-get install valgrind
+      - name: Valgrind Test
+        if: github.event_name == 'pull_request'
+        run: make valgrind=true test
