@@ -14,6 +14,7 @@ if [[ "$valgrind" == "valgrind" ]]; then
 fi
 
 function print_debug() {
+	mkdir -p $VALGRIND_FOLDER
 	if [[ (-n "$VALGRIND" && $(grep -c "ERROR SUMMARY: 0 errors" $LOG_FILE) -eq 0) || $1 -ne 0 ]]; then
 		cat "$LOG_FILE"
 		ret_val=1
