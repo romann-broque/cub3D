@@ -9,6 +9,7 @@ SHELL		= /usr/bin/bash
 ##############
 
 PATH_SRCS	+=	srcs/
+PATH_SRCS	+=	srcs/print/
 PATH_SRCS	+=	srcs/map/
 PATH_SRCS	+=	srcs/map/init_map/
 PATH_SRCS	+=	srcs/map/is_map_valid/
@@ -17,6 +18,11 @@ PATH_SRCS	+=	srcs/read_file/
 ### srcs/
 
 SRCS	 	+=	cub3d.c
+
+### srcs/print/
+
+
+SRCS		+=	print_format_error.c
 
 ### srcs/map/
 
@@ -112,6 +118,10 @@ endif
 
 ifeq ($(debug), true)
 	CFLAGS	+= -fsanitize=address,undefined
+endif
+
+ifeq ($(print_debug), true)
+	CFLAGS	+= -D PRINT_DEBUG=true
 endif
 
 ##############

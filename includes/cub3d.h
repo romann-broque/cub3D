@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/09 08:46:33 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/09 09:08:38 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,20 @@
 // DEFINES //
 /////////////
 
+# ifndef PRINT_DEBUG
+#  define PRINT_DEBUG		0
+# endif
+
 # define EXPECTED_ARG_COUNT	2
 # define INVALID_FD			-1
 # define FILE_EXTENSION		".cub"
 # define NEWLINE			'\n'
 # define WALL				'1'
 # define GROUND				"0NSWE"
+
+// Errors
+
+# define MAP_NOT_CLOSED		"MAP NOT CLOSED"
 
 // Colors
 
@@ -58,6 +66,12 @@ typedef struct s_map
 ///////////////
 // FUNCTIONS //
 ///////////////
+
+//// print ////
+
+// print_format_error.c
+
+void	print_format_error(const char *const error_message);
 
 //// map ////
 
