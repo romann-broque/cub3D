@@ -6,27 +6,34 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 14:15:46 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/06 16:16:22 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/09 08:49:19 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	fill_with_empty_case(char *str, const size_t len)
+static void	set_tile(t_tile *tile, const char c, const bool is_marked)
+{
+	tile->tile_char = c;
+	tile->is_marked = is_marked;
+}
+
+static void	fill_with_empty_tiles(t_tile *tile, const size_t len)
 {
 	size_t	i;
 
 	i = 0;
 	while (i < len)
 	{
-		str[i] = SPACE;
+		set_tile(tile + i, SPACE, false);
+		tile[i].tile_char = SPACE;
 		++i;
 	}
-	str[i] = '\0';
+	set_tile(tile + i, '\0', false);
 }
 
 static void	fill_matrix(
-	char **matrix,
+	t_tile **matrix,
 	const size_t height,
 	const size_t width,
 	const char *const lines)
@@ -43,22 +50,22 @@ static void	fill_matrix(
 		while (j < width
 			&& lines[offset + j] != '\0' && lines[offset + j] != '\n')
 		{
-			matrix[i][j] = lines[offset + j];
+			set_tile((&matrix[i][j]), lines[offset + j], false);
 			++j;
 		}
-		fill_with_empty_case(matrix[i] + j, width - j);
+		fill_with_empty_tiles(matrix[i] + j, width - j);
 		offset += j + (lines[offset + j] == '\n');
 		++i;
 	}
 }
 
-char	**init_matrix(
+t_tile	**init_matrix(
 	const size_t height,
 	const size_t width,
 	const char *const lines
 	)
 {
-	char **const	matrix = (char **)malloc(height * sizeof(char *));
+	t_tile **const	matrix = (t_tile **)malloc(height * sizeof(t_tile *));
 	size_t			i;
 
 	if (matrix == NULL)
@@ -66,10 +73,10 @@ char	**init_matrix(
 	i = 0;
 	while (i < height)
 	{
-		matrix[i] = (char *)malloc((width + 1) * sizeof(char));
+		matrix[i] = (t_tile *)malloc((width + 1) * sizeof(t_tile));
 		if (matrix[i] == NULL)
 		{
-			free_strs(matrix);
+			free_tile_matrix(matrix, height);
 			return (NULL);
 		}
 		++i;

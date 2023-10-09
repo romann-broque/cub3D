@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/06 16:57:48 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/09 08:46:33 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,23 +29,31 @@
 # define INVALID_FD			-1
 # define FILE_EXTENSION		".cub"
 # define NEWLINE			'\n'
+# define WALL				'1'
+# define GROUND				"0NSWE"
+
+// Colors
+
+# define NC					"\033[0m"
+# define RED				"\033[0;31m"
+# define GREEN				"\033[0;32m"
 
 ////////////////
 // STRUCTURES //
 ////////////////
 
-struct s_map
+typedef struct s_tile
 {
-	char	**matrix;
+	char	tile_char;
+	bool	is_marked;
+}		t_tile;
+
+typedef struct s_map
+{
+	t_tile	**matrix;
 	size_t	height;
 	size_t	width;
-};
-
-/////////////
-// TYPEDEF //
-/////////////
-
-typedef struct s_map	t_map;
+}		t_map;
 
 ///////////////
 // FUNCTIONS //
@@ -61,7 +69,7 @@ t_map	*init_map(const char *const lines);
 
 	// init_matrix.c
 
-char	**init_matrix(
+t_tile	**init_matrix(
 			const size_t height,
 			const size_t width,
 			const char *const lines);
@@ -72,8 +80,24 @@ char	**init_matrix(
 
 bool	is_map_closed(t_map *const map);
 
+	// is_map_closed_utils.c
+
+bool	is_inside_map(
+			const t_map *const map,
+			const ssize_t x, const ssize_t y);
+bool	is_wall(
+			const t_map *const map,
+			const size_t x, const size_t y);
+bool	is_marked(
+			const t_map *const map,
+			const size_t x, const size_t y);
+void	mark_as_viewed(
+			t_map *const map,
+			const size_t x, const size_t y);
+
 // free_map.c
 
+void	free_tile_matrix(t_tile **const matrix, const size_t size);
 void	free_map(t_map *const map);
 
 // print_map.c

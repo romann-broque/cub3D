@@ -6,24 +6,11 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 13:43:54 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/07 08:40:24 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/09 07:48:51 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-static size_t	count_c_in_str(const char *str, const char c)
-{
-	size_t	count;
-
-	count = 0;
-	while (*str != '\0')
-	{
-		count += (*str == c);
-		++str;
-	}
-	return (count);
-}
 
 static size_t	count_lines(const char *const lines)
 {

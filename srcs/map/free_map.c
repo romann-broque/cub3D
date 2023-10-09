@@ -6,13 +6,13 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 14:23:35 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/06 16:17:14 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/09 08:11:46 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	free_matrix(char **const matrix, const size_t size)
+void	free_tile_matrix(t_tile **const matrix, const size_t size)
 {
 	size_t	i;
 
@@ -28,6 +28,6 @@ static void	free_matrix(char **const matrix, const size_t size)
 void	free_map(t_map *const map)
 {
 	if (map != NULL)
-		free_matrix(map->matrix, map->height);
+		free_tile_matrix(map->matrix, map->height);
 	free(map);
 }
