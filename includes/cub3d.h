@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/09 09:08:38 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/09 09:44:39 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 # define FILE_EXTENSION		".cub"
 # define NEWLINE			'\n'
 # define WALL				'1'
+# define BLANK				' '
 # define GROUND				"0NSWE"
 
 // Errors
@@ -99,6 +100,9 @@ bool	is_map_closed(t_map *const map);
 bool	is_inside_map(
 			const t_map *const map,
 			const ssize_t x, const ssize_t y);
+bool	is_blank(
+			const t_map *const map,
+			const size_t x, const size_t y);
 bool	is_wall(
 			const t_map *const map,
 			const size_t x, const size_t y);

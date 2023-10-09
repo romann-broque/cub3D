@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 08:39:37 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/09 08:40:46 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/09 09:43:30 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,15 @@ bool	is_wall(
 	)
 {
 	return (map->matrix[y][x].tile_char == WALL);
+}
+
+bool	is_blank(
+	const t_map *const map,
+	const size_t x,
+	const size_t y
+	)
+{
+	return (map->matrix[y][x].tile_char == BLANK);
 }
 
 bool	is_marked(

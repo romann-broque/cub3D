@@ -96,6 +96,11 @@ TESTER			= $(TESTER_FOLDER)/tester.sh
 
 NORM			= $(TESTER_FOLDER)/norminette/norm.sh
 
+### CUNIT
+
+CUNIT_FOLDER	= $(TESTER_FOLDER)/CUNIT/
+CUNIT			= $(CUNIT_FOLDER)/cunit
+
 ### VALGRIND
 
 ifeq ($(valgrind), true)
@@ -178,17 +183,20 @@ norm	:
 
 test	:
 	$(MAKE) -s
-	echo -e $(BLUE) "\n====> MINISHELL TESTS"$(NC)"\n"
-	$(TESTER) $(VALGRIND)
+	echo -e $(BLUE) "\n====> CUB3D TESTS"$(NC)"\n"
+	$(MAKE) -sC $(CUNIT_FOLDER)
+	$(CUNIT)
 
 clean	:
 	$(RM) -r $(PATH_OBJS)
 	$(MAKE) -sC $(LIBFT_FOLDER) clean > /dev/null
+	$(MAKE) -sC $(CUNIT_FOLDER) clean > /dev/null
 	$(ECHOC) $(GREEN) "--> .o files deleted !"$(NC)"\n"
 
 fclean	:	clean
-	# $(ECHOC) $(YELLOW) "Cleaning up $(NAME)..." $(NC)
+	$(ECHOC) $(YELLOW) "Cleaning up $(NAME)..." $(NC)
 	$(MAKE) -sC $(LIBFT_FOLDER) fclean > /dev/null
+	$(RM) $(CUNIT)
 	$(RM) $(NAME)
 	$(ECHOC) $(GREEN) "--> $(NAME) deleted !"$(NC)"\n"
 

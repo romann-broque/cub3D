@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 13:17:40 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/09 08:48:18 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/09 09:43:39 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static bool	is_closed_dfs(
 	const ssize_t y
 	)
 {
-	if (is_inside_map(map, x, y) == false)
+	if (is_inside_map(map, x, y) == false || is_blank(map, x, y) == true)
 		return (false);
 	if (is_wall(map, x, y) == true || is_marked(map, x, y) == true)
 		return (true);
@@ -45,8 +45,9 @@ bool	is_map_closed(t_map *const map)
 		j = 0;
 		while (j < map->width)
 		{
-			if (is_tile_ground(map->matrix[i][j]) == true)
-				return (is_closed_dfs(map, j, i));
+			if (is_tile_ground(map->matrix[i][j]) == true
+				&& is_closed_dfs(map, j, i) == false)
+				return (false);
 			++j;
 		}
 		++i;
