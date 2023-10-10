@@ -40,6 +40,8 @@ SRCS		+=	is_map_valid.c
 SRCS	 	+=	is_map_closed.c
 SRCS	 	+=	is_map_closed_utils.c
 SRCS		+=	is_map_content_valid.c
+SRCS	 	+=	is_map_unique.c
+SRCS	 	+=	is_map_valid.c
 
 ### srcs/read_file/
 
@@ -79,12 +81,6 @@ vpath %.h $(PATH_HEADERS)
 LIBFT_FOLDER =	libft/
 LIBFT		 =	$(LIBFT_FOLDER)/libft.a
 
-###############
-#### LINKS ####
-###############
-
-LINKS += -lreadline
-
 ################
 #### TESTER ####
 ################
@@ -102,6 +98,14 @@ NORM			= $(TESTER_FOLDER)/norminette/norm.sh
 
 CUNIT_FOLDER	= $(TESTER_FOLDER)/CUNIT/
 CUNIT			= $(CUNIT_FOLDER)/run_cunit.sh
+
+### FUNCHECK
+
+FUNCHECK_FOLDER			= $(TESTER_FOLDER)/funcheck_dir/
+FUNCHECK_REPO			= $(FUNCHECK_FOLDER)/funcheck/
+FUNCHECK_FOLDER_LIB		= $(FUNCHECK_REPO)/library/
+FUNCHECK_FOLDER_HOST	= $(FUNCHECK_REPO)/host
+FUNCHECK_SCRIPT			= $(FUNCHECK_FOLDER)/run_tests.sh
 
 ### VALGRIND
 
@@ -167,7 +171,7 @@ $(LIBFT):
 	echo -e $(BLUE) "\n====> Building $(NAME) <===="$(NC)"\n"
 
 $(NAME) : $(OBJS)
-	$(CC) $(CFLAGS) $^ -o $@ $(LIBFT) $(LINKS)
+	$(CC) $(CFLAGS) $^ -o $@ $(LIBFT)
 	$(ECHOC) $(GREEN) "--> $(NAME) COMPILED !"$(NC)"\n\n"
 
 $(OBJS) :	$(PATH_OBJS)/%.o: %.c Makefile $(HEADERS)
@@ -183,22 +187,39 @@ norm	:
 	$(ECHOC) $(BLUE) "\n""NORM : "$(NC)""
 	./$(NORM)
 
-test	:
-	$(MAKE) -s
+test	: all
 	echo -e $(BLUE) "\n====> CUB3D TESTS"$(NC)"\n"
 	$(MAKE) -sC $(CUNIT_FOLDER)
 	$(CUNIT) $(VALGRIND)
+	echo -e $(BLUE) "\n====> Building FUNCHECK TESTS <===="$(NC)"\n"
+	$(MAKE) -sC $(FUNCHECK_FOLDER_LIB)
+	$(MAKE) -sC $(FUNCHECK_FOLDER_HOST)
+	$(FUNCHECK_SCRIPT)
+
+cunit: all
+	$(MAKE) -sC $(CUNIT_FOLDER)
+	$(CUNIT) $(VALGRIND)
+	
+funcheck: all
+	echo -e $(BLUE) "\n====> Building FUNCHECK TESTS <===="$(NC)"\n"
+	$(MAKE) -sC $(FUNCHECK_FOLDER_LIB)
+	$(MAKE) -sC $(FUNCHECK_FOLDER_HOST)
+	$(FUNCHECK_SCRIPT)
 
 clean	:
 	$(RM) -r $(PATH_OBJS)
 	$(MAKE) -sC $(LIBFT_FOLDER) clean > /dev/null
 	$(MAKE) -sC $(CUNIT_FOLDER) clean > /dev/null
+	$(MAKE) -sC $(FUNCHECK_FOLDER_LIB) clean > /dev/null
+	$(MAKE) -sC $(FUNCHECK_FOLDER_HOST) clean > /dev/null
 	$(ECHOC) $(GREEN) "--> .o files deleted !"$(NC)"\n"
 
 fclean	:	clean
 	$(ECHOC) $(YELLOW) "Cleaning up $(NAME)..." $(NC)
 	$(MAKE) -sC $(LIBFT_FOLDER) fclean > /dev/null
 	$(MAKE) -sC $(CUNIT_FOLDER) fclean > /dev/null
+	$(MAKE) -sC $(FUNCHECK_FOLDER_LIB) fclean > /dev/null
+	$(MAKE) -sC $(FUNCHECK_FOLDER_HOST) fclean > /dev/null
 	$(RM) $(NAME)
 	$(ECHOC) $(GREEN) "--> $(NAME) deleted !"$(NC)"\n"
 

@@ -7,6 +7,7 @@
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
 /*   Updated: 2023/10/09 16:27:05 by jrouillo         ###   ########.fr       */
+/*   Updated: 2023/10/10 08:24:47 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +18,8 @@
 //////////////
 
 # include "libft.h"
+# include <errno.h>
+# include <string.h>
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
@@ -31,6 +34,7 @@
 
 # define EXPECTED_ARG_COUNT	2
 # define INVALID_FD			-1
+# define COUNT_LINE_ERROR	-1
 # define FILE_EXTENSION		".cub"
 # define VALID_CHAR			"01 NWES\n"
 # define VALID_CHAR_DIR		"NWES"
@@ -42,6 +46,7 @@
 // Errors
 
 # define MAP_NOT_CLOSED		"MAP NOT CLOSED"
+# define MAP_NOT_UNIQUE		"MAP NOT UNIQUE"
 
 // Colors
 
@@ -82,14 +87,14 @@ void	print_format_error(const char *const error_message);
 
 	// init_map.c
 
-t_map	*init_map(const char *const lines);
+t_map	*init_map(char *const *const lines);
 
 	// init_matrix.c
 
 t_tile	**init_matrix(
 			const size_t height,
 			const size_t width,
-			const char *const lines);
+			char *const *const lines);
 
 	//// is_map_valid
 
@@ -115,13 +120,13 @@ void	mark_as_viewed(
 			const t_map *const map,
 			const size_t x, const size_t y);
 
-	// is_map_content_valid.c
+	// is_map_unique.c
 
-bool	is_map_content_valid(const t_map *map);
+bool	is_map_unique(const t_map *const map);
 
 	// is_map_valid.c
 
-bool	is_map_valid(const t_map *map);
+bool	is_map_valid(t_map *const map);
 
 // free_map.c
 
@@ -136,7 +141,7 @@ void	print_map(const t_map *const map);
 
 // get_file.c
 
-char	*get_file(const char *const file_name);
+char	**get_file(const char *const file_name);
 
 // is_file_valid.c
 
