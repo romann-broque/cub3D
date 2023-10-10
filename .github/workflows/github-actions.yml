@@ -14,10 +14,10 @@ jobs:
         with:
           submodules: 'recursive' # Include submodules when checking out the repository
 
-      - name: Initialize libft submodule
+      - name: Initialize submodules
         run: git submodule update --init libft
 
-      - name: Update libft submodule
+      - name: Update libft submodules
         run: git submodule update --remote libft
 
       - name: 42 NORM
@@ -28,17 +28,17 @@ jobs:
       - name: Install CUnit
         if: github.event_name == 'pull_request'
         run: sudo apt-get update && sudo apt-get install -y libcunit1-dev
-
-      - name: Fsanitize Test
-        if: github.event_name == 'pull_request'
-        run: make debug=true test
-
-      - name: Classic Test
-        if: github.event_name == 'pull_request'
-        run: make re test
-
+      
       - name: Install Valgrind
         run: sudo apt-get update && sudo apt-get install valgrind
-      - name: Valgrind Test
+
+      - name: Compilation Test
+        run: make re
+      
+      - name: CUnit Tests
         if: github.event_name == 'pull_request'
-        run: make valgrind=true test
+        run: make re debug=true cunit; make re cunit; make valgrind=true cunit
+      
+      - name: Funcheck Tests
+        if: github.event_name == 'pull_request'
+        run: make re debug=true funcheck; make re funcheck; make valgrind=true funcheck
