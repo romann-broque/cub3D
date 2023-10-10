@@ -1,18 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_format_error.c                               :+:      :+:    :+:   */
+/*   is_map_valid.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 08:59:19 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/10 07:16:03 by rbroque          ###   ########.fr       */
+/*   Created: 2023/10/09 20:43:14 by rbroque           #+#    #+#             */
+/*   Updated: 2023/10/09 20:57:17 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	print_format_error(const char *const error_message)
+bool	is_map_valid(t_map *const map)
 {
-	print_error(RED"Error\n%s\n"NC, error_message);
+	bool	is_valid;
+
+	is_valid = false;
+	if (is_map_unique(map) == false)
+		print_format_error(MAP_NOT_UNIQUE);
+	else if (is_map_closed(map) == false)
+		print_format_error(MAP_NOT_CLOSED);
+	else
+		is_valid = true;
+	return (is_valid);
 }

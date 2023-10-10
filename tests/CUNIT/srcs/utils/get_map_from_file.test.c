@@ -1,45 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   get_map_from_file.test.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/28 13:50:14 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/10 08:25:53 by rbroque          ###   ########.fr       */
+/*   Created: 2023/10/09 20:55:42 by rbroque           #+#    #+#             */
+/*   Updated: 2023/10/10 08:31:15 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cunit.test.h"
 
-static int	start_game(const char *const filename)
+t_map	*get_map_from_file(const char *const filename)
 {
 	char **const	content = get_file(filename);
-	int				ret_val;
 	t_map			*map;
 
 	if (content == NULL)
-		return (EXIT_FAILURE);
-	ret_val = EXIT_FAILURE;
+		return (NULL);
 	map = init_map(content);
-	if (map != NULL)
-	{
-		if (is_map_valid(map))
-			ret_val = EXIT_SUCCESS;
-		if (PRINT_DEBUG)
-			print_map(map);
-	}
-	free_map(map);
 	free_strs(content);
-	return (ret_val);
-}
-
-int	main(int ac, char **av)
-{
-	int	ret_val;
-
-	ret_val = EXIT_FAILURE;
-	if (ac == EXPECTED_ARG_COUNT)
-		ret_val = start_game(av[1]);
-	return (ret_val);
+	return (map);
 }
