@@ -3,13 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrouillo <jrouillo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/09 16:27:05 by jrouillo         ###   ########.fr       */
-/*   Updated: 2023/10/10 08:24:47 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/10 16:32:54 by jess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef CUB3D_H
 
@@ -47,6 +47,7 @@
 
 # define MAP_NOT_CLOSED		"MAP NOT CLOSED"
 # define MAP_NOT_UNIQUE		"MAP NOT UNIQUE"
+# define MAP_CONTENT_WRONG	"MAP CONTENT IS WRONG"
 
 // Colors
 
@@ -119,6 +120,10 @@ bool	is_marked(
 void	mark_as_viewed(
 			const t_map *const map,
 			const size_t x, const size_t y);
+
+	// is_map_content_valid
+
+bool	is_map_content_valid(const t_map *const map);
 
 	// is_map_unique.c
 

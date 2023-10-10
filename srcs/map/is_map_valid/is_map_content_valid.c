@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_map_content_valid.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrouillo <jrouillo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 13:33:53 by jrouillo          #+#    #+#             */
-/*   Updated: 2023/10/09 16:55:23 by jrouillo         ###   ########.fr       */
+/*   Updated: 2023/10/10 16:40:18 by jess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,7 @@ static bool	is_unique_direction(const t_map *const map)
 		}
 		i++;
 	}
-	if (count == 1)
-		return (true);
-	return (false);
+	return (count == 1);
 }
 
 static bool	is_charset_valid(const t_map *const map)
@@ -52,7 +50,7 @@ static bool	is_charset_valid(const t_map *const map)
 			if (is_in_str(VALID_CHAR, map->matrix[i][j].tile_char) == false)
 				return (false);
 			j++;
-		}		
+		}
 		i++;
 	}
 	return (true);
