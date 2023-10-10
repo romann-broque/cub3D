@@ -9,7 +9,7 @@ NC="\033[0m"
 BIN=./cub3d
 
 TESTER_FOLDER=./tests/
-FUNCHECK_FOLDER="${TESTER_FOLDER}"/funcheck/funcheck_repo/
+FUNCHECK_FOLDER="${TESTER_FOLDER}"/funcheck_dir/funcheck/
 FUNCHECK_BIN="${FUNCHECK_FOLDER}"/host/funcheck
 
 LOG="log"

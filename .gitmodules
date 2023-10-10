@@ -2,3 +2,9 @@
     path = libft
     url = https://github.com/romann-broque/libft
 
+[submodule "tests/funcheck"]
+	path = tests/funcheck
+	url = git@github.com:tmatis/funcheck.git
+[submodule "tests/funcheck_dir/funcheck"]
+	path = tests/funcheck_dir/funcheck
+	url = git@github.com:tmatis/funcheck.git
