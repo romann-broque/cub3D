@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 20:55:42 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/10 08:29:19 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/10 08:31:15 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@ t_map	*get_map_from_file(const char *const filename)
 	if (content == NULL)
 		return (NULL);
 	map = init_map(content);
-	free(content);
+	free_strs(content);
 	return (map);
 }
