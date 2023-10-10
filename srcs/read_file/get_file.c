@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 15:13:34 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/10 08:04:58 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/10 11:33:12 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,10 +85,13 @@ static char	**get_file_content(const int fd, const size_t line_count)
 char	**get_file(const char *const filename)
 {
 	const ssize_t	line_count = get_line_count(filename);
-	const int		fd = open(filename, O_RDONLY);
+	int				fd;
 	char			**file_content;
 
+	if (line_count == COUNT_LINE_ERROR)
+		return (NULL);
 	file_content = NULL;
+	fd = open(filename, O_RDONLY);
 	if (is_file_valid(filename, fd) == true)
 		file_content = get_file_content(fd, line_count);
 	else
