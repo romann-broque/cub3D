@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 20:36:48 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/09 22:12:16 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/10 07:01:07 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static bool	is_empty_line(const t_tile *const tile_line)
 	i = 0;
 	while (tile_line[i].tile_char == BLANK)
 		++i;
-	return (tile_line[i].tile_char == '\0');
+	return (tile_line[i].tile_char == END_CHAR);
 }
 
 static size_t	skip_empty_line(
