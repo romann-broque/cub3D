@@ -6,10 +6,9 @@
 /*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/10 16:32:54 by jess             ###   ########.fr       */
+/*   Updated: 2023/10/10 16:43:26 by jess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef CUB3D_H
 
@@ -151,6 +150,5 @@ char	**get_file(const char *const file_name);
 // is_file_valid.c
 
 bool	is_file_valid(const char *const filename, const int fd);
-
 
 #endif
