@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 13:43:54 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/09 21:59:02 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/10 07:22:21 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,10 @@ t_map	*init_map(const char *const lines)
 
 	map = (t_map *)malloc(sizeof(t_map));
 	if (map == NULL)
+	{
+		print_format_error(strerror(errno));
 		return (NULL);
+	}
 	map->height = height;
 	map->width = width;
 	map->matrix = init_matrix(height, width, lines);

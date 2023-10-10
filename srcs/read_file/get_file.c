@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 15:13:34 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/06 13:40:32 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/10 07:23:08 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,11 @@ char	*get_file(const char *const filename)
 	file_content = NULL;
 	if (is_file_valid(filename, fd) == true)
 		file_content = get_file_content(fd);
-	else if (fd != INVALID_FD)
-		close(fd);
+	else
+	{
+		print_format_error(strerror(errno));
+		if (fd != INVALID_FD)
+			close(fd);
+	}
 	return (file_content);
 }

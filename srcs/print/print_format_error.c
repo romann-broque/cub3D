@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 08:59:19 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/09 09:01:54 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/10 07:16:03 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 void	print_format_error(const char *const error_message)
 {
-	print_error(RED"Error: %s\n"NC, error_message);
+	print_error(RED"Error\n%s\n"NC, error_message);
 }

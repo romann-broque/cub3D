@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 14:15:46 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/09 08:49:19 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/10 07:30:10 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,13 +69,17 @@ t_tile	**init_matrix(
 	size_t			i;
 
 	if (matrix == NULL)
+	{
+		print_format_error(strerror(errno));
 		return (NULL);
+	}
 	i = 0;
 	while (i < height)
 	{
 		matrix[i] = (t_tile *)malloc((width + 1) * sizeof(t_tile));
 		if (matrix[i] == NULL)
 		{
+			print_format_error(strerror(errno));
 			free_tile_matrix(matrix, height);
 			return (NULL);
 		}
