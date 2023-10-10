@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:14 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/10 07:14:36 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/10 08:25:53 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static int	start_game(const char *const filename)
 {
-	int			ret_val;
-	char *const	content = get_file(filename);
-	t_map		*map;
+	char **const	content = get_file(filename);
+	int				ret_val;
+	t_map			*map;
 
 	if (content == NULL)
 		return (EXIT_FAILURE);
@@ -30,7 +30,7 @@ static int	start_game(const char *const filename)
 			print_map(map);
 	}
 	free_map(map);
-	free(content);
+	free_strs(content);
 	return (ret_val);
 }
 

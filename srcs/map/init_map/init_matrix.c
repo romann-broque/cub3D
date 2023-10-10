@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 14:15:46 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/10 07:30:10 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/10 08:14:11 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,25 +36,22 @@ static void	fill_matrix(
 	t_tile **matrix,
 	const size_t height,
 	const size_t width,
-	const char *const lines)
+	char *const *const lines)
 {
 	size_t	i;
 	size_t	j;
-	size_t	offset;
 
-	offset = 0;
 	i = 0;
 	while (i < height)
 	{
 		j = 0;
 		while (j < width
-			&& lines[offset + j] != '\0' && lines[offset + j] != '\n')
+			&& lines[i][j] != '\0' && lines[i][j] != '\n')
 		{
-			set_tile((&matrix[i][j]), lines[offset + j], false);
+			set_tile((&matrix[i][j]), lines[i][j], false);
 			++j;
 		}
 		fill_with_empty_tiles(matrix[i] + j, width - j);
-		offset += j + (lines[offset + j] == '\n');
 		++i;
 	}
 }
@@ -62,7 +59,7 @@ static void	fill_matrix(
 t_tile	**init_matrix(
 	const size_t height,
 	const size_t width,
-	const char *const lines
+	char *const *const lines
 	)
 {
 	t_tile **const	matrix = (t_tile **)malloc(height * sizeof(t_tile *));

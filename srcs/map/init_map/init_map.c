@@ -6,38 +6,29 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 13:43:54 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/10 07:22:21 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/10 08:14:44 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static size_t	count_lines(const char *const lines)
+static size_t	count_lines(char *const *const lines)
 {
-	const size_t	total_len = ft_strlen(lines);
-	size_t			count;
-
-	count = count_c_in_str(lines, NEWLINE);
-	if (total_len > 0)
-		count += (lines[total_len - 1] != '\n');
-	return (count);
+	return (get_size_strs(lines));
 }
 
-static size_t	find_max_line_length(const char *map)
+static size_t	find_max_line_length(char *const *const lines)
 {
+	size_t	i;
 	size_t	curr_len;
 	size_t	max_len;
-	size_t	i;
 
-	i = 0;
 	curr_len = 0;
 	max_len = 0;
-	while (map[i] != '\0')
+	i = 0;
+	while (lines[i] != NULL)
 	{
-		if (map[i] == '\n')
-			curr_len = 0;
-		else
-			++curr_len;
+		curr_len = ft_strlen(lines[i]);
 		if (curr_len > max_len)
 			max_len = curr_len;
 		++i;
@@ -45,7 +36,7 @@ static size_t	find_max_line_length(const char *map)
 	return (max_len);
 }
 
-t_map	*init_map(const char *const lines)
+t_map	*init_map(char *const *const lines)
 {
 	const size_t	height = count_lines(lines);
 	const size_t	width = find_max_line_length(lines);
