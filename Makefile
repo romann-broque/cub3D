@@ -79,12 +79,6 @@ vpath %.h $(PATH_HEADERS)
 LIBFT_FOLDER =	libft/
 LIBFT		 =	$(LIBFT_FOLDER)/libft.a
 
-###############
-#### LINKS ####
-###############
-
-LINKS += -lreadline
-
 ################
 #### TESTER ####
 ################
@@ -175,7 +169,7 @@ $(LIBFT):
 	echo -e $(BLUE) "\n====> Building $(NAME) <===="$(NC)"\n"
 
 $(NAME) : $(OBJS)
-	$(CC) $(CFLAGS) $^ -o $@ $(LIBFT) $(LINKS)
+	$(CC) $(CFLAGS) $^ -o $@ $(LIBFT)
 	$(ECHOC) $(GREEN) "--> $(NAME) COMPILED !"$(NC)"\n\n"
 
 $(OBJS) :	$(PATH_OBJS)/%.o: %.c Makefile $(HEADERS)
