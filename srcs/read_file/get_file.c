@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 15:13:34 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/10 11:33:12 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/10 12:29:11 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,8 @@ static char	**get_file_content(const int fd, const size_t line_count)
 		lines[i] = get_next_line(fd);
 		if (lines[i] == NULL)
 		{
-			free_nstrs(lines, line_count);
 			print_format_error(strerror(errno));
+			free_nstrs(lines, line_count);
 			return (NULL);
 		}
 		++i;

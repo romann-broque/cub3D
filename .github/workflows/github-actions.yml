@@ -15,10 +15,10 @@ jobs:
           submodules: 'recursive' # Include submodules when checking out the repository
 
       - name: Initialize submodules
-        run: git submodule update --init libft
+        run: git submodule update --init
 
-      - name: Update libft submodules
-        run: git submodule update --remote libft
+      - name: Update submodules
+        run: git submodule update --remote
 
       - name: 42 NORM
         uses: alexandregv/norminette-action@v3.3.51

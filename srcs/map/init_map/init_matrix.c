@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 14:15:46 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/10 09:29:44 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/10 12:28:53 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void	fill_matrix(
 	{
 		j = 0;
 		while (j < width
-			&& lines[i][j] != '\0' && lines[i][j] != '\n')
+			&& lines[i][j] != END_CHAR && lines[i][j] != NEWLINE)
 		{
 			set_tile((&matrix[i][j]), lines[i][j], false);
 			++j;
