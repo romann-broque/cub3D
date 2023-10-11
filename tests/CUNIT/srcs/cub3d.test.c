@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.test.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 07:01:54 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/09 21:55:03 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/11 16:54:28 by jess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	set_tests(void)
 		{.suite = NULL, .sname = "Is Map Valid", .tests = {
 			{.tname = "is_map_unique", is_map_unique__test},
 			{.tname = "is_map_closed", is_map_closed__test},
+			{.tname = "is_map_content_valid", is_map_content_valid__test},
+			{.tname = "is_config_sequence_valid", is_map_config_sequence__test},
 			},
 		},
 		{.suite = NULL, .sname = NULL}

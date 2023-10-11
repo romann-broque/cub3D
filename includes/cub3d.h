@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/11 07:30:23 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/11 17:41:00 by jess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 
-//////////////
-// INCLUDES //
-//////////////
+///////////////////////////////////////////////////////////////////////////////
+//									INCLUDES								 //
+///////////////////////////////////////////////////////////////////////////////
 
 # include "libft.h"
 # include <errno.h>
@@ -23,9 +23,9 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 
-/////////////
-// DEFINES //
-/////////////
+///////////////////////////////////////////////////////////////////////////////
+//									DEFINES									 //
+///////////////////////////////////////////////////////////////////////////////
 
 # ifndef PRINT_DEBUG
 #  define PRINT_DEBUG		0
@@ -41,6 +41,24 @@
 # define WALL				'1'
 # define BLANK				' '
 # define GROUND				"0NSWE"
+# define NORTH				"NO"
+# define SOUTH				"SO"
+# define WEST				"WE"
+# define EAST				"EA"
+
+enum attributes
+{
+	NO,
+	SO,
+	WE,
+	EA,
+	F,
+	C
+};
+
+extern const char* attributeKeys[];
+
+// static const enum key_attributes { NO, SO, EA, WE, F, C } attKeys[] = {NO, SO, EA, WE, F, C};
 
 // Errors
 
@@ -54,9 +72,25 @@
 # define RED				"\033[0;31m"
 # define GREEN				"\033[0;32m"
 
-////////////////
-// STRUCTURES //
-////////////////
+///////////////////////////////////////////////////////////////////////////////
+//									STRUCTURES								 //
+///////////////////////////////////////////////////////////////////////////////
+
+typedef struct s_attribute
+{
+	char	*key;
+	char	*value;
+}		t_attribute;
+
+typedef struct s_config
+{
+	t_attribute	*north_texture;
+	t_attribute	*south_texture;
+	t_attribute	*west_texture;
+	t_attribute	*east_texture;
+	t_attribute	*floor_color;
+	t_attribute	*ceiling_color;
+}		t_config;
 
 typedef struct s_tile
 {
@@ -71,32 +105,68 @@ typedef struct s_map
 	size_t	width;
 }		t_map;
 
-///////////////
-// FUNCTIONS //
-///////////////
+///////////////////////////////////////////////////////////////////////////////
+//									FUNCTIONS								 //
+///////////////////////////////////////////////////////////////////////////////
 
-//// print ////
+/////////////////////////////////////////
+/////			  print				/////
+/////////////////////////////////////////
 
 // print_format_error.c
 
 void	print_format_error(const char *const error_message);
 
-//// map ////
+/////////////////////////////////////////
+/////			  config			/////
+/////////////////////////////////////////
 
-	//// init_map
+	/////////////////////////
+	////	init_config	 ////
+	/////////////////////////
 
-	// init_map.c
+	// init_config.c
+
+t_config	*init_config(char *const *const content);
+
+	/////////////////////////
+	//// is_config_valid ////
+	/////////////////////////
+
+	// is_config_valid.c
+
+bool	is_config_complete(const t_config *const config);
+
+	// is_sequence_valid.c
+
+bool	is_sequence_valid(char *const *const sequence);
+
+// free_config.c
+
+void	free_config(t_config *const config);
+
+/////////////////////////////////////////
+/////			 	map				/////
+/////////////////////////////////////////
+
+	/////////////////////////
+	////     init_map    ////
+	/////////////////////////
+
+		// init_map.c
 
 t_map	*init_map(char *const *const lines);
 
-	// init_matrix.c
+		// init_matrix.c
 
 t_tile	**init_matrix(
 			const size_t height,
 			const size_t width,
 			char *const *const lines);
 
-	//// is_map_valid ////
+	/////////////////////////
+	////   is_map_valid  ////
+	/////////////////////////
 
 		// is_map_closed.c
 
@@ -141,7 +211,9 @@ void	free_map(t_map *const map);
 
 void	print_map(const t_map *const map);
 
-//// read_file ////
+/////////////////////////////////////////
+/////			 read_file			/////
+/////////////////////////////////////////
 
 // get_file.c
 
