@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/10 08:24:47 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/11 07:30:23 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@
 # define INVALID_FD			-1
 # define COUNT_LINE_ERROR	-1
 # define FILE_EXTENSION		".cub"
+# define VALID_CHAR			"01 NWES\n"
+# define VALID_CHAR_DIR		"NWES"
 # define NEWLINE			'\n'
 # define WALL				'1'
 # define BLANK				' '
@@ -44,6 +46,7 @@
 
 # define MAP_NOT_CLOSED		"MAP NOT CLOSED"
 # define MAP_NOT_UNIQUE		"MAP NOT UNIQUE"
+# define MAP_CONTENT_WRONG	"MAP CONTENT IS WRONG"
 
 // Colors
 
@@ -93,13 +96,13 @@ t_tile	**init_matrix(
 			const size_t width,
 			char *const *const lines);
 
-	//// is_map_valid
+	//// is_map_valid ////
 
-	// is_map_closed.c
+		// is_map_closed.c
 
-bool	is_map_closed(t_map *const map);
+bool	is_map_closed(const t_map *const map);
 
-	// is_map_closed_utils.c
+		// is_map_closed_utils.c
 
 bool	is_inside_map(
 			const t_map *const map,
@@ -114,14 +117,18 @@ bool	is_marked(
 			const t_map *const map,
 			const size_t x, const size_t y);
 void	mark_as_viewed(
-			t_map *const map,
+			const t_map *const map,
 			const size_t x, const size_t y);
 
-	// is_map_unique.c
+		// is_map_content_valid.c
+
+bool	is_map_content_valid(const t_map *const map);
+
+		// is_map_unique.c
 
 bool	is_map_unique(const t_map *const map);
 
-	// is_map_valid.c
+		// is_map_valid.c
 
 bool	is_map_valid(t_map *const map);
 

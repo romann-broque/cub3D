@@ -17,7 +17,9 @@ bool	is_map_valid(t_map *const map)
 	bool	is_valid;
 
 	is_valid = false;
-	if (is_map_unique(map) == false)
+	if (is_map_content_valid(map) == false)
+		print_format_error(MAP_CONTENT_WRONG);
+	else if (is_map_unique(map) == false)
 		print_format_error(MAP_NOT_UNIQUE);
 	else if (is_map_closed(map) == false)
 		print_format_error(MAP_NOT_CLOSED);
