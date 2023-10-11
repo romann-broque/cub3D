@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/10 16:43:26 by jess             ###   ########.fr       */
+/*   Updated: 2023/10/11 07:30:23 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,13 +96,13 @@ t_tile	**init_matrix(
 			const size_t width,
 			char *const *const lines);
 
-	//// is_map_valid
+	//// is_map_valid ////
 
-	// is_map_closed.c
+		// is_map_closed.c
 
 bool	is_map_closed(const t_map *const map);
 
-	// is_map_closed_utils.c
+		// is_map_closed_utils.c
 
 bool	is_inside_map(
 			const t_map *const map,
@@ -120,15 +120,15 @@ void	mark_as_viewed(
 			const t_map *const map,
 			const size_t x, const size_t y);
 
-	// is_map_content_valid
+		// is_map_content_valid.c
 
 bool	is_map_content_valid(const t_map *const map);
 
-	// is_map_unique.c
+		// is_map_unique.c
 
 bool	is_map_unique(const t_map *const map);
 
-	// is_map_valid.c
+		// is_map_valid.c
 
 bool	is_map_valid(t_map *const map);
 
