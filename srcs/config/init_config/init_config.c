@@ -6,7 +6,7 @@
 /*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 15:28:07 by jess              #+#    #+#             */
-/*   Updated: 2023/10/11 17:40:40 by jess             ###   ########.fr       */
+/*   Updated: 2023/10/12 10:33:11 by jess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_config	*init_config(char *const *const content)
 {
-	char *const *const	sequence;
+	char 				**sequence;
 	t_config 			*config;
 	size_t				i;
 

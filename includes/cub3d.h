@@ -6,7 +6,7 @@
 /*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/11 17:41:00 by jess             ###   ########.fr       */
+/*   Updated: 2023/10/12 10:33:46 by jess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,7 @@ bool	is_config_complete(const t_config *const config);
 
 	// is_sequence_valid.c
 
-bool	is_sequence_valid(char *const *const sequence);
+bool	is_sequence_valid(char **sequence);
 
 // free_config.c
 

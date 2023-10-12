@@ -6,11 +6,11 @@
 /*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 16:44:30 by jess              #+#    #+#             */
-/*   Updated: 2023/10/11 16:51:36 by jess             ###   ########.fr       */
+/*   Updated: 2023/10/12 10:36:25 by jess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cunit.test.sh"
+#include "cunit.test.h"
 
 void	is_config_sequence_valid__test(void)
 {

@@ -6,13 +6,13 @@
 /*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 15:25:37 by jess              #+#    #+#             */
-/*   Updated: 2023/10/11 17:40:51 by jess             ###   ########.fr       */
+/*   Updated: 2023/10/12 10:34:33 by jess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static bool	is_attribute_key(const char *const *const sequence)
+static bool	is_attribute_key(char **sequence)
 {
 	size_t	i;
 
@@ -29,7 +29,7 @@ static bool	is_attribute_key(const char *const *const sequence)
 	return (false);
 }
 
-static bool	has_two_elements(const char *const *const sequence)
+static bool	has_two_elements(char **sequence)
 {
 	size_t	i;
 	size_t	count;
@@ -44,7 +44,7 @@ static bool	has_two_elements(const char *const *const sequence)
 	return (count == 2);
 }
 
-bool	is_sequence_valid(char *const *const sequence)
+bool	is_sequence_valid(char **sequence)
 {
 	return (has_two_elements(sequence) && is_attribute_key(sequence));
 }
