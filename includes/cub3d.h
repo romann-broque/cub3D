@@ -6,7 +6,7 @@
 /*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/12 10:33:46 by jess             ###   ########.fr       */
+/*   Updated: 2023/10/12 11:55:43 by jess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,9 @@
 # define SOUTH				"SO"
 # define WEST				"WE"
 # define EAST				"EA"
+# define FLOOR				"F"
+# define CEIL				"C"
+# define ATTRIBUTE_COUNT 6
 
 enum attributes
 {
@@ -56,9 +59,7 @@ enum attributes
 	C
 };
 
-extern const char* attributeKeys[];
-
-// static const enum key_attributes { NO, SO, EA, WE, F, C } attKeys[] = {NO, SO, EA, WE, F, C};
+// extern const char* attributeKeys[];
 
 // Errors
 
@@ -76,20 +77,20 @@ extern const char* attributeKeys[];
 //									STRUCTURES								 //
 ///////////////////////////////////////////////////////////////////////////////
 
-typedef struct s_attribute
+
+enum e_attribute_type
 {
-	char	*key;
-	char	*value;
-}		t_attribute;
+	E_NORTH,
+	E_SOUTH,
+	E_WEST,
+	E_EAST,
+	E_FLOOR,
+	E_CEIL
+};
 
 typedef struct s_config
 {
-	t_attribute	*north_texture;
-	t_attribute	*south_texture;
-	t_attribute	*west_texture;
-	t_attribute	*east_texture;
-	t_attribute	*floor_color;
-	t_attribute	*ceiling_color;
+	char	*attribute_array[ATTRIBUTE_COUNT + 1];
 }		t_config;
 
 typedef struct s_tile
@@ -133,17 +134,9 @@ t_config	*init_config(char *const *const content);
 	//// is_config_valid ////
 	/////////////////////////
 
-	// is_config_valid.c
-
-bool	is_config_complete(const t_config *const config);
-
 	// is_sequence_valid.c
 
-bool	is_sequence_valid(char **sequence);
-
-// free_config.c
-
-void	free_config(t_config *const config);
+bool	is_sequence_valid(char *const *const sequence);
 
 /////////////////////////////////////////
 /////			 	map				/////

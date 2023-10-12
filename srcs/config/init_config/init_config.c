@@ -6,7 +6,7 @@
 /*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 15:28:07 by jess              #+#    #+#             */
-/*   Updated: 2023/10/12 10:33:11 by jess             ###   ########.fr       */
+/*   Updated: 2023/10/12 12:14:24 by jess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,11 @@ t_config	*init_config(char *const *const content)
 		return (NULL);
 	config = NULL;
 	i = 0;
-	while (content[i] != NULL && is_config_complete(config) == false)
+	while (content[i] != NULL)
 	{
 		sequence = ft_split(content[i], BLANK);
 		if (is_sequence_valid(sequence) == false)
 		{
-			free_config(config);
 			break ;
 		}
 		// else if (sequence[i] != NULL)

@@ -6,7 +6,7 @@
 /*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 16:44:30 by jess              #+#    #+#             */
-/*   Updated: 2023/10/12 10:36:25 by jess             ###   ########.fr       */
+/*   Updated: 2023/10/12 12:13:48 by jess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,79 +16,167 @@ void	is_config_sequence_valid__test(void)
 {
 	// FAILURE TESTS //
 
-	const char		bad_attributes1[] = "./tests/assets/wrong/bad_attributes1.cub";
-	const char		bad_attributes2[] = "./tests/assets/wrong/bad_attributes2.cub";
-	const char		bad_attributes3[] = "./tests/assets/wrong/bad_attributes3.cub";
-	const char		bad_attributes4[] = "./tests/assets/wrong/bad_attributes4.cub";
-	const char		bad_attributes5[] = "./tests/assets/wrong/bad_attributes5.cub";
-	const char		bad_attributes6[] = "./tests/assets/wrong/bad_attributes6.cub";
-	const char		bad_attributes7[] = "./tests/assets/wrong/bad_attributes7.cub";
-	const char		bad_attributes8[] = "./tests/assets/wrong/bad_attributes8.cub";
-	const char		bad_attributes9[] = "./tests/assets/wrong/bad_attributes9.cub";
-	const char		bad_attributes10[] = "./tests/assets/wrong/bad_attributes10.cub";
-	t_map *const	bad_attributes_map1 = get_map_from_file(bad_attributes1);
-	t_map *const	bad_attributes_map2 = get_map_from_file(bad_attributes2);
-	t_map *const	bad_attributes_map3 = get_map_from_file(bad_attributes3);
-	t_map *const	bad_attributes_map4 = get_map_from_file(bad_attributes4);
-	t_map *const	bad_attributes_map5 = get_map_from_file(bad_attributes5);
-	t_map *const	bad_attributes_map6 = get_map_from_file(bad_attributes6);
-	t_map *const	bad_attributes_map7 = get_map_from_file(bad_attributes7);
-	t_map *const	bad_attributes_map8 = get_map_from_file(bad_attributes8);
-	t_map *const	bad_attributes_map9 = get_map_from_file(bad_attributes9);
-	t_map *const	bad_attributes_map10 = get_map_from_file(bad_attributes10);
+	static const char			*attribute_bad_array1[] = {
+		"NO ./north_texture",
+		NULL
+	};
 
-	CU_ASSERT_FALSE(is_sequence_valid(bad_attributes_map1));
-	CU_ASSERT_FALSE(is_sequence_valid(bad_attributes_map2));
-	CU_ASSERT_FALSE(is_sequence_valid(bad_attributes_map3));
-	CU_ASSERT_FALSE(is_sequence_valid(bad_attributes_map4));
-	CU_ASSERT_FALSE(is_sequence_valid(bad_attributes_map5));
-	CU_ASSERT_FALSE(is_sequence_valid(bad_attributes_map6));
-	CU_ASSERT_FALSE(is_sequence_valid(bad_attributes_map7));
-	CU_ASSERT_FALSE(is_sequence_valid(bad_attributes_map8));
-	CU_ASSERT_FALSE(is_sequence_valid(bad_attributes_map9));
-	CU_ASSERT_FALSE(is_sequence_valid(bad_attributes_map10));
+	static const char			*attribute_bad_array2[] = {
+		"NO ./north_texture",
+		"SO ./path_to_the_south_texture",
+		NULL
+	};
 
-	free_map(bad_attributes_map1);
-	free_map(bad_attributes_map2);
-	free_map(bad_attributes_map3);
-	free_map(bad_attributes_map4);
-	free_map(bad_attributes_map5);
-	free_map(bad_attributes_map6);
-	free_map(bad_attributes_map7);
-	free_map(bad_attributes_map8);
-	free_map(bad_attributes_map9);
-	free_map(bad_attributes_map10);
+	static const char			*attribute_bad_array3[] = {
+		"NO ./north_texture",
+		"SO ./path_to_the_south_texture",
+		"WE ./path_to_the_west_texture",
+		NULL
+	};
+
+	static const char			*attribute_bad_array4[] = {
+		"NO ./north_texture",
+		"SO ./path_to_the_south_texture",
+		"WE ./path_to_the_west_texture",
+		"EA ./path_to_the_east_texture",
+		NULL
+	};
+	
+	static const char			*attribute_bad_array5[] = {
+		"NO ./north_texture",
+		"SO ./path_to_the_south_texture",
+		"WE ./path_to_the_west_texture",
+		"EA ./path_to_the_east_texture",
+		"F 220,100,0",
+		NULL
+	};
+	static const char			*attribute_bad_array6[] = {
+		"C 225,30,0",
+		NULL
+	};
+
+	static const char			*attribute_bad_array7[] = {
+		"42 ./north_texture",
+		"SO ./path_to_the_south_texture",
+		"WE ./path_to_the_west_texture",
+		"EA ./path_to_the_east_texture",
+		"F 220,100,0",
+		"C 225,30,0",
+		NULL
+	};
+
+	static const char			*attribute_bad_array8[] = {
+		"NO ./north_texture",
+		"SO ./path_to_the_south_texture",
+		"WE ./path_to_the_west_texture",
+		"EA ./path_to_the_east_texture",
+		"M 220,100,0",
+		"C 225,30,0",
+		NULL
+	};
+
+	static const char			*attribute_bad_array9[] = {
+		"NO 42 ./north_texture",
+		NULL
+	};
+
+	static const char			*attribute_bad_array10[] = {
+		"NO ./north_texture lol",
+		NULL
+	};
+
+	static const char			*attribute_bad_array10[] = {
+		"lol",
+		NULL
+	};
+
+	CU_ASSERT_FALSE(is_sequence_valid(attribute_bad_array1));
+	CU_ASSERT_FALSE(is_sequence_valid(attribute_bad_array2));
+	CU_ASSERT_FALSE(is_sequence_valid(attribute_bad_array3));
+	CU_ASSERT_FALSE(is_sequence_valid(attribute_bad_array4));
+	CU_ASSERT_FALSE(is_sequence_valid(attribute_bad_array5));
+	CU_ASSERT_FALSE(is_sequence_valid(attribute_bad_array6));
+	CU_ASSERT_FALSE(is_sequence_valid(attribute_bad_array7));
+	CU_ASSERT_FALSE(is_sequence_valid(attribute_bad_array8));
+	CU_ASSERT_FALSE(is_sequence_valid(attribute_bad_array9));
+	CU_ASSERT_FALSE(is_sequence_valid(attribute_bad_array10));
+
+
+	// const char *line1 = "NO ./path1";
+	// char **const line_sequence1 = ft_split(line1, SPACE);
+	
+	// CU_ASSERT_FALSE(is_sequence_valid(line_sequence1));
 
 	// SUCCESS TESTS //
+	
+	static const char			*attribute_good_array1[] = {
+		"NO ./north_texture",
+		"SO ./south_texture",
+		"WE ./west_texture",
+		"EA ./east_texture",
+		"F 220,100,0",
+		"C 225,30,0",
+		NULL
+	};
+	
+	static const char			*attribute_good_array2[] = {
+		"NO ./north_texture",
+		"\n",
+		"SO ./south_texture",
+		"\n",
+		"WE ./west_texture",
+		"\n",
+		"EA ./east_texture",
+		"\n",
+		"F 220,100,0",
+		"\n",
+		"C 225,30,0",
+		"\n",
+		NULL
+	};
 
-	const char		good_attributes1[] = "./tests/assets/wrong/good_attributes1.cub";
-	const char		good_attributes2[] = "./tests/assets/wrong/good_attributes2.cub";
-	const char		good_attributes3[] = "./tests/assets/wrong/good_attributes3.cub";
-	const char		good_attributes4[] = "./tests/assets/wrong/good_attributes4.cub";
-	const char		good_attributes5[] = "./tests/assets/wrong/good_attributes5.cub";
-	const char		good_attributes6[] = "./tests/assets/wrong/good_attributes6.cub";
-	const char		good_attributes7[] = "./tests/assets/wrong/good_attributes7.cub";
-	t_map *const	good_attributes_map1 = get_map_from_file(good_attributes1);
-	t_map *const	good_attributes_map2 = get_map_from_file(good_attributes2);
-	t_map *const	good_attributes_map3 = get_map_from_file(good_attributes3);
-	t_map *const	good_attributes_map4 = get_map_from_file(good_attributes4);
-	t_map *const	good_attributes_map5 = get_map_from_file(good_attributes5);
-	t_map *const	good_attributes_map6 = get_map_from_file(good_attributes6);
-	t_map *const	good_attributes_map7 = get_map_from_file(good_attributes7);
+	static const char			*attribute_good_array3[] = {
+		"NO ./north_texture",
+		"\n\n",
+		"SO ./south_texture",
+		"\n\n\n",
+		"WE ./west_texture",
+		"\n",
+		"EA ./east_texture",
+		"\n",
+		"F 220,100,0",
+		"\n\n\n\n",
+		"C 225,30,0",
+		"\n",
+		NULL
+	};
 
-	CU_ASSERT_TRUE(is_sequence_valid(good_attributes_map1));
-	CU_ASSERT_TRUE(is_sequence_valid(good_attributes_map2));
-	CU_ASSERT_TRUE(is_sequence_valid(good_attributes_map3));
-	CU_ASSERT_TRUE(is_sequence_valid(good_attributes_map4));
-	CU_ASSERT_TRUE(is_sequence_valid(good_attributes_map5));
-	CU_ASSERT_TRUE(is_sequence_valid(good_attributes_map6));
-	CU_ASSERT_TRUE(is_sequence_valid(good_attributes_map7));
+	static const char			*attribute_good_array4[] = {
+		"C 225,30,0",
+		"WE ./west_texture",
+		"F 220,100,0",
+		"SO ./south_texture",
+		"NO ./north_texture",
+		"EA ./east_texture",
+		NULL
+	};
 
-	free_map(good_attributes_map1);
-	free_map(good_attributes_map2);
-	free_map(good_attributes_map3);
-	free_map(good_attributes_map4);
-	free_map(good_attributes_map5);
-	free_map(good_attributes_map6);
-	free_map(good_attributes_map7);
+	static const char			*attribute_good_array5[] = {
+		"C 225,30,0",
+		"WE ./west_texture",
+		"\n",
+		"F 220,100,0",
+		"SO ./south_texture",
+		"\n\n\n",
+		"NO ./north_texture",
+		"\n",
+		"EA ./east_texture",
+		NULL
+	};
+
+	CU_ASSERT_TRUE(is_sequence_valid(attribute_good_array1));
+	CU_ASSERT_TRUE(is_sequence_valid(attribute_good_array2));
+	CU_ASSERT_TRUE(is_sequence_valid(attribute_good_array3));
+	CU_ASSERT_TRUE(is_sequence_valid(attribute_good_array4));
+	CU_ASSERT_TRUE(is_sequence_valid(attribute_good_array5));
 }

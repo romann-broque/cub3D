@@ -26,17 +26,12 @@ SRCS	 	+=	cub3d.c
 
 SRCS		+=	print_format_error.c
 
-### srcs/config
-
-SRCS		+=	free_config.c
-
 ### srcs/config/init_config/
 
 SRCS		+= init_config.c
 
 ### rcs/config/is_config_valid.c
 
-SRCS		+=	is_config_valid.c
 SRCS		+=	is_config_sequence_valid.c
 
 ### srcs/map/

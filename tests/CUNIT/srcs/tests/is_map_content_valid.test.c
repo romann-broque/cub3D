@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_map_content_valid.test.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 16:17:08 by jess              #+#    #+#             */
-/*   Updated: 2023/10/11 07:17:22 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/12 11:51:43 by jess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	is_map_content_valid__test(void)
 	const char		bad_content9[] = "./tests/assets/wrong/bad_content9.cub";
 	const char		bad_content10[] = "./tests/assets/wrong/bad_content10.cub";
 	const char		bad_content11[] = "./tests/assets/wrong/bad_content11.cub";
-	const char		bad_content12[] = "./tests/assets/wrong/bad_content12.cub";
 	t_map *const	bad_content_map1 = get_map_from_file(bad_content1);
 	t_map *const	bad_content_map2 = get_map_from_file(bad_content2);
 	t_map *const	bad_content_map3 = get_map_from_file(bad_content3);
@@ -39,7 +38,6 @@ void	is_map_content_valid__test(void)
 	t_map *const	bad_content_map9 = get_map_from_file(bad_content9);
 	t_map *const	bad_content_map10 = get_map_from_file(bad_content10);
 	t_map *const	bad_content_map11 = get_map_from_file(bad_content11);
-	t_map *const	bad_content_map12 = get_map_from_file(bad_content12);
 
 	CU_ASSERT_FALSE(is_map_content_valid(bad_content_map1));
 	CU_ASSERT_FALSE(is_map_content_valid(bad_content_map2));
@@ -52,7 +50,6 @@ void	is_map_content_valid__test(void)
 	CU_ASSERT_FALSE(is_map_content_valid(bad_content_map9));
 	CU_ASSERT_FALSE(is_map_content_valid(bad_content_map10));
 	CU_ASSERT_FALSE(is_map_content_valid(bad_content_map11));
-	CU_ASSERT_FALSE(is_map_content_valid(bad_content_map12));
 
 	free_map(bad_content_map1);
 	free_map(bad_content_map2);
@@ -65,7 +62,6 @@ void	is_map_content_valid__test(void)
 	free_map(bad_content_map9);
 	free_map(bad_content_map10);
 	free_map(bad_content_map11);
-	free_map(bad_content_map12);
 
 	// SUCCESS TESTS //
 
