@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 15:13:34 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/12 07:27:58 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/12 09:59:46 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ static void	rm_newline(char *const str)
 {
 	const size_t	len = ft_strlen(str);
 
-	if (len > 0)
-		str[len - 1] = '\0';
+	if (len > 0 && str[len - 1] == NEWLINE)
+		str[len - 1] = END_CHAR;
 }
 
 static size_t	count_lines(const int fd)

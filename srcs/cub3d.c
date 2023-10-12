@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:14 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/12 08:39:29 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/12 10:00:41 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,10 @@
 
 static int	start_map(char *const *const content)
 {
-	int		ret_val;
-	t_map	*map;
+	int				ret_val;
+	t_map *const	map = init_map(content);
 
 	ret_val = EXIT_FAILURE;
-	map = init_map(content);
 	if (map != NULL)
 	{
 		if (is_map_valid(map))

@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 07:57:46 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/12 09:18:51 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/12 09:57:38 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,14 @@ static int	add_attribute_into_config(
 		= find_attribute_type(attribute_name_array, attribute_name);
 	int							ret_val;
 
-	ret_val = EXIT_SUCCESS;
-	config->attribute_array[type] = ft_strdup(value);
+	ret_val = EXIT_FAILURE;
 	if (config->attribute_array[type] == NULL)
 	{
-		print_format_error(strerror(errno));
-		ret_val = EXIT_FAILURE;
+		config->attribute_array[type] = ft_strdup(value);
+		ret_val = EXIT_SUCCESS;
 	}
+	if (config->attribute_array[type] == NULL)
+		print_format_error(strerror(errno));
 	return (ret_val);
 }
 
