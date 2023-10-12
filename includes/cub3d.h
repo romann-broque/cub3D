@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/11 07:30:23 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/12 08:25:03 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,27 @@
 # define EXPECTED_ARG_COUNT	2
 # define INVALID_FD			-1
 # define COUNT_LINE_ERROR	-1
-# define FILE_EXTENSION		".cub"
-# define VALID_CHAR			"01 NWES\n"
-# define VALID_CHAR_DIR		"NWES"
+# define INVALID_OFFSET		-1
+# define ATTRIBUTE_COUNT	6
+
+// CHAR
+
 # define NEWLINE			'\n'
 # define WALL				'1'
 # define BLANK				' '
+
+// STRINGS
+
+# define FILE_EXTENSION		".cub"
+# define VALID_CHAR			"01 NWES\n"
+# define VALID_CHAR_DIR		"NWES"
 # define GROUND				"0NSWE"
+# define NORTH_NAME			"NO"
+# define SOUTH_NAME			"SO"
+# define WEST_NAME			"WE"
+# define EAST_NAME			"EA"
+# define FLOOR_NAME			"F"
+# define CEIL_NAME			"C"
 
 // Errors
 
@@ -54,9 +68,28 @@
 # define RED				"\033[0;31m"
 # define GREEN				"\033[0;32m"
 
+///////////
+// ENUM //
+///////////
+
+enum e_attribute_type
+{
+	E_NORTH,
+	E_SOUTH,
+	E_WEST,
+	E_EAST,
+	E_FLOOR,
+	E_CEIL
+};
+
 ////////////////
 // STRUCTURES //
 ////////////////
+
+typedef struct s_config
+{
+	char	*attribute_array[ATTRIBUTE_COUNT + 1];
+}		t_config;
 
 typedef struct s_tile
 {
@@ -74,6 +107,29 @@ typedef struct s_map
 ///////////////
 // FUNCTIONS //
 ///////////////
+
+//// config ////
+
+// attribute_utils.c
+
+int		build_attribute_from_sequence(
+			t_config *const config, char *const *const sequence);
+
+// init_config.c
+
+void	init_config(t_config *const config);
+
+// build_config.c
+
+ssize_t	build_config(t_config *const config, char *const *const lines);
+
+// free_config.c
+
+void	free_config(t_config *const config);
+
+// print_config.c
+
+void	print_config(t_config *const config);
 
 //// print ////
 

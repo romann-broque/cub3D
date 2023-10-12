@@ -3,24 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrouillo <jrouillo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:14 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/09 16:18:49 by jrouillo         ###   ########.fr       */
-/*   Updated: 2023/10/10 08:25:53 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/12 08:39:29 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int	start_game(const char *const filename)
+static int	start_map(char *const *const content)
 {
-	char **const	content = get_file(filename);
-	int				ret_val;
-	t_map			*map;
+	int		ret_val;
+	t_map	*map;
 
-	if (content == NULL)
-		return (EXIT_FAILURE);
 	ret_val = EXIT_FAILURE;
 	map = init_map(content);
 	if (map != NULL)
@@ -31,6 +27,28 @@ static int	start_game(const char *const filename)
 			print_map(map);
 	}
 	free_map(map);
+	return (ret_val);
+}
+
+static int	start_game(const char *const filename)
+{
+	char		**content;
+	int			ret_val;
+	t_config	config;
+	ssize_t		config_offset;
+
+	content = get_file(filename);
+	if (content == NULL)
+		return (EXIT_FAILURE);
+	ret_val = EXIT_FAILURE;
+	init_config(&config);
+	config_offset = build_config(&config, content);
+	if (config_offset != INVALID_OFFSET)
+	{
+		print_config(&config);
+		ret_val = start_map(content + config_offset);
+		free_config(&config);
+	}	
 	free_strs(content);
 	return (ret_val);
 }
