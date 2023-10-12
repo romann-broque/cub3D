@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/12 08:25:03 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/12 20:22:41 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@
 # define MAP_NOT_CLOSED		"MAP NOT CLOSED"
 # define MAP_NOT_UNIQUE		"MAP NOT UNIQUE"
 # define MAP_CONTENT_WRONG	"MAP CONTENT IS WRONG"
+# define UNKNOWN_CONFIG		"UNKNOWN CONFIG"
+# define DUPLICATED_CONFIG	"DUPLICATED CONFIG"
 
 // Colors
 

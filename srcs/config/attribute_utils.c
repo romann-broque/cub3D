@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 07:57:46 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/12 09:57:38 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/12 20:23:29 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,32 +33,33 @@ static enum e_attribute_type	find_attribute_type(
 
 static int	add_attribute_into_config(
 	t_config *const config,
-	char *const *const sequence
+	const char *const name,
+	const char *const value
 	)
 {
 	static const char			*attribute_name_array[] = {
-		NORTH_NAME,
-		SOUTH_NAME,
-		WEST_NAME,
-		EAST_NAME,
-		FLOOR_NAME,
-		CEIL_NAME,
+		NORTH_NAME, SOUTH_NAME,
+		WEST_NAME, EAST_NAME,
+		FLOOR_NAME, CEIL_NAME,
 		NULL
 	};
-	const char					*attribute_name = sequence[0];
-	const char					*value = sequence[1];
 	const enum e_attribute_type	type
-		= find_attribute_type(attribute_name_array, attribute_name);
+		= find_attribute_type(attribute_name_array, name);
 	int							ret_val;
 
 	ret_val = EXIT_FAILURE;
-	if (config->attribute_array[type] == NULL)
+	if (type < ATTRIBUTE_COUNT)
+		print_format_error(UNKNOWN_CONFIG);
+	else if (config->attribute_array[type] == NULL)
+		print_format_error(DUPLICATED_CONFIG);
+	else
 	{
 		config->attribute_array[type] = ft_strdup(value);
-		ret_val = EXIT_SUCCESS;
+		if (config->attribute_array[type] == NULL)
+			print_format_error(strerror(errno));
+		else
+			ret_val = EXIT_SUCCESS;
 	}
-	if (config->attribute_array[type] == NULL)
-		print_format_error(strerror(errno));
 	return (ret_val);
 }
 
@@ -76,10 +77,11 @@ int	build_attribute_from_sequence(
 	char *const *const sequence
 	)
 {
-	if (get_size_strs(sequence) == 2
-		&& add_attribute_into_config(config, sequence) == EXIT_SUCCESS)
-		return (EXIT_SUCCESS);
 	if (is_sequence_empty(sequence) == true)
+		return (EXIT_SUCCESS);
+	if (get_size_strs(sequence) == 2
+		&& add_attribute_into_config(
+			config, sequence[0], sequence[1]) == EXIT_SUCCESS)
 		return (EXIT_SUCCESS);
 	return (EXIT_FAILURE);
 }

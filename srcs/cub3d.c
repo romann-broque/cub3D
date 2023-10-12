@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:14 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/12 10:00:41 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/12 20:17:01 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static int	start_map(char *const *const content)
 {
-	int				ret_val;
 	t_map *const	map = init_map(content);
+	int				ret_val;
 
 	ret_val = EXIT_FAILURE;
 	if (map != NULL)
@@ -31,12 +31,11 @@ static int	start_map(char *const *const content)
 
 static int	start_game(const char *const filename)
 {
-	char		**content;
-	int			ret_val;
-	t_config	config;
-	ssize_t		config_offset;
+	char **const	content = get_file(filename);
+	int				ret_val;
+	t_config		config;
+	ssize_t			config_offset;
 
-	content = get_file(filename);
 	if (content == NULL)
 		return (EXIT_FAILURE);
 	ret_val = EXIT_FAILURE;
@@ -46,8 +45,8 @@ static int	start_game(const char *const filename)
 	{
 		print_config(&config);
 		ret_val = start_map(content + config_offset);
-		free_config(&config);
 	}	
+	free_config(&config);
 	free_strs(content);
 	return (ret_val);
 }
