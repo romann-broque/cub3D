@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/13 07:35:02 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/13 07:53:11 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,10 @@ typedef struct s_map
 ///////////////
 
 //// config ////
+
+// is_rgb.c
+
+bool	is_rgb(const char *const str);
 
 // attribute_utils.c
 
