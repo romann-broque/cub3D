@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 07:57:46 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/13 09:18:51 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/13 09:54:06 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,22 @@ static enum e_attribute_type	find_attribute_type(
 	return (type);
 }
 
+void	assign_attribute(
+	t_config *const config,
+	const enum e_attribute_type type,
+	const char *const str
+	)
+{
+	if ((type == E_CEIL || type == E_FLOOR) && is_rgb(str) == false)
+		print_format_error(WRONG_RGB);
+	else
+	{
+		config->attribute_array[type] = ft_strdup(str);
+		if (config->attribute_array[type] == NULL)
+			print_format_error(strerror(errno));
+	}
+}
+
 static int	add_attribute_into_config(
 	t_config *const config,
 	const char *const name,
@@ -48,16 +64,14 @@ static int	add_attribute_into_config(
 	int							ret_val;
 
 	ret_val = EXIT_FAILURE;
-	if (type < ATTRIBUTE_COUNT)
+	if (type == ATTRIBUTE_COUNT)
 		print_format_error(UNKNOWN_CONFIG);
-	else if (config->attribute_array[type] == NULL)
+	else if (config->attribute_array[type] != NULL)
 		print_format_error(DUPLICATED_CONFIG);
 	else
 	{
-		config->attribute_array[type] = ft_strdup(value);
-		if (config->attribute_array[type] == NULL)
-			print_format_error(strerror(errno));
-		else
+		assign_attribute(config, type, value);
+		if (config->attribute_array[type] != NULL)
 			ret_val = EXIT_SUCCESS;
 	}
 	return (ret_val);
