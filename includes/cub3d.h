@@ -6,7 +6,7 @@
 /*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/12 11:55:43 by jess             ###   ########.fr       */
+/*   Updated: 2023/10/13 11:36:06 by jess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,14 @@
 # define WALL				'1'
 # define BLANK				' '
 # define GROUND				"0NSWE"
-# define NORTH				"NO"
-# define SOUTH				"SO"
-# define WEST				"WE"
-# define EAST				"EA"
-# define FLOOR				"F"
-# define CEIL				"C"
-# define ATTRIBUTE_COUNT 6
+# define NORTH_KEY			"NO"
+# define SOUTH_KEY			"SO"
+# define WEST_KEY			"WE"
+# define EAST_KEY			"EA"
+# define FLOOR_KEY			"F"
+# define CEIL_KEY			"C"
+# define ATTRIBUTE_COUNT 	6
+# define UNKNOWN_CONFIG		"UNKNOWN_CONFIG"
 
 enum attributes
 {
@@ -58,8 +59,6 @@ enum attributes
 	F,
 	C
 };
-
-// extern const char* attributeKeys[];
 
 // Errors
 
