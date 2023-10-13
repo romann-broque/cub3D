@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 07:57:46 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/13 09:16:48 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/13 09:18:51 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static bool	is_sequence_empty(char *const *const sequence)
 }
 
 static enum e_attribute_type	find_attribute_type(
-	const char *attribute_KEY_array[ATTRIBUTE_COUNT + 1],
+	const char *attribute_name_array[ATTRIBUTE_COUNT + 1],
 	const char *name
 	)
 {
@@ -26,7 +26,7 @@ static enum e_attribute_type	find_attribute_type(
 
 	type = 0;
 	while (type < ATTRIBUTE_COUNT
-		&& streq(attribute_KEY_array[type], name) == false)
+		&& streq(attribute_name_array[type], name) == false)
 		++type;
 	return (type);
 }

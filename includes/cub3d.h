@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/13 09:15:43 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/13 09:19:16 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -210,7 +210,7 @@ void	print_map(const t_map *const map);
 
 // get_file.c
 
-char	**get_file(const char *const file_KEY);
+char	**get_file(const char *const file_name);
 
 // is_file_valid.c
 
