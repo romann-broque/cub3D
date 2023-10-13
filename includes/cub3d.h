@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/13 09:19:16 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/13 09:39:09 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@
 # define MAP_CONTENT_WRONG	"MAP CONTENT IS WRONG"
 # define UNKNOWN_CONFIG		"UNKNOWN CONFIG"
 # define DUPLICATED_CONFIG	"DUPLICATED CONFIG"
+# define WRONG_RGB			"WRONG RGB"
 
 // Colors
 
