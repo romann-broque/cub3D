@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cunit.test.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 00:44:31 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/10 16:27:53 by jess             ###   ########.fr       */
+/*   Updated: 2023/10/13 08:42:09 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,10 @@ typedef struct s_suite
 	char		*sname;
 	t_test		tests[MAX_TESTS_COUNT];
 }				t_suite;
+
+// is_rgb.test.c
+
+void	is_rgb__test(void);
 
 // is_map_unique.test.c
 

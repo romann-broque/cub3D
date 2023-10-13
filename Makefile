@@ -9,6 +9,7 @@ SHELL		= /usr/bin/bash
 ##############
 
 PATH_SRCS	+=	srcs/
+PATH_SRCS	+=	srcs/config/
 PATH_SRCS	+=	srcs/print/
 PATH_SRCS	+=	srcs/map/
 PATH_SRCS	+=	srcs/map/init_map/
@@ -19,8 +20,16 @@ PATH_SRCS	+=	srcs/read_file/
 
 SRCS	 	+=	cub3d.c
 
-### srcs/print/
+### srcs/config/
 
+SRCS		+= is_rgb.c
+SRCS		+= attribute_utils.c
+SRCS		+= init_config.c
+SRCS		+= build_config.c
+SRCS		+= free_config.c
+SRCS		+= print_config.c
+
+### srcs/print/
 
 SRCS		+=	print_format_error.c
 
