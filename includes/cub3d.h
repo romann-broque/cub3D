@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/12 20:22:41 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/13 07:35:02 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 //////////////
 
 # include "libft.h"
+# include <limits.h>
 # include <errno.h>
 # include <string.h>
 # include <sys/types.h>
