@@ -6,7 +6,7 @@
 /*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 00:44:31 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/13 12:06:16 by jess             ###   ########.fr       */
+/*   Updated: 2023/10/13 14:59:21 by jess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,10 @@ void	is_map_content_valid__test(void);
 // is_config_sequence_valid.test.c
 
 void	is_config_sequence_valid__test(void);
+
+// error_messages.test.c
+
+void	error_messages__test(void);
 
 //// UTILS ////
 

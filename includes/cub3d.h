@@ -6,7 +6,7 @@
 /*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/13 12:05:00 by jess             ###   ########.fr       */
+/*   Updated: 2023/10/13 14:21:15 by jess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,9 @@ typedef struct s_map
 //									FUNCTIONS								 //
 ///////////////////////////////////////////////////////////////////////////////
 
-//// config ////
+/////////////////////////////////////////
+/////			  config			/////
+/////////////////////////////////////////
 
 // is_rgb.c
 
@@ -141,6 +143,10 @@ void	free_config(t_config *const config);
 
 void	print_config(t_config *const config);
 
+// is_config_sequence_valid.c
+
+bool	is_sequence_valid(char *const *const sequence);
+
 /////////////////////////////////////////
 /////			  print				/////
 /////////////////////////////////////////
@@ -150,30 +156,27 @@ void	print_config(t_config *const config);
 void	print_format_error(const char *const error_message);
 
 /////////////////////////////////////////
-/////			  config			/////
-/////////////////////////////////////////
-
-	/////////////////////////
-	//// is_config_valid ////
-	/////////////////////////
-
-	// is_sequence_valid.c
-
-bool	is_sequence_valid(char *const *const sequence);
-
-/////////////////////////////////////////
 /////			 	map				/////
 /////////////////////////////////////////
+
+// free_map.c
+
+void	free_tile_matrix(t_tile **const matrix, const size_t size);
+void	free_map(t_map *const map);
+
+// print_map.c
+
+void	print_map(const t_map *const map);
 
 	/////////////////////////
 	////     init_map    ////
 	/////////////////////////
 
-		// init_map.c
+// init_map.c
 
 t_map	*init_map(char *const *const lines);
 
-		// init_matrix.c
+// init_matrix.c
 
 t_tile	**init_matrix(
 			const size_t height,
@@ -184,11 +187,11 @@ t_tile	**init_matrix(
 	////   is_map_valid  ////
 	/////////////////////////
 
-		// is_map_closed.c
+// is_map_closed.c
 
 bool	is_map_closed(const t_map *const map);
 
-		// is_map_closed_utils.c
+// is_map_closed_utils.c
 
 bool	is_inside_map(
 			const t_map *const map,
@@ -206,26 +209,17 @@ void	mark_as_viewed(
 			const t_map *const map,
 			const size_t x, const size_t y);
 
-		// is_map_content_valid.c
+// is_map_content_valid.c
 
 bool	is_map_content_valid(const t_map *const map);
 
-		// is_map_unique.c
+// is_map_unique.c
 
 bool	is_map_unique(const t_map *const map);
 
-		// is_map_valid.c
+// is_map_valid.c
 
 bool	is_map_valid(t_map *const map);
-
-// free_map.c
-
-void	free_tile_matrix(t_tile **const matrix, const size_t size);
-void	free_map(t_map *const map);
-
-// print_map.c
-
-void	print_map(const t_map *const map);
 
 /////////////////////////////////////////
 /////			 read_file			/////

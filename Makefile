@@ -16,7 +16,6 @@ PATH_SRCS	+=	srcs/map/init_map/
 PATH_SRCS	+=	srcs/map/is_map_valid/
 PATH_SRCS	+=	srcs/read_file/
 PATH_SRCS	+=	srcs/config/
-PATH_SRCS	+=	srcs/config/is_config_valid/
 
 ### srcs/
 
@@ -30,14 +29,11 @@ SRCS		+= init_config.c
 SRCS		+= build_config.c
 SRCS		+= free_config.c
 SRCS		+= print_config.c
+SRCS		+=	is_config_sequence_valid.c
 
 ### srcs/print/
 
 SRCS		+=	print_format_error.c
-
-### rcs/config/is_config_valid.c
-
-SRCS		+=	is_config_sequence_valid.c
 
 ### srcs/map/
 
