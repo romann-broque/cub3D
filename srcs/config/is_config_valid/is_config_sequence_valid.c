@@ -6,7 +6,7 @@
 /*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 15:25:37 by jess              #+#    #+#             */
-/*   Updated: 2023/10/13 11:36:12 by jess             ###   ########.fr       */
+/*   Updated: 2023/10/13 11:48:11 by jess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,11 @@ static bool	is_attribute_key(const char *const key)
 	};
 
 	i = 0;
-	while (i < ATTRIBUTE_COUNT)
-	{
-		if (streq(key, attribute_name[i]) == true)
-			return (true);
+	while (i < ATTRIBUTE_COUNT && streq(key, attribute_name[i]) == false)
 		i++;
-	}
-	print_format_error(UNKNOWN_CONFIG);
-	return (false);
+	if (i == ATTRIBUTE_COUNT)
+		print_format_error(UNKNOWN_CONFIG);
+	return (i < ATTRIBUTE_COUNT);
 }
 
 static bool	has_two_elements(char *const *const sequence)
