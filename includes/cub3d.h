@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/13 08:41:45 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/13 09:15:43 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@
 # define INVALID_FD			-1
 # define COUNT_LINE_ERROR	-1
 # define INVALID_OFFSET		-1
+# define RGB_SIZE			3
 # define ATTRIBUTE_COUNT	6
 
 // CHAR
@@ -43,6 +44,7 @@
 # define NEWLINE			'\n'
 # define WALL				'1'
 # define BLANK				' '
+# define RGB_SEPARATOR		','
 
 // STRINGS
 
@@ -50,12 +52,12 @@
 # define VALID_CHAR			"01 NWES\n"
 # define VALID_CHAR_DIR		"NWES"
 # define GROUND				"0NSWE"
-# define NORTH_NAME			"NO"
-# define SOUTH_NAME			"SO"
-# define WEST_NAME			"WE"
-# define EAST_NAME			"EA"
-# define FLOOR_NAME			"F"
-# define CEIL_NAME			"C"
+# define NORTH_KEY			"NO"
+# define SOUTH_KEY			"SO"
+# define WEST_KEY			"WE"
+# define EAST_KEY			"EA"
+# define FLOOR_KEY			"F"
+# define CEIL_KEY			"C"
 
 // Errors
 
@@ -208,7 +210,7 @@ void	print_map(const t_map *const map);
 
 // get_file.c
 
-char	**get_file(const char *const file_name);
+char	**get_file(const char *const file_KEY);
 
 // is_file_valid.c
 

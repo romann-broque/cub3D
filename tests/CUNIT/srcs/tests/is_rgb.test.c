@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 07:40:38 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/13 08:08:28 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/13 09:14:40 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	is_rgb__test(void)
 	const char	*wrong_rgb7 = "110,,1,,13";
 	const char	*wrong_rgb8 = "256,2,10";
 	const char	*wrong_rgb9 = "255,+2,10";
-	const char	*wrong_rgb10 = "255, 2, 10";
+	const char	*wrong_rgb10 = "255,-2,10";
 
 	CU_ASSERT_FALSE(is_rgb(wrong_rgb1));
 	CU_ASSERT_FALSE(is_rgb(wrong_rgb2));
