@@ -6,7 +6,7 @@
 /*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 00:44:31 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/11 16:52:37 by jess             ###   ########.fr       */
+/*   Updated: 2023/10/13 12:06:16 by jess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,10 @@ typedef struct s_suite
 	char		*sname;
 	t_test		tests[MAX_TESTS_COUNT];
 }				t_suite;
+
+// is_rgb.test.c
+
+void	is_rgb__test(void);
 
 // is_map_unique.test.c
 

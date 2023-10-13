@@ -6,7 +6,7 @@
 /*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/13 11:52:09 by jess             ###   ########.fr       */
+/*   Updated: 2023/10/13 12:05:00 by jess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 # include "libft.h"
+# include <limits.h>
 # include <errno.h>
 # include <string.h>
 # include <sys/types.h>
@@ -34,12 +35,22 @@
 # define EXPECTED_ARG_COUNT	2
 # define INVALID_FD			-1
 # define COUNT_LINE_ERROR	-1
-# define FILE_EXTENSION		".cub"
-# define VALID_CHAR			"01 NWES\n"
-# define VALID_CHAR_DIR		"NWES"
+# define INVALID_OFFSET		-1
+# define RGB_SIZE			3
+# define ATTRIBUTE_COUNT	6
+
+// CHAR
+
 # define NEWLINE			'\n'
 # define WALL				'1'
 # define BLANK				' '
+# define RGB_SEPARATOR		','
+
+// STRINGS
+
+# define FILE_EXTENSION		".cub"
+# define VALID_CHAR			"01 NWES\n"
+# define VALID_CHAR_DIR		"NWES"
 # define GROUND				"0NSWE"
 # define NORTH_KEY			"NO"
 # define SOUTH_KEY			"SO"
@@ -47,24 +58,15 @@
 # define EAST_KEY			"EA"
 # define FLOOR_KEY			"F"
 # define CEIL_KEY			"C"
-# define ATTRIBUTE_COUNT 	6
-# define UNKNOWN_CONFIG		"UNKNOWN_CONFIG"
-
-enum attributes
-{
-	NO,
-	SO,
-	WE,
-	EA,
-	F,
-	C
-};
 
 // Errors
 
 # define MAP_NOT_CLOSED		"MAP NOT CLOSED"
 # define MAP_NOT_UNIQUE		"MAP NOT UNIQUE"
 # define MAP_CONTENT_WRONG	"MAP CONTENT IS WRONG"
+# define UNKNOWN_CONFIG		"UNKNOWN CONFIG"
+# define DUPLICATED_CONFIG	"DUPLICATED CONFIG"
+# define WRONG_RGB			"WRONG RGB"
 
 // Colors
 
@@ -72,10 +74,9 @@ enum attributes
 # define RED				"\033[0;31m"
 # define GREEN				"\033[0;32m"
 
-///////////////////////////////////////////////////////////////////////////////
-//									STRUCTURES								 //
-///////////////////////////////////////////////////////////////////////////////
-
+///////////
+// ENUM //
+///////////
 
 enum e_attribute_type
 {
@@ -86,6 +87,10 @@ enum e_attribute_type
 	E_FLOOR,
 	E_CEIL
 };
+
+////////////////
+// STRUCTURES //
+////////////////
 
 typedef struct s_config
 {
@@ -108,6 +113,33 @@ typedef struct s_map
 ///////////////////////////////////////////////////////////////////////////////
 //									FUNCTIONS								 //
 ///////////////////////////////////////////////////////////////////////////////
+
+//// config ////
+
+// is_rgb.c
+
+bool	is_rgb(const char *const str);
+
+// attribute_utils.c
+
+int		build_attribute_from_sequence(
+			t_config *const config, char *const *const sequence);
+
+// init_config.c
+
+void	init_config(t_config *const config);
+
+// build_config.c
+
+ssize_t	build_config(t_config *const config, char *const *const lines);
+
+// free_config.c
+
+void	free_config(t_config *const config);
+
+// print_config.c
+
+void	print_config(t_config *const config);
 
 /////////////////////////////////////////
 /////			  print				/////

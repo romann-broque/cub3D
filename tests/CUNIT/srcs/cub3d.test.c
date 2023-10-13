@@ -6,7 +6,7 @@
 /*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 07:01:54 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/13 11:35:27 by jess             ###   ########.fr       */
+/*   Updated: 2023/10/13 12:07:11 by jess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,10 @@ void	set_tests(void)
 	static t_suite	suite_mapping[] = {
 		{.suite = NULL, .sname = "Is Map Valid", .tests = {
 			{.tname = "is_config_sequence_valid", is_config_sequence_valid__test},
+			{.tname = "is_map_content_valid", is_map_content_valid__test},
 			{.tname = "is_map_unique", is_map_unique__test},
 			{.tname = "is_map_closed", is_map_closed__test},
-			{.tname = "is_map_content_valid", is_map_content_valid__test},
+			{.tname = "is_rgb", is_rgb__test},
 			},
 		},
 		{.suite = NULL, .sname = NULL}

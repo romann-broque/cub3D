@@ -19,6 +19,7 @@ SRCS	 	+=	cub3d.test.c
 
 ### srcs/tests/
 
+SRCS	 	+=	is_rgb.test.c
 SRCS	 	+=	is_map_unique.test.c
 SRCS	 	+=	is_map_closed.test.c
 SRCS		+=	is_map_content_valid.test.c

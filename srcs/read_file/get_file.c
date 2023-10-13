@@ -6,23 +6,18 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 15:13:34 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/10 12:29:11 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/12 09:59:46 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	free_nstrs(char **const strs, const size_t len)
+static void	rm_newline(char *const str)
 {
-	size_t	i;
+	const size_t	len = ft_strlen(str);
 
-	i = 0;
-	while (i < len)
-	{
-		free(strs[i]);
-		++i;
-	}
-	free(strs);
+	if (len > 0 && str[len - 1] == NEWLINE)
+		str[len - 1] = END_CHAR;
 }
 
 static size_t	count_lines(const int fd)
@@ -73,9 +68,10 @@ static char	**get_file_content(const int fd, const size_t line_count)
 		if (lines[i] == NULL)
 		{
 			print_format_error(strerror(errno));
-			free_nstrs(lines, line_count);
+			free_strs(lines);
 			return (NULL);
 		}
+		rm_newline(lines[i]);
 		++i;
 	}
 	lines[i] = NULL;
