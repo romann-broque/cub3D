@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   attribute_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 07:57:46 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/13 09:54:06 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/13 12:15:40 by jess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,7 @@ static int	add_attribute_into_config(
 	int							ret_val;
 
 	ret_val = EXIT_FAILURE;
-	if (type == ATTRIBUTE_COUNT)
-		print_format_error(UNKNOWN_CONFIG);
-	else if (config->attribute_array[type] != NULL)
+	if (config->attribute_array[type] != NULL)
 		print_format_error(DUPLICATED_CONFIG);
 	else
 	{
@@ -93,6 +91,11 @@ int	build_attribute_from_sequence(
 {
 	if (is_sequence_empty(sequence) == true)
 		return (EXIT_SUCCESS);
+	if (is_sequence_valid(sequence) == false)
+	{
+		print_format_error(UNKNOWN_CONFIG);
+		return (EXIT_FAILURE);
+	}
 	if (get_size_strs(sequence) == 2
 		&& add_attribute_into_config(
 			config, sequence[0], sequence[1]) == EXIT_SUCCESS)

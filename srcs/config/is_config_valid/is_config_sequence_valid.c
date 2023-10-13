@@ -6,7 +6,7 @@
 /*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 15:25:37 by jess              #+#    #+#             */
-/*   Updated: 2023/10/13 11:48:11 by jess             ###   ########.fr       */
+/*   Updated: 2023/10/13 12:15:21 by jess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 static bool	is_attribute_key(const char *const key)
 {
 	size_t						i;
-	static const char *const	attribute_name[] = {
+	static const char *const	attribute_key[] = {
 		NORTH_KEY,
 		SOUTH_KEY,
 		WEST_KEY,
@@ -32,10 +32,8 @@ static bool	is_attribute_key(const char *const key)
 	};
 
 	i = 0;
-	while (i < ATTRIBUTE_COUNT && streq(key, attribute_name[i]) == false)
+	while (i < ATTRIBUTE_COUNT && streq(key, attribute_key[i]) == false)
 		i++;
-	if (i == ATTRIBUTE_COUNT)
-		print_format_error(UNKNOWN_CONFIG);
 	return (i < ATTRIBUTE_COUNT);
 }
 
