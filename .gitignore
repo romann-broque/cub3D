@@ -2,6 +2,8 @@
 cub3d
 *.d
 .vscode
+minilibx-linux
+minilibx-linux.tgz
 
 # Object files
 *.o

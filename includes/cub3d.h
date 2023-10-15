@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/13 09:39:09 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/15 17:22:42 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 //////////////
 
 # include "libft.h"
+# include "mlx.h"
+# include <X11/Xlib.h>
 # include <limits.h>
 # include <errno.h>
 # include <string.h>
@@ -38,6 +40,9 @@
 # define INVALID_OFFSET		-1
 # define RGB_SIZE			3
 # define ATTRIBUTE_COUNT	6
+# define WINDOW_WIDTH		1600
+# define WINDOW_HEIGHT		1200
+# define WINDOW_TITLE		"cub3D"
 
 // CHAR
 
@@ -49,8 +54,8 @@
 // STRINGS
 
 # define FILE_EXTENSION		".cub"
-# define VALID_CHAR			"01 NWES\n"
-# define VALID_CHAR_DIR		"NWES"
+# define VALID_CHAR			"01 NSWE\n"
+# define VALID_CHAR_DIR		"NSWE"
 # define GROUND				"0NSWE"
 # define NORTH_KEY			"NO"
 # define SOUTH_KEY			"SO"
@@ -73,6 +78,11 @@
 # define NC					"\033[0m"
 # define RED				"\033[0;31m"
 # define GREEN				"\033[0;32m"
+
+// Key
+
+# define K_ESC				0xff1b
+# define NO_KEY				0
 
 ///////////
 // ENUM //
@@ -109,6 +119,29 @@ typedef struct s_map
 	size_t	height;
 	size_t	width;
 }		t_map;
+
+typedef struct s_data
+{
+	void	*img;
+	void	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}		t_data;
+
+typedef struct s_win
+{
+	void	*mlx_ptr;
+	void	*win_ptr;
+	t_data	data;
+}		t_win;
+
+typedef struct s_event_mapping
+{
+	int	key;
+	int	(*event)(t_win *const);
+
+}		t_event_mapping;
 
 ///////////////
 // FUNCTIONS //
@@ -216,5 +249,47 @@ char	**get_file(const char *const file_name);
 // is_file_valid.c
 
 bool	is_file_valid(const char *const filename, const int fd);
+
+//// window ////
+
+// init_window.c
+
+void	init_window(t_win *const window);
+
+// free_window.c
+
+void	free_window(t_win *const window);
+
+	//// display ////
+
+	// display_window.c
+
+void	display_window(void);
+
+	//// loop ////
+
+	// loop.c
+
+void	loop(t_win *const window);
+
+	// keyboard.c
+
+int		key_press(const int key, t_win *window);
+
+		//// events ////
+
+		// e_close_window.c
+
+int		close_window(t_win *const ptr);
+
+	//// data ////
+
+	// init_data.c
+
+void	init_data(void *const mlx_ptr, t_data *const dest);
+
+	// free_data.c
+
+void	free_data(const t_data *data, void *const mlx_ptr);
 
 #endif
