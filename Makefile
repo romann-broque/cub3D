@@ -274,10 +274,10 @@ funcheck: all
 	$(MAKE) -sC $(FUNCHECK_FOLDER_HOST)
 	$(FUNCHECK_SCRIPT)
 
-clean	:
+clean	: $(MLX)
 	$(RM) -r $(PATH_OBJS)
 	$(MAKE) -sC $(LIBFT_FOLDER) clean > /dev/null
-	$(MAKE) -sC $(MLX_FOLDER) clean > /dev/null
+	$(MAKE) -i -sC $(MLX_FOLDER) clean > /dev/null
 	$(MAKE) -sC $(CUNIT_FOLDER) clean > /dev/null
 	$(MAKE) -sC $(FUNCHECK_FOLDER_LIB) clean > /dev/null
 	$(MAKE) -sC $(FUNCHECK_FOLDER_HOST) clean > /dev/null
