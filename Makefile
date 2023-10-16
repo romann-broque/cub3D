@@ -33,6 +33,7 @@ SRCS		+= init_config.c
 SRCS		+= build_config.c
 SRCS		+= free_config.c
 SRCS		+= print_config.c
+SRCS		+=	is_config_sequence_valid.c
 
 ### srcs/print/
 
