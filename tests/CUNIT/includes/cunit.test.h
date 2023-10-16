@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cunit.test.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 00:44:31 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/13 08:42:09 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/16 10:38:06 by jess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,10 @@ void	is_map_closed__test(void);
 // is_map_content_valid.test.c
 
 void	is_map_content_valid__test(void);
+
+// is_config_sequence_valid.test.c
+
+void	is_config_sequence_valid__test(void);
 
 //// UTILS ////
 

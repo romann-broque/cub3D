@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/13 09:39:09 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/16 10:54:05 by jess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 
-//////////////
-// INCLUDES //
-//////////////
+///////////////////////////////////////////////////////////////////////////////
+//									INCLUDES								 //
+///////////////////////////////////////////////////////////////////////////////
 
 # include "libft.h"
 # include <limits.h>
@@ -24,9 +24,9 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 
-/////////////
-// DEFINES //
-/////////////
+///////////////////////////////////////////////////////////////////////////////
+//									DEFINES									 //
+///////////////////////////////////////////////////////////////////////////////
 
 # ifndef PRINT_DEBUG
 #  define PRINT_DEBUG		0
@@ -67,6 +67,7 @@
 # define UNKNOWN_CONFIG		"UNKNOWN CONFIG"
 # define DUPLICATED_CONFIG	"DUPLICATED CONFIG"
 # define WRONG_RGB			"WRONG RGB"
+# define INVALID_FILENAME	"FILENAME IS INVALID"
 
 // Colors
 
@@ -110,11 +111,13 @@ typedef struct s_map
 	size_t	width;
 }		t_map;
 
-///////////////
-// FUNCTIONS //
-///////////////
+///////////////////////////////////////////////////////////////////////////////
+//									FUNCTIONS								 //
+///////////////////////////////////////////////////////////////////////////////
 
-//// config ////
+/////////////////////////////////////////
+/////			  config			/////
+/////////////////////////////////////////
 
 // is_rgb.c
 
@@ -141,34 +144,55 @@ void	free_config(t_config *const config);
 
 void	print_config(t_config *const config);
 
-//// print ////
+// is_config_sequence_valid.c
+
+bool	is_sequence_valid(char *const *const sequence);
+
+/////////////////////////////////////////
+/////			  print				/////
+/////////////////////////////////////////
 
 // print_format_error.c
 
 void	print_format_error(const char *const error_message);
 
-//// map ////
+/////////////////////////////////////////
+/////			 	map				/////
+/////////////////////////////////////////
 
-	//// init_map
+// free_map.c
 
-	// init_map.c
+void	free_tile_matrix(t_tile **const matrix, const size_t size);
+void	free_map(t_map *const map);
+
+// print_map.c
+
+void	print_map(const t_map *const map);
+
+	/////////////////////////
+	////     init_map    ////
+	/////////////////////////
+
+// init_map.c
 
 t_map	*init_map(char *const *const lines);
 
-	// init_matrix.c
+// init_matrix.c
 
 t_tile	**init_matrix(
 			const size_t height,
 			const size_t width,
 			char *const *const lines);
 
-	//// is_map_valid ////
+	/////////////////////////
+	////   is_map_valid  ////
+	/////////////////////////
 
-		// is_map_closed.c
+// is_map_closed.c
 
 bool	is_map_closed(const t_map *const map);
 
-		// is_map_closed_utils.c
+// is_map_closed_utils.c
 
 bool	is_inside_map(
 			const t_map *const map,
@@ -186,28 +210,21 @@ void	mark_as_viewed(
 			const t_map *const map,
 			const size_t x, const size_t y);
 
-		// is_map_content_valid.c
+// is_map_content_valid.c
 
 bool	is_map_content_valid(const t_map *const map);
 
-		// is_map_unique.c
+// is_map_unique.c
 
 bool	is_map_unique(const t_map *const map);
 
-		// is_map_valid.c
+// is_map_valid.c
 
 bool	is_map_valid(t_map *const map);
 
-// free_map.c
-
-void	free_tile_matrix(t_tile **const matrix, const size_t size);
-void	free_map(t_map *const map);
-
-// print_map.c
-
-void	print_map(const t_map *const map);
-
-//// read_file ////
+/////////////////////////////////////////
+/////			 read_file			/////
+/////////////////////////////////////////
 
 // get_file.c
 
