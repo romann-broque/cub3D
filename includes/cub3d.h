@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/16 09:30:23 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/16 09:41:28 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@
 # endif
 
 # ifndef TEST
-#  define TEST				1
+#  define TEST				0
 # endif
 
 # define EXPECTED_ARG_COUNT	2

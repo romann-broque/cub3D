@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:14 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/16 09:30:32 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/16 09:40:14 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ static int	start_map(char *const *const content)
 			ret_val = EXIT_SUCCESS;
 		if (PRINT_DEBUG)
 			print_map(map);
+		if (TEST == false)
+			display_window();
 	}
 	free_map(map);
 	return (ret_val);
@@ -57,10 +59,6 @@ int	main(int ac, char **av)
 
 	ret_val = EXIT_FAILURE;
 	if (ac == EXPECTED_ARG_COUNT)
-	{
 		ret_val = start_game(av[1]);
-		if (TEST == false)
-			display_window();
-	}
 	return (ret_val);
 }
