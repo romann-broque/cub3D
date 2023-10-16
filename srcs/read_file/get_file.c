@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_file.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 15:13:34 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/12 09:59:46 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/16 10:59:36 by jess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,6 @@ static ssize_t	get_line_count(const char *const filename)
 	count = COUNT_LINE_ERROR;
 	if (is_file_valid(filename, fd) == true)
 		count = count_lines(fd);
-	else
-		print_format_error(strerror(errno));
 	if (fd != INVALID_FD)
 		close(fd);
 	return (count);
@@ -90,8 +88,6 @@ char	**get_file(const char *const filename)
 	fd = open(filename, O_RDONLY);
 	if (is_file_valid(filename, fd) == true)
 		file_content = get_file_content(fd, line_count);
-	else
-		print_format_error(strerror(errno));
 	if (fd != INVALID_FD)
 		close(fd);
 	return (file_content);
