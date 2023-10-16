@@ -235,6 +235,9 @@ $(MLX_TAR):
 
 $(MLX): $(MLX_TAR)
 	echo -e $(BLUE) "\n====> Building MLX <===="$(NC)"\n"
+	ls
+	echo
+	ls $(MLX_FOLDER)
 	$(MAKE) -sC $(MLX_FOLDER) &> /dev/null
 	$(ECHOC) $(GREEN) "--> MLX COMPILED !"$(NC)"\n"
 
