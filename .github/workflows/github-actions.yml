@@ -26,15 +26,15 @@ jobs:
         with:
           flags: 'srcs/ includes/ libft/'
         
+      - name: Compilation Test
+        run: make re
+      
       - name: Install CUnit
         if: github.event_name == 'pull_request'
         run: sudo apt-get update && sudo apt-get install -y libcunit1-dev
       
       - name: Install Valgrind
         run: sudo apt-get update && sudo apt-get install valgrind
-
-      - name: Compilation Test
-        run: make re
       
       - name: CUnit Tests
         if: github.event_name == 'pull_request'
