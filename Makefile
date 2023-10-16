@@ -192,6 +192,10 @@ ifeq ($(print_debug), true)
 	CFLAGS	+= -D PRINT_DEBUG=true
 endif
 
+ifdef ($(test))
+	CFLAGS	+= -D TEST=true
+endif
+
 ##############
 #### NAME ####
 ##############
@@ -235,11 +239,7 @@ $(MLX_TAR):
 
 $(MLX): $(MLX_TAR)
 	echo -e $(BLUE) "\n====> Building MLX <===="$(NC)"\n"
-	ls
-	echo
-	ls $(MLX_FOLDER)
-	$(MAKE) -sC $(MLX_FOLDER)
-#	  &> /dev/null
+	$(MAKE) -sC $(MLX_FOLDER) &> /dev/null
 	$(ECHOC) $(GREEN) "--> MLX COMPILED !"$(NC)"\n"
 
 $(NAME) : $(OBJS)
