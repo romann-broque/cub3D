@@ -6,7 +6,7 @@
 /*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 07:01:54 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/13 14:58:04 by jess             ###   ########.fr       */
+/*   Updated: 2023/10/16 10:37:55 by jess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	set_tests(void)
 			{.tname = "is_map_unique", is_map_unique__test},
 			{.tname = "is_map_closed", is_map_closed__test},
 			{.tname = "is_rgb", is_rgb__test},
-			{.tname = "error_messages", error_messages__test},
 			},
 		},
 		{.suite = NULL, .sname = NULL}

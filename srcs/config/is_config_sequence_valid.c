@@ -6,18 +6,11 @@
 /*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 15:25:37 by jess              #+#    #+#             */
-/*   Updated: 2023/10/13 12:15:21 by jess             ###   ########.fr       */
+/*   Updated: 2023/10/16 10:37:35 by jess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-/* Dans attribute_utils.c, dans la fonction add_attribute_to_config, retirer
-	la partie où on check si ça fait partie des keys ou pas
-	if (type < ATTRIBUTE_COUNT)
-		print_format_error(UNKNOWN_CONFIG);
-	+ rajouter is_sequence_empty
-*/
 
 static bool	is_attribute_key(const char *const key)
 {

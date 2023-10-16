@@ -6,7 +6,7 @@
 /*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 07:57:46 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/13 12:15:40 by jess             ###   ########.fr       */
+/*   Updated: 2023/10/16 10:37:18 by jess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +96,7 @@ int	build_attribute_from_sequence(
 		print_format_error(UNKNOWN_CONFIG);
 		return (EXIT_FAILURE);
 	}
-	if (get_size_strs(sequence) == 2
-		&& add_attribute_into_config(
+	if (add_attribute_into_config(
 			config, sequence[0], sequence[1]) == EXIT_SUCCESS)
 		return (EXIT_SUCCESS);
 	return (EXIT_FAILURE);
