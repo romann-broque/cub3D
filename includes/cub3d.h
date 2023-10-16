@@ -6,7 +6,7 @@
 /*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/13 14:21:15 by jess             ###   ########.fr       */
+/*   Updated: 2023/10/16 10:54:05 by jess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@
 # define UNKNOWN_CONFIG		"UNKNOWN CONFIG"
 # define DUPLICATED_CONFIG	"DUPLICATED CONFIG"
 # define WRONG_RGB			"WRONG RGB"
+# define INVALID_FILENAME	"FILENAME IS INVALID"
 
 // Colors
 
