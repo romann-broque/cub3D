@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/16 09:41:28 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/16 09:49:03 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -271,7 +271,9 @@ char	**get_file(const char *const file_name);
 
 bool	is_file_valid(const char *const filename, const int fd);
 
-//// window ////
+/////////////////////////////////////////
+/////			 window				/////
+/////////////////////////////////////////
 
 // init_window.c
 
@@ -281,13 +283,17 @@ void	init_window(t_win *const window);
 
 void	free_window(t_win *const window);
 
-	//// display ////
+	/////////////////////////////////////////
+	/////			 display			/////
+	/////////////////////////////////////////
 
 	// display_window.c
 
 void	display_window(void);
 
-	//// loop ////
+	/////////////////////////////////////////
+	/////			 loop				/////
+	/////////////////////////////////////////
 
 	// loop.c
 
@@ -297,13 +303,17 @@ void	loop(t_win *const window);
 
 int		key_press(const int key, t_win *window);
 
-		//// events ////
+		/////////////////////////////////////////
+		/////			events				/////
+		/////////////////////////////////////////
 
 		// e_close_window.c
 
 int		close_window(t_win *const ptr);
 
-	//// data ////
+	/////////////////////////////////////////
+	/////			data				/////
+	/////////////////////////////////////////
 
 	// init_data.c
 
