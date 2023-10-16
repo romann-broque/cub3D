@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.test.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 07:01:54 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/13 07:51:27 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/16 10:37:55 by jess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	set_tests(void)
 {
 	static t_suite	suite_mapping[] = {
 		{.suite = NULL, .sname = "Is Map Valid", .tests = {
+			{.tname = "is_config_sequence_valid", is_config_sequence_valid__test},
 			{.tname = "is_map_content_valid", is_map_content_valid__test},
 			{.tname = "is_map_unique", is_map_unique__test},
 			{.tname = "is_map_closed", is_map_closed__test},
