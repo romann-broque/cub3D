@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_window.c                                      :+:      :+:    :+:   */
+/*   display_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/15 09:39:32 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/16 16:04:15 by rbroque          ###   ########.fr       */
+/*   Created: 2023/10/16 16:11:15 by rbroque           #+#    #+#             */
+/*   Updated: 2023/10/17 09:05:27 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	init_window(t_win *const window, t_map *const map)
+void	display_map(t_win *const window)
 {
-	window->mlx_ptr = mlx_init();
-	if (window->mlx_ptr == NULL)
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	while (i < window->map->height)
 	{
-		print_format_error(strerror(errno));
-		return ;
+		j = 0;
+		while (j < window->map->width)
+		{
+			draw_tile(window, j, i);
+			++j;
+		}
+		++i;
 	}
-	window->win_ptr = mlx_new_window(window->mlx_ptr,
-			WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_TITLE);
-	if (window->win_ptr == NULL)
-	{
-		print_format_error(strerror(errno));
-		return ;
-	}
-	init_data(window->mlx_ptr, &window->data);
-	window->map = map;
+	mlx_put_image_to_window(window->mlx_ptr, window->win_ptr,
+		window->data.img, 0, 0);
 }

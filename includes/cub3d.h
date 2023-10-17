@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/16 09:49:03 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/17 14:21:06 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@
 # define WINDOW_WIDTH		1600
 # define WINDOW_HEIGHT		1200
 # define WINDOW_TITLE		"cub3D"
+# define TILE_SIZE			20
 
 // CHAR
 
@@ -78,11 +79,15 @@
 # define WRONG_RGB			"WRONG RGB"
 # define INVALID_FILENAME	"FILENAME IS INVALID"
 
-// Colors
+// Print Colors
 
 # define NC					"\033[0m"
 # define RED				"\033[0;31m"
 # define GREEN				"\033[0;32m"
+
+// Pixel Colors
+
+# define WHITE				0xffffff
 
 // Key
 
@@ -139,6 +144,7 @@ typedef struct s_win
 	void	*mlx_ptr;
 	void	*win_ptr;
 	t_data	data;
+	t_map	*map;
 }		t_win;
 
 typedef struct s_event_mapping
@@ -194,72 +200,6 @@ bool	is_sequence_valid(char *const *const sequence);
 void	print_format_error(const char *const error_message);
 
 /////////////////////////////////////////
-/////			 	map				/////
-/////////////////////////////////////////
-
-// free_map.c
-
-void	free_tile_matrix(t_tile **const matrix, const size_t size);
-void	free_map(t_map *const map);
-
-// print_map.c
-
-void	print_map(const t_map *const map);
-
-	/////////////////////////
-	////     init_map    ////
-	/////////////////////////
-
-// init_map.c
-
-t_map	*init_map(char *const *const lines);
-
-// init_matrix.c
-
-t_tile	**init_matrix(
-			const size_t height,
-			const size_t width,
-			char *const *const lines);
-
-	/////////////////////////
-	////   is_map_valid  ////
-	/////////////////////////
-
-// is_map_closed.c
-
-bool	is_map_closed(const t_map *const map);
-
-// is_map_closed_utils.c
-
-bool	is_inside_map(
-			const t_map *const map,
-			const ssize_t x, const ssize_t y);
-bool	is_blank(
-			const t_map *const map,
-			const size_t x, const size_t y);
-bool	is_wall(
-			const t_map *const map,
-			const size_t x, const size_t y);
-bool	is_marked(
-			const t_map *const map,
-			const size_t x, const size_t y);
-void	mark_as_viewed(
-			const t_map *const map,
-			const size_t x, const size_t y);
-
-// is_map_content_valid.c
-
-bool	is_map_content_valid(const t_map *const map);
-
-// is_map_unique.c
-
-bool	is_map_unique(const t_map *const map);
-
-// is_map_valid.c
-
-bool	is_map_valid(t_map *const map);
-
-/////////////////////////////////////////
 /////			 read_file			/////
 /////////////////////////////////////////
 
@@ -277,11 +217,15 @@ bool	is_file_valid(const char *const filename, const int fd);
 
 // init_window.c
 
-void	init_window(t_win *const window);
+void	init_window(t_win *const window, t_map *const map);
 
 // free_window.c
 
 void	free_window(t_win *const window);
+
+// is_window_complete.c
+
+bool	is_window_complete(t_win *const window);
 
 	/////////////////////////////////////////
 	/////			 display			/////
@@ -289,7 +233,20 @@ void	free_window(t_win *const window);
 
 	// display_window.c
 
-void	display_window(void);
+void	display_window(t_win *const window);
+
+	// display_map.c
+
+void	display_map(t_win *const window);
+
+	// draw_tile.c
+
+void	draw_tile(t_win *const window,
+			const size_t x, const size_t y);
+
+	// put_pixel.c
+
+void	put_pixel(t_data *data, const int x, const int y, const int color);
 
 	/////////////////////////////////////////
 	/////			 loop				/////
@@ -322,5 +279,71 @@ void	init_data(void *const mlx_ptr, t_data *const dest);
 	// free_data.c
 
 void	free_data(const t_data *data, void *const mlx_ptr);
+
+	/////////////////////////////////////////
+	/////			 	map				/////
+	/////////////////////////////////////////
+
+	// free_map.c
+
+void	free_tile_matrix(t_tile **const matrix, const size_t size);
+void	free_map(t_map *const map);
+
+	// print_map.c
+
+void	print_map(const t_map *const map);
+
+	// tile_type.c
+
+bool	is_blank(
+			const t_map *const map,
+			const size_t x, const size_t y);
+bool	is_wall(
+			const t_map *const map,
+			const size_t x, const size_t y);
+
+bool	is_ground(
+			const t_map *const map,
+			const size_t x, const size_t y);
+
+		/////////////////////////
+		////     init_map    ////
+		/////////////////////////
+
+		// init_map.c
+
+t_map	*init_map(char *const *const lines);
+
+		// init_matrix.c
+
+t_tile	**init_matrix(
+			const size_t height,
+			const size_t width,
+			char *const *const lines);
+
+		/////////////////////////
+		////   is_map_valid  ////
+		/////////////////////////
+
+		// is_map_closed.c
+
+bool	is_map_closed(const t_map *const map);
+
+		// is_map_closed_utils.c
+
+bool	is_closed_dfs(const t_map *const map,
+			const ssize_t x, const ssize_t y);
+
+		// is_map_content_valid.c
+
+bool	is_map_content_valid(const t_map *const map);
+
+		// is_map_unique.c
+
+bool	is_map_unique(const t_map *const map);
+
+		// is_map_valid.c
+
+bool	is_map_valid(t_map *const map);
 
 #endif

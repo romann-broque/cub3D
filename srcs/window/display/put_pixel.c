@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_window.c                                      :+:      :+:    :+:   */
+/*   put_pixel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/15 09:39:32 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/16 16:04:15 by rbroque          ###   ########.fr       */
+/*   Created: 2023/10/17 09:03:33 by rbroque           #+#    #+#             */
+/*   Updated: 2023/10/17 09:03:47 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	init_window(t_win *const window, t_map *const map)
+static void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
-	window->mlx_ptr = mlx_init();
-	if (window->mlx_ptr == NULL)
-	{
-		print_format_error(strerror(errno));
-		return ;
-	}
-	window->win_ptr = mlx_new_window(window->mlx_ptr,
-			WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_TITLE);
-	if (window->win_ptr == NULL)
-	{
-		print_format_error(strerror(errno));
-		return ;
-	}
-	init_data(window->mlx_ptr, &window->data);
-	window->map = map;
+	char	*dst;
+
+	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	*(unsigned int *)dst = color;
+}
+
+void	put_pixel(t_data *data, const int x, const int y, const int color)
+{
+	if (x >= 0 && x < WINDOW_WIDTH && y >= 0 && y < WINDOW_HEIGHT)
+		my_mlx_pixel_put(data, x, y, color);
 }
