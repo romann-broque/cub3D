@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:14 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/13 12:06:10 by jess             ###   ########.fr       */
+/*   Updated: 2023/10/16 09:40:14 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ static int	start_map(char *const *const content)
 			ret_val = EXIT_SUCCESS;
 		if (PRINT_DEBUG)
 			print_map(map);
+		if (TEST == false)
+			display_window();
 	}
 	free_map(map);
 	return (ret_val);

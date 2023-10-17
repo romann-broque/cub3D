@@ -47,6 +47,7 @@ OBJS		+=	$(patsubst %.c, $(PATH_OBJS)/%.o, $(SRCS))
 INCLUDES	+=	-I includes/
 INCLUDES	+=	-I ../../includes/
 INCLUDES	+=	-I $(LIBFT_FOLDER)/includes
+INCLUDES	+=	-I $(MLX_FOLDER)
 
 #################
 #### HEADERS ####
@@ -64,12 +65,18 @@ vpath %.h $(PATH_HEADERS)
 #### LIBFT ####
 ###############
 
-LIBFT_FOLDER =	../../libft/
-LIBFT		 =	$(LIBFT_FOLDER)/libft.a
+LIBFT_FOLDER	=	../../libft/
+LIBFT			=	$(LIBFT_FOLDER)/libft.a
 
-#######################
+MLX_FOLDER		=	../../minilibx-linux/
+MLX				=	$(MLX_FOLDER)/libmlx_Linux.a
+
+LIB			+= $(LIBFT)
+LIB			+= $(MLX)
+
+###################
 #### CUB3D_LIB ####
-#######################
+###################
 
 CUB3D_OBJS_ALL	=	$(wildcard ../../objs/*.o)
 CUB3D_OBJS		:=	$(filter-out ../../objs/cub3d.o,$(CUB3D_OBJS_ALL))

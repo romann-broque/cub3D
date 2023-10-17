@@ -15,7 +15,11 @@ PATH_SRCS	+=	srcs/map/
 PATH_SRCS	+=	srcs/map/init_map/
 PATH_SRCS	+=	srcs/map/is_map_valid/
 PATH_SRCS	+=	srcs/read_file/
-PATH_SRCS	+=	srcs/config/
+PATH_SRCS	+=	srcs/window/
+PATH_SRCS	+=	srcs/window/data/
+PATH_SRCS	+=	srcs/window/display/
+PATH_SRCS	+=	srcs/window/loop/
+PATH_SRCS	+=	srcs/window/loop/events/
 
 ### srcs/
 
@@ -23,12 +27,12 @@ SRCS	 	+=	cub3d.c
 
 ### srcs/config/
 
-SRCS		+= is_rgb.c
-SRCS		+= attribute_utils.c
-SRCS		+= init_config.c
-SRCS		+= build_config.c
-SRCS		+= free_config.c
-SRCS		+= print_config.c
+SRCS		+=	is_rgb.c
+SRCS		+=	attribute_utils.c
+SRCS		+=	init_config.c
+SRCS		+=	build_config.c
+SRCS		+=	free_config.c
+SRCS		+=	print_config.c
 SRCS		+=	is_config_sequence_valid.c
 
 ### srcs/print/
@@ -58,6 +62,29 @@ SRCS	 	+=	is_map_unique.c
 SRCS	 	+=	get_file.c
 SRCS		+=	is_file_valid.c
 
+### srcs/window/
+
+SRCS	 	+=	init_window.c
+SRCS	 	+=	free_window.c
+
+### srcs/window/data/
+
+SRCS	 	+=	init_data.c
+SRCS	 	+=	free_data.c
+
+### srcs/window/display/
+
+SRCS	 	+=	display_window.c
+
+### srcs/window/loop/
+
+SRCS	 	+=	loop.c
+SRCS	 	+=	keyboard.c
+
+### srcs/window/loop/events/
+
+SRCS	 	+=	e_close_window.c
+
 vpath %.c $(PATH_SRCS)
 
 ##############
@@ -73,6 +100,9 @@ OBJS		+=	$(patsubst %.c, $(PATH_OBJS)/%.o, $(SRCS))
 
 INCLUDES	+=	-I includes/
 INCLUDES	+=	-I $(LIBFT_FOLDER)/includes
+INCLUDES	+=	-I $(MLX_FOLDER)
+INCLUDES	+=	-I /usr/lib/
+INCLUDES	+=	-I /usr/includes/
 
 #################
 #### HEADERS ####
@@ -90,6 +120,15 @@ vpath %.h $(PATH_HEADERS)
 
 LIBFT_FOLDER =	libft/
 LIBFT		 =	$(LIBFT_FOLDER)/libft.a
+
+#############
+#### MLX ####
+#############
+
+MLX_FOLDER	=	minilibx-linux/
+MLX			=	$(MLX_FOLDER)/libmlx_Linux.a
+MLX_TAR		=	minilibx-linux.tgz
+MLX_LINK	=	https://cdn.intra.42.fr/document/document/21463/$(MLX_TAR)
 
 ################
 #### TESTER ####
@@ -123,6 +162,15 @@ ifeq ($(valgrind), true)
 	VALGRIND	+= valgrind
 endif
 
+###############
+#### LINKS ####
+###############
+
+LINKS	+=	-lXext
+LINKS	+=	-lX11
+LINKS	+=	-lm
+LINKS	+=	-lz
+
 #####################
 #### COMPILATION ####
 #####################
@@ -143,6 +191,10 @@ endif
 
 ifeq ($(print_debug), true)
 	CFLAGS	+= -D PRINT_DEBUG=true
+endif
+
+ifdef ($(test))
+	CFLAGS	+= -D TEST=true
 endif
 
 ##############
@@ -173,15 +225,26 @@ endif
 
 ###############
 
-all 	:	$(LIBFT) $(NAME)
+all 	:	$(MLX) $(LIBFT) $(NAME)
 
 $(LIBFT):
 	echo -e $(BLUE) "\n====> Building libft.a <===="$(NC)"\n"
 	$(MAKE) -sC $(LIBFT_FOLDER)
 	echo -e $(BLUE) "\n====> Building $(NAME) <===="$(NC)"\n"
 
+$(MLX_TAR):
+	echo -e $(BLUE) "\n====> Downloading MLX <===="$(NC)"\n"
+	wget $(MLX_LINK) &> /dev/null
+	tar -zxvf $(MLX_TAR) &> /dev/null
+	$(ECHOC) $(GREEN) "--> MLX DOWNLOADED !"$(NC)"\n"
+
+$(MLX): $(MLX_TAR)
+	echo -e $(BLUE) "\n====> Building MLX <===="$(NC)"\n"
+	$(MAKE) -sC $(MLX_FOLDER) &> /dev/null
+	$(ECHOC) $(GREEN) "--> MLX COMPILED !"$(NC)"\n"
+
 $(NAME) : $(OBJS)
-	$(CC) $(CFLAGS) $^ -o $@ $(LIBFT)
+	$(CC) $(CFLAGS) $^ -o $@ $(INCLUDES) $(LIBFT) $(MLX) $(LINKS)
 	$(ECHOC) $(GREEN) "--> $(NAME) COMPILED !"$(NC)"\n\n"
 
 $(OBJS) :	$(PATH_OBJS)/%.o: %.c Makefile $(HEADERS)
@@ -216,9 +279,10 @@ funcheck: all
 	$(MAKE) -sC $(FUNCHECK_FOLDER_HOST)
 	$(FUNCHECK_SCRIPT)
 
-clean	:
+clean	: $(MLX)
 	$(RM) -r $(PATH_OBJS)
 	$(MAKE) -sC $(LIBFT_FOLDER) clean > /dev/null
+	$(MAKE) -sC $(MLX_FOLDER) clean > /dev/null
 	$(MAKE) -sC $(CUNIT_FOLDER) clean > /dev/null
 	$(MAKE) -sC $(FUNCHECK_FOLDER_LIB) clean > /dev/null
 	$(MAKE) -sC $(FUNCHECK_FOLDER_HOST) clean > /dev/null

@@ -5,6 +5,7 @@ on:
     branches:
       - "main"
       - "MVE1"
+      - "MVE2"
 
 jobs:
   check-bats-version:
@@ -25,15 +26,18 @@ jobs:
         with:
           flags: 'srcs/ includes/ libft/'
         
+      - name: Install graphic dependencies
+        run: sudo apt-get update && sudo apt-get install xorg libxext-dev zlib1g-dev libbsd-dev
+        
+      - name: Compilation Test
+        run: make re
+      
       - name: Install CUnit
         if: github.event_name == 'pull_request'
         run: sudo apt-get update && sudo apt-get install -y libcunit1-dev
       
       - name: Install Valgrind
         run: sudo apt-get update && sudo apt-get install valgrind
-
-      - name: Compilation Test
-        run: make re
       
       - name: CUnit Tests
         if: github.event_name == 'pull_request'
