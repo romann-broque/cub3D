@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/18 09:54:29 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/18 10:13:45 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,11 @@
 # define RED				0xff0000
 # define BLUE				0x0000ff
 # define GREEN				0x00ff00
+
+// Key
+
+# define K_ESC				0xff1b
+# define NO_KEY				0
 
 // Key
 

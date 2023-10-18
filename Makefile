@@ -213,9 +213,6 @@ ifeq ($(minimap), true)
 	CFLAGS	+= -D MINIMAP_DISPLAY=true
 endif
 
-# ifdef ($(test) $(M))
-# 	CFLAGS	+= -D TEST=true
-# endif
 ifeq ($(filter test,$(MAKECMDGOALS)),test)
 	CFLAGS	+= -D TEST=true
 endif
@@ -302,10 +299,9 @@ funcheck: all
 	$(MAKE) -sC $(FUNCHECK_FOLDER_HOST)
 	$(FUNCHECK_SCRIPT)
 
-clean	: $(MLX)
+clean	:
 	$(RM) -r $(PATH_OBJS)
 	$(MAKE) -sC $(LIBFT_FOLDER) clean > /dev/null
-	$(MAKE) -sC $(MLX_FOLDER) clean > /dev/null
 	$(MAKE) -sC $(CUNIT_FOLDER) clean > /dev/null
 	$(MAKE) -sC $(FUNCHECK_FOLDER_LIB) clean > /dev/null
 	$(MAKE) -sC $(FUNCHECK_FOLDER_HOST) clean > /dev/null

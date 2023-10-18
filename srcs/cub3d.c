@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:14 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/18 10:03:34 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/18 10:13:30 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,6 @@ static int	start_map(char *const *const content)
 			if (TEST == false)
 				ret_val = start_window(map);
 		}
-		if (PRINT_DEBUG)
-			print_map(map);
 	}
 	free_map(map);
 	return (ret_val);
