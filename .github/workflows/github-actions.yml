@@ -46,4 +46,4 @@ jobs:
       
       - name: Funcheck Tests
         if: github.event_name == 'pull_request'
-        run: make re debug=true funcheck; make re funcheck; make valgrind=true funchec
+        run: make re debug=true funcheck; make re funcheck; make valgrind=true funcheck
