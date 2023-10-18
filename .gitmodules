@@ -1,3 +1,7 @@
 [submodule "libft"]
-	path = libft
-	url = https://github.com/romann-broque/libft
+    path = libft
+    url = https://github.com/romann-broque/libft
+
+[submodule "tests/funcheck_dir/funcheck"]
+	path = tests/funcheck_dir/funcheck
+	url = git@github.com:tmatis/funcheck.git
