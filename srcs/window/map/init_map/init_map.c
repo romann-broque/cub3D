@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 13:43:54 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/18 07:40:24 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/18 14:15:17 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ static t_pos	get_player_pos(t_map *const map)
 		{
 			if (is_player(map, x, y))
 			{
-				pos.x = x + 0.5;
-				pos.y = y + 0.5;
+				pos.x = x + PLAYER_XOFFSET;
+				pos.y = y + PLAYER_YOFFSET;
 			}
 			++x;
 		}
