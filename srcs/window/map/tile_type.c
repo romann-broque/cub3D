@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 08:51:46 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/17 14:20:55 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/17 14:53:35 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,13 @@ bool	is_blank(
 	)
 {
 	return (map->matrix[y][x].tile_char == BLANK);
+}
+
+bool	is_player(
+	const t_map *const map,
+	const size_t x,
+	const size_t y
+	)
+{
+	return (is_in_str(VALID_CHAR_DIR, map->matrix[y][x].tile_char));
 }

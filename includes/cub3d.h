@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/17 14:21:06 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/18 07:10:12 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,12 @@
 # define WINDOW_WIDTH		1600
 # define WINDOW_HEIGHT		1200
 # define WINDOW_TITLE		"cub3D"
-# define TILE_SIZE			20
+# define MINIMAP_XOFFSET	0
+# define MINIMAP_YOFFSET	0
+# define MAP_XOFFSET		0
+# define MAP_YOFFSET		15
+# define MINIMAP_RADIUS		3
+# define TILE_SIZE			15
 
 // CHAR
 
@@ -87,7 +92,9 @@
 
 // Pixel Colors
 
+# define BLACK				0x000000
 # define WHITE				0xffffff
+# define BLUE				0xff0000
 
 // Key
 
@@ -123,11 +130,18 @@ typedef struct s_tile
 	bool	is_marked;
 }		t_tile;
 
+typedef struct s_pos
+{
+	size_t	x;
+	size_t	y;
+}		t_pos;
+
 typedef struct s_map
 {
 	t_tile	**matrix;
 	size_t	height;
 	size_t	width;
+	t_pos	player_pos;
 }		t_map;
 
 typedef struct s_data
@@ -239,9 +253,14 @@ void	display_window(t_win *const window);
 
 void	display_map(t_win *const window);
 
+	// display_minimap.c
+
+void	display_minimap(t_win *const window);
+
 	// draw_tile.c
 
 void	draw_tile(t_win *const window,
+			const t_pos pos,
 			const size_t x, const size_t y);
 
 	// put_pixel.c
@@ -306,6 +325,9 @@ bool	is_ground(
 			const t_map *const map,
 			const size_t x, const size_t y);
 
+bool	is_player(const t_map *const map,
+			const size_t x, const size_t y);
+
 		/////////////////////////
 		////     init_map    ////
 		/////////////////////////
@@ -345,5 +367,14 @@ bool	is_map_unique(const t_map *const map);
 		// is_map_valid.c
 
 bool	is_map_valid(t_map *const map);
+
+		/////////////////////////
+		////  		pos 	 ////
+		/////////////////////////
+
+		// set_pos.c
+
+void	set_pos(t_pos *const pos,
+			const size_t x, const size_t y);
 
 #endif

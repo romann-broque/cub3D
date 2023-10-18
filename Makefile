@@ -20,6 +20,7 @@ PATH_SRCS	+=	srcs/window/loop/events/
 PATH_SRCS	+=	srcs/window/map/
 PATH_SRCS	+=	srcs/window/map/init_map/
 PATH_SRCS	+=	srcs/window/map/is_map_valid/
+PATH_SRCS	+=	srcs/window/map/pos/
 
 ### srcs/
 
@@ -59,6 +60,7 @@ SRCS	 	+=	free_data.c
 
 SRCS	 	+=	display_window.c
 SRCS	 	+=	display_map.c
+SRCS	 	+=	display_minimap.c
 SRCS	 	+=	draw_tile.c
 SRCS	 	+=	put_pixel.c
 
@@ -89,6 +91,10 @@ SRCS	 	+=	is_map_closed.c
 SRCS	 	+=	is_map_closed_utils.c
 SRCS		+=	is_map_content_valid.c
 SRCS	 	+=	is_map_unique.c
+
+### srcs/window/map/pos/
+
+SRCS	 	+=	set_pos.c
 
 vpath %.c $(PATH_SRCS)
 

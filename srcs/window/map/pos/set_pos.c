@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display_window.c                                   :+:      :+:    :+:   */
+/*   set_pos.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/15 10:09:13 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/18 07:10:57 by rbroque          ###   ########.fr       */
+/*   Created: 2023/10/18 06:32:11 by rbroque           #+#    #+#             */
+/*   Updated: 2023/10/18 07:11:55 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	display_window(t_win *const window)
+void	set_pos(
+	t_pos *const pos,
+	const size_t x,
+	const size_t y
+	)
 {
-	display_map(window);
-	display_minimap(window);
-	mlx_put_image_to_window(window->mlx_ptr, window->win_ptr,
-		window->data.img, 0, 0);
-	loop(window);
+	pos->x = x;
+	pos->y = y;
 }

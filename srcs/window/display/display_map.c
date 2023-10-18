@@ -6,28 +6,37 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 16:11:15 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/17 09:05:27 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/18 07:11:18 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+static void	draw_tile_sequence(
+	t_win *const window,
+	const size_t sequence_index)
+{
+	size_t	i;
+	t_pos	pos;
+
+	i = 0;
+	while (i < window->map->width)
+	{
+		pos.x = i;
+		pos.y = sequence_index;
+		draw_tile(window, pos, i + MAP_XOFFSET, sequence_index + MAP_YOFFSET);
+		++i;
+	}
+}
+
 void	display_map(t_win *const window)
 {
 	size_t	i;
-	size_t	j;
 
 	i = 0;
 	while (i < window->map->height)
 	{
-		j = 0;
-		while (j < window->map->width)
-		{
-			draw_tile(window, j, i);
-			++j;
-		}
+		draw_tile_sequence(window, i);
 		++i;
 	}
-	mlx_put_image_to_window(window->mlx_ptr, window->win_ptr,
-		window->data.img, 0, 0);
 }

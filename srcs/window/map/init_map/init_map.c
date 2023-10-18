@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 13:43:54 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/10 09:29:48 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/17 15:02:17 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,30 @@ static size_t	find_max_line_length(char *const *const lines)
 	return (max_len);
 }
 
+static t_pos	get_player_pos(t_map *const map)
+{
+	t_pos	pos;
+	size_t	x;
+	size_t	y;
+
+	y = 0;
+	while (y < map->height)
+	{
+		x = 0;
+		while (x < map->width)
+		{
+			if (is_player(map, x, y))
+			{
+				pos.x = x;
+				pos.y = y;
+			}
+			++x;
+		}
+		++y;
+	}
+	return (pos);
+}
+
 t_map	*init_map(char *const *const lines)
 {
 	const size_t	height = count_lines(lines);
@@ -51,6 +75,7 @@ t_map	*init_map(char *const *const lines)
 	map->height = height;
 	map->width = width;
 	map->matrix = init_matrix(height, width, lines);
+	map->player_pos = get_player_pos(map);
 	if (map->matrix == NULL)
 		return (NULL);
 	return (map);
