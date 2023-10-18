@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 06:32:11 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/18 07:11:55 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/18 07:13:20 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	set_pos(
 	t_pos *const pos,
-	const size_t x,
-	const size_t y
+	const double x,
+	const double y
 	)
 {
 	pos->x = x;

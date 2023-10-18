@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 13:43:54 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/17 15:02:17 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/18 07:36:42 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,14 @@ t_map	*init_map(char *const *const lines)
 	}
 	map->height = height;
 	map->width = width;
+	if (map->height > INT_MAX || map->width > INT_MAX)
+	{
+		print_format_error(MAP_TOO_BIG);
+		return (NULL);
+	}
 	map->matrix = init_matrix(height, width, lines);
-	map->player_pos = get_player_pos(map);
 	if (map->matrix == NULL)
 		return (NULL);
+	map->player_pos = get_player_pos(map);
 	return (map);
 }

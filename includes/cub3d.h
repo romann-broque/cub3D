@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/18 07:10:12 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/18 07:31:03 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@
 
 # define MAP_NOT_CLOSED		"MAP NOT CLOSED"
 # define MAP_NOT_UNIQUE		"MAP NOT UNIQUE"
+# define MAP_TOO_BIG		"MAP TOO BIG"
 # define MAP_CONTENT_WRONG	"MAP CONTENT IS WRONG"
 # define UNKNOWN_CONFIG		"UNKNOWN CONFIG"
 # define DUPLICATED_CONFIG	"DUPLICATED CONFIG"
@@ -375,6 +376,6 @@ bool	is_map_valid(t_map *const map);
 		// set_pos.c
 
 void	set_pos(t_pos *const pos,
-			const size_t x, const size_t y);
+			const double x, const double y);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 09:05:17 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/17 15:32:01 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/18 07:28:07 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,32 +33,49 @@ static uint32_t	get_color_from_tile(
 	return (BLACK);
 }
 
+static void	draw_tile_width(
+	t_win *const window,
+	const t_pos tile_pos,
+	const t_pos screen_pos,
+	const size_t line_index
+	)
+{
+	size_t		j;
+
+	j = 0;
+	while (j < TILE_SIZE)
+	{
+		if (is_ground(window->map, tile_pos.x, tile_pos.y) == true
+			|| (is_wall(window->map, tile_pos.x, tile_pos.y) == true
+				&& is_tile_side(j, line_index) == true))
+		{
+			put_pixel(&(window->data),
+				screen_pos.x * (TILE_SIZE - 1) + j,
+				screen_pos.y * (TILE_SIZE - 1) + line_index,
+				get_color_from_tile(window->map, tile_pos.x, tile_pos.y));
+		}
+		++j;
+	}
+}
+
 void	draw_tile(
 	t_win *const window,
 	const t_pos pos,
 	const size_t x,
 	const size_t y)
 {
-	size_t	i;
-	size_t	j;
+	const int	tile_posx = pos.x;
+	const int	tile_posy = pos.y;
+	t_pos		tile_pos;
+	t_pos		screen_pos;
+	size_t		i;
 
+	set_pos(&tile_pos, tile_posx, tile_posy);
+	set_pos(&screen_pos, (int)x, (int)y);
 	i = 0;
 	while (i < TILE_SIZE)
 	{
-		j = 0;
-		while (j < TILE_SIZE)
-		{
-			if (is_ground(window->map, pos.x, pos.y) == true
-				|| (is_wall(window->map, pos.x, pos.y) == true
-					&& is_tile_side(j, i) == true))
-			{
-				put_pixel(&(window->data),
-					x * (TILE_SIZE - 1) + j,
-					y * (TILE_SIZE - 1) + i,
-					get_color_from_tile(window->map, pos.x, pos.y));
-			}
-			++j;
-		}
+		draw_tile_width(window, tile_pos, screen_pos, i);
 		++i;
 	}
 }
