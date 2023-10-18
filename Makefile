@@ -61,6 +61,7 @@ SRCS	 	+=	free_data.c
 SRCS	 	+=	display_window.c
 SRCS	 	+=	display_map.c
 SRCS	 	+=	display_minimap.c
+SRCS	 	+=	display_player.c
 SRCS	 	+=	draw_tile.c
 SRCS	 	+=	put_pixel.c
 
@@ -204,7 +205,18 @@ ifeq ($(print_debug), true)
 	CFLAGS	+= -D PRINT_DEBUG=true
 endif
 
-ifdef ($(test))
+ifeq ($(map), true)
+	CFLAGS	+= -D MAP_DISPLAY=true
+endif
+
+ifeq ($(minimap), true)
+	CFLAGS	+= -D MINIMAP_DISPLAY=true
+endif
+
+# ifdef ($(test) $(M))
+# 	CFLAGS	+= -D TEST=true
+# endif
+ifeq ($(filter test,$(MAKECMDGOALS)),test)
 	CFLAGS	+= -D TEST=true
 endif
 

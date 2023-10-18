@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_format_error.c                               :+:      :+:    :+:   */
+/*   display_player.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 08:59:19 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/18 09:38:40 by rbroque          ###   ########.fr       */
+/*   Created: 2023/10/18 07:44:26 by rbroque           #+#    #+#             */
+/*   Updated: 2023/10/18 10:03:46 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	print_format_error(const char *const error_message)
+void	display_player(t_win *const window)
 {
-	print_error(RED_PRINT"Error\n%s\n"NC, error_message);
+	const t_pos	player_pos = window->map->player_pos;
+
+	put_pixel(&(window->data),
+		(MINIMAP_RADIUS + MINIMAP_XOFFSET) * (TILE_SIZE - 1) + player_pos.x,
+		(MINIMAP_RADIUS + MINIMAP_YOFFSET) * (TILE_SIZE - 1) + player_pos.y,
+		GREEN);
 }

@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/18 07:31:03 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/18 09:54:29 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,14 @@
 #  define TEST				0
 # endif
 
+# ifndef MINIMAP_DISPLAY
+#  define MINIMAP_DISPLAY	0
+# endif
+
+# ifndef MAP_DISPLAY
+#  define MAP_DISPLAY		0
+# endif
+
 # define EXPECTED_ARG_COUNT	2
 # define INVALID_FD			-1
 # define COUNT_LINE_ERROR	-1
@@ -51,7 +59,7 @@
 # define MINIMAP_YOFFSET	0
 # define MAP_XOFFSET		0
 # define MAP_YOFFSET		15
-# define MINIMAP_RADIUS		3
+# define MINIMAP_RADIUS		5
 # define TILE_SIZE			15
 
 // CHAR
@@ -88,14 +96,16 @@
 // Print Colors
 
 # define NC					"\033[0m"
-# define RED				"\033[0;31m"
-# define GREEN				"\033[0;32m"
+# define RED_PRINT			"\033[0;31m"
+# define GREEN_PRINT		"\033[0;32m"
 
 // Pixel Colors
 
 # define BLACK				0x000000
 # define WHITE				0xffffff
-# define BLUE				0xff0000
+# define RED				0xff0000
+# define BLUE				0x0000ff
+# define GREEN				0x00ff00
 
 // Key
 
@@ -133,9 +143,11 @@ typedef struct s_tile
 
 typedef struct s_pos
 {
-	size_t	x;
-	size_t	y;
+	double	x;
+	double	y;
 }		t_pos;
+
+typedef t_pos	t_vect;
 
 typedef struct s_map
 {
@@ -257,6 +269,10 @@ void	display_map(t_win *const window);
 	// display_minimap.c
 
 void	display_minimap(t_win *const window);
+
+	// display_player.c
+
+void	display_player(t_win *const window);
 
 	// draw_tile.c
 

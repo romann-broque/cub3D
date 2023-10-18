@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 15:00:52 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/12 13:09:28 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/18 09:38:57 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 static void	print_tile(const t_tile tile)
 {
 	if (tile.is_marked)
-		printf(GREEN"%c"NC, tile.tile_char);
+		printf(GREEN_PRINT"%c"NC, tile.tile_char);
 	else
-		printf(RED"%c"NC, tile.tile_char);
+		printf(RED_PRINT"%c"NC, tile.tile_char);
 }
 
 static void	print_matrix(

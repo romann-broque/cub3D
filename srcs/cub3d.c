@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:14 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/16 16:09:08 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/18 10:03:34 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@ static int	start_window(t_map *const map)
 	if (is_window_complete(&window) == true)
 	{
 		ret_val = EXIT_SUCCESS;
-		if (TEST == false)
-			display_window(&window);
+		display_window(&window);
 	}
 	free_window(&window);
 	return (ret_val);
@@ -38,7 +37,11 @@ static int	start_map(char *const *const content)
 	if (map != NULL)
 	{
 		if (is_map_valid(map) == true)
-			ret_val = start_window(map);
+		{
+			ret_val = EXIT_SUCCESS;
+			if (TEST == false)
+				ret_val = start_window(map);
+		}
 		if (PRINT_DEBUG)
 			print_map(map);
 	}
