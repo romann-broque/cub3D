@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/16 09:49:03 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/18 14:14:38 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,14 @@
 #  define TEST				0
 # endif
 
+# ifndef MINIMAP_DISPLAY
+#  define MINIMAP_DISPLAY	0
+# endif
+
+# ifndef MAP_DISPLAY
+#  define MAP_DISPLAY		0
+# endif
+
 # define EXPECTED_ARG_COUNT	2
 # define INVALID_FD			-1
 # define COUNT_LINE_ERROR	-1
@@ -47,6 +55,14 @@
 # define WINDOW_WIDTH		1600
 # define WINDOW_HEIGHT		1200
 # define WINDOW_TITLE		"cub3D"
+# define PLAYER_XOFFSET		0.5
+# define PLAYER_YOFFSET		0.5
+# define MINIMAP_XOFFSET	0
+# define MINIMAP_YOFFSET	0
+# define MAP_XOFFSET		0
+# define MAP_YOFFSET		15
+# define MINIMAP_RADIUS		5
+# define TILE_SIZE			15
 
 // CHAR
 
@@ -72,17 +88,31 @@
 
 # define MAP_NOT_CLOSED		"MAP NOT CLOSED"
 # define MAP_NOT_UNIQUE		"MAP NOT UNIQUE"
+# define MAP_TOO_BIG		"MAP TOO BIG"
 # define MAP_CONTENT_WRONG	"MAP CONTENT IS WRONG"
 # define UNKNOWN_CONFIG		"UNKNOWN CONFIG"
 # define DUPLICATED_CONFIG	"DUPLICATED CONFIG"
 # define WRONG_RGB			"WRONG RGB"
 # define INVALID_FILENAME	"FILENAME IS INVALID"
 
-// Colors
+// Print Colors
 
 # define NC					"\033[0m"
-# define RED				"\033[0;31m"
-# define GREEN				"\033[0;32m"
+# define RED_PRINT			"\033[0;31m"
+# define GREEN_PRINT		"\033[0;32m"
+
+// Pixel Colors
+
+# define BLACK				0x000000
+# define WHITE				0xffffff
+# define RED				0xff0000
+# define BLUE				0x0000ff
+# define GREEN				0x00ff00
+
+// Key
+
+# define K_ESC				0xff1b
+# define NO_KEY				0
 
 // Key
 
@@ -118,11 +148,20 @@ typedef struct s_tile
 	bool	is_marked;
 }		t_tile;
 
+typedef struct s_pos
+{
+	double	x;
+	double	y;
+}		t_pos;
+
+typedef t_pos	t_vect;
+
 typedef struct s_map
 {
 	t_tile	**matrix;
 	size_t	height;
 	size_t	width;
+	t_pos	player_pos;
 }		t_map;
 
 typedef struct s_data
@@ -139,6 +178,7 @@ typedef struct s_win
 	void	*mlx_ptr;
 	void	*win_ptr;
 	t_data	data;
+	t_map	*map;
 }		t_win;
 
 typedef struct s_event_mapping
@@ -194,72 +234,6 @@ bool	is_sequence_valid(char *const *const sequence);
 void	print_format_error(const char *const error_message);
 
 /////////////////////////////////////////
-/////			 	map				/////
-/////////////////////////////////////////
-
-// free_map.c
-
-void	free_tile_matrix(t_tile **const matrix, const size_t size);
-void	free_map(t_map *const map);
-
-// print_map.c
-
-void	print_map(const t_map *const map);
-
-	/////////////////////////
-	////     init_map    ////
-	/////////////////////////
-
-// init_map.c
-
-t_map	*init_map(char *const *const lines);
-
-// init_matrix.c
-
-t_tile	**init_matrix(
-			const size_t height,
-			const size_t width,
-			char *const *const lines);
-
-	/////////////////////////
-	////   is_map_valid  ////
-	/////////////////////////
-
-// is_map_closed.c
-
-bool	is_map_closed(const t_map *const map);
-
-// is_map_closed_utils.c
-
-bool	is_inside_map(
-			const t_map *const map,
-			const ssize_t x, const ssize_t y);
-bool	is_blank(
-			const t_map *const map,
-			const size_t x, const size_t y);
-bool	is_wall(
-			const t_map *const map,
-			const size_t x, const size_t y);
-bool	is_marked(
-			const t_map *const map,
-			const size_t x, const size_t y);
-void	mark_as_viewed(
-			const t_map *const map,
-			const size_t x, const size_t y);
-
-// is_map_content_valid.c
-
-bool	is_map_content_valid(const t_map *const map);
-
-// is_map_unique.c
-
-bool	is_map_unique(const t_map *const map);
-
-// is_map_valid.c
-
-bool	is_map_valid(t_map *const map);
-
-/////////////////////////////////////////
 /////			 read_file			/////
 /////////////////////////////////////////
 
@@ -277,11 +251,15 @@ bool	is_file_valid(const char *const filename, const int fd);
 
 // init_window.c
 
-void	init_window(t_win *const window);
+void	init_window(t_win *const window, t_map *const map);
 
 // free_window.c
 
 void	free_window(t_win *const window);
+
+// is_window_complete.c
+
+bool	is_window_complete(t_win *const window);
 
 	/////////////////////////////////////////
 	/////			 display			/////
@@ -289,7 +267,29 @@ void	free_window(t_win *const window);
 
 	// display_window.c
 
-void	display_window(void);
+void	display_window(t_win *const window);
+
+	// display_map.c
+
+void	display_map(t_win *const window);
+
+	// display_minimap.c
+
+void	display_minimap(t_win *const window);
+
+	// display_player.c
+
+void	display_player(t_win *const window);
+
+	// draw_tile.c
+
+void	draw_tile(t_win *const window,
+			const t_pos pos,
+			const size_t x, const size_t y);
+
+	// put_pixel.c
+
+void	put_pixel(t_data *data, const int x, const int y, const int color);
 
 	/////////////////////////////////////////
 	/////			 loop				/////
@@ -322,5 +322,83 @@ void	init_data(void *const mlx_ptr, t_data *const dest);
 	// free_data.c
 
 void	free_data(const t_data *data, void *const mlx_ptr);
+
+	/////////////////////////////////////////
+	/////			 	map				/////
+	/////////////////////////////////////////
+
+	// free_map.c
+
+void	free_tile_matrix(t_tile **const matrix, const size_t size);
+void	free_map(t_map *const map);
+
+	// print_map.c
+
+void	print_map(const t_map *const map);
+
+	// tile_type.c
+
+bool	is_blank(
+			const t_map *const map,
+			const size_t x, const size_t y);
+bool	is_wall(
+			const t_map *const map,
+			const size_t x, const size_t y);
+
+bool	is_ground(
+			const t_map *const map,
+			const size_t x, const size_t y);
+
+bool	is_player(const t_map *const map,
+			const size_t x, const size_t y);
+
+		/////////////////////////
+		////     init_map    ////
+		/////////////////////////
+
+		// init_map.c
+
+t_map	*init_map(char *const *const lines);
+
+		// init_matrix.c
+
+t_tile	**init_matrix(
+			const size_t height,
+			const size_t width,
+			char *const *const lines);
+
+		/////////////////////////
+		////   is_map_valid  ////
+		/////////////////////////
+
+		// is_map_closed.c
+
+bool	is_map_closed(const t_map *const map);
+
+		// is_map_closed_utils.c
+
+bool	is_closed_dfs(const t_map *const map,
+			const ssize_t x, const ssize_t y);
+
+		// is_map_content_valid.c
+
+bool	is_map_content_valid(const t_map *const map);
+
+		// is_map_unique.c
+
+bool	is_map_unique(const t_map *const map);
+
+		// is_map_valid.c
+
+bool	is_map_valid(t_map *const map);
+
+		/////////////////////////
+		////  		pos 	 ////
+		/////////////////////////
+
+		// set_pos.c
+
+void	set_pos(t_pos *const pos,
+			const double x, const double y);
 
 #endif

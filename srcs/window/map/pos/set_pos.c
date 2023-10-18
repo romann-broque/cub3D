@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_format_error.c                               :+:      :+:    :+:   */
+/*   set_pos.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 08:59:19 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/18 09:38:40 by rbroque          ###   ########.fr       */
+/*   Created: 2023/10/18 06:32:11 by rbroque           #+#    #+#             */
+/*   Updated: 2023/10/18 07:13:20 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	print_format_error(const char *const error_message)
+void	set_pos(
+	t_pos *const pos,
+	const double x,
+	const double y
+	)
 {
-	print_error(RED_PRINT"Error\n%s\n"NC, error_message);
+	pos->x = x;
+	pos->y = y;
 }

@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_map_closed_utils.c                              :+:      :+:    :+:   */
+/*   tile_type.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrouillo <jrouillo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 08:39:37 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/09 16:26:59 by jrouillo         ###   ########.fr       */
+/*   Created: 2023/10/17 08:51:46 by rbroque           #+#    #+#             */
+/*   Updated: 2023/10/17 14:53:35 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-bool	is_inside_map(
+bool	is_ground(
 	const t_map *const map,
-	const ssize_t x,
-	const ssize_t y
+	const size_t x,
+	const size_t y
 	)
 {
-	return (x >= 0 && y >= 0
-		&& (size_t)x < map->width && (size_t)y < map->height);
+	return (is_in_str(GROUND, map->matrix[y][x].tile_char));
 }
 
 bool	is_wall(
@@ -40,20 +39,11 @@ bool	is_blank(
 	return (map->matrix[y][x].tile_char == BLANK);
 }
 
-bool	is_marked(
+bool	is_player(
 	const t_map *const map,
 	const size_t x,
 	const size_t y
 	)
 {
-	return (map->matrix[y][x].is_marked == true);
-}
-
-void	mark_as_viewed(
-	const t_map *const map,
-	const size_t x,
-	const size_t y
-	)
-{
-	map->matrix[y][x].is_marked = true;
+	return (is_in_str(VALID_CHAR_DIR, map->matrix[y][x].tile_char));
 }

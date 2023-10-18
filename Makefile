@@ -11,15 +11,16 @@ SHELL		= /usr/bin/bash
 PATH_SRCS	+=	srcs/
 PATH_SRCS	+=	srcs/config/
 PATH_SRCS	+=	srcs/print/
-PATH_SRCS	+=	srcs/map/
-PATH_SRCS	+=	srcs/map/init_map/
-PATH_SRCS	+=	srcs/map/is_map_valid/
 PATH_SRCS	+=	srcs/read_file/
 PATH_SRCS	+=	srcs/window/
 PATH_SRCS	+=	srcs/window/data/
 PATH_SRCS	+=	srcs/window/display/
 PATH_SRCS	+=	srcs/window/loop/
 PATH_SRCS	+=	srcs/window/loop/events/
+PATH_SRCS	+=	srcs/window/map/
+PATH_SRCS	+=	srcs/window/map/init_map/
+PATH_SRCS	+=	srcs/window/map/is_map_valid/
+PATH_SRCS	+=	srcs/window/map/pos/
 
 ### srcs/
 
@@ -39,24 +40,6 @@ SRCS		+=	is_config_sequence_valid.c
 
 SRCS		+=	print_format_error.c
 
-### srcs/map/
-
-SRCS	 	+=	free_map.c
-SRCS	 	+=	print_map.c
-
-### srcs/map/init_map/
-
-SRCS	 	+=	init_map.c
-SRCS	 	+=	init_matrix.c
-
-### srcs/map/is_map_valid/
-
-SRCS		+=	is_map_valid.c
-SRCS	 	+=	is_map_closed.c
-SRCS	 	+=	is_map_closed_utils.c
-SRCS		+=	is_map_content_valid.c
-SRCS	 	+=	is_map_unique.c
-
 ### srcs/read_file/
 
 SRCS	 	+=	get_file.c
@@ -66,6 +49,7 @@ SRCS		+=	is_file_valid.c
 
 SRCS	 	+=	init_window.c
 SRCS	 	+=	free_window.c
+SRCS	 	+=	is_window_complete.c
 
 ### srcs/window/data/
 
@@ -75,6 +59,11 @@ SRCS	 	+=	free_data.c
 ### srcs/window/display/
 
 SRCS	 	+=	display_window.c
+SRCS	 	+=	display_map.c
+SRCS	 	+=	display_minimap.c
+SRCS	 	+=	display_player.c
+SRCS	 	+=	draw_tile.c
+SRCS	 	+=	put_pixel.c
 
 ### srcs/window/loop/
 
@@ -84,6 +73,29 @@ SRCS	 	+=	keyboard.c
 ### srcs/window/loop/events/
 
 SRCS	 	+=	e_close_window.c
+
+### srcs/window/map/
+
+SRCS	 	+=	free_map.c
+SRCS	 	+=	print_map.c
+SRCS	 	+=	tile_type.c
+
+### srcs/window/map/init_map/
+
+SRCS	 	+=	init_map.c
+SRCS	 	+=	init_matrix.c
+
+### srcs/window/map/is_map_valid/
+
+SRCS		+=	is_map_valid.c
+SRCS	 	+=	is_map_closed.c
+SRCS	 	+=	is_map_closed_utils.c
+SRCS		+=	is_map_content_valid.c
+SRCS	 	+=	is_map_unique.c
+
+### srcs/window/map/pos/
+
+SRCS	 	+=	set_pos.c
 
 vpath %.c $(PATH_SRCS)
 
@@ -193,7 +205,15 @@ ifeq ($(print_debug), true)
 	CFLAGS	+= -D PRINT_DEBUG=true
 endif
 
-ifdef ($(test))
+ifeq ($(map), true)
+	CFLAGS	+= -D MAP_DISPLAY=true
+endif
+
+ifeq ($(minimap), true)
+	CFLAGS	+= -D MINIMAP_DISPLAY=true
+endif
+
+ifeq ($(filter test,$(MAKECMDGOALS)),test)
 	CFLAGS	+= -D TEST=true
 endif
 
@@ -279,10 +299,9 @@ funcheck: all
 	$(MAKE) -sC $(FUNCHECK_FOLDER_HOST)
 	$(FUNCHECK_SCRIPT)
 
-clean	: $(MLX)
+clean	:
 	$(RM) -r $(PATH_OBJS)
 	$(MAKE) -sC $(LIBFT_FOLDER) clean > /dev/null
-	$(MAKE) -sC $(MLX_FOLDER) clean > /dev/null
 	$(MAKE) -sC $(CUNIT_FOLDER) clean > /dev/null
 	$(MAKE) -sC $(FUNCHECK_FOLDER_LIB) clean > /dev/null
 	$(MAKE) -sC $(FUNCHECK_FOLDER_HOST) clean > /dev/null

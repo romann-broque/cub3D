@@ -1,18 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_map_closed.c                                    :+:      :+:    :+:   */
+/*   is_map_closed_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrouillo <jrouillo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/06 13:17:40 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/09 16:26:23 by jrouillo         ###   ########.fr       */
+/*   Created: 2023/10/09 08:39:37 by rbroque           #+#    #+#             */
+/*   Updated: 2023/10/17 08:55:24 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static bool	is_closed_dfs(
+static bool	is_inside_map(
+	const t_map *const map,
+	const ssize_t x,
+	const ssize_t y
+	)
+{
+	return (x >= 0 && y >= 0
+		&& (size_t)x < map->width && (size_t)y < map->height);
+}
+
+static bool	is_marked(
+	const t_map *const map,
+	const size_t x,
+	const size_t y
+	)
+{
+	return (map->matrix[y][x].is_marked == true);
+}
+
+static void	mark_as_viewed(
+	const t_map *const map,
+	const size_t x,
+	const size_t y
+	)
+{
+	map->matrix[y][x].is_marked = true;
+}
+
+bool	is_closed_dfs(
 	const t_map *const map,
 	const ssize_t x,
 	const ssize_t y
@@ -27,30 +55,4 @@ static bool	is_closed_dfs(
 		&& is_closed_dfs(map, x + 1, y)
 		&& is_closed_dfs(map, x, y - 1)
 		&& is_closed_dfs(map, x, y + 1));
-}
-
-static bool	is_tile_ground(const t_tile tile)
-{
-	return (is_in_str(GROUND, tile.tile_char));
-}
-
-bool	is_map_closed(const t_map *const map)
-{
-	size_t	i;
-	size_t	j;
-
-	i = 0;
-	while (i < map->height)
-	{
-		j = 0;
-		while (j < map->width)
-		{
-			if (is_tile_ground(map->matrix[i][j]) == true
-				&& is_closed_dfs(map, j, i) == false)
-				return (false);
-			++j;
-		}
-		++i;
-	}
-	return (true);
 }

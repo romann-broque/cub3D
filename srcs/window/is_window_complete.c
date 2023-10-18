@@ -1,18 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_format_error.c                               :+:      :+:    :+:   */
+/*   is_window_complete.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 08:59:19 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/18 09:38:40 by rbroque          ###   ########.fr       */
+/*   Created: 2023/10/16 16:06:30 by rbroque           #+#    #+#             */
+/*   Updated: 2023/10/16 16:06:47 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	print_format_error(const char *const error_message)
+static bool	is_data_complete(const t_data *const data)
 {
-	print_error(RED_PRINT"Error\n%s\n"NC, error_message);
+	return (data->img != NULL && data->addr != NULL);
+}
+
+bool	is_window_complete(t_win *const window)
+{
+	return (window != NULL
+		&& window->mlx_ptr != NULL
+		&& window->win_ptr != NULL
+		&& is_data_complete(&(window->data)) == true);
 }
