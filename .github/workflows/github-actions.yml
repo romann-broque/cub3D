@@ -6,6 +6,7 @@ on:
       - "main"
       - "MVE1"
       - "MVE2"
+      - "MVE3"
 
 jobs:
   check-bats-version:
@@ -45,4 +46,4 @@ jobs:
       
       - name: Funcheck Tests
         if: github.event_name == 'pull_request'
-        run: make re debug=true funcheck; make re funcheck; make valgrind=true funcheck
+        run: make re debug=true funcheck; make re funcheck; make valgrind=true funchec
