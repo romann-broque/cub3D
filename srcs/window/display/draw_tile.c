@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 09:05:17 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/19 15:09:21 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/19 15:41:22 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ static void	draw_tile_width(
 				&& is_tile_side(j, line_index) == true))
 		{
 			put_pixel(&(window->data),
-				screen_pos.x * (TILE_SIZE - 1) + j,
-				screen_pos.y * (TILE_SIZE - 1) + line_index,
+				screen_pos.x + j,
+				screen_pos.y + line_index,
 				get_color_from_tile(window->map, tile_pos.x, tile_pos.y));
 		}
 		++j;

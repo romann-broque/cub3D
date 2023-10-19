@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:08:47 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/19 06:28:14 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/19 21:33:54 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,9 @@ static bool	is_tile_sequence_drawn(
 		if (is_closed_to_player(map, j, i) == true)
 		{
 			set_pos(&pos, j, i);
-			draw_tile(window, pos, x + MINIMAP_XOFFSET, y + MINIMAP_YOFFSET);
+			draw_tile(window, pos,
+				x * (TILE_SIZE - 1) + MINIMAP_XOFFSET,
+				y * (TILE_SIZE - 1) + MINIMAP_YOFFSET);
 			++x;
 		}
 		++j;
@@ -93,4 +95,5 @@ void	display_minimap(t_win *const window)
 		y += is_tile_sequence_drawn(window, y, i);
 		++i;
 	}
+	display_player_on_minimap(window);
 }

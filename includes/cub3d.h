@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/19 15:35:52 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/19 21:48:38 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,13 @@
 # define WINDOW_TITLE		"cub3D"
 # define PLAYER_XOFFSET		0.5
 # define PLAYER_YOFFSET		0.5
-# define MINIMAP_XOFFSET	0
-# define MINIMAP_YOFFSET	0
-# define MAP_XOFFSET		0
-# define MAP_YOFFSET		0
+# define MINIMAP_XOFFSET	25
+# define MINIMAP_YOFFSET	25
+# define MAP_XOFFSET		5
+# define MAP_YOFFSET		300
 # define MINIMAP_RADIUS		2
 # define TILE_SIZE			15
-# define PLAYER_SIZE		3
+# define PLAYER_SIZE		4
 # define FOV				90
 
 // CHAR
@@ -303,7 +303,8 @@ void		display_minimap(t_win *const window);
 
 	// display_player.c
 
-void		display_player(t_win *const window);
+void		display_player_on_map(t_win *const window);
+void		display_player_on_minimap(t_win *const window);
 
 	// draw_on_map.c
 
@@ -313,6 +314,17 @@ void		draw_square_on_map(t_win *const window,
 void		draw_pos_on_map(t_win *const window,
 				const t_pos pos, const int color);
 void		draw_coordinate_on_map(t_win *const window,
+				const double x, const double y,
+				const int color);
+
+	// draw_on_minimap.c
+
+void		draw_square_on_minimap(t_win *const window,
+				const t_pos pos, const size_t size,
+				const int color);
+void		draw_pos_on_minimap(t_win *const window,
+				const t_pos pos, const int color);
+void		draw_coordinate_on_minimap(t_win *const window,
 				const double x, const double y,
 				const int color);
 
