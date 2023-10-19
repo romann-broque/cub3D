@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/19 06:26:01 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/19 07:37:24 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@
 # define MAP_YOFFSET		15
 # define MINIMAP_RADIUS		2
 # define TILE_SIZE			15
+# define FOV				90
 
 // CHAR
 
@@ -179,10 +180,11 @@ typedef struct s_data
 
 typedef struct s_win
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
-	t_data	data;
-	t_map	*map;
+	void			*mlx_ptr;
+	void			*win_ptr;
+	t_data			data;
+	t_map			*map;
+	const t_config	*config;
 }		t_win;
 
 typedef struct s_event_mapping
@@ -202,32 +204,41 @@ typedef struct s_event_mapping
 
 // is_rgb.c
 
-bool	is_rgb(const char *const str);
+bool		is_rgb(const char *const str);
 
 // attribute_utils.c
 
-int		build_attribute_from_sequence(
-			t_config *const config, char *const *const sequence);
+int			build_attribute_from_sequence(
+				t_config *const config, char *const *const sequence);
 
 // init_config.c
 
-void	init_config(t_config *const config);
+void		init_config(t_config *const config);
 
 // build_config.c
 
-ssize_t	build_config(t_config *const config, char *const *const lines);
+ssize_t		build_config(t_config *const config, char *const *const lines);
 
 // free_config.c
 
-void	free_config(t_config *const config);
+void		free_config(t_config *const config);
 
 // print_config.c
 
-void	print_config(t_config *const config);
+void		print_config(t_config *const config);
 
 // is_config_sequence_valid.c
 
-bool	is_sequence_valid(char *const *const sequence);
+bool		is_sequence_valid(char *const *const sequence);
+
+/////////////////////////////////////////
+/////			  math				/////
+/////////////////////////////////////////
+
+// conversion.c
+
+double		convert_deg_to_rad(const double degrees);
+double		convert_rad_to_deg(const double radian);
 
 /////////////////////////////////////////
 /////			  print				/////
@@ -235,7 +246,7 @@ bool	is_sequence_valid(char *const *const sequence);
 
 // print_format_error.c
 
-void	print_format_error(const char *const error_message);
+void		print_format_error(const char *const error_message);
 
 /////////////////////////////////////////
 /////			 read_file			/////
@@ -243,11 +254,11 @@ void	print_format_error(const char *const error_message);
 
 // get_file.c
 
-char	**get_file(const char *const file_name);
+char		**get_file(const char *const file_name);
 
 // is_file_valid.c
 
-bool	is_file_valid(const char *const filename, const int fd);
+bool		is_file_valid(const char *const filename, const int fd);
 
 /////////////////////////////////////////
 /////			 window				/////
@@ -255,15 +266,16 @@ bool	is_file_valid(const char *const filename, const int fd);
 
 // init_window.c
 
-void	init_window(t_win *const window, t_map *const map);
+void		init_window(t_win *const window,
+				t_map *const map, const t_config *const config);
 
 // free_window.c
 
-void	free_window(t_win *const window);
+void		free_window(t_win *const window);
 
 // is_window_complete.c
 
-bool	is_window_complete(t_win *const window);
+bool		is_window_complete(t_win *const window);
 
 	/////////////////////////////////////////
 	/////			 display			/////
@@ -271,29 +283,29 @@ bool	is_window_complete(t_win *const window);
 
 	// display_window.c
 
-void	display_window(t_win *const window);
+void		display_window(t_win *const window);
 
 	// display_map.c
 
-void	display_map(t_win *const window);
+void		display_map(t_win *const window);
 
 	// display_minimap.c
 
-void	display_minimap(t_win *const window);
+void		display_minimap(t_win *const window);
 
 	// display_player.c
 
-void	display_player(t_win *const window);
+void		display_player(t_win *const window);
 
 	// draw_tile.c
 
-void	draw_tile(t_win *const window,
-			const t_pos pos,
-			const size_t x, const size_t y);
+void		draw_tile(t_win *const window,
+				const t_pos pos,
+				const size_t x, const size_t y);
 
 	// put_pixel.c
 
-void	put_pixel(t_data *data, const int x, const int y, const int color);
+void		put_pixel(t_data *data, const int x, const int y, const int color);
 
 	/////////////////////////////////////////
 	/////			 loop				/////
@@ -301,11 +313,11 @@ void	put_pixel(t_data *data, const int x, const int y, const int color);
 
 	// loop.c
 
-void	loop(t_win *const window);
+void		loop(t_win *const window);
 
 	// keyboard.c
 
-int		key_press(const int key, t_win *window);
+int			key_press(const int key, t_win *window);
 
 		/////////////////////////////////////////
 		/////			events				/////
@@ -313,7 +325,7 @@ int		key_press(const int key, t_win *window);
 
 		// e_close_window.c
 
-int		close_window(t_win *const ptr);
+int			close_window(t_win *const ptr);
 
 	/////////////////////////////////////////
 	/////			data				/////
@@ -321,11 +333,11 @@ int		close_window(t_win *const ptr);
 
 	// init_data.c
 
-void	init_data(void *const mlx_ptr, t_data *const dest);
+void		init_data(void *const mlx_ptr, t_data *const dest);
 
 	// free_data.c
 
-void	free_data(const t_data *data, void *const mlx_ptr);
+void		free_data(const t_data *data, void *const mlx_ptr);
 
 	/////////////////////////////////////////
 	/////			 	map				/////
@@ -333,28 +345,28 @@ void	free_data(const t_data *data, void *const mlx_ptr);
 
 	// free_map.c
 
-void	free_tile_matrix(t_tile **const matrix, const size_t size);
-void	free_map(t_map *const map);
+void		free_tile_matrix(t_tile **const matrix, const size_t size);
+void		free_map(t_map *const map);
 
 	// print_map.c
 
-void	print_map(const t_map *const map);
+void		print_map(const t_map *const map);
 
 	// tile_type.c
 
-bool	is_blank(
-			const t_map *const map,
-			const size_t x, const size_t y);
-bool	is_wall(
-			const t_map *const map,
-			const size_t x, const size_t y);
+bool		is_blank(
+				const t_map *const map,
+				const size_t x, const size_t y);
+bool		is_wall(
+				const t_map *const map,
+				const size_t x, const size_t y);
 
-bool	is_ground(
-			const t_map *const map,
-			const size_t x, const size_t y);
+bool		is_ground(
+				const t_map *const map,
+				const size_t x, const size_t y);
 
-bool	is_player(const t_map *const map,
-			const size_t x, const size_t y);
+bool		is_player(const t_map *const map,
+				const size_t x, const size_t y);
 
 		/////////////////////////
 		////     init_map    ////
@@ -362,14 +374,14 @@ bool	is_player(const t_map *const map,
 
 		// init_map.c
 
-t_map	*init_map(char *const *const lines);
+t_map		*init_map(char *const *const lines);
 
 		// init_matrix.c
 
-t_tile	**init_matrix(
-			const size_t height,
-			const size_t width,
-			char *const *const lines);
+t_tile		**init_matrix(
+				const size_t height,
+				const size_t width,
+				char *const *const lines);
 
 		/////////////////////////
 		////   is_map_valid  ////
@@ -377,32 +389,36 @@ t_tile	**init_matrix(
 
 		// is_map_closed.c
 
-bool	is_map_closed(const t_map *const map);
+bool		is_map_closed(const t_map *const map);
 
 		// is_map_closed_utils.c
 
-bool	is_closed_dfs(const t_map *const map,
-			const ssize_t x, const ssize_t y);
+bool		is_closed_dfs(const t_map *const map,
+				const ssize_t x, const ssize_t y);
 
 		// is_map_content_valid.c
 
-bool	is_map_content_valid(const t_map *const map);
+bool		is_map_content_valid(const t_map *const map);
 
 		// is_map_unique.c
 
-bool	is_map_unique(const t_map *const map);
+bool		is_map_unique(const t_map *const map);
 
 		// is_map_valid.c
 
-bool	is_map_valid(t_map *const map);
+bool		is_map_valid(t_map *const map);
 
 		/////////////////////////
-		////  		pos 	 ////
+		////	 player		////
 		/////////////////////////
+
+		// get_player.c
+
+t_player	get_player(t_map *const map);
 
 		// set_pos.c
 
-void	set_pos(t_pos *const pos,
-			const double x, const double y);
+void		set_pos(t_pos *const pos,
+				const double x, const double y);
 
 #endif

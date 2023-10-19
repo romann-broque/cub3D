@@ -10,6 +10,7 @@ SHELL		= /usr/bin/bash
 
 PATH_SRCS	+=	srcs/
 PATH_SRCS	+=	srcs/config/
+PATH_SRCS	+=	srcs/math/
 PATH_SRCS	+=	srcs/print/
 PATH_SRCS	+=	srcs/read_file/
 PATH_SRCS	+=	srcs/window/
@@ -20,7 +21,7 @@ PATH_SRCS	+=	srcs/window/loop/events/
 PATH_SRCS	+=	srcs/window/map/
 PATH_SRCS	+=	srcs/window/map/init_map/
 PATH_SRCS	+=	srcs/window/map/is_map_valid/
-PATH_SRCS	+=	srcs/window/map/pos/
+PATH_SRCS	+=	srcs/window/map/player/
 
 ### srcs/
 
@@ -35,6 +36,10 @@ SRCS		+=	build_config.c
 SRCS		+=	free_config.c
 SRCS		+=	print_config.c
 SRCS		+=	is_config_sequence_valid.c
+
+### srcs/math/
+
+SRCS		+=	conversion.c
 
 ### srcs/print/
 
@@ -93,8 +98,9 @@ SRCS	 	+=	is_map_closed_utils.c
 SRCS		+=	is_map_content_valid.c
 SRCS	 	+=	is_map_unique.c
 
-### srcs/window/map/pos/
+### srcs/window/map/player/
 
+SRCS	 	+=	get_player.c
 SRCS	 	+=	set_pos.c
 
 vpath %.c $(PATH_SRCS)

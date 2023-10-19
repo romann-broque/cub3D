@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 13:43:54 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/18 16:16:24 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/19 07:23:23 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,38 +34,6 @@ static size_t	find_max_line_length(char *const *const lines)
 		++i;
 	}
 	return (max_len);
-}
-
-static t_pos	get_player_pos(t_map *const map)
-{
-	t_pos	pos;
-	size_t	x;
-	size_t	y;
-
-	y = 0;
-	while (y < map->height)
-	{
-		x = 0;
-		while (x < map->width)
-		{
-			if (is_player(map, x, y))
-			{
-				pos.x = x + PLAYER_XOFFSET;
-				pos.y = y + PLAYER_YOFFSET;
-			}
-			++x;
-		}
-		++y;
-	}
-	return (pos);
-}
-
-static t_player	get_player(t_map *const map)
-{
-	t_player	player;
-
-	player.pos = get_player_pos(map);
-	return (player);
 }
 
 t_map	*init_map(char *const *const lines)

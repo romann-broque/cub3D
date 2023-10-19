@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raycast.c                                          :+:      :+:    :+:   */
+/*   conversion.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 15:46:36 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/19 07:37:08 by rbroque          ###   ########.fr       */
+/*   Created: 2023/10/19 07:28:15 by rbroque           #+#    #+#             */
+/*   Updated: 2023/10/19 07:30:21 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	raycast(t_win *const window)
+double	convert_deg_to_rad(const double degrees)
 {
-	t_map *const	map = window->map;
+	return (degrees * (M_PI / 180.0));
+}
+
+double	convert_rad_to_deg(const double radian)
+{
+	return (radian * (180 / M_PI));
 }
