@@ -22,6 +22,7 @@ PATH_SRCS	+=	srcs/window/map/
 PATH_SRCS	+=	srcs/window/map/init_map/
 PATH_SRCS	+=	srcs/window/map/is_map_valid/
 PATH_SRCS	+=	srcs/window/map/player/
+PATH_SRCS	+=	srcs/window/map/raycast/
 
 ### srcs/
 
@@ -102,6 +103,11 @@ SRCS	 	+=	is_map_unique.c
 
 SRCS	 	+=	get_player.c
 SRCS	 	+=	set_pos.c
+
+### srcs/window/map/raycast/
+
+SRCS	 	+=	get_vect.c
+SRCS	 	+=	raycaster.c
 
 vpath %.c $(PATH_SRCS)
 

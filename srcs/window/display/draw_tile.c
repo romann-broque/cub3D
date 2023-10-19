@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 09:05:17 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/18 09:40:19 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/19 13:24:56 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ static uint32_t	get_color_from_tile(
 {
 	if (is_player(map, x, y))
 		return (RED);
+	if (is_wall(map, x, y) && map->matrix[y][x].is_viewed)
+		return (GREEN);
 	if (is_wall(map, x, y) || is_ground(map, x, y))
 		return (WHITE);
 	return (BLACK);

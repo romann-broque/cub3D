@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 10:09:13 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/18 14:18:46 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/19 08:03:43 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	display_window(t_win *const window)
 {
+	raycaster(window);
 	if (MAP_DISPLAY)
 		display_map(window);
 	if (MINIMAP_DISPLAY)

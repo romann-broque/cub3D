@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/19 07:37:24 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/19 13:23:06 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,6 +143,7 @@ typedef struct s_tile
 {
 	char	tile_char;
 	bool	is_marked;
+	bool	is_viewed;
 }		t_tile;
 
 typedef struct s_pos
@@ -160,6 +161,12 @@ typedef struct s_player
 	t_vect	plane;
 
 }		t_player;
+
+typedef struct s_cast
+{
+	t_vect	dist;
+	int		side;
+}		t_cast;
 
 typedef struct s_map
 {
@@ -409,7 +416,7 @@ bool		is_map_unique(const t_map *const map);
 bool		is_map_valid(t_map *const map);
 
 		/////////////////////////
-		////	 player		////
+		////	player		 ////
 		/////////////////////////
 
 		// get_player.c
@@ -420,5 +427,24 @@ t_player	get_player(t_map *const map);
 
 void		set_pos(t_pos *const pos,
 				const double x, const double y);
+void		set_vect(t_vect *const vect,
+				const double x, const double y);
+
+		/////////////////////////
+		////	raycast		 ////
+		/////////////////////////
+
+		// raycaster.c
+
+void		raycaster(t_win *const window);
+
+		// get_vect.c
+
+t_vect		get_ray(const t_player player, const size_t x);
+t_vect		get_delta_dist(const t_vect ray);
+t_vect		get_step_from_ray(const t_vect ray);
+t_vect		get_side_dist(
+				const t_pos pos, const t_vect ray,
+				const t_vect delta_dist);
 
 #endif
