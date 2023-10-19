@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/18 14:14:38 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/19 06:26:01 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
+# include <math.h>
 
 ///////////////////////////////////////////////////////////////////////////////
 //									DEFINES									 //
@@ -61,7 +62,7 @@
 # define MINIMAP_YOFFSET	0
 # define MAP_XOFFSET		0
 # define MAP_YOFFSET		15
-# define MINIMAP_RADIUS		5
+# define MINIMAP_RADIUS		2
 # define TILE_SIZE			15
 
 // CHAR
@@ -114,11 +115,6 @@
 # define K_ESC				0xff1b
 # define NO_KEY				0
 
-// Key
-
-# define K_ESC				0xff1b
-# define NO_KEY				0
-
 ///////////
 // ENUM //
 ///////////
@@ -156,12 +152,20 @@ typedef struct s_pos
 
 typedef t_pos	t_vect;
 
+typedef struct s_player
+{
+	t_pos	pos;
+	t_vect	dir;
+	t_vect	plane;
+
+}		t_player;
+
 typedef struct s_map
 {
-	t_tile	**matrix;
-	size_t	height;
-	size_t	width;
-	t_pos	player_pos;
+	t_tile		**matrix;
+	size_t		height;
+	size_t		width;
+	t_player	player;
 }		t_map;
 
 typedef struct s_data

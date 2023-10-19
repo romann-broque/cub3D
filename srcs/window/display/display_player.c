@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 07:44:26 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/18 14:17:23 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/18 16:15:37 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	display_player(t_win *const window)
 {
-	const t_pos	player_pos = window->map->player_pos;
+	const t_pos	player_pos = window->map->player.pos;
 
 	put_pixel(&(window->data),
 		(MINIMAP_XOFFSET + player_pos.x) * (TILE_SIZE - 1),

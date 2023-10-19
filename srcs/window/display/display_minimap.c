@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:08:47 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/18 09:27:26 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/19 06:28:14 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ static t_pos	get_min_pos(const t_pos pos)
 
 	min_pos.x = 0;
 	if (pos.x > MINIMAP_RADIUS)
-		min_pos.x = pos.x - MINIMAP_RADIUS;
+		min_pos.x = floor(pos.x - MINIMAP_RADIUS);
 	min_pos.y = 0;
 	if (pos.y > MINIMAP_RADIUS)
-		min_pos.y = pos.y - MINIMAP_RADIUS;
+		min_pos.y = floor(pos.y - MINIMAP_RADIUS);
 	return (min_pos);
 }
 
@@ -44,7 +44,7 @@ static bool	is_closed_to_player(
 	const size_t y
 	)
 {
-	const t_pos	pos = map->player_pos;
+	const t_pos	pos = map->player.pos;
 	const t_pos	min_pos = get_min_pos(pos);
 	const t_pos	max_pos = get_max_pos(pos);
 
