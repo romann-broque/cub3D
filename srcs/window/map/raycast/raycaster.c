@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 15:46:36 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/19 13:37:21 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/19 14:55:31 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,6 @@ static t_cast	get_cast(
 	}
 	return (cast);
 }
-
-/*
-** 
-	map->matrix[y][x].is_viewed = true;
-	printf("%zu;%zu has been touched !\n", x, y);
-*/
 
 static t_cast	dda(
 	t_map *const map,
