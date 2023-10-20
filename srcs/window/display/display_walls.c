@@ -6,7 +6,7 @@
 /*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 14:46:43 by jess              #+#    #+#             */
-/*   Updated: 2023/10/20 16:15:25 by jess             ###   ########.fr       */
+/*   Updated: 2023/10/20 17:24:30 by jess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,28 @@ static t_wall	*init_wall(
 	const ssize_t height
 	)
 {
-	(*wall)->start = (lineheight * NEGATIVE * HALF) + (height * HALF);
+	ssize_t		tmp1;
+	ssize_t		tmp2;
+
+	tmp1 = (lineheight * -1) / 2;
+	printf("tmp1 = %zu\n", tmp1);
+	tmp2 = height / 2;
+	printf("tmp2 = %zu\n", tmp2);
+	printf("Entrée dans init wall\n");
+	// (*wall)->start = (lineheight * NEGATIVE * HALF) + (height * HALF);
+	(*wall)->start = tmp1 + tmp2;
+	printf("Apres calcul wall start\n");
 	if ((*wall)->start < 0)
 		(*wall)->start = 0;
-	(*wall)->end = (lineheight * HALF) + (height * HALF);
+	printf("Apres if wall start < 0\n");
+	tmp1 = lineheight / 2;
+	tmp2 = height / 2;
+	// (*wall)->end = (lineheight * HALF) + (height * HALF);
+	(*wall)->end = tmp1 + tmp2;
+	printf("Apres calcul wall end\n");
 	if ((*wall)->end >= height)
-		(*wall)->end = height + NEGATIVE;
+		(*wall)->end = height - 1;
+	printf("Sortie dans init wall\n");
 	return (*wall);
 }
 
