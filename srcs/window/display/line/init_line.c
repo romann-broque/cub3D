@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 17:54:53 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/20 07:01:53 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/20 23:11:49 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ void	init_line(t_line *line, const t_pos pos1, const t_pos pos2)
 {
 	set_pos(&(line->pos1), pos1.x, pos1.y);
 	set_pos(&(line->pos2), pos2.x, pos2.y);
-	line->dx = fabs(pos1.x - pos2.x);
-	line->sx = get_signd(pos1.x - pos2.x);
-	line->dy = -fabs(pos1.y - pos2.y);
-	line->sy = get_signd(pos1.y - pos2.y);
+	line->dx = fabs(pos2.x - pos1.x);
+	line->sx = get_signd(pos2.x - pos1.x);
+	line->dy = -fabs(pos2.y - pos1.y);
+	line->sy = get_signd(pos2.y - pos1.y);
 	line->error = line->dx + line->dy;
 	line->nb_points = get_nb_points(line->dx, line->dy);
 }

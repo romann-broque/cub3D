@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 15:46:36 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/20 13:18:23 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/20 23:32:38 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,22 +55,51 @@ static t_cast	dda(
 	return (get_cast(map, side_dist, delta_dist, step));
 }
 
+static int	get_sign(const double x)
+{
+	if (x < 0)
+		return (-1);
+	return (1);
+}
+
+static t_vect	get_ray_dir(const t_vect dir, const t_vect ray)
+{
+	t_vect	ray_dir;
+
+	ray_dir.x = 0;
+	ray_dir.y = 0;
+	if (dir.x != 0)
+	{
+		ray_dir.x = dir.x;
+		ray_dir.y = get_sign(ray.y);
+	}
+	if (dir.y != 0)
+	{
+		ray_dir.x = get_sign(ray.x);
+		ray_dir.y = dir.y;
+	}
+	printf("RAY_DIR_X -> %lf\n", ray_dir.x);
+	printf("RAY_DIR_Y -> %lf\n", ray_dir.y);
+	return (ray_dir);
+}
+
 static t_pos	find_hit_pos(
 	const t_player player,
 	const t_vect ray,
 	const t_vect cast_dist
 )
 {
-	const double	x_ray = (double)ray.x * cast_dist.x;
-	const double	y_ray = (double)ray.y * cast_dist.y;
+	const t_vect	ray_dir = get_ray_dir(player.dir, ray);
+	const double	x_ray = ray_dir.x * cast_dist.x;
+	const double	y_ray = ray_dir.y * cast_dist.y;
 	double			x;
 	double			y;
 	t_pos			hit_pos;
 
 	x = player.pos.x;
+	y = player.pos.y;
 	if (fabs(x_ray) < MAX_LEN_RAY)
 		x = player.pos.x + x_ray;
-	y = player.pos.y;
 	if (fabs(y_ray) < MAX_LEN_RAY)
 		y = player.pos.y + y_ray;
 	printf("ray.x -> %lf\n", ray.x);
@@ -79,6 +108,8 @@ static t_pos	find_hit_pos(
 	printf("cast.y -> %lf\n", cast_dist.y);
 	printf("x_ray -> %lf\n", x_ray);
 	printf("y_ray -> %lf\n", y_ray);
+	printf("x -> %lf\n", x);
+	printf("y -> %lf\n", y);
 	set_pos(&(hit_pos), x, y);
 	return (hit_pos);
 }
@@ -103,14 +134,12 @@ static void	raycast(t_win *const window, const size_t x)
 		cast.dist.y -= delta_dist.y;
 		perp_wall_dist = cast.dist.y;
 	}
-	printf("x=%zu	-> cast (%lf;%lf)\n", x, cast.dist.x, cast.dist.y);
-	printf("perpendicular wall distance -> %lf\n", perp_wall_dist);
+	t_pos	hit_pos = find_hit_pos(player, ray, cast.dist);
+		draw_line_on_map(window, hit_pos, player.pos, RED);	
+	printf("dist -> %lf;%lf\n", cast.dist.x, cast.dist.y);
+	printf("hit point -> %lf;%lf\n", hit_pos.x, hit_pos.y);
+	(void)perp_wall_dist;
 }
-
-	// t_pos	hit_pos = find_hit_pos(player, ray, cast.dist);
-
-	// printf("hit point -> %lf;%lf\n", hit_pos.x, hit_pos.y);
-	// draw_line_on_map(window, player.pos, hit_pos, RED);
 
 void	raycaster(t_win *const window)
 {
