@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/19 21:48:38 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/20 13:18:57 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@
 # define MINIMAP_RADIUS		2
 # define TILE_SIZE			15
 # define PLAYER_SIZE		4
+# define MAX_LEN_RAY		10
 # define FOV				90
 
 // CHAR
@@ -154,6 +155,19 @@ typedef struct s_pos
 }		t_pos;
 
 typedef t_pos	t_vect;
+
+typedef struct s_line
+{
+	t_pos	pos1;
+	t_pos	pos2;
+	long	dx;
+	int		sx;
+	long	dy;
+	int		sy;
+	long	error;
+	long	e2;
+	size_t	nb_points;
+}		t_line;
 
 typedef struct s_player
 {
@@ -316,6 +330,9 @@ void		draw_pos_on_map(t_win *const window,
 void		draw_coordinate_on_map(t_win *const window,
 				const double x, const double y,
 				const int color);
+void		draw_line_on_map(t_win *const window,
+				const t_pos pos1, const t_pos pos2,
+				const int color);
 
 	// draw_on_minimap.c
 
@@ -337,6 +354,25 @@ void		draw_tile(t_win *const window,
 	// put_pixel.c
 
 void		put_pixel(t_data *data, const int x, const int y, const int color);
+
+		/////////////////////////////////////////
+		/////			line				/////
+		/////////////////////////////////////////
+
+		// init_line.c
+
+void		init_line(t_line *line, const t_pos pos3, const t_pos pos2);
+
+		// line_utils.c
+
+bool		is_line_printable(t_line *line);
+bool		are_crd_same(const double c1, const double c2);
+bool		are_pos_same(const t_pos pos1, const t_pos pos2);
+
+		// put_line.c
+
+void		put_line(t_data *data,
+				const t_pos pos1, const t_pos pos2, const int color);
 
 	/////////////////////////////////////////
 	/////			 loop				/////

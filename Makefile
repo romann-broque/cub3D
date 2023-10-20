@@ -16,6 +16,7 @@ PATH_SRCS	+=	srcs/read_file/
 PATH_SRCS	+=	srcs/window/
 PATH_SRCS	+=	srcs/window/data/
 PATH_SRCS	+=	srcs/window/display/
+PATH_SRCS	+=	srcs/window/display/line/
 PATH_SRCS	+=	srcs/window/loop/
 PATH_SRCS	+=	srcs/window/loop/events/
 PATH_SRCS	+=	srcs/window/map/
@@ -72,6 +73,12 @@ SRCS	 	+=	draw_on_map.c
 SRCS	 	+=	draw_on_minimap.c
 SRCS	 	+=	draw_tile.c
 SRCS	 	+=	put_pixel.c
+
+### srcs/window/display/line/
+
+SRCS	 	+=	init_line.c
+SRCS	 	+=	line_utils.c
+SRCS	 	+=	put_line.c
 
 ### srcs/window/loop/
 
