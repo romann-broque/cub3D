@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/18 14:14:38 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/20 16:13:49 by jess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@
 # define MAP_YOFFSET		15
 # define MINIMAP_RADIUS		5
 # define TILE_SIZE			15
+# define NEGATIVE			-1
+# define HALF				0.5
 
 // CHAR
 
@@ -136,6 +138,12 @@ enum e_attribute_type
 ////////////////
 // STRUCTURES //
 ////////////////
+
+typedef struct s_wall
+{
+	ssize_t	start;
+	ssize_t	end;
+}	t_wall;
 
 typedef struct s_config
 {
@@ -280,6 +288,14 @@ void	display_minimap(t_win *const window);
 	// display_player.c
 
 void	display_player(t_win *const window);
+
+	// display_walls.c
+
+void	display_walls(
+			t_win *const window,
+			const ssize_t lineheight,
+			const ssize_t height,
+			const ssize_t x);
 
 	// draw_tile.c
 
