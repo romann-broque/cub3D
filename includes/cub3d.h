@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/21 12:54:20 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/21 16:25:08 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@
 # define INVALID_OFFSET		-1
 # define RGB_SIZE			3
 # define ATTRIBUTE_COUNT	6
-# define WINDOW_WIDTH		800
-# define WINDOW_HEIGHT		500
+# define WINDOW_WIDTH		1920
+# define WINDOW_HEIGHT		1080
 # define WINDOW_TITLE		"cub3D"
 # define PLAYER_XOFFSET		0.5
 # define PLAYER_YOFFSET		0.5

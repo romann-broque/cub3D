@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 15:46:36 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/21 15:07:45 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/21 16:30:36 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,18 @@ static t_cast	get_cast(
 	t_map *const map,
 	t_vect side_dist,
 	const t_vect delta_dist,
-	const t_vect step
+	const t_vect step,
+	const double coeff
 	)
 {
 	size_t	x;
 	size_t	y;
 	t_cast	cast;
 
-	x = (size_t)floor(map->player.pos.x);
-	y = (size_t)floor(map->player.pos.y);
+	x = map->player.pos.x;
+	y = map->player.pos.y;
 	cast.dist = side_dist;
-	while (is_ground(map, x, y))
+	while (is_ground(map, (size_t)x, (size_t)y))
 	{
 		if (cast.dist.x < cast.dist.y)
 		{
@@ -41,8 +42,16 @@ static t_cast	get_cast(
 			cast.side = 1;
 		}
 	}
-	cast.hitpoint.x = x + (1 - step.x) / 2;
-	cast.hitpoint.y = y + (1 - step.y) / 2;
+	if (cast.side == 0)
+	{
+		cast.hitpoint.x = x + (1 - step.x) / 2;
+		cast.hitpoint.y = coeff * (cast.hitpoint.x - map->player.pos.x) + map->player.pos.y;
+	}
+	else
+	{
+		cast.hitpoint.y = y + (1 - step.y) / 2;
+		cast.hitpoint.x = map->player.pos.x + (cast.hitpoint.y - map->player.pos.y) / coeff;
+	}
 	return (cast);
 }
 
@@ -54,8 +63,9 @@ static t_cast	dda(
 {
 	const t_vect	step = get_step_from_ray(ray);
 	const t_vect	side_dist = get_side_dist(pos, ray, delta_dist);
+	const double	coeff = ray.y / ray.x;
 
-	return (get_cast(map, side_dist, delta_dist, step));
+	return (get_cast(map, side_dist, delta_dist, step, coeff));
 }
 
 static void	raycast(t_win *const window, const size_t x)
