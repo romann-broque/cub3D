@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 16:01:08 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/21 20:14:02 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/21 22:47:59 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ static t_pos	find_screen_pos(
 {
 	const t_pos		player_pos = window->map->player.pos;
 	const double	scale = TILE_SIZE - 1;
-	const double	x_screen = (fabs(pos.x - floor(player_pos.x))
+	const double	x_screen = (pos.x - floor(player_pos.x)
 			+ MINIMAP_RADIUS) * scale + MINIMAP_XOFFSET;
-	const double	y_screen = (fabs(pos.y - floor(player_pos.y))
+	const double	y_screen = (pos.y - floor(player_pos.y)
 			+ MINIMAP_RADIUS) * scale + MINIMAP_YOFFSET;
 	t_pos			screen_pos;
 
@@ -67,7 +67,11 @@ void	draw_line_on_minimap(
 	const t_pos	screen_pos1 = find_screen_pos(window, pos1);
 	const t_pos	screen_pos2 = find_screen_pos(window, pos2);
 
-	put_line(&(window->data), screen_pos1, screen_pos2, color);
+	printf("p1 -> %lf;%lf\n", pos1.x, pos1.y);
+	printf("p2 -> %lf;%lf\n", pos2.x, pos2.y);
+	printf("screen_p1 -> %lf;%lf\n", screen_pos1.x, screen_pos1.y);
+	printf("screen_p2 -> %lf;%lf\n", screen_pos2.x, screen_pos2.y);
+	put_line_in_minimap(&(window->data), screen_pos1, screen_pos2, color);
 }
 
 void	draw_pos_on_minimap(

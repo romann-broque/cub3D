@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/21 20:13:55 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/21 23:34:31 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,20 +53,20 @@
 # define INVALID_OFFSET		-1
 # define RGB_SIZE			3
 # define ATTRIBUTE_COUNT	6
-# define WINDOW_WIDTH		1600
-# define WINDOW_HEIGHT		1200
+# define WINDOW_WIDTH		1200
+# define WINDOW_HEIGHT		900
 # define WINDOW_TITLE		"cub3D"
 # define PLAYER_XOFFSET		0.5
 # define PLAYER_YOFFSET		0.5
-# define MINIMAP_XOFFSET	25
+# define MINIMAP_XOFFSET	0
 # define MINIMAP_YOFFSET	25
 # define MAP_XOFFSET		5
 # define MAP_YOFFSET		100
 # define MINIMAP_RADIUS		2
-# define TILE_SIZE			15
+# define TILE_SIZE			10
 # define PLAYER_SIZE		4
 # define MAX_LEN_RAY		10
-# define FOV				80
+# define FOV				120
 
 // CHAR
 
@@ -160,6 +160,8 @@ typedef struct s_line
 {
 	t_pos	pos1;
 	t_pos	pos2;
+	t_pos	min_pos;
+	t_pos	max_pos;
 	long	dx;
 	int		sx;
 	long	dy;
@@ -368,6 +370,8 @@ void		put_pixel(t_data *data, const int x, const int y, const int color);
 		// init_line.c
 
 void		init_line(t_line *line, const t_pos pos3, const t_pos pos2);
+void		init_line_in_minimap(t_line *line,
+				const t_pos pos1, const t_pos pos2);
 
 		// line_utils.c
 
@@ -378,6 +382,8 @@ bool		are_pos_same(const t_pos pos1, const t_pos pos2);
 		// put_line.c
 
 void		put_line(t_data *data,
+				const t_pos pos1, const t_pos pos2, const int color);
+void		put_line_in_minimap(t_data *data,
 				const t_pos pos1, const t_pos pos2, const int color);
 
 	/////////////////////////////////////////

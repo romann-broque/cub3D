@@ -6,15 +6,24 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 06:28:34 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/20 11:58:49 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/21 23:34:06 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+static bool	can_put_pixel(const t_line *const line, const t_pos pos)
+{
+	return (pos.x <= (double)line->max_pos.x
+		&& pos.y <= (double)line->max_pos.y
+		&& pos.x >= (double)line->min_pos.x
+		&& pos.y >= (double)line->min_pos.y);
+}
+
 static void	put_point(t_data *data, const t_line *const line, const int color)
 {
-	put_pixel(data, line->pos1.x, line->pos1.y, color);
+	if (can_put_pixel(line, line->pos1) == true)
+		put_pixel(data, line->pos1.x, line->pos1.y, color);
 }
 
 static void	plot_line(t_data *data, t_line *const line, const int color)
@@ -56,6 +65,20 @@ void	put_line(
 	t_line	line;
 
 	init_line(&line, pos1, pos2);
+	if (is_line_printable(&line) == true)
+		plot_line(data, &line, color);
+}
+
+void	put_line_in_minimap(
+	t_data *data,
+	const t_pos pos1,
+	const t_pos pos2,
+	const int color
+	)
+{
+	t_line	line;
+
+	init_line_in_minimap(&line, pos1, pos2);
 	if (is_line_printable(&line) == true)
 		plot_line(data, &line, color);
 }
