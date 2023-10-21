@@ -6,53 +6,60 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 15:46:36 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/21 16:30:36 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/21 20:04:44 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static t_cast	get_cast(
+static void	set_hitpoint(
+	t_cast *const cast,
+	const t_pos player_pos,
+	const size_t x,
+	const size_t y
+	)
+{
+	if (cast->side == 0)
+	{
+		cast->hitpoint.x = x + (cast->step.x == -1);
+		cast->hitpoint.y = cast->coeff * (cast->hitpoint.x - player_pos.x)
+			+ player_pos.y;
+	}
+	else
+	{
+		cast->hitpoint.y = y + (cast->step.y == -1);
+		cast->hitpoint.x = (cast->hitpoint.y - player_pos.y) / cast->coeff
+			+ player_pos.x;
+	}
+}
+
+static void	set_cast(
 	t_map *const map,
-	t_vect side_dist,
 	const t_vect delta_dist,
-	const t_vect step,
-	const double coeff
+	t_cast *const cast
 	)
 {
 	size_t	x;
 	size_t	y;
-	t_cast	cast;
 
 	x = map->player.pos.x;
 	y = map->player.pos.y;
-	cast.dist = side_dist;
-	while (is_ground(map, (size_t)x, (size_t)y))
+	while (is_ground(map, x, y))
 	{
-		if (cast.dist.x < cast.dist.y)
+		if (cast->dist.x < cast->dist.y)
 		{
-			cast.dist.x += delta_dist.x;
-			x += step.x;
-			cast.side = 0;
+			cast->dist.x += delta_dist.x;
+			x += cast->step.x;
+			cast->side = 0;
 		}
 		else
 		{
-			cast.dist.y += delta_dist.y;
-			y += step.y;
-			cast.side = 1;
+			cast->dist.y += delta_dist.y;
+			y += cast->step.y;
+			cast->side = 1;
 		}
 	}
-	if (cast.side == 0)
-	{
-		cast.hitpoint.x = x + (1 - step.x) / 2;
-		cast.hitpoint.y = coeff * (cast.hitpoint.x - map->player.pos.x) + map->player.pos.y;
-	}
-	else
-	{
-		cast.hitpoint.y = y + (1 - step.y) / 2;
-		cast.hitpoint.x = map->player.pos.x + (cast.hitpoint.y - map->player.pos.y) / coeff;
-	}
-	return (cast);
+	set_hitpoint(cast, map->player.pos, x, y);
 }
 
 static t_cast	dda(
@@ -64,8 +71,13 @@ static t_cast	dda(
 	const t_vect	step = get_step_from_ray(ray);
 	const t_vect	side_dist = get_side_dist(pos, ray, delta_dist);
 	const double	coeff = ray.y / ray.x;
+	t_cast			cast;
 
-	return (get_cast(map, side_dist, delta_dist, step, coeff));
+	cast.coeff = coeff;
+	cast.step = step;
+	cast.dist = side_dist;
+	set_cast(map, delta_dist, &cast);
+	return (cast);
 }
 
 static void	raycast(t_win *const window, const size_t x)
@@ -76,15 +88,12 @@ static void	raycast(t_win *const window, const size_t x)
 	t_cast			cast;
 	double			perp_wall_dist;
 
-	printf("x=%zu	-> ray (%lf;%lf)\n", x, ray.x, ray.y);
 	cast = dda(window->map, player.pos, ray, delta_dist);
 	if (cast.side == 0)
 		perp_wall_dist = cast.dist.x - delta_dist.x;
 	else
 		perp_wall_dist = cast.dist.y - delta_dist.y;
 	draw_line_on_map(window, cast.hitpoint, player.pos, RED);
-	printf("dist -> %lf;%lf\n", cast.dist.x, cast.dist.y);
-	printf("wall_dist -> %lf\n", perp_wall_dist);
 	(void)perp_wall_dist;
 }
 
