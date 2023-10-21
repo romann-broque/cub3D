@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/20 23:31:13 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/21 12:54:20 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@
 # define TILE_SIZE			15
 # define PLAYER_SIZE		4
 # define MAX_LEN_RAY		10
-# define FOV				30
+# define FOV				90
 
 // CHAR
 
@@ -180,6 +180,7 @@ typedef struct s_player
 typedef struct s_cast
 {
 	t_vect	dist;
+	t_pos	hitpoint;
 	int		side;
 }		t_cast;
 
