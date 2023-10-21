@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/21 19:56:25 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/21 20:13:55 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -347,6 +347,9 @@ void		draw_pos_on_minimap(t_win *const window,
 void		draw_coordinate_on_minimap(t_win *const window,
 				const double x, const double y,
 				const int color);
+void		draw_line_on_minimap(t_win *const window,
+				const t_pos pos1, const t_pos pos2,
+				const int color);
 
 	// draw_tile.c
 
@@ -509,5 +512,10 @@ t_vect		get_step_from_ray(const t_vect ray);
 t_vect		get_side_dist(
 				const t_pos pos, const t_vect ray,
 				const t_vect delta_dist);
+
+		// dda.c
+
+t_cast		dda(t_map *const map, const t_pos pos,
+				const t_vect ray, const t_vect delta_dist);
 
 #endif

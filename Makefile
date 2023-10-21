@@ -116,6 +116,7 @@ SRCS	 	+=	set_pos.c
 ### srcs/window/map/raycast/
 
 SRCS	 	+=	get_vect.c
+SRCS	 	+=	dda.c
 SRCS	 	+=	raycaster.c
 
 vpath %.c $(PATH_SRCS)

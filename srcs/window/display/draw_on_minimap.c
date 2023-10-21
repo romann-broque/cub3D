@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 16:01:08 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/19 21:51:54 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/21 20:14:02 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,19 @@ void	draw_square_on_minimap(
 		}
 		++i;
 	}
+}
+
+void	draw_line_on_minimap(
+	t_win *const window,
+	const t_pos pos1,
+	const t_pos pos2,
+	const int color
+)
+{
+	const t_pos	screen_pos1 = find_screen_pos(window, pos1);
+	const t_pos	screen_pos2 = find_screen_pos(window, pos2);
+
+	put_line(&(window->data), screen_pos1, screen_pos2, color);
 }
 
 void	draw_pos_on_minimap(
