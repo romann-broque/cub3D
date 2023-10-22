@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 06:28:34 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/21 23:34:06 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/22 12:36:12 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 static bool	can_put_pixel(const t_line *const line, const t_pos pos)
 {
-	return (pos.x <= (double)line->max_pos.x
-		&& pos.y <= (double)line->max_pos.y
-		&& pos.x >= (double)line->min_pos.x
-		&& pos.y >= (double)line->min_pos.y);
+	return (floor(pos.x) <= line->max_pos.x
+		&& floor(pos.y) <= line->max_pos.y
+		&& floor(pos.x) >= line->min_pos.x
+		&& floor(pos.y) >= line->min_pos.y);
 }
 
 static void	put_point(t_data *data, const t_line *const line, const int color)
