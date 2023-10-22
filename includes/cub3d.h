@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/22 12:39:35 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/22 21:50:44 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,13 @@
 # define PLAYER_YOFFSET		0.5
 # define MINIMAP_XOFFSET	25
 # define MINIMAP_YOFFSET	25
-# define MAP_XOFFSET		5
-# define MAP_YOFFSET		100
-# define MINIMAP_RADIUS		2
+# define MAP_XOFFSET		25
+# define MAP_YOFFSET		200
+# define MINIMAP_RADIUS		3
 # define TILE_SIZE			15
 # define PLAYER_SIZE		4
 # define MAX_LEN_RAY		10
-# define FOV				120
+# define FOV				90
 
 // CHAR
 

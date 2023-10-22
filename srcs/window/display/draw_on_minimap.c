@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 16:01:08 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/22 12:27:14 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/22 21:55:02 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,6 @@ void	draw_line_on_minimap(
 	const t_pos	screen_pos1 = find_screen_pos(window, pos1);
 	const t_pos	screen_pos2 = find_screen_pos(window, pos2);
 
-	printf("p1 -> %lf;%lf\n", pos1.x, pos1.y);
-	printf("p2 -> %lf;%lf\n", pos2.x, pos2.y);
-	printf("screen_p1 -> %lf;%lf\n", screen_pos1.x, screen_pos1.y);
-	printf("screen_p2 -> %lf;%lf\n", screen_pos2.x, screen_pos2.y);
 	put_line_in_minimap(&(window->data), screen_pos1, screen_pos2, color);
 }
 
