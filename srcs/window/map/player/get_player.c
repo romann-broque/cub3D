@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 07:20:28 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/22 21:57:15 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/22 22:42:12 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ t_player	get_player(t_map *const map)
 	printf("plane->%lf;%lf\n", player.plane.x, player.plane.y);
 	return (player);
 }
-
 /*
 	Rotation example
 
