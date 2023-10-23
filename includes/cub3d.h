@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/22 21:50:44 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/23 06:57:19 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -325,7 +325,11 @@ void		display_minimap(t_win *const window);
 void		display_player_on_map(t_win *const window);
 void		display_player_on_minimap(t_win *const window);
 
-	// draw_on_map.c
+		/////////////////////////////////////////
+		/////			draw				/////
+		/////////////////////////////////////////
+
+		// draw_on_map.c
 
 void		draw_square_on_map(t_win *const window,
 				const t_pos pos, const size_t size,
@@ -339,7 +343,7 @@ void		draw_line_on_map(t_win *const window,
 				const t_pos pos1, const t_pos pos2,
 				const int color);
 
-	// draw_on_minimap.c
+		// draw_on_minimap.c
 
 void		draw_square_on_minimap(t_win *const window,
 				const t_pos pos, const size_t size,
@@ -353,13 +357,20 @@ void		draw_line_on_minimap(t_win *const window,
 				const t_pos pos1, const t_pos pos2,
 				const int color);
 
-	// draw_tile.c
+		// draw_tile.c
 
 void		draw_tile(t_win *const window,
 				const t_pos pos,
 				const size_t x, const size_t y);
 
-	// put_pixel.c
+		// draw_square.c
+
+void		draw_square(t_win *const window,
+				const t_pos screen_pos,
+				const size_t size,
+				const int color);
+
+		// put_pixel.c
 
 void		put_pixel(t_data *data, const int x, const int y, const int color);
 

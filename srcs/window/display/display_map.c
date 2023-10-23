@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 16:11:15 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/20 08:07:49 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/23 06:56:53 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,4 @@ void	display_map(t_win *const window)
 		draw_tile_sequence(window, i);
 		++i;
 	}
-	display_player_on_map(window);
 }

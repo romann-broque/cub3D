@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 14:52:26 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/20 11:58:20 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/23 06:20:20 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,25 +30,8 @@ void	draw_square_on_map(
 	)
 {
 	const t_pos	screen_pos = find_screen_pos(pos);
-	const int	x_screen = (int)(screen_pos.x);
-	const int	y_screen = (int)(screen_pos.y);
-	size_t		i;
-	size_t		j;
 
-	i = 0;
-	while (i < size)
-	{
-		j = 0;
-		while (j < size)
-		{
-			put_pixel(&(window->data), x_screen + j, y_screen + i, color);
-			put_pixel(&(window->data), x_screen - j, y_screen + i, color);
-			put_pixel(&(window->data), x_screen + j, y_screen - i, color);
-			put_pixel(&(window->data), x_screen - j, y_screen - i, color);
-			++j;
-		}
-		++i;
-	}
+	draw_square(window, screen_pos, size, color);
 }
 
 void	draw_line_on_map(
