@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 09:05:17 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/18 09:40:19 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/22 12:38:44 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ static uint32_t	get_color_from_tile(
 	const size_t y
 	)
 {
-	if (is_player(map, x, y))
-		return (RED);
 	if (is_wall(map, x, y) || is_ground(map, x, y))
 		return (WHITE);
 	return (BLACK);
@@ -50,8 +48,8 @@ static void	draw_tile_width(
 				&& is_tile_side(j, line_index) == true))
 		{
 			put_pixel(&(window->data),
-				screen_pos.x * (TILE_SIZE - 1) + j,
-				screen_pos.y * (TILE_SIZE - 1) + line_index,
+				screen_pos.x + j,
+				screen_pos.y + line_index,
 				get_color_from_tile(window->map, tile_pos.x, tile_pos.y));
 		}
 		++j;

@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 16:11:15 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/18 07:34:35 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/23 06:56:53 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,9 @@ static void	draw_tile_sequence(
 	while (i < window->map->width)
 	{
 		set_pos(&pos, i, sequence_index);
-		draw_tile(window, pos, i + MAP_XOFFSET, sequence_index + MAP_YOFFSET);
+		draw_tile(window, pos,
+			i * (TILE_SIZE - 1) + MAP_XOFFSET,
+			sequence_index * (TILE_SIZE - 1) + MAP_YOFFSET);
 		++i;
 	}
 }
