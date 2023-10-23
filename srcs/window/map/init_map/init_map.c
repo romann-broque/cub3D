@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lechon <lechon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 13:43:54 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/18 14:15:17 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/23 16:03:11 by lechon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,30 +36,6 @@ static size_t	find_max_line_length(char *const *const lines)
 	return (max_len);
 }
 
-static t_pos	get_player_pos(t_map *const map)
-{
-	t_pos	pos;
-	size_t	x;
-	size_t	y;
-
-	y = 0;
-	while (y < map->height)
-	{
-		x = 0;
-		while (x < map->width)
-		{
-			if (is_player(map, x, y))
-			{
-				pos.x = x + PLAYER_XOFFSET;
-				pos.y = y + PLAYER_YOFFSET;
-			}
-			++x;
-		}
-		++y;
-	}
-	return (pos);
-}
-
 t_map	*init_map(char *const *const lines)
 {
 	const size_t	height = count_lines(lines);
@@ -81,7 +57,9 @@ t_map	*init_map(char *const *const lines)
 	map->width = width;
 	map->matrix = init_matrix(height, width, lines);
 	if (map->matrix == NULL)
+	{
+		free_map(map);
 		return (NULL);
-	map->player_pos = get_player_pos(map);
+	}
 	return (map);
 }
