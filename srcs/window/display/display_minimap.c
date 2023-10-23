@@ -6,53 +6,11 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:08:47 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/23 06:57:06 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/23 09:04:06 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-static t_pos	get_min_pos(const t_pos pos)
-{
-	t_pos	min_pos;
-
-	min_pos.x = 0;
-	if (pos.x > MINIMAP_RADIUS)
-		min_pos.x = floor(pos.x - MINIMAP_RADIUS);
-	min_pos.y = 0;
-	if (pos.y > MINIMAP_RADIUS)
-		min_pos.y = floor(pos.y - MINIMAP_RADIUS);
-	return (min_pos);
-}
-
-static t_pos	get_max_pos(const t_pos pos)
-{
-	t_pos	max_pos;
-
-	max_pos.x = SIZE_MAX;
-	if (pos.x < SIZE_MAX - MINIMAP_RADIUS)
-		max_pos.x = pos.x + MINIMAP_RADIUS;
-	max_pos.y = SIZE_MAX;
-	if (pos.y < SIZE_MAX - MINIMAP_RADIUS)
-		max_pos.y = pos.y + MINIMAP_RADIUS;
-	return (max_pos);
-}
-
-static bool	is_closed_to_player(
-	const t_map *const map,
-	const size_t x,
-	const size_t y
-	)
-{
-	const t_pos	pos = map->player.pos;
-	const t_pos	min_pos = get_min_pos(pos);
-	const t_pos	max_pos = get_max_pos(pos);
-
-	return (x >= min_pos.x
-		&& x <= max_pos.x
-		&& y >= min_pos.y
-		&& y <= max_pos.y);
-}
 
 static bool	is_tile_sequence_drawn(
 	t_win *const window,
@@ -61,6 +19,7 @@ static bool	is_tile_sequence_drawn(
 	)
 {
 	const t_map *const	map = window->map;
+	const t_pos			offset = get_offset(map->player.pos);
 	size_t				x;
 	size_t				j;
 	t_pos				pos;
@@ -73,8 +32,8 @@ static bool	is_tile_sequence_drawn(
 		{
 			set_pos(&pos, j, i);
 			draw_tile(window, pos,
-				x * (TILE_SIZE - 1) + MINIMAP_XOFFSET,
-				y * (TILE_SIZE - 1) + MINIMAP_YOFFSET);
+				(x + offset.x) * (TILE_SIZE - 1) + MINIMAP_XOFFSET,
+				(y + offset.y) * (TILE_SIZE - 1) + MINIMAP_YOFFSET);
 			++x;
 		}
 		++j;

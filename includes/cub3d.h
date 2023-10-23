@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/23 06:57:19 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/23 09:05:55 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@
 # define MINIMAP_RADIUS		3
 # define TILE_SIZE			15
 # define PLAYER_SIZE		4
-# define MAX_LEN_RAY		10
 # define FOV				90
 
 // CHAR
@@ -319,6 +318,13 @@ void		display_map(t_win *const window);
 	// display_minimap.c
 
 void		display_minimap(t_win *const window);
+
+	// display_minimap_utils.c
+
+bool		is_closed_to_player(
+				const t_map *const map,
+				const size_t x, const size_t y);
+t_pos		get_offset(const t_pos player_pos);
 
 	// display_player.c
 
