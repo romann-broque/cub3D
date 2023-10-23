@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:14 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/23 16:25:52 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/23 20:46:51 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,5 +83,7 @@ int	main(int ac, char **av)
 	ret_val = EXIT_FAILURE;
 	if (ac == EXPECTED_ARG_COUNT)
 		ret_val = start_game(av[1]);
+	else
+		print_format_error(ERROR_USAGE);
 	return (ret_val);
 }

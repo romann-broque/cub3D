@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/23 16:23:47 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/23 20:48:15 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,8 @@
 
 // Errors
 
+# define ERROR_USAGE		"Usage: ./cub3d <file.cub>"
+# define MLX_ERROR			"MLX_ERROR"
 # define MAP_NOT_CLOSED		"MAP NOT CLOSED"
 # define MAP_NOT_UNIQUE		"MAP NOT UNIQUE"
 # define MAP_TOO_BIG		"MAP TOO BIG"
