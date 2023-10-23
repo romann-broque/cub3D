@@ -6,11 +6,18 @@
 /*   By: lechon <lechon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 14:46:43 by jess              #+#    #+#             */
-/*   Updated: 2023/10/23 11:54:26 by lechon           ###   ########.fr       */
+/*   Updated: 2023/10/23 14:12:48 by lechon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+static int	get_wall_color(const t_side side, const int color)
+{
+	if (side == Y_SIDE)
+		return (color / 2);
+	return (color);
+}
 
 static t_pos	init_wall_end(
 	const int lineheight,
@@ -48,6 +55,7 @@ static t_pos	init_wall_start(
 
 void	display_walls(
 	t_win *const window,
+	const t_side side,
 	const double perp_wall_dist,
 	const int x
 	)
@@ -60,7 +68,7 @@ void	display_walls(
 	i = wall_start.y;
 	while(i < wall_end.y)
 	{
-		put_pixel(&(window->data), x, i, WHITE);
+		put_pixel(&(window->data), x, i, get_wall_color(side, GREEN));
 		i++;
 	}
 }

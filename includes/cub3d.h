@@ -6,7 +6,7 @@
 /*   By: lechon <lechon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/23 12:24:36 by lechon           ###   ########.fr       */
+/*   Updated: 2023/10/23 14:13:10 by lechon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -373,6 +373,7 @@ void		draw_line_on_minimap(t_win *const window,
 
 void	display_walls(
 			t_win *const window,
+			const t_side side,
 			const double perp_wall_dist,
 			const int x);
 
