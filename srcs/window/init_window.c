@@ -6,13 +6,22 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 09:39:32 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/18 10:10:39 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/23 06:01:42 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	init_window(t_win *const window, t_map *const map)
+static void	init_player(t_map *const map)
+{
+	map->player = get_player(map);
+}
+
+void	init_window(
+	t_win *const window,
+	t_map *const map,
+	const t_config *const config
+	)
 {
 	window->mlx_ptr = mlx_init();
 	if (window->mlx_ptr == NULL)
@@ -28,5 +37,7 @@ void	init_window(t_win *const window, t_map *const map)
 		return ;
 	}
 	init_data(window->mlx_ptr, &window->data);
+	init_player(map);
 	window->map = map;
+	window->config = config;
 }

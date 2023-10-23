@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display_player.c                                   :+:      :+:    :+:   */
+/*   conversion.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 07:44:26 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/23 06:40:48 by rbroque          ###   ########.fr       */
+/*   Created: 2023/10/19 07:28:15 by rbroque           #+#    #+#             */
+/*   Updated: 2023/10/19 07:30:21 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	display_player_on_map(t_win *const window)
+double	convert_deg_to_rad(const double degrees)
 {
-	const t_pos	player_pos = window->map->player.pos;
-
-	draw_square_on_map(window, player_pos, PLAYER_SIZE, RED);
+	return (degrees * (M_PI / 180.0));
 }
 
-void	display_player_on_minimap(t_win *const window)
+double	convert_rad_to_deg(const double radian)
 {
-	const t_pos		player_pos = window->map->player.pos;
-
-	draw_square_on_minimap(window, player_pos, PLAYER_SIZE, RED);
+	return (radian * (180 / M_PI));
 }
