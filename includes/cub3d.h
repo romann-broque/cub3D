@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: lechon <lechon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/20 16:13:49 by jess             ###   ########.fr       */
+/*   Updated: 2023/10/23 11:03:24 by lechon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@
 # define INVALID_OFFSET		-1
 # define RGB_SIZE			3
 # define ATTRIBUTE_COUNT	6
-# define WINDOW_WIDTH		1600
-# define WINDOW_HEIGHT		1200
+# define WINDOW_WIDTH		900
+# define WINDOW_HEIGHT		600
 # define WINDOW_TITLE		"cub3D"
 # define PLAYER_XOFFSET		0.5
 # define PLAYER_YOFFSET		0.5
@@ -63,8 +63,6 @@
 # define MAP_YOFFSET		15
 # define MINIMAP_RADIUS		5
 # define TILE_SIZE			15
-# define NEGATIVE			-1
-# define HALF				0.5
 
 // CHAR
 
@@ -138,12 +136,6 @@ enum e_attribute_type
 ////////////////
 // STRUCTURES //
 ////////////////
-
-typedef struct s_wall
-{
-	ssize_t	start;
-	ssize_t	end;
-}	t_wall;
 
 typedef struct s_config
 {
@@ -293,9 +285,8 @@ void	display_player(t_win *const window);
 
 void	display_walls(
 			t_win *const window,
-			const ssize_t lineheight,
-			const ssize_t height,
-			const ssize_t x);
+			const double perp_wall_dist,
+			const int x);
 
 	// draw_tile.c
 

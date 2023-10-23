@@ -3,61 +3,64 @@
 /*                                                        :::      ::::::::   */
 /*   display_walls.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: lechon <lechon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 14:46:43 by jess              #+#    #+#             */
-/*   Updated: 2023/10/20 17:24:30 by jess             ###   ########.fr       */
+/*   Updated: 2023/10/23 11:54:26 by lechon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static t_wall	*init_wall(
-	t_wall **wall,
-	const ssize_t lineheight,
-	const ssize_t height
+static t_pos	init_wall_end(
+	const int lineheight,
+	const int height,
+	const int x
 	)
 {
-	ssize_t		tmp1;
-	ssize_t		tmp2;
+	t_pos		wall;
+	const int	tmp1 = lineheight / 2;
+	const int	tmp2 = height / 2;
 
-	tmp1 = (lineheight * -1) / 2;
-	printf("tmp1 = %zu\n", tmp1);
-	tmp2 = height / 2;
-	printf("tmp2 = %zu\n", tmp2);
-	printf("Entrée dans init wall\n");
-	// (*wall)->start = (lineheight * NEGATIVE * HALF) + (height * HALF);
-	(*wall)->start = tmp1 + tmp2;
-	printf("Apres calcul wall start\n");
-	if ((*wall)->start < 0)
-		(*wall)->start = 0;
-	printf("Apres if wall start < 0\n");
-	tmp1 = lineheight / 2;
-	tmp2 = height / 2;
-	// (*wall)->end = (lineheight * HALF) + (height * HALF);
-	(*wall)->end = tmp1 + tmp2;
-	printf("Apres calcul wall end\n");
-	if ((*wall)->end >= height)
-		(*wall)->end = height - 1;
-	printf("Sortie dans init wall\n");
-	return (*wall);
+	wall.y = tmp1 + tmp2;
+	if (wall.y >= height)
+		wall.y = height - 1;
+	wall.x = x;
+	return (wall);
+}
+
+static t_pos	init_wall_start(
+	const int lineheight,
+	const int height,
+	const int x
+	)
+{
+	t_pos		wall;
+	const int	tmp1 = (lineheight * -1) / 2;
+	const int	tmp2 = height / 2;
+
+	wall.y = tmp1 + tmp2;
+	if (wall.y < 0)
+		wall.y = 0;
+	wall.x = x;
+	return (wall);
 }
 
 void	display_walls(
 	t_win *const window,
-	const ssize_t lineheight,
-	const ssize_t height,
-	const ssize_t x
+	const double perp_wall_dist,
+	const int x
 	)
 {
-	ssize_t	i;
-	t_wall	*wall;
+	const int	lineheight = WINDOW_HEIGHT / perp_wall_dist;
+	const t_pos	wall_start = init_wall_start(lineheight, WINDOW_HEIGHT, x);
+	const t_pos	wall_end = init_wall_end(lineheight, WINDOW_HEIGHT, x);
+	int			i;
 
-	wall = init_wall(&wall, lineheight, height);
-	i = 0;
-	while(i < (wall->end - wall->start))
+	i = wall_start.y;
+	while(i < wall_end.y)
 	{
-		put_pixel(&(window->data), x, wall->start + i, BLUE);
+		put_pixel(&(window->data), x, i, WHITE);
 		i++;
 	}
 }
