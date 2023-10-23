@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 10:09:13 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/20 07:20:04 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/23 05:58:59 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	display_window(t_win *const window)
 {
+	window->map->player = get_player(window->map);
 	if (MAP_DISPLAY)
 		display_map(window);
 	if (MINIMAP_DISPLAY)
