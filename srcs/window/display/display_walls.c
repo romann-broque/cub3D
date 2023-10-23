@@ -6,7 +6,7 @@
 /*   By: lechon <lechon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 14:46:43 by jess              #+#    #+#             */
-/*   Updated: 2023/10/23 15:17:37 by lechon           ###   ########.fr       */
+/*   Updated: 2023/10/23 15:36:48 by lechon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,10 @@ static t_pos	init_wall_end(
 	)
 {
 	t_pos		wall;
-	const int	tmp1 = lineheight / 2;
-	const int	tmp2 = height / 2;
 
-	wall.y = tmp1 + tmp2;
+	wall.y = (lineheight / 2) + (height / 2);
 	if (wall.y >= height)
-		wall.y = height - 1;
+		wall.y = fmin((height - 1), wall.y);
 	wall.x = x;
 	return (wall);
 }
@@ -43,12 +41,10 @@ static t_pos	init_wall_start(
 	)
 {
 	t_pos		wall;
-	const int	tmp1 = -lineheight / 2;
-	const int	tmp2 = height / 2;
 
-	wall.y = tmp1 + tmp2;
+	wall.y = (-lineheight / 2) + (height / 2);
 	if (wall.y < 0)
-		wall.y = 0;
+		wall.y = fmax(0.0, wall.y);
 	wall.x = x;
 	return (wall);
 }
