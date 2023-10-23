@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 14:46:43 by jess              #+#    #+#             */
-/*   Updated: 2023/10/23 16:47:31 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/23 20:59:01 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	draw_vertical(
 	i = wall_start.y;
 	while (i < wall_end.y)
 	{
-		put_pixel(&(window->data), x, i, get_wall_color(side, RED));
+		put_pixel(&(window->data), x, i, get_wall_color(side, BLUE));
 		++i;
 	}
 	display_floor(window, x, wall_end.y);
