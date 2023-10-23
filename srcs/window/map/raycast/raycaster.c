@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 15:46:36 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/23 09:07:43 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/23 09:54:41 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static double	get_perp_wall_dist(
 	const t_vect delta_dist
 	)
 {
-	if (cast.side == 0)
+	if (cast.side == X_SIDE)
 		return (cast.dist.x - delta_dist.x);
 	return (cast.dist.y - delta_dist.y);
 }

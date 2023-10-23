@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 20:07:09 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/21 20:07:35 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/23 09:54:32 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	set_hitpoint(
 	const size_t y
 	)
 {
-	if (cast->side == 0)
+	if (cast->side == X_SIDE)
 	{
 		cast->hitpoint.x = x + (cast->step.x == -1);
 		cast->hitpoint.y = cast->coeff * (cast->hitpoint.x - player_pos.x)

@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/23 09:05:55 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/23 09:53:27 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,6 @@
 #  define MAP_DISPLAY		0
 # endif
 
-# define EXPECTED_ARG_COUNT	2
-# define INVALID_FD			-1
-# define COUNT_LINE_ERROR	-1
-# define INVALID_OFFSET		-1
-# define RGB_SIZE			3
-# define ATTRIBUTE_COUNT	6
 # define WINDOW_WIDTH		1600
 # define WINDOW_HEIGHT		900
 # define WINDOW_TITLE		"cub3D"
@@ -66,6 +60,17 @@
 # define TILE_SIZE			15
 # define PLAYER_SIZE		4
 # define FOV				90
+
+// NUMBERS
+
+# define EXPECTED_ARG_COUNT	2
+# define INVALID_FD			-1
+# define COUNT_LINE_ERROR	-1
+# define INVALID_OFFSET		-1
+# define RGB_SIZE			3
+# define ATTRIBUTE_COUNT	6
+# define X_SIDE				0
+# define Y_SIDE				0
 
 // CHAR
 
@@ -144,7 +149,6 @@ typedef struct s_tile
 {
 	char	tile_char;
 	bool	is_marked;
-	bool	is_viewed;
 }		t_tile;
 
 typedef struct s_pos
@@ -178,13 +182,15 @@ typedef struct s_player
 
 }		t_player;
 
+typedef int		t_side;
+
 typedef struct s_cast
 {
 	t_vect	dist;
 	t_vect	step;
 	t_pos	hitpoint;
 	double	coeff;
-	int		side;
+	t_side	side;
 }		t_cast;
 
 typedef struct s_map

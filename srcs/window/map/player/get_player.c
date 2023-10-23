@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 07:20:28 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/23 08:58:36 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/23 09:43:40 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ static t_vect	get_player_dir(
 	{.x = 1, .y = 0}
 	};
 	const char			dir_char = map->matrix
-	[(size_t)floor(player_pos.y)]
-	[(size_t)floor(player_pos.x)].tile_char;
+	[(size_t)player_pos.y]
+	[(size_t)player_pos.x].tile_char;
 	const size_t		index = abs_index(VALID_CHAR_DIR, dir_char);
 	t_vect				dir;
 
