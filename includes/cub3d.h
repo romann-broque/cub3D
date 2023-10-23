@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/23 14:41:43 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/23 16:23:47 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,6 +144,8 @@ enum e_attribute_type
 typedef struct s_config
 {
 	char	*attribute_array[ATTRIBUTE_COUNT + 1];
+	int		ceil_color;
+	int		floor_color;
 }		t_config;
 
 typedef struct s_tile
@@ -264,6 +266,18 @@ void		print_config(t_config *const config);
 
 bool		is_sequence_valid(char *const *const sequence);
 
+	/////////////////////////////////////////
+	/////			color				/////
+	/////////////////////////////////////////
+
+	// get_color_from_rgb.c
+
+uint32_t	get_color_from_rgb(const char *rgb_str);
+
+	// set_color.c
+
+void		set_color(t_config *const config);
+
 /////////////////////////////////////////
 /////			  math				/////
 /////////////////////////////////////////
@@ -370,13 +384,21 @@ void		draw_line_on_minimap(t_win *const window,
 				const t_pos pos1, const t_pos pos2,
 				const int color);
 
-	// display_walls.c
+		// draw_vertical.c
 
-void		display_walls(
+void		draw_vertical(
 				t_win *const window,
 				const t_side side,
 				const double perp_wall_dist,
 				const int x);
+
+		// draw_vertical_utils.c
+
+int			get_wall_color(const t_side side, const int color);
+t_pos		init_wall_end(const int lineheight,
+				const int height, const int x);
+t_pos		init_wall_start(const int lineheight,
+				const int height, const int x);
 
 		// draw_tile.c
 

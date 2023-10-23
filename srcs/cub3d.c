@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:14 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/23 14:40:32 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/23 16:25:52 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ static int	start_game(const char *const filename)
 	config_offset = build_config(&config, content);
 	if (config_offset != INVALID_OFFSET)
 	{
+		set_color(&config);
 		print_config(&config);
 		ret_val = start_map(content + config_offset, &config);
 	}
