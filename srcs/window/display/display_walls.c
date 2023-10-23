@@ -6,7 +6,7 @@
 /*   By: lechon <lechon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 14:46:43 by jess              #+#    #+#             */
-/*   Updated: 2023/10/23 14:35:55 by lechon           ###   ########.fr       */
+/*   Updated: 2023/10/23 15:17:37 by lechon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	display_walls(
 	int			i;
 
 	i = wall_start.y;
-	while(i < wall_end.y)
+	while (i < wall_end.y)
 	{
 		put_pixel(&(window->data), x, i, get_wall_color(side, GREEN));
 		i++;

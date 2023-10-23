@@ -6,13 +6,16 @@
 /*   By: lechon <lechon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 10:09:13 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/23 14:31:56 by lechon           ###   ########.fr       */
+/*   Updated: 2023/10/23 15:18:01 by lechon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	display_fov(t_win *const window, const t_pos hitpoint_array[WINDOW_WIDTH])
+static void	display_fov(
+	t_win *const window,
+	const t_pos hitpoint_array[WINDOW_WIDTH]
+	)
 {
 	const t_pos	player_pos = window->map->player.pos;
 	size_t		i;

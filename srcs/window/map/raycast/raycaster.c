@@ -6,7 +6,7 @@
 /*   By: lechon <lechon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 15:46:36 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/23 14:42:09 by lechon           ###   ########.fr       */
+/*   Updated: 2023/10/23 15:17:22 by lechon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,11 @@ static double	get_perp_wall_dist(
 	return (cast.dist.y - delta_dist.y);
 }
 
-static void	raycast(t_win *const window, const size_t x, t_pos hitpoint_array[WINDOW_WIDTH])
+static void	raycast(
+	t_win *const window,
+	const size_t x,
+	t_pos hitpoint_array[WINDOW_WIDTH]
+	)
 {
 	const t_player	player = window->map->player;
 	const t_vect	ray = get_ray(player, x);

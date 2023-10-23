@@ -6,11 +6,12 @@
 /*   By: lechon <lechon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/23 14:27:29 by lechon           ###   ########.fr       */
+/*   Updated: 2023/10/23 15:25:12 by lechon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
+# define CUB3D_H
 
 ///////////////////////////////////////////////////////////////////////////////
 //									INCLUDES								 //
@@ -371,11 +372,11 @@ void		draw_line_on_minimap(t_win *const window,
 
 	// display_walls.c
 
-void	display_walls(
-			t_win *const window,
-			const t_side side,
-			const double perp_wall_dist,
-			const int x);
+void		display_walls(
+				t_win *const window,
+				const t_side side,
+				const double perp_wall_dist,
+				const int x);
 
 		// draw_tile.c
 

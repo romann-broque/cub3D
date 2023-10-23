@@ -6,7 +6,7 @@ NC="\033[0m"
 
 CACHE=cache
 FOLDERS="srcs/ includes/ libft/"
-norminette ${FOLDERS} > ${CACHE}
+shopt -s expand_aliases; source ~/.bashrc; norminette ${FOLDERS} > ${CACHE}
 ret_val=$?
 grep -v "OK" ${CACHE}
 

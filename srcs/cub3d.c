@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lechon <lechon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:14 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/19 06:53:52 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/23 15:17:03 by lechon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static int	start_game(const char *const filename)
 	{
 		print_config(&config);
 		ret_val = start_map(content + config_offset, &config);
-	}	
+	}
 	free_config(&config);
 	free_strs(content);
 	return (ret_val);
