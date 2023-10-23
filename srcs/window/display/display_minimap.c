@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display_minimap.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lechon <lechon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:08:47 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/23 09:04:06 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/23 14:28:04 by lechon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,5 @@ void	display_minimap(t_win *const window)
 		y += is_tile_sequence_drawn(window, y, i);
 		++i;
 	}
+	display_player_on_minimap(window);
 }

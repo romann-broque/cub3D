@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycaster.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lechon <lechon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 15:46:36 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/23 09:54:41 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/23 15:17:22 by lechon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,11 @@ static double	get_perp_wall_dist(
 	return (cast.dist.y - delta_dist.y);
 }
 
-static void	raycast(t_win *const window, const size_t x)
+static void	raycast(
+	t_win *const window,
+	const size_t x,
+	t_pos hitpoint_array[WINDOW_WIDTH]
+	)
 {
 	const t_player	player = window->map->player;
 	const t_vect	ray = get_ray(player, x);
@@ -30,19 +34,18 @@ static void	raycast(t_win *const window, const size_t x)
 	const t_cast	cast = dda(window->map, player.pos, ray, delta_dist);
 	const double	perp_wall_dist = get_perp_wall_dist(cast, delta_dist);
 
-	draw_line_on_minimap(window, cast.hitpoint, player.pos, GREEN);
-	draw_line_on_map(window, cast.hitpoint, player.pos, GREEN);
-	(void)perp_wall_dist;
+	display_walls(window, cast.side, perp_wall_dist, x);
+	hitpoint_array[x] = cast.hitpoint;
 }
 
-void	raycaster(t_win *const window)
+void	raycaster(t_win *const window, t_pos hitpoint_array[WINDOW_WIDTH])
 {
 	size_t	x;
 
 	x = 0;
-	while (x <= WINDOW_WIDTH)
+	while (x < WINDOW_WIDTH)
 	{
-		raycast(window, x);
+		raycast(window, x, hitpoint_array);
 		++x;
 	}
 }

@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lechon <lechon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/23 09:57:27 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/23 15:25:12 by lechon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
+# define CUB3D_H
 
 ///////////////////////////////////////////////////////////////////////////////
 //									INCLUDES								 //
@@ -369,6 +370,14 @@ void		draw_line_on_minimap(t_win *const window,
 				const t_pos pos1, const t_pos pos2,
 				const int color);
 
+	// display_walls.c
+
+void		display_walls(
+				t_win *const window,
+				const t_side side,
+				const double perp_wall_dist,
+				const int x);
+
 		// draw_tile.c
 
 void		draw_tile(t_win *const window,
@@ -531,7 +540,7 @@ void		set_vect(t_vect *const vect,
 
 		// raycaster.c
 
-void		raycaster(t_win *const window);
+void		raycaster(t_win *const window, t_pos hitpoint_array[WINDOW_WIDTH]);
 
 		// get_vect.c
 

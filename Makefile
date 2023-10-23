@@ -77,6 +77,7 @@ SRCS	 	+=	display_player.c
 SRCS	 	+=	draw_on_map.c
 SRCS	 	+=	draw_on_minimap.c
 SRCS	 	+=	draw_square.c
+SRCS	 	+=	display_walls.c
 SRCS	 	+=	draw_tile.c
 SRCS	 	+=	put_pixel.c
 

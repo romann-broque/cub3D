@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_tile.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lechon <lechon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 09:05:17 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/22 12:38:44 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/23 15:21:21 by lechon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,15 @@ static bool	is_tile_side(
 
 static uint32_t	get_color_from_tile(
 	const t_map *const map,
-	const size_t x,
-	const size_t y
+	const t_pos tile_pos,
+	const size_t x_pos,
+	const size_t y_pos
 	)
 {
-	if (is_wall(map, x, y) || is_ground(map, x, y))
-		return (WHITE);
-	return (BLACK);
+	if (is_wall(map, tile_pos.x, tile_pos.y)
+		&& is_tile_side(x_pos, y_pos) == false)
+		return (BLACK);
+	return (WHITE);
 }
 
 static void	draw_tile_width(
@@ -38,19 +40,20 @@ static void	draw_tile_width(
 	const size_t line_index
 	)
 {
-	size_t		j;
+	int		color;
+	size_t	j;
 
 	j = 0;
 	while (j < TILE_SIZE)
 	{
-		if (is_ground(window->map, tile_pos.x, tile_pos.y) == true
-			|| (is_wall(window->map, tile_pos.x, tile_pos.y) == true
-				&& is_tile_side(j, line_index) == true))
+		if (is_blank(window->map, tile_pos.x, tile_pos.y) == false)
 		{
+			color = get_color_from_tile(
+					window->map, tile_pos, j, line_index);
 			put_pixel(&(window->data),
 				screen_pos.x + j,
 				screen_pos.y + line_index,
-				get_color_from_tile(window->map, tile_pos.x, tile_pos.y));
+				color);
 		}
 		++j;
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lechon <lechon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 16:11:15 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/23 06:56:53 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/23 14:27:57 by lechon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,5 @@ void	display_map(t_win *const window)
 		draw_tile_sequence(window, i);
 		++i;
 	}
+	display_player_on_map(window);
 }
