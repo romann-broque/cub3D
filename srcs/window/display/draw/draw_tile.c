@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_tile.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lechon <lechon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 09:05:17 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/22 12:38:44 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/23 14:39:19 by lechon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,19 +38,23 @@ static void	draw_tile_width(
 	const size_t line_index
 	)
 {
-	size_t		j;
+	int		color;
+	size_t	j;
 
 	j = 0;
 	while (j < TILE_SIZE)
 	{
-		if (is_ground(window->map, tile_pos.x, tile_pos.y) == true
-			|| (is_wall(window->map, tile_pos.x, tile_pos.y) == true
-				&& is_tile_side(j, line_index) == true))
+		if (is_blank(window->map, tile_pos.x, tile_pos.y) == false)
 		{
+			if (is_wall(window->map, tile_pos.x, tile_pos.y)
+				&& is_tile_side(j, line_index) == false)
+				color = BLACK;
+			else
+				color = get_color_from_tile(window->map, tile_pos.x, tile_pos.y);
 			put_pixel(&(window->data),
 				screen_pos.x + j,
 				screen_pos.y + line_index,
-				get_color_from_tile(window->map, tile_pos.x, tile_pos.y));
+				color);
 		}
 		++j;
 	}

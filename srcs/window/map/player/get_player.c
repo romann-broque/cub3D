@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_player.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lechon <lechon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 07:20:28 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/23 09:43:40 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/23 14:45:03 by lechon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static t_vect	get_player_plane(const t_vect player_dir)
 	const double	plane_norm = tan(convert_deg_to_rad(FOV) / 2);
 	t_vect			plane;
 
-	set_pos(&plane, player_dir.y * plane_norm, player_dir.x * plane_norm);
+	set_pos(&plane, -player_dir.y * plane_norm, player_dir.x * plane_norm);
 	return (plane);
 }
 

@@ -6,7 +6,7 @@
 /*   By: lechon <lechon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 14:46:43 by jess              #+#    #+#             */
-/*   Updated: 2023/10/23 14:12:48 by lechon           ###   ########.fr       */
+/*   Updated: 2023/10/23 14:35:55 by lechon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static t_pos	init_wall_start(
 	)
 {
 	t_pos		wall;
-	const int	tmp1 = (lineheight * -1) / 2;
+	const int	tmp1 = -lineheight / 2;
 	const int	tmp2 = height / 2;
 
 	wall.y = tmp1 + tmp2;
