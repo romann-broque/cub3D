@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 06:32:11 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/18 07:13:20 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/19 07:48:40 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,13 @@ void	set_pos(
 {
 	pos->x = x;
 	pos->y = y;
+}
+
+void	set_vect(
+	t_vect *const vect,
+	const double x,
+	const double y
+)
+{
+	set_pos(vect, x, y);
 }
