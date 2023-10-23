@@ -87,6 +87,7 @@ CUB3D_LIB		=	libcub3d.a
 ###############
 
 LINKS += -lcunit
+LINKS += -lm
 
 #####################
 #### COMPILATION ####
