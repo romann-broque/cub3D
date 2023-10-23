@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/23 09:53:27 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/23 09:57:27 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@
 # define RGB_SIZE			3
 # define ATTRIBUTE_COUNT	6
 # define X_SIDE				0
-# define Y_SIDE				0
+# define Y_SIDE				1
 
 // CHAR
 
