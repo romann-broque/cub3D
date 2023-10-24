@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/24 21:01:54 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/24 22:23:55 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -379,6 +379,8 @@ void		display_player_on_minimap(t_win *const window);
 
 		// draw_on_map.c
 
+t_pos		find_map_screen_pos(t_win *const window,
+				const t_pos pos);
 void		draw_square_on_map(t_win *const window,
 				const t_pos pos, const size_t size,
 				const int color);
@@ -393,6 +395,8 @@ void		draw_line_on_map(t_win *const window,
 
 		// draw_on_minimap.c
 
+t_pos		find_minimap_screen_pos(t_win *const window,
+				const t_pos pos);
 void		draw_square_on_minimap(t_win *const window,
 				const t_pos pos, const size_t size,
 				const int color);
@@ -417,11 +421,7 @@ void		draw_vertical(
 
 void		refresh(t_win *window);
 
-			/////////////////////////////////////////
-			/////			draw				/////
-			/////////////////////////////////////////
-
-			// draw_vertical_utils.c
+		// draw_vertical_utils.c
 
 int			get_wall_color(const t_side side, const int color);
 t_pos		init_wall_end(const int lineheight,
@@ -429,40 +429,40 @@ t_pos		init_wall_end(const int lineheight,
 t_pos		init_wall_start(const int lineheight,
 				const int height, const int x);
 
-			// draw_tile.c
+		// draw_tile.c
 
 void		draw_tile(t_win *const window,
 				const t_pos pos,
 				const size_t x, const size_t y);
 
-			// draw_square.c
+		// draw_square.c
 
 void		draw_square(t_win *const window,
 				const t_pos screen_pos,
 				const size_t size,
 				const int color);
 
-			// put_pixel.c
+		// put_pixel.c
 
 void		put_pixel(t_data *data, const int x, const int y, const int color);
 
-			/////////////////////////////////////////
-			/////			line				/////
-			/////////////////////////////////////////
+		/////////////////////////////////////////
+		/////			line				/////
+		/////////////////////////////////////////
 
-			// init_line.c
+		// init_line.c
 
 void		init_line(t_line *line, const t_pos pos3, const t_pos pos2);
 void		init_line_in_minimap(t_line *line,
 				const t_pos pos1, const t_pos pos2);
 
-			// line_utils.c
+		// line_utils.c
 
 bool		is_line_printable(t_line *line);
 bool		are_crd_same(const double c1, const double c2);
 bool		are_pos_same(const t_pos pos1, const t_pos pos2);
 
-			// put_line.c
+		// put_line.c
 
 void		put_line(t_data *data,
 				const t_pos pos1, const t_pos pos2, const int color);

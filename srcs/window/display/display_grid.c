@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/17 15:08:47 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/24 22:07:17 by rbroque          ###   ########.fr       */
+/*   Created: 2023/10/24 22:50:20 by rbroque           #+#    #+#             */
+/*   Updated: 2023/10/24 22:50:39 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ static bool	draw_map_tile(
 	if (window->mod == E_STD)
 	{
 		set_pos(&pos_screen,
-			(pos_screen.x + offset.x) * (TILE_SIZE - 1) + MINIMAP_XOFFSET,
-			(pos_screen.y + offset.y) * (TILE_SIZE - 1) + MINIMAP_YOFFSET);
+			(pos_screen.x + offset.x) * (TILE_SIZE) + MINIMAP_XOFFSET,
+			(pos_screen.y + offset.y) * (TILE_SIZE) + MINIMAP_YOFFSET);
 		if (is_closed_to_player(map, pos.x, pos.y) == true)
 		{
 			draw_tile(window, pos, pos_screen.x, pos_screen.y);
@@ -36,9 +36,9 @@ static bool	draw_map_tile(
 	{
 		set_pos(&pos_screen,
 			(pos_screen.x - floor(map->player.pos.x))
-			* (TILE_SIZE - 1) + WINDOW_WIDTH / 2,
+			* (TILE_SIZE) + WINDOW_WIDTH / 2,
 			(pos_screen.y - floor(map->player.pos.y))
-			* (TILE_SIZE - 1) + WINDOW_HEIGHT / 2);
+			* (TILE_SIZE) + WINDOW_HEIGHT / 2);
 		draw_tile(window, pos, pos_screen.x, pos_screen.y);
 		return (true);
 	}
