@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 10:09:13 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/24 08:12:32 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/24 15:41:05 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ static void	display_fov(
 	i = 0;
 	while (i < WINDOW_WIDTH)
 	{
-		if (MAP_DISPLAY)
+		if (MAP_DISPLAY && window->mod == E_MAP)
 			draw_line_on_map(window, player_pos, hitpoint_array[i], BLUE);
-		if (MINIMAP_DISPLAY)
+		if (MINIMAP_DISPLAY && window->mod == E_STD)
 			draw_line_on_minimap(window, player_pos, hitpoint_array[i], BLUE);
 		++i;
 	}
@@ -36,9 +36,9 @@ void	display_window_content(t_win *const window)
 	t_pos	hitpoint_array[WINDOW_WIDTH];
 
 	raycaster(window, hitpoint_array);
-	if (MAP_DISPLAY)
+	if (MAP_DISPLAY && window->mod == E_MAP)
 		display_map(window);
-	if (MINIMAP_DISPLAY)
+	if (MINIMAP_DISPLAY && window->mod == E_STD)
 		display_minimap(window);
 	display_fov(window, hitpoint_array);
 }

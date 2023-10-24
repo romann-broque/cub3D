@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/24 14:51:43 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/24 15:34:11 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,7 @@
 # define K_S				0x0073
 # define K_A				0x0061
 # define K_D				0x0064
+# define K_M				0x006d
 # define K_ESC				0xff1b
 # define NO_KEY				0
 
@@ -143,6 +144,12 @@ enum e_attribute_type
 	E_EAST,
 	E_FLOOR,
 	E_CEIL
+};
+
+enum e_mod
+{
+	E_STD,
+	E_MAP,
 };
 
 ////////////////
@@ -223,11 +230,12 @@ typedef struct s_data
 
 typedef struct s_win
 {
+	const t_config	*config;
 	void			*mlx_ptr;
 	void			*win_ptr;
 	t_data			data;
 	t_map			*map;
-	const t_config	*config;
+	enum e_mod		mod;
 }		t_win;
 
 typedef struct s_event_mapping
@@ -483,6 +491,10 @@ int			move_forward(t_win *const ptr);
 int			move_backward(t_win *const ptr);
 int			move_left(t_win *const ptr);
 int			move_right(t_win *const ptr);
+
+		// e_map_mod.c
+
+int			map_mod(t_win *const ptr);
 
 		// translation_utils.c
 

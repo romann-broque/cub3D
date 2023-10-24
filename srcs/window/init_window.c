@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 09:39:32 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/23 20:49:23 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/24 15:30:57 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	init_window(
 	}
 	init_data(window->mlx_ptr, &window->data);
 	init_player(map);
+	window->mod = E_STD;
 	window->map = map;
 	window->config = config;
 }
