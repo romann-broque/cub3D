@@ -104,8 +104,7 @@ SRCS	 	+=	keyboard.c
 
 SRCS	 	+=	e_close_window.c
 SRCS	 	+=	e_translation.c
-SRCS	 	+=	translate.c
-SRCS	 	+=	can_translate.c
+SRCS	 	+=	translation_utils.c
 
 ### srcs/window/map/
 

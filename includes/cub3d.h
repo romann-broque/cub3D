@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/24 09:46:24 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/24 14:18:50 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,8 @@
 # define TILE_SIZE			15
 # define PLAYER_SIZE		4
 # define FOV				90
-# define MOVE_SPEED			0.1
+# define STEP_SIZE			0.001
+# define MOVE_SPEED			2
 
 // NUMBERS
 
@@ -484,22 +485,11 @@ int			move_backward(t_win *const ptr);
 int			move_left(t_win *const ptr);
 int			move_right(t_win *const ptr);
 
-		// can_translate.c
+		// translation_utils.c
 
-bool		can_translate_forward_x(t_map *const map, const double move_speed);
-bool		can_translate_forward_y(t_map *const map, const double move_speed);
-bool		can_translate_side_x(t_map *const map, const double move_speed);
-bool		can_translate_side_y(t_map *const map, const double move_speed);
-
-		// transle.c
-
-void		translate_player_backfront_x(
+void		translate_side(t_map *const map,
 				t_player *const player, const double move_speed);
-void		translate_player_backfront_y(
-				t_player *const player, const double move_speed);
-void		translate_player_side_x(
-				t_player *const player, const double move_speed);
-void		translate_player_side_y(
+void		translate_frontback(t_map *const map,
 				t_player *const player, const double move_speed);
 
 	/////////////////////////////////////////
