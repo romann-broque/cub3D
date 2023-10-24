@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 14:52:26 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/24 19:51:52 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/24 22:05:14 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ static t_pos	find_screen_pos(
 {
 	const t_pos		player_pos = window->map->player.pos;
 	const double	scale = TILE_SIZE - 1;
-	const double	x_screen = (pos.x - player_pos.x
-			- MINIMAP_RADIUS) * scale + WINDOW_WIDTH / 2;
-	const double	y_screen = (pos.y - player_pos.y
-			- MINIMAP_RADIUS) * scale + WINDOW_HEIGHT / 2;
+	const double	x_screen = (pos.x - floor(player_pos.x))
+		* scale + WINDOW_WIDTH / 2;
+	const double	y_screen = (pos.y - floor(player_pos.y))
+		* scale + WINDOW_HEIGHT / 2;
 	t_pos			screen_pos;
 
 	set_pos(&screen_pos, x_screen, y_screen);

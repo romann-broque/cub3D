@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:08:47 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/24 20:18:40 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/24 22:07:17 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ static bool	draw_map_tile(
 	else if (window->mod == E_MAP)
 	{
 		set_pos(&pos_screen,
-			(pos_screen.x + offset.x - MINIMAP_RADIUS - map->player.pos.x)
+			(pos_screen.x - floor(map->player.pos.x))
 			* (TILE_SIZE - 1) + WINDOW_WIDTH / 2,
-			(pos_screen.y + offset.y - MINIMAP_RADIUS - map->player.pos.y)
+			(pos_screen.y - floor(map->player.pos.y))
 			* (TILE_SIZE - 1) + WINDOW_HEIGHT / 2);
 		draw_tile(window, pos, pos_screen.x, pos_screen.y);
 		return (true);
