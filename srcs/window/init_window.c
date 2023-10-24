@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 09:39:32 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/24 15:30:57 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/24 23:16:37 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,5 @@ void	init_window(
 	window->mod = E_STD;
 	window->map = map;
 	window->config = config;
+	ft_bzero(window->key_pressure, KEY_COUNT * sizeof(bool));
 }
