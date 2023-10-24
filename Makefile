@@ -103,6 +103,7 @@ SRCS	 	+=	keyboard.c
 ### srcs/window/loop/events/
 
 SRCS	 	+=	e_close_window.c
+SRCS	 	+=	e_rotation.c
 SRCS	 	+=	e_translation.c
 SRCS	 	+=	translation_utils.c
 
