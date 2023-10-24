@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/24 09:18:06 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/24 09:46:24 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,8 @@
 
 // Errors
 
+# define ERROR_USAGE		"Usage: ./cub3d <file.cub>"
+# define MLX_ERROR			"MLX_ERROR"
 # define MAP_NOT_CLOSED		"MAP NOT CLOSED"
 # define MAP_NOT_UNIQUE		"MAP NOT UNIQUE"
 # define MAP_TOO_BIG		"MAP TOO BIG"
@@ -149,6 +151,8 @@ enum e_attribute_type
 typedef struct s_config
 {
 	char	*attribute_array[ATTRIBUTE_COUNT + 1];
+	int		ceil_color;
+	int		floor_color;
 }		t_config;
 
 typedef struct s_tile
@@ -269,6 +273,18 @@ void		print_config(t_config *const config);
 
 bool		is_sequence_valid(char *const *const sequence);
 
+	/////////////////////////////////////////
+	/////			color				/////
+	/////////////////////////////////////////
+
+	// get_color_from_rgb.c
+
+uint32_t	get_color_from_rgb(const char *const rgb_str);
+
+	// set_color.c
+
+void		set_color(t_config *const config);
+
 /////////////////////////////////////////
 /////			  math				/////
 /////////////////////////////////////////
@@ -376,9 +392,9 @@ void		draw_line_on_minimap(t_win *const window,
 				const t_pos pos1, const t_pos pos2,
 				const int color);
 
-		// display_walls.c
+		// draw_vertical.c
 
-void		display_walls(
+void		draw_vertical(
 				t_win *const window,
 				const t_side side,
 				const double perp_wall_dist,
@@ -393,6 +409,15 @@ void		refresh(t_win *window);
 			/////////////////////////////////////////
 
 			// draw_tile.c
+		// draw_vertical_utils.c
+
+int			get_wall_color(const t_side side, const int color);
+t_pos		init_wall_end(const int lineheight,
+				const int height, const int x);
+t_pos		init_wall_start(const int lineheight,
+				const int height, const int x);
+
+		// draw_tile.c
 
 void		draw_tile(t_win *const window,
 				const t_pos pos,

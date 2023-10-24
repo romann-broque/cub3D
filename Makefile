@@ -10,6 +10,7 @@ SHELL		= /usr/bin/bash
 
 PATH_SRCS	+=	srcs/
 PATH_SRCS	+=	srcs/config/
+PATH_SRCS	+=	srcs/config/color/
 PATH_SRCS	+=	srcs/math/
 PATH_SRCS	+=	srcs/print/
 PATH_SRCS	+=	srcs/read_file/
@@ -39,6 +40,11 @@ SRCS		+=	build_config.c
 SRCS		+=	free_config.c
 SRCS		+=	print_config.c
 SRCS		+=	is_config_sequence_valid.c
+
+### srcs/config/color/
+
+SRCS	 	+=	get_color_from_rgb.c
+SRCS	 	+=	set_color.c
 
 ### srcs/math/
 
@@ -78,7 +84,8 @@ SRCS	 	+=	refresh.c
 SRCS	 	+=	draw_on_map.c
 SRCS	 	+=	draw_on_minimap.c
 SRCS	 	+=	draw_square.c
-SRCS	 	+=	display_walls.c
+SRCS	 	+=	draw_vertical.c
+SRCS	 	+=	draw_vertical_utils.c
 SRCS	 	+=	draw_tile.c
 SRCS	 	+=	put_pixel.c
 
