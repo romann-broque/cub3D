@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/23 14:41:43 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/24 14:51:43 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@
 # define TILE_SIZE			15
 # define PLAYER_SIZE		4
 # define FOV				90
+# define STEP_SIZE			0.001
+# define MOVE_SPEED			2
 
 // NUMBERS
 
@@ -95,6 +97,8 @@
 
 // Errors
 
+# define ERROR_USAGE		"Usage: ./cub3d <file.cub>"
+# define MLX_ERROR			"MLX_ERROR"
 # define MAP_NOT_CLOSED		"MAP NOT CLOSED"
 # define MAP_NOT_UNIQUE		"MAP NOT UNIQUE"
 # define MAP_TOO_BIG		"MAP TOO BIG"
@@ -120,6 +124,10 @@
 
 // Key
 
+# define K_W				0x0077
+# define K_S				0x0073
+# define K_A				0x0061
+# define K_D				0x0064
 # define K_ESC				0xff1b
 # define NO_KEY				0
 
@@ -144,6 +152,8 @@ enum e_attribute_type
 typedef struct s_config
 {
 	char	*attribute_array[ATTRIBUTE_COUNT + 1];
+	int		ceil_color;
+	int		floor_color;
 }		t_config;
 
 typedef struct s_tile
@@ -264,6 +274,18 @@ void		print_config(t_config *const config);
 
 bool		is_sequence_valid(char *const *const sequence);
 
+	/////////////////////////////////////////
+	/////			color				/////
+	/////////////////////////////////////////
+
+	// get_color_from_rgb.c
+
+uint32_t	get_color_from_rgb(const char *const rgb_str);
+
+	// set_color.c
+
+void		set_color(t_config *const config);
+
 /////////////////////////////////////////
 /////			  math				/////
 /////////////////////////////////////////
@@ -316,6 +338,7 @@ bool		is_window_complete(t_win *const window);
 
 	// display_window.c
 
+void		display_window_content(t_win *const window);
 void		display_window(t_win *const window);
 
 	// display_map.c
@@ -370,48 +393,64 @@ void		draw_line_on_minimap(t_win *const window,
 				const t_pos pos1, const t_pos pos2,
 				const int color);
 
-	// display_walls.c
+		// draw_vertical.c
 
-void		display_walls(
+void		draw_vertical(
 				t_win *const window,
 				const t_side side,
 				const double perp_wall_dist,
 				const int x);
 
-		// draw_tile.c
+		// refresh.c
+
+void		refresh(t_win *window);
+
+			/////////////////////////////////////////
+			/////			draw				/////
+			/////////////////////////////////////////
+
+			// draw_vertical_utils.c
+
+int			get_wall_color(const t_side side, const int color);
+t_pos		init_wall_end(const int lineheight,
+				const int height, const int x);
+t_pos		init_wall_start(const int lineheight,
+				const int height, const int x);
+
+			// draw_tile.c
 
 void		draw_tile(t_win *const window,
 				const t_pos pos,
 				const size_t x, const size_t y);
 
-		// draw_square.c
+			// draw_square.c
 
 void		draw_square(t_win *const window,
 				const t_pos screen_pos,
 				const size_t size,
 				const int color);
 
-		// put_pixel.c
+			// put_pixel.c
 
 void		put_pixel(t_data *data, const int x, const int y, const int color);
 
-		/////////////////////////////////////////
-		/////			line				/////
-		/////////////////////////////////////////
+			/////////////////////////////////////////
+			/////			line				/////
+			/////////////////////////////////////////
 
-		// init_line.c
+			// init_line.c
 
 void		init_line(t_line *line, const t_pos pos3, const t_pos pos2);
 void		init_line_in_minimap(t_line *line,
 				const t_pos pos1, const t_pos pos2);
 
-		// line_utils.c
+			// line_utils.c
 
 bool		is_line_printable(t_line *line);
 bool		are_crd_same(const double c1, const double c2);
 bool		are_pos_same(const t_pos pos1, const t_pos pos2);
 
-		// put_line.c
+			// put_line.c
 
 void		put_line(t_data *data,
 				const t_pos pos1, const t_pos pos2, const int color);
@@ -437,6 +476,20 @@ int			key_press(const int key, t_win *window);
 		// e_close_window.c
 
 int			close_window(t_win *const ptr);
+
+		// e_translation.c
+
+int			move_forward(t_win *const ptr);
+int			move_backward(t_win *const ptr);
+int			move_left(t_win *const ptr);
+int			move_right(t_win *const ptr);
+
+		// translation_utils.c
+
+void		translate_side(t_map *const map,
+				t_player *const player, const double move_speed);
+void		translate_frontback(t_map *const map,
+				t_player *const player, const double move_speed);
 
 	/////////////////////////////////////////
 	/////			data				/////

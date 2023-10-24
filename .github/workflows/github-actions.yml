@@ -8,6 +8,7 @@ on:
       - "MVE2"
       - "MVE3"
       - "MVE3-DISPLAY_MAP"
+      - "MVE4"
 
 jobs:
   check-bats-version:

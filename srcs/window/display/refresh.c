@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_data.c                                        :+:      :+:    :+:   */
+/*   refresh.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/15 09:54:29 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/23 20:49:16 by rbroque          ###   ########.fr       */
+/*   Created: 2023/10/24 08:09:03 by rbroque           #+#    #+#             */
+/*   Updated: 2023/10/24 08:13:11 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	init_data(void *const mlx_ptr, t_data *const dest)
+void	refresh(t_win *window)
 {
-	dest->img = mlx_new_image(mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT);
-	if (dest->img == NULL)
-	{
-		print_format_error(MLX_ERROR);
-		return ;
-	}
-	dest->addr = mlx_get_data_addr(dest->img, &dest->bits_per_pixel,
-			&dest->line_length, &dest->endian);
-	if (dest->addr == NULL)
-		print_format_error(MLX_ERROR);
+	mlx_destroy_image(window->mlx_ptr, window->data.img);
+	init_data(window->mlx_ptr, &window->data);
+	display_window_content(window);
+	mlx_put_image_to_window(window->mlx_ptr, window->win_ptr,
+		window->data.img, 0, 0);
 }
