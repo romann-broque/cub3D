@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/24 15:34:11 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/24 19:58:10 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@
 # define PLAYER_SIZE		4
 # define FOV				90
 # define STEP_SIZE			0.001
-# define MOVE_SPEED			2
+# define MOVE_SPEED			0.3
 
 // NUMBERS
 
@@ -352,12 +352,13 @@ void		display_window(t_win *const window);
 	// display_map.c
 
 void		display_map(t_win *const window);
-
-	// display_minimap.c
-
 void		display_minimap(t_win *const window);
 
-	// display_minimap_utils.c
+	// display_grid.c
+
+void		display_grid(t_win *const window);
+
+	// display_grid_utils.c
 
 bool		is_closed_to_player(
 				const t_map *const map,

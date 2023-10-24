@@ -74,8 +74,8 @@ SRCS	 	+=	free_data.c
 
 SRCS	 	+=	display_window.c
 SRCS	 	+=	display_map.c
-SRCS	 	+=	display_minimap.c
-SRCS	 	+=	display_minimap_utils.c
+SRCS	 	+=	display_grid.c
+SRCS	 	+=	display_grid_utils.c
 SRCS	 	+=	display_player.c
 SRCS	 	+=	refresh.c
 
