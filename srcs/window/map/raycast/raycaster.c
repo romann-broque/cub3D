@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 15:46:36 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/24 09:45:42 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/24 14:50:24 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	raycast(
 
 void	raycaster(t_win *const window, t_pos hitpoint_array[WINDOW_WIDTH])
 {
-	size_t			x;
+	size_t	x;
 
 	x = 0;
 	while (x < WINDOW_WIDTH)
