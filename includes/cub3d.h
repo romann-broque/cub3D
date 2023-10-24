@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/23 20:48:15 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/24 09:34:20 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -274,7 +274,7 @@ bool		is_sequence_valid(char *const *const sequence);
 
 	// get_color_from_rgb.c
 
-uint32_t	get_color_from_rgb(const char *rgb_str);
+uint32_t	get_color_from_rgb(const char *const rgb_str);
 
 	// set_color.c
 

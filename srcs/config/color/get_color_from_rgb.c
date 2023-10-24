@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 15:59:52 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/23 16:19:14 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/24 09:34:06 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ static unsigned int	sum_rgb(
 }
 
 static unsigned int	sum_rgb_str(
-	const char *red_str,
-	const char *green_str,
-	const char *blue_str)
+	const char *const red_str,
+	const char *const green_str,
+	const char *const blue_str)
 {
 	const unsigned int	red = ft_atoi(red_str);
 	const unsigned int	green = ft_atoi(green_str);
@@ -37,7 +37,7 @@ static unsigned int	sum_rgb_str(
 	return (sum_rgb(red, green, blue));
 }
 
-unsigned int	get_color_from_rgb(const char *rgb_str)
+unsigned int	get_color_from_rgb(const char *const rgb_str)
 {
 	const char	*red_str = rgb_str;
 	const char	*green_str = red_str + abs_index(red_str, RGB_SEPARATOR) + 1;
