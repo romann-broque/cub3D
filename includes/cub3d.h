@@ -6,7 +6,7 @@
 /*   By: lechon <lechon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/24 18:30:14 by lechon           ###   ########.fr       */
+/*   Updated: 2023/10/24 18:41:30 by lechon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -487,8 +487,6 @@ int			rotate_left(t_win *const ptr);
 
 		// e_translation.c
 
-int			rotate_left(t_win *const ptr);
-int			rotate_right(t_win *const ptr);
 int			move_forward(t_win *const ptr);
 int			move_backward(t_win *const ptr);
 int			move_left(t_win *const ptr);
