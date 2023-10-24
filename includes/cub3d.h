@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/23 14:41:43 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/24 08:34:08 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@
 # define TILE_SIZE			15
 # define PLAYER_SIZE		4
 # define FOV				90
+# define MOVE_SPEED			0.05
 
 // NUMBERS
 
@@ -120,6 +121,8 @@
 
 // Key
 
+# define K_W				0x0077
+# define K_S				0x0073
 # define K_ESC				0xff1b
 # define NO_KEY				0
 
@@ -316,6 +319,7 @@ bool		is_window_complete(t_win *const window);
 
 	// display_window.c
 
+void		display_window_content(t_win *const window);
 void		display_window(t_win *const window);
 
 	// display_map.c
@@ -378,6 +382,14 @@ void		display_walls(
 				const double perp_wall_dist,
 				const int x);
 
+	// refresh.c
+
+void		refresh(t_win *window);
+
+		/////////////////////////////////////////
+		/////			draw				/////
+		/////////////////////////////////////////
+
 		// draw_tile.c
 
 void		draw_tile(t_win *const window,
@@ -437,6 +449,18 @@ int			key_press(const int key, t_win *window);
 		// e_close_window.c
 
 int			close_window(t_win *const ptr);
+
+		// e_move_forward.c
+
+bool		can_move_forward_x(t_map *const map, const double move_speed);
+bool		can_move_forward_y(t_map *const map, const double move_speed);
+void		translate_player_x(t_player *const player, const double move_speed);
+void		translate_player_y(t_player *const player, const double move_speed);
+int			move_forward(t_win *const ptr);
+
+		// e_move_backward.c
+
+int			move_backward(t_win *const ptr);
 
 	/////////////////////////////////////////
 	/////			data				/////

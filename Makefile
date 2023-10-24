@@ -71,6 +71,7 @@ SRCS	 	+=	display_map.c
 SRCS	 	+=	display_minimap.c
 SRCS	 	+=	display_minimap_utils.c
 SRCS	 	+=	display_player.c
+SRCS	 	+=	refresh.c
 
 ### srcs/window/display/draw
 
@@ -95,6 +96,8 @@ SRCS	 	+=	keyboard.c
 ### srcs/window/loop/events/
 
 SRCS	 	+=	e_close_window.c
+SRCS	 	+=	e_move_forward.c
+SRCS	 	+=	e_move_backward.c
 
 ### srcs/window/map/
 

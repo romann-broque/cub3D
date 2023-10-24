@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 10:09:13 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/23 14:40:56 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/24 08:12:32 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	display_fov(
 	}
 }
 
-void	display_window(t_win *const window)
+void	display_window_content(t_win *const window)
 {
 	t_pos	hitpoint_array[WINDOW_WIDTH];
 
@@ -41,6 +41,11 @@ void	display_window(t_win *const window)
 	if (MINIMAP_DISPLAY)
 		display_minimap(window);
 	display_fov(window, hitpoint_array);
+}
+
+void	display_window(t_win *const window)
+{
+	display_window_content(window);
 	mlx_put_image_to_window(window->mlx_ptr, window->win_ptr,
 		window->data.img, 0, 0);
 	loop(window);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycaster.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lechon <lechon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 15:46:36 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/23 15:17:22 by lechon           ###   ########.fr       */
+/*   Updated: 2023/10/23 22:51:37 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	raycast(
 
 void	raycaster(t_win *const window, t_pos hitpoint_array[WINDOW_WIDTH])
 {
-	size_t	x;
+	size_t			x;
 
 	x = 0;
 	while (x < WINDOW_WIDTH)
