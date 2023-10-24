@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/24 14:18:50 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/24 14:51:43 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -409,8 +409,7 @@ void		refresh(t_win *window);
 			/////			draw				/////
 			/////////////////////////////////////////
 
-			// draw_tile.c
-		// draw_vertical_utils.c
+			// draw_vertical_utils.c
 
 int			get_wall_color(const t_side side, const int color);
 t_pos		init_wall_end(const int lineheight,
@@ -418,7 +417,7 @@ t_pos		init_wall_end(const int lineheight,
 t_pos		init_wall_start(const int lineheight,
 				const int height, const int x);
 
-		// draw_tile.c
+			// draw_tile.c
 
 void		draw_tile(t_win *const window,
 				const t_pos pos,
