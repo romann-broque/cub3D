@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lechon <lechon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/24 14:51:43 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/24 18:41:30 by lechon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,8 @@
 # define PLAYER_SIZE		4
 # define FOV				90
 # define STEP_SIZE			0.001
-# define MOVE_SPEED			2
+# define MOVE_SPEED			0.5
+# define ROTATE_SPEED		2
 
 // NUMBERS
 
@@ -124,6 +125,8 @@
 
 // Key
 
+# define K_LEFT				0xff51
+# define K_RIGHT			0xff53
 # define K_W				0x0077
 # define K_S				0x0073
 # define K_A				0x0061
@@ -476,6 +479,11 @@ int			key_press(const int key, t_win *window);
 		// e_close_window.c
 
 int			close_window(t_win *const ptr);
+
+		// e_rotation.c
+
+int			rotate_right(t_win *const ptr);
+int			rotate_left(t_win *const ptr);
 
 		// e_translation.c
 
