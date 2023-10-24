@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 08:39:33 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/24 09:15:49 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/24 09:20:05 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ int	move_left(t_win *const ptr)
 
 	if (can_translate_side_x(map, MOVE_SPEED) == true)
 		translate_player_side_x(&(map->player), MOVE_SPEED);
-	if (can_translate_side_y(map, MOVE_SPEED) == true)
-		translate_player_side_y(&(map->player), MOVE_SPEED);
+	if (can_translate_side_y(map, -MOVE_SPEED) == true)
+		translate_player_side_y(&(map->player), -MOVE_SPEED);
 	return (EXIT_SUCCESS);
 }
 
@@ -51,7 +51,7 @@ int	move_right(t_win *const ptr)
 
 	if (can_translate_side_x(map, -MOVE_SPEED) == true)
 		translate_player_side_x(&(map->player), -MOVE_SPEED);
-	if (can_translate_side_y(map, -MOVE_SPEED) == true)
-		translate_player_side_y(&(map->player), -MOVE_SPEED);
+	if (can_translate_side_y(map, MOVE_SPEED) == true)
+		translate_player_side_y(&(map->player), MOVE_SPEED);
 	return (EXIT_SUCCESS);
 }
