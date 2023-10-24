@@ -96,8 +96,9 @@ SRCS	 	+=	keyboard.c
 ### srcs/window/loop/events/
 
 SRCS	 	+=	e_close_window.c
-SRCS	 	+=	e_move_forward.c
-SRCS	 	+=	e_move_backward.c
+SRCS	 	+=	e_translation.c
+SRCS	 	+=	translate.c
+SRCS	 	+=	can_translate.c
 
 ### srcs/window/map/
 

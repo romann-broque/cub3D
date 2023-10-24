@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/24 08:34:08 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/24 09:16:39 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,8 @@
 
 # define K_W				0x0077
 # define K_S				0x0073
+# define K_A				0x0061
+# define K_D				0x0064
 # define K_ESC				0xff1b
 # define NO_KEY				0
 
@@ -374,7 +376,7 @@ void		draw_line_on_minimap(t_win *const window,
 				const t_pos pos1, const t_pos pos2,
 				const int color);
 
-	// display_walls.c
+		// display_walls.c
 
 void		display_walls(
 				t_win *const window,
@@ -382,48 +384,48 @@ void		display_walls(
 				const double perp_wall_dist,
 				const int x);
 
-	// refresh.c
+		// refresh.c
 
 void		refresh(t_win *window);
 
-		/////////////////////////////////////////
-		/////			draw				/////
-		/////////////////////////////////////////
+			/////////////////////////////////////////
+			/////			draw				/////
+			/////////////////////////////////////////
 
-		// draw_tile.c
+			// draw_tile.c
 
 void		draw_tile(t_win *const window,
 				const t_pos pos,
 				const size_t x, const size_t y);
 
-		// draw_square.c
+			// draw_square.c
 
 void		draw_square(t_win *const window,
 				const t_pos screen_pos,
 				const size_t size,
 				const int color);
 
-		// put_pixel.c
+			// put_pixel.c
 
 void		put_pixel(t_data *data, const int x, const int y, const int color);
 
-		/////////////////////////////////////////
-		/////			line				/////
-		/////////////////////////////////////////
+			/////////////////////////////////////////
+			/////			line				/////
+			/////////////////////////////////////////
 
-		// init_line.c
+			// init_line.c
 
 void		init_line(t_line *line, const t_pos pos3, const t_pos pos2);
 void		init_line_in_minimap(t_line *line,
 				const t_pos pos1, const t_pos pos2);
 
-		// line_utils.c
+			// line_utils.c
 
 bool		is_line_printable(t_line *line);
 bool		are_crd_same(const double c1, const double c2);
 bool		are_pos_same(const t_pos pos1, const t_pos pos2);
 
-		// put_line.c
+			// put_line.c
 
 void		put_line(t_data *data,
 				const t_pos pos1, const t_pos pos2, const int color);
@@ -450,17 +452,30 @@ int			key_press(const int key, t_win *window);
 
 int			close_window(t_win *const ptr);
 
-		// e_move_forward.c
+		// e_translation.c
 
-bool		can_move_forward_x(t_map *const map, const double move_speed);
-bool		can_move_forward_y(t_map *const map, const double move_speed);
-void		translate_player_x(t_player *const player, const double move_speed);
-void		translate_player_y(t_player *const player, const double move_speed);
 int			move_forward(t_win *const ptr);
-
-		// e_move_backward.c
-
 int			move_backward(t_win *const ptr);
+int			move_left(t_win *const ptr);
+int			move_right(t_win *const ptr);
+
+		// can_translate.c
+
+bool		can_translate_forward_x(t_map *const map, const double move_speed);
+bool		can_translate_forward_y(t_map *const map, const double move_speed);
+bool		can_translate_side_x(t_map *const map, const double move_speed);
+bool		can_translate_side_y(t_map *const map, const double move_speed);
+
+		// transle.c
+
+void		translate_player_backfront_x(
+				t_player *const player, const double move_speed);
+void		translate_player_backfront_y(
+				t_player *const player, const double move_speed);
+void		translate_player_side_x(
+				t_player *const player, const double move_speed);
+void		translate_player_side_y(
+				t_player *const player, const double move_speed);
 
 	/////////////////////////////////////////
 	/////			data				/////
