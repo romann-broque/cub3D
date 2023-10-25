@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 09:57:38 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/16 07:21:56 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/25 13:41:55 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,7 @@ void	free_window(t_win *const window)
 			mlx_destroy_display(window->mlx_ptr);
 		}
 		free(window->mlx_ptr);
+		free_config(&(window->config));
+		free_map(window->map);
 	}
 }

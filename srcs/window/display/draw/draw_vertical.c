@@ -6,7 +6,7 @@
 /*   By: lechon <lechon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 14:46:43 by jess              #+#    #+#             */
-/*   Updated: 2023/10/25 16:12:09 by lechon           ###   ########.fr       */
+/*   Updated: 2023/10/25 17:32:30 by lechon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	display_ceil(
 	const int max_y
 )
 {
-	const int	color = window->config->ceil_color;
+	const int	color = window->config.ceil_color;
 	int			i;
 
 	i = 0;
@@ -35,7 +35,7 @@ static void	display_floor(
 	const int min_y
 )
 {
-	const int	color = window->config->floor_color;
+	const int	color = window->config.floor_color;
 	int			i;
 
 	i = min_y;
