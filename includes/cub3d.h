@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lechon <lechon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/25 18:18:43 by lechon           ###   ########.fr       */
+/*   Updated: 2023/10/25 22:20:24 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,6 +162,15 @@ enum e_mod
 // STRUCTURES //
 ////////////////
 
+typedef struct s_data
+{
+	void	*img;
+	void	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}		t_data;
+
 typedef struct s_texture
 {
 	char	*content;
@@ -221,6 +230,7 @@ typedef int		t_side;
 typedef struct s_cast
 {
 	t_vect	dist;
+	t_vect	ray;
 	t_vect	step;
 	t_pos	hitpoint;
 	double	coeff;
@@ -234,15 +244,6 @@ typedef struct s_map
 	size_t		width;
 	t_player	player;
 }		t_map;
-
-typedef struct s_data
-{
-	void	*img;
-	void	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}		t_data;
 
 typedef struct s_key
 {
@@ -305,18 +306,6 @@ void			print_config(t_config *const config);
 // is_config_sequence_valid.c
 
 bool			is_sequence_valid(char *const *const sequence);
-
-	/////////////////////////////////////////
-	/////			color				/////
-	/////////////////////////////////////////
-
-	// get_color_from_rgb.c
-
-uint32_t		get_color_from_rgb(const char *const rgb_str);
-
-	// set_color.c
-
-void			set_color(t_config *const config);
 
 	/////////////////////////////////////////
 	/////			color				/////
@@ -442,7 +431,7 @@ void			draw_line_on_minimap(t_win *const window,
 
 void			draw_vertical(
 					t_win *const window,
-					const t_side side,
+					const t_cast cast,
 					const double perp_wall_dist,
 					const int x);
 
@@ -453,10 +442,7 @@ void			refresh(t_win *window);
 		// draw_vertical_utils.c
 
 // int				get_wall_color(const t_side side, const int color);
-int				get_wall_texture(
-					t_win *const window,
-					const t_side side,
-					const double perp_wall_dist,
+int				get_wall_texture(const t_cast cast,
 					const t_texture texture);
 
 t_pos			init_wall_end(const int lineheight,

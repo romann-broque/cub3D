@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 20:07:09 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/23 09:54:32 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/25 21:15:02 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ t_cast	dda(
 	cast.coeff = coeff;
 	cast.step = step;
 	cast.dist = side_dist;
+	cast.ray = ray;
 	set_cast(map, delta_dist, &cast);
 	return (cast);
 }
