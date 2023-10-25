@@ -6,7 +6,7 @@
 /*   By: lechon <lechon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 15:55:09 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/25 16:25:17 by lechon           ###   ########.fr       */
+/*   Updated: 2023/10/25 17:30:27 by lechon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ int	get_tex_x(
 	return (tex_x);
 }
 
+	/* wallx = hitpoint.x; */
+	/* wallx = hitpoint.y; */
+
 double	get_wallx(
 	const t_side side,
 	const t_player player,
@@ -39,8 +42,6 @@ double	get_wallx(
 		wallx = player.pos.y + perp_wall_dist + player.dir.y;
 	else
 		wallx = player.pos.x + perp_wall_dist + player.dir.x;
-	// wallx = hitpoint.x;
-	// wallx = hitpoint.y;
 	wallx = -(floor(wallx));
 	return (wallx);
 }
@@ -59,17 +60,18 @@ int	get_wall_texture(
 	const int		color;
 
 	color = texture[side][texture->height * tex_y + tex_x];
-	if (side == est ou ouest)
+	if (side == Y_SIDE)
 		color = (color >> 1);
 	return (color);
 }
-
+/*
 int	get_wall_color(const t_side side, const int color)
 {
 	if (side == Y_SIDE)
 		return (color / 2);
 	return (color);
 }
+*/
 
 t_pos	init_wall_end(
 	const int lineheight,
