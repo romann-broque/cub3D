@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   build_config.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lechon <lechon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 09:44:49 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/25 18:17:48 by lechon           ###   ########.fr       */
+/*   Updated: 2023/10/25 22:40:34 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,23 +50,23 @@ static ssize_t	build_attributes(
 static int	set_texture(
 	t_texture *const texture,
 	char *const texture_file,
-	void *const mlx_ptr,
-	t_data *const data
+	void *const mlx_ptr
 	)
 {
 	int			height;
 	int			width;
-	void *const	img = mlx_xpm_file_to_image(mlx_ptr,
-			texture_file, &width, &height);
 
-	if (img == NULL)
+	texture->data.img = mlx_xpm_file_to_image(mlx_ptr,
+			texture_file, &width, &height);
+	if (texture->data.img == NULL)
 	{
 		print_format_error(INVALID_TEXTURE);
 		print_error(RED_PRINT"%s: %s\n"NC, strerror(errno), texture_file);
 		return (EXIT_FAILURE);
 	}
-	texture->content = mlx_get_data_addr(img,
-			&(data->bits_per_pixel), &(data->line_length), &(data->endian));
+	texture->data.addr = mlx_get_data_addr(texture->data.img,
+			&(texture->data.bits_per_pixel),
+			&(texture->data.line_length), &(texture->data.endian));
 	texture->height = height;
 	texture->width = width;
 	return (EXIT_SUCCESS);
@@ -74,8 +74,7 @@ static int	set_texture(
 
 static int	set_textures_array(
 	t_config *const config,
-	void *const mlx_ptr,
-	t_data *const data
+	void *const mlx_ptr
 	)
 {
 	int		ret_val;
@@ -86,7 +85,7 @@ static int	set_textures_array(
 	while (i < TEXTURE_COUNT && ret_val == EXIT_SUCCESS)
 	{
 		ret_val = set_texture(config->textures + i,
-				config->attribute_array[i], mlx_ptr, data);
+				config->attribute_array[i], mlx_ptr);
 		++i;
 	}
 	return (ret_val);
@@ -95,8 +94,7 @@ static int	set_textures_array(
 ssize_t	build_config(
 	t_config *const config,
 	char *const *const lines,
-	void *const mlx_ptr,
-	t_data *const data
+	void *const mlx_ptr
 	)
 {
 	ssize_t	offset;
@@ -108,7 +106,7 @@ ssize_t	build_config(
 	if (offset != INVALID_OFFSET)
 	{
 		set_color(config);
-		if (set_textures_array(config, mlx_ptr, data) == EXIT_FAILURE)
+		if (set_textures_array(config, mlx_ptr) == EXIT_FAILURE)
 			offset = INVALID_OFFSET;
 	}
 	return (offset);

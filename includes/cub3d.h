@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/25 22:20:24 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/25 22:41:19 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,7 +173,7 @@ typedef struct s_data
 
 typedef struct s_texture
 {
-	char	*content;
+	t_data	data;
 	int		height;
 	int		width;
 	double	step;
@@ -293,7 +293,7 @@ void			init_config(t_config *const config);
 // build_config.c
 
 ssize_t			build_config(t_config *const config, char *const *const lines,
-					void *const mlx_ptr, t_data *const data);
+					void *const mlx_ptr);
 
 // free_config.c
 

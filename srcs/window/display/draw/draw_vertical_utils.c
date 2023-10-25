@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 15:55:09 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/25 22:20:37 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/25 22:39:46 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,9 @@ int	get_wall_texture(
 	const int		tex_y = (int)texture.tex_pos & (texture.height - 1);
 	int				color;
 
-	color = *(int *)(texture.content
-			+ texture.height * tex_y + tex_x * texture.width);
+	color = *(int *)(texture.data.addr
+			+ texture.data.line_length * tex_y
+			+ tex_x * texture.data.bits_per_pixel / 8);
 	if (cast.side == Y_SIDE)
 		color = (color >> 1);
 	return (color);
