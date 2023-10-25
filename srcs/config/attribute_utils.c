@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   attribute_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 07:57:46 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/16 10:37:18 by jess             ###   ########.fr       */
+/*   Updated: 2023/10/25 12:57:15 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,15 +74,6 @@ static int	add_attribute_into_config(
 	}
 	return (ret_val);
 }
-
-/*
-	--> build_attribute_from_sequence must return this
-
-	return !((is_sequence_valid(sequence) == true
-			&& (is_sequence_empty(sequence) == true
-			|| add_attribute_into_config(config, sequence) == EXIT_SUCCESS))))
-
-*/
 
 int	build_attribute_from_sequence(
 	t_config *const config,

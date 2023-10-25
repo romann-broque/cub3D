@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 09:44:49 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/12 08:34:58 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/25 13:49:57 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ static bool	is_config_complete(const t_config *const config)
 	return (i == ATTRIBUTE_COUNT);
 }
 
-ssize_t	build_config(t_config *const config, char *const *const lines)
+static ssize_t	build_attributes(
+	t_config *const config,
+	char *const *const lines)
 {
 	char	**sequence;
 	ssize_t	offset;
@@ -41,6 +43,42 @@ ssize_t	build_config(t_config *const config, char *const *const lines)
 		else
 			++offset;
 		free_strs(sequence);
+	}
+	return (offset);
+}
+/*
+// static int	set_texture(
+// 	t_texture *const texture,
+// 	const char *const texture_file)
+// {
+// 	texture->content = mlx_xpm_file_to_image();
+
+// }
+
+// static int	set_textures_array(t_config *const config)
+// {
+// 	size_t	i;
+
+// 	i = 0;
+// 	while (i < TEXTURE_COUNT)
+// 	{
+// 		set_texture(config->textures + i, config->attribute_array[i]);
+// 		++i;
+// 	}
+// }
+		// if (set_textures_array(config) == EXIT_FAILURE)
+		// 	offset = INVALID_OFFSET;
+*/
+
+ssize_t	build_config(t_config *const config, char *const *const lines)
+{
+	ssize_t	offset;
+
+	init_config(config);
+	offset = build_attributes(config, lines);
+	if (offset != INVALID_OFFSET)
+	{
+		set_color(config);
 	}
 	return (offset);
 }

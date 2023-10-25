@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/25 09:56:55 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/25 13:50:25 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@
 # define RGB_SIZE			3
 # define ATTRIBUTE_COUNT	6
 # define KEY_COUNT			8
+# define TEXTURE_COUNT		4
 # define X_SIDE				0
 # define Y_SIDE				1
 
@@ -160,11 +161,19 @@ enum e_mod
 // STRUCTURES //
 ////////////////
 
+typedef struct s_texture
+{
+	int		*content;
+	size_t	height;
+	size_t	width;
+}		t_texture;
+
 typedef struct s_config
 {
-	char	*attribute_array[ATTRIBUTE_COUNT + 1];
-	int		ceil_color;
-	int		floor_color;
+	char		*attribute_array[ATTRIBUTE_COUNT + 1];
+	int			ceil_color;
+	int			floor_color;
+	t_texture	textures[TEXTURE_COUNT];
 }		t_config;
 
 typedef struct s_tile
@@ -240,13 +249,13 @@ typedef struct s_key
 
 typedef struct s_win
 {
-	const t_config	*config;
-	void			*mlx_ptr;
-	void			*win_ptr;
-	t_data			data;
-	t_map			*map;
-	enum e_mod		mod;
-	t_key			*keys;
+	t_config	config;
+	void		*mlx_ptr;
+	void		*win_ptr;
+	t_data		data;
+	t_map		*map;
+	enum e_mod	mod;
+	t_key		*keys;
 }		t_win;
 
 typedef struct s_event_mapping
@@ -353,7 +362,7 @@ bool			is_file_valid(const char *const filename, const int fd);
 // init_window.c
 
 void			init_window(t_win *const window,
-					t_map *const map, const t_config *const config);
+					char *const *const file_content);
 
 // free_window.c
 
