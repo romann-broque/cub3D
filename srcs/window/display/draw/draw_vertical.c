@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 14:46:43 by jess              #+#    #+#             */
-/*   Updated: 2023/10/23 20:59:01 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/25 09:51:53 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	display_floor(
 	int			i;
 
 	i = min_y;
-	while (i < WINDOW_HEIGHT)
+	while (i < WINDOW_HEIGHT - 1)
 	{
 		put_pixel(&(window->data), x, i, color);
 		++i;
