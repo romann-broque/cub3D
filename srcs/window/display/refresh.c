@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display_map.c                                      :+:      :+:    :+:   */
+/*   refresh.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/16 16:11:15 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/24 19:59:06 by rbroque          ###   ########.fr       */
+/*   Created: 2023/10/24 08:09:03 by rbroque           #+#    #+#             */
+/*   Updated: 2023/10/24 23:35:08 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	display_map(t_win *const window)
+void	refresh(t_win *window)
 {
-	display_grid(window);
-	display_player_on_map(window);
-}
-
-void	display_minimap(t_win *const window)
-{
-	display_grid(window);
-	display_player_on_minimap(window);
+	mlx_destroy_image(window->mlx_ptr, window->data.img);
+	init_data(window->mlx_ptr, &window->data);
+	display_window_content(window);
+	mlx_put_image_to_window(window->mlx_ptr, window->win_ptr,
+		window->data.img, 0, 0);
 }
