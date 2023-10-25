@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 09:44:49 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/25 14:31:42 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/25 14:47:55 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static int	set_texture(
 	if (texture->content == NULL)
 	{
 		print_format_error(INVALID_TEXTURE);
-		print_error(RED_PRINT"%s\n"NC, strerror(errno));
+		print_error(RED_PRINT"%s: %s\n"NC, strerror(errno), texture_file);
 		return (EXIT_FAILURE);
 	}
 	texture->height = height;
