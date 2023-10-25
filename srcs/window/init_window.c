@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_window.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lechon <lechon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 09:39:32 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/25 14:21:43 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/25 18:18:23 by lechon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,8 @@ void	init_window(
 	window->map = NULL;
 	window->win_ptr = NULL;
 	init_mlx(window);
-	offset = build_config(&(window->config), file_content, window->mlx_ptr);
+	offset = build_config(&(window->config),
+			file_content, window->mlx_ptr, &(window->data));
 	if (offset == INVALID_OFFSET)
 		return ;
 	init_map_in_window(window, offset, file_content);

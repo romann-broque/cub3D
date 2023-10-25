@@ -6,7 +6,7 @@
 /*   By: lechon <lechon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/25 17:31:57 by lechon           ###   ########.fr       */
+/*   Updated: 2023/10/25 18:18:43 by lechon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,9 +164,11 @@ enum e_mod
 
 typedef struct s_texture
 {
-	int	**content;
-	int	height;
-	int	width;
+	char	*content;
+	int		height;
+	int		width;
+	double	step;
+	double	tex_pos;
 }		t_texture;
 
 typedef struct s_config
@@ -289,8 +291,8 @@ void			init_config(t_config *const config);
 
 // build_config.c
 
-ssize_t			build_config(t_config *const config,
-					char *const *const lines, void *const mlx_ptr);
+ssize_t			build_config(t_config *const config, char *const *const lines,
+					void *const mlx_ptr, t_data *const data);
 
 // free_config.c
 
@@ -450,15 +452,13 @@ void			refresh(t_win *window);
 
 		// draw_vertical_utils.c
 
-int				get_wall_color(const t_side side, const int color);
-t_pos			init_wall_end(const int lineheight,
-					const int height, const int x);
-t_pos			init_wall_start(const int lineheight,
-					const int height, const int x);
+// int				get_wall_color(const t_side side, const int color);
+int				get_wall_texture(
+					t_win *const window,
+					const t_side side,
+					const double perp_wall_dist,
+					const t_texture texture);
 
-		// draw_vertical_utils.c
-
-int				get_wall_color(const t_side side, const int color);
 t_pos			init_wall_end(const int lineheight,
 					const int height, const int x);
 t_pos			init_wall_start(const int lineheight,
