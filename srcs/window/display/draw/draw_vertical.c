@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_vertical.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lechon <lechon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 14:46:43 by jess              #+#    #+#             */
-/*   Updated: 2023/10/25 09:51:53 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/25 16:12:09 by lechon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,14 @@ void	draw_vertical(
 	int			i;
 
 	display_ceil(window, x, wall_start.y);
+	texture->step = 1.0 * texture->height / lineheight;
+	texture->tex_pos = (wall_start.y - WINDOW_HEIGHT / 2 + lineheight / 2)
+		* texture->step;
 	i = wall_start.y;
 	while (i < wall_end.y)
 	{
-		put_pixel(&(window->data), x, i, get_wall_color(side, BLUE));
+		put_pixel(&(window->data), x, i,
+			get_wall_texture(window, side, perp_wall_dist, texture));
 		++i;
 	}
 	display_floor(window, x, wall_end.y);
