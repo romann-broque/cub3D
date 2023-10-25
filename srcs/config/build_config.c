@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 09:44:49 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/25 13:49:57 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/25 14:31:42 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,39 +46,62 @@ static ssize_t	build_attributes(
 	}
 	return (offset);
 }
-/*
-// static int	set_texture(
-// 	t_texture *const texture,
-// 	const char *const texture_file)
-// {
-// 	texture->content = mlx_xpm_file_to_image();
 
-// }
+static int	set_texture(
+	t_texture *const texture,
+	char *const texture_file,
+	void *const mlx_ptr
+	)
+{
+	int	height;
+	int	width;
 
-// static int	set_textures_array(t_config *const config)
-// {
-// 	size_t	i;
+	texture->content = mlx_xpm_file_to_image(
+			mlx_ptr, texture_file, &width, &height);
+	if (texture->content == NULL)
+	{
+		print_format_error(INVALID_TEXTURE);
+		print_error(RED_PRINT"%s\n"NC, strerror(errno));
+		return (EXIT_FAILURE);
+	}
+	texture->height = height;
+	texture->width = width;
+	return (EXIT_SUCCESS);
+}
 
-// 	i = 0;
-// 	while (i < TEXTURE_COUNT)
-// 	{
-// 		set_texture(config->textures + i, config->attribute_array[i]);
-// 		++i;
-// 	}
-// }
-		// if (set_textures_array(config) == EXIT_FAILURE)
-		// 	offset = INVALID_OFFSET;
-*/
+static int	set_textures_array(t_config *const config, void *const mlx_ptr)
+{
+	int		ret_val;
+	size_t	i;
 
-ssize_t	build_config(t_config *const config, char *const *const lines)
+	ret_val = EXIT_SUCCESS;
+	i = 0;
+	while (i < TEXTURE_COUNT && ret_val == EXIT_SUCCESS)
+	{
+		ret_val = set_texture(config->textures + i,
+				config->attribute_array[i], mlx_ptr);
+		++i;
+	}
+	return (ret_val);
+}
+
+ssize_t	build_config(
+	t_config *const config,
+	char *const *const lines,
+	void *const mlx_ptr
+	)
 {
 	ssize_t	offset;
 
 	init_config(config);
+	if (mlx_ptr == NULL)
+		return (INVALID_OFFSET);
 	offset = build_attributes(config, lines);
 	if (offset != INVALID_OFFSET)
 	{
 		set_color(config);
+		if (set_textures_array(config, mlx_ptr) == EXIT_FAILURE)
+			offset = INVALID_OFFSET;
 	}
 	return (offset);
 }

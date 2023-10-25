@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/25 13:50:25 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/25 14:27:29 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@
 # define DUPLICATED_CONFIG	"DUPLICATED CONFIG"
 # define WRONG_RGB			"WRONG RGB"
 # define INVALID_FILENAME	"FILENAME IS INVALID"
+# define INVALID_TEXTURE	"INVALID TEXTURE"
 
 // Print Colors
 
@@ -163,9 +164,9 @@ enum e_mod
 
 typedef struct s_texture
 {
-	int		*content;
-	size_t	height;
-	size_t	width;
+	int	*content;
+	int	height;
+	int	width;
 }		t_texture;
 
 typedef struct s_config
@@ -288,7 +289,8 @@ void			init_config(t_config *const config);
 
 // build_config.c
 
-ssize_t			build_config(t_config *const config, char *const *const lines);
+ssize_t			build_config(t_config *const config,
+					char *const *const lines, void *const mlx_ptr);
 
 // free_config.c
 
