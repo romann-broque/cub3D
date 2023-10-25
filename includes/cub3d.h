@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/25 08:10:21 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/25 09:16:40 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -387,8 +387,6 @@ void			display_player_on_minimap(t_win *const window);
 
 		// draw_on_map.c
 
-t_pos			find_map_screen_pos(t_win *const window,
-					const t_pos pos);
 void			draw_square_on_map(t_win *const window,
 					const t_pos pos, const size_t size,
 					const int color);
@@ -403,8 +401,6 @@ void			draw_line_on_map(t_win *const window,
 
 		// draw_on_minimap.c
 
-t_pos			find_minimap_screen_pos(t_win *const window,
-					const t_pos pos);
 void			draw_square_on_minimap(t_win *const window,
 					const t_pos pos, const size_t size,
 					const int color);

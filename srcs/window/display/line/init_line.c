@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 17:54:53 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/24 22:30:40 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/25 09:39:43 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	init_line_in_minimap(t_line *line, const t_pos pos1, const t_pos pos2)
 {
 	set_pos(&(line->min_pos), MINIMAP_XOFFSET, MINIMAP_YOFFSET);
 	set_pos(&(line->max_pos),
-		MINIMAP_XOFFSET + 2 * (MINIMAP_RADIUS) * (TILE_SIZE) + TILE_SIZE,
-		MINIMAP_YOFFSET + 2 * (MINIMAP_RADIUS) * (TILE_SIZE) + TILE_SIZE);
+		MINIMAP_XOFFSET + 2 * MINIMAP_RADIUS * TILE_SIZE + TILE_SIZE,
+		MINIMAP_YOFFSET + 2 * MINIMAP_RADIUS * TILE_SIZE + TILE_SIZE);
 	set_line(line, pos1, pos2);
 }

@@ -6,13 +6,13 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 14:52:26 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/24 22:30:33 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/25 09:16:47 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-t_pos	find_map_screen_pos(
+static t_pos	find_map_screen_pos(
 	t_win *const window,
 	const t_pos pos)
 {
