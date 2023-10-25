@@ -74,8 +74,8 @@ SRCS	 	+=	free_data.c
 
 SRCS	 	+=	display_window.c
 SRCS	 	+=	display_map.c
-SRCS	 	+=	display_minimap.c
-SRCS	 	+=	display_minimap_utils.c
+SRCS	 	+=	display_grid.c
+SRCS	 	+=	display_grid_utils.c
 SRCS	 	+=	display_player.c
 SRCS	 	+=	refresh.c
 
@@ -99,12 +99,14 @@ SRCS	 	+=	put_line.c
 
 SRCS	 	+=	loop.c
 SRCS	 	+=	keyboard.c
+SRCS	 	+=	keyboard_utils.c
 
 ### srcs/window/loop/events/
 
 SRCS	 	+=	e_close_window.c
 SRCS	 	+=	e_rotation.c
 SRCS	 	+=	e_translation.c
+SRCS	 	+=	e_map_mod.c
 SRCS	 	+=	translation_utils.c
 
 ### srcs/window/map/
