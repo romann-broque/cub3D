@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/25 14:27:29 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/25 14:53:35 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,7 +164,7 @@ enum e_mod
 
 typedef struct s_texture
 {
-	int	*content;
+	int	**content;
 	int	height;
 	int	width;
 }		t_texture;
