@@ -6,28 +6,11 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 23:38:34 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/25 07:33:31 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/25 08:10:16 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-ssize_t	find_event_index(
-	const t_event_mapping *const mapping,
-	const int key
-	)
-{
-	ssize_t	i;
-
-	i = 0;
-	while (mapping[i].event != NULL)
-	{
-		if (key == mapping[i].key.key_value)
-			return (i);
-		++i;
-	}
-	return (-1);
-}
 
 ssize_t	find_key_index(
 	const t_key *keys,

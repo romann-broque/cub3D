@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/25 07:35:07 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/25 08:10:21 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -497,8 +497,6 @@ int				key_release(const int key, t_win *window);
 void			set_key_status(t_win *const window,
 					const int key, const bool is_pressed);
 t_event_mapping	*get_mapping(void);
-ssize_t			find_event_index(const t_event_mapping *const mapping,
-					const int key);
 ssize_t			find_key_index(const t_key *keys, const int key);
 bool			is_same_key_in(const t_key *const keys, const t_key key);
 

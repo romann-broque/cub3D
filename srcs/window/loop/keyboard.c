@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 15:02:28 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/25 07:34:25 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/25 08:07:25 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,11 @@ int	browse_mapping(t_win *window)
 	while (mapping[i].event != NULL && ret_val == EXIT_SUCCESS)
 	{
 		if (is_same_key_in(window->keys, mapping[i].key) == true)
-		{
 			ret_val = mapping[i].event(window);
-			refresh(window);
-		}
 		++i;
 	}
+	if (ret_val == EXIT_SUCCESS)
+		refresh(window);
 	return (ret_val);
 }
 
