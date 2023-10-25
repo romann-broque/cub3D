@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 09:39:32 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/24 23:16:37 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/25 07:34:41 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,22 @@
 static void	init_player(t_map *const map)
 {
 	map->player = get_player(map);
+}
+
+static t_key	*init_keys(void)
+{
+	static t_key	keys[KEY_COUNT] = {
+	{.key_value = K_M, .pressure = false},
+	{.key_value = K_W, .pressure = false},
+	{.key_value = K_A, .pressure = false},
+	{.key_value = K_S, .pressure = false},
+	{.key_value = K_D, .pressure = false},
+	{.key_value = K_LEFT, .pressure = false},
+	{.key_value = K_RIGHT, .pressure = false},
+	{.key_value = K_ESC, .pressure = false}
+	};
+
+	return (keys);
 }
 
 void	init_window(
@@ -41,5 +57,5 @@ void	init_window(
 	window->mod = E_STD;
 	window->map = map;
 	window->config = config;
-	ft_bzero(window->key_pressure, KEY_COUNT * sizeof(bool));
+	window->keys = init_keys();
 }

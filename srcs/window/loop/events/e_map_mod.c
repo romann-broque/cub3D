@@ -6,17 +6,20 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 15:12:55 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/24 15:44:13 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/25 07:37:13 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	map_mod(t_win *const ptr)
+int	enable_map_mod(t_win *const ptr)
 {
-	if (ptr->mod == E_STD)
-		ptr->mod = E_MAP;
-	else
-		ptr->mod = E_STD;
+	ptr->mod = E_MAP;
+	return (EXIT_SUCCESS);
+}
+
+int	disable_map_mod(t_win *const ptr)
+{
+	ptr->mod = E_STD;
 	return (EXIT_SUCCESS);
 }

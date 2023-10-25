@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/24 23:46:29 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/25 07:35:07 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@
 # define PLAYER_SIZE		4
 # define FOV				80
 # define STEP_SIZE			0.001
-# define MOVE_SPEED			0.3
+# define MOVE_SPEED			0.1
 # define ROTATE_SPEED		7
 
 // NUMBERS
@@ -232,6 +232,12 @@ typedef struct s_data
 	int		endian;
 }		t_data;
 
+typedef struct s_key
+{
+	int		key_value;
+	bool	pressure;
+}		t_key;
+
 typedef struct s_win
 {
 	const t_config	*config;
@@ -240,13 +246,12 @@ typedef struct s_win
 	t_data			data;
 	t_map			*map;
 	enum e_mod		mod;
-	bool			key_pressure[KEY_COUNT];
+	t_key			*keys;
 }		t_win;
 
 typedef struct s_event_mapping
 {
-	int		key;
-	bool	is_pressed;
+	t_key	key;
 	int		(*event)(t_win *const);
 
 }		t_event_mapping;
@@ -492,6 +497,10 @@ int				key_release(const int key, t_win *window);
 void			set_key_status(t_win *const window,
 					const int key, const bool is_pressed);
 t_event_mapping	*get_mapping(void);
+ssize_t			find_event_index(const t_event_mapping *const mapping,
+					const int key);
+ssize_t			find_key_index(const t_key *keys, const int key);
+bool			is_same_key_in(const t_key *const keys, const t_key key);
 
 		/////////////////////////////////////////
 		/////			events				/////
@@ -515,7 +524,8 @@ int				move_right(t_win *const ptr);
 
 		// e_map_mod.c
 
-int				map_mod(t_win *const ptr);
+int				enable_map_mod(t_win *const ptr);
+int				disable_map_mod(t_win *const ptr);
 
 		// translation_utils.c
 
