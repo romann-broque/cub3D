@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 09:39:32 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/25 13:49:24 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/25 13:51:29 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	init_window(
 	init_mlx(window);
 	if (offset == INVALID_OFFSET)
 		return ;
-	init_map_in_window(window, file_content);
+	init_map_in_window(window, offset, file_content);
 	if (window->map != NULL)
 	{
 		init_player(window->map);
