@@ -165,6 +165,15 @@ INCLUDES	+=	-I /usr/includes/
 
 PATH_HEADERS +=	includes/
 
+HEADERS		+=	cub3d_config.h
+HEADERS		+=	cub3d_defines.h
+HEADERS		+=	cub3d_display.h
+HEADERS		+=	cub3d_loop.h
+HEADERS		+=	cub3d_map.h
+HEADERS		+=	cub3d_miscellaneous.h
+HEADERS		+=	cub3d_read_file.h
+HEADERS		+=	cub3d_struct.h
+HEADERS		+=	cub3d_window.h
 HEADERS		+=	cub3d.h
 
 vpath %.h $(PATH_HEADERS)
