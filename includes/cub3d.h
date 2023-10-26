@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/25 09:56:55 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/26 13:35:09 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@
 # define WINDOW_WIDTH		1600
 # define WINDOW_HEIGHT		900
 # define WINDOW_TITLE		"cub3D"
+# define BRIGHTNESS_FACTOR	0.7
+# define BRIGHTNESS_POWER	0.7
 # define PLAYER_XOFFSET		0.5
 # define PLAYER_YOFFSET		0.5
 # define MINIMAP_XOFFSET	25
@@ -72,10 +74,10 @@
 # define COUNT_LINE_ERROR	-1
 # define INVALID_OFFSET		-1
 # define RGB_SIZE			3
+# define BITS_PER_BYTE		8
 # define ATTRIBUTE_COUNT	6
 # define KEY_COUNT			8
-# define X_SIDE				0
-# define Y_SIDE				1
+# define TEXTURE_COUNT		4
 
 // CHAR
 
@@ -109,6 +111,7 @@
 # define DUPLICATED_CONFIG	"DUPLICATED CONFIG"
 # define WRONG_RGB			"WRONG RGB"
 # define INVALID_FILENAME	"FILENAME IS INVALID"
+# define INVALID_TEXTURE	"INVALID TEXTURE"
 
 // Print Colors
 
@@ -150,6 +153,14 @@ enum e_attribute_type
 	E_CEIL
 };
 
+typedef enum e_side
+{
+	NORTH_FACE,
+	SOUTH_FACE,
+	WEST_FACE,
+	EAST_FACE
+}		t_side;
+
 enum e_mod
 {
 	E_STD,
@@ -160,11 +171,30 @@ enum e_mod
 // STRUCTURES //
 ////////////////
 
+typedef struct s_data
+{
+	void	*img;
+	void	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}		t_data;
+
+typedef struct s_texture
+{
+	t_data	data;
+	int		height;
+	int		width;
+	double	step;
+	double	tex_pos;
+}		t_texture;
+
 typedef struct s_config
 {
-	char	*attribute_array[ATTRIBUTE_COUNT + 1];
-	int		ceil_color;
-	int		floor_color;
+	char		*attribute_array[ATTRIBUTE_COUNT + 1];
+	int			ceil_color;
+	int			floor_color;
+	t_texture	textures[TEXTURE_COUNT];
 }		t_config;
 
 typedef struct s_tile
@@ -204,11 +234,10 @@ typedef struct s_player
 
 }		t_player;
 
-typedef int		t_side;
-
 typedef struct s_cast
 {
 	t_vect	dist;
+	t_vect	ray;
 	t_vect	step;
 	t_pos	hitpoint;
 	double	coeff;
@@ -223,15 +252,6 @@ typedef struct s_map
 	t_player	player;
 }		t_map;
 
-typedef struct s_data
-{
-	void	*img;
-	void	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}		t_data;
-
 typedef struct s_key
 {
 	int		key_value;
@@ -240,13 +260,13 @@ typedef struct s_key
 
 typedef struct s_win
 {
-	const t_config	*config;
-	void			*mlx_ptr;
-	void			*win_ptr;
-	t_data			data;
-	t_map			*map;
-	enum e_mod		mod;
-	t_key			*keys;
+	t_config	config;
+	void		*mlx_ptr;
+	void		*win_ptr;
+	t_data		data;
+	t_map		*map;
+	enum e_mod	mod;
+	t_key		*keys;
 }		t_win;
 
 typedef struct s_event_mapping
@@ -279,11 +299,12 @@ void			init_config(t_config *const config);
 
 // build_config.c
 
-ssize_t			build_config(t_config *const config, char *const *const lines);
+ssize_t			build_config(t_config *const config, char *const *const lines,
+					void *const mlx_ptr);
 
 // free_config.c
 
-void			free_config(t_config *const config);
+void			free_config(t_config *const config, void *const mlx_ptr);
 
 // print_config.c
 
@@ -304,18 +325,8 @@ uint32_t		get_color_from_rgb(const char *const rgb_str);
 	// set_color.c
 
 void			set_color(t_config *const config);
-
-	/////////////////////////////////////////
-	/////			color				/////
-	/////////////////////////////////////////
-
-	// get_color_from_rgb.c
-
-uint32_t		get_color_from_rgb(const char *const rgb_str);
-
-	// set_color.c
-
-void			set_color(t_config *const config);
+unsigned int	change_brightness(const unsigned int color,
+					const double factor);
 
 /////////////////////////////////////////
 /////			  math				/////
@@ -353,7 +364,7 @@ bool			is_file_valid(const char *const filename, const int fd);
 // init_window.c
 
 void			init_window(t_win *const window,
-					t_map *const map, const t_config *const config);
+					char *const *const file_content);
 
 // free_window.c
 
@@ -425,33 +436,34 @@ void			draw_line_on_minimap(t_win *const window,
 					const t_pos pos1, const t_pos pos2,
 					const int color);
 
+		// get_wall_texture.c
+
+int				get_wall_texture(
+					const t_cast cast,
+					t_texture texture);
+
 		// draw_vertical.c
 
 void			draw_vertical(
 					t_win *const window,
-					const t_side side,
+					const t_cast cast,
 					const double perp_wall_dist,
 					const int x);
 
-		// refresh.c
-
-void			refresh(t_win *window);
-
 		// draw_vertical_utils.c
 
-int				get_wall_color(const t_side side, const int color);
 t_pos			init_wall_end(const int lineheight,
 					const int height, const int x);
 t_pos			init_wall_start(const int lineheight,
 					const int height, const int x);
-
-		// draw_vertical_utils.c
-
-int				get_wall_color(const t_side side, const int color);
-t_pos			init_wall_end(const int lineheight,
-					const int height, const int x);
-t_pos			init_wall_start(const int lineheight,
-					const int height, const int x);
+t_texture		*get_texture_from_side(
+					t_texture	textures_array[TEXTURE_COUNT],
+					const t_side side);
+void			set_texture_start_pos(
+					t_win *const window,
+					const t_cast cast,
+					const int lineheight,
+					const double wall_start_y);
 
 		// draw_tile.c
 
@@ -493,6 +505,10 @@ void			put_line(t_data *data,
 					const t_pos pos1, const t_pos pos2, const int color);
 void			put_line_in_minimap(t_data *data,
 					const t_pos pos1, const t_pos pos2, const int color);
+
+		// refresh.c
+
+void			refresh(t_win *window);
 
 	/////////////////////////////////////////
 	/////			 loop				/////
