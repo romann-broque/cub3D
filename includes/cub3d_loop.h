@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 17:14:28 by lechon            #+#    #+#             */
-/*   Updated: 2023/10/26 15:21:41 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/26 15:44:42 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 
 # include "cub3d.h"
 
-	/////////////////////////////////////////
-	/////			 loop				/////
-	/////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////
+/////																	/////
+/////								LOOP								/////
+/////																	/////
+/////////////////////////////////////////////////////////////////////////////
 
 	// loop.c
 
@@ -37,32 +39,32 @@ t_event_mapping	*get_mapping(void);
 ssize_t			find_key_index(const t_key *keys, const int key);
 bool			is_same_key_in(const t_key *const keys, const t_key key);
 
-		/////////////////////////////////////////
-		/////			events				/////
-		/////////////////////////////////////////
+/////////////////////////////////////////
+/////			events				/////
+/////////////////////////////////////////
 
-		// e_close_window.c
+	// e_close_window.c
 
 int				close_window(t_win *const ptr);
 
-		// e_rotation.c
+	// e_rotation.c
 
 int				rotate_right(t_win *const ptr);
 int				rotate_left(t_win *const ptr);
 
-		// e_translation.c
+	// e_translation.c
 
 int				move_forward(t_win *const ptr);
 int				move_backward(t_win *const ptr);
 int				move_left(t_win *const ptr);
 int				move_right(t_win *const ptr);
 
-		// e_map_mod.c
+	// e_map_mod.c
 
 int				enable_map_mod(t_win *const ptr);
 int				disable_map_mod(t_win *const ptr);
 
-		// translation_utils.c
+	// translation_utils.c
 
 void			translate_side(t_map *const map,
 					t_player *const player, const double move_speed);
