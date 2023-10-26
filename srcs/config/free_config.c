@@ -24,7 +24,10 @@ static void	free_attribute_array(char *attribute_array[ATTRIBUTE_COUNT + 1])
 	}
 }
 
-static void	destroy_textures(t_texture textures[TEXTURE_COUNT], void *const mlx_ptr)
+static void	destroy_textures(
+	t_texture textures[TEXTURE_COUNT],
+	void *const mlx_ptr
+	)
 {
 	size_t	i;
 

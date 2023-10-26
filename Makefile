@@ -321,7 +321,7 @@ run		: all
 
 norm	:
 	$(ECHOC) $(BLUE) "\n""NORM : "$(NC)""
-	./$(NORM)
+	bash -i ./$(NORM)
 
 test	: all
 	echo -e $(BLUE) "\n====> CUB3D TESTS"$(NC)"\n"
