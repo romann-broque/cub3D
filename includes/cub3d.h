@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/26 09:34:07 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/26 12:14:59 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,6 @@
 # define ATTRIBUTE_COUNT	6
 # define KEY_COUNT			8
 # define TEXTURE_COUNT		4
-# define X_SIDE				0
-# define Y_SIDE				1
 
 // CHAR
 
@@ -152,6 +150,14 @@ enum e_attribute_type
 	E_CEIL
 };
 
+typedef enum e_side
+{
+	NORTH_FACE,
+	SOUTH_FACE,
+	WEST_FACE,
+	EAST_FACE
+}		t_side;
+
 enum e_mod
 {
 	E_STD,
@@ -224,8 +230,6 @@ typedef struct s_player
 	t_vect	plane;
 
 }		t_player;
-
-typedef int		t_side;
 
 typedef struct s_cast
 {
