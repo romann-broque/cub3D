@@ -84,6 +84,7 @@ SRCS	 	+=	refresh.c
 SRCS	 	+=	draw_on_map.c
 SRCS	 	+=	draw_on_minimap.c
 SRCS	 	+=	draw_square.c
+SRCS	 	+=	draw_texture_utils.c
 SRCS	 	+=	draw_vertical.c
 SRCS	 	+=	draw_vertical_utils.c
 SRCS	 	+=	draw_tile.c

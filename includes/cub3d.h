@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lechon <lechon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/25 22:41:19 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/26 11:20:08 by lechon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -427,6 +427,22 @@ void			draw_line_on_minimap(t_win *const window,
 					const t_pos pos1, const t_pos pos2,
 					const int color);
 
+		// draw_texture_utils.c
+
+t_texture		*get_texture_from_side(
+					t_texture	textures_array[TEXTURE_COUNT],
+					const t_side side);
+
+int				get_wall_texture(
+					const t_cast cast,
+					t_texture texture);
+
+void			set_texture_start_pos(
+					t_win *const window,
+					const t_cast cast,
+					const int lineheight,
+					const double wall_start_y);
+
 		// draw_vertical.c
 
 void			draw_vertical(
@@ -435,15 +451,7 @@ void			draw_vertical(
 					const double perp_wall_dist,
 					const int x);
 
-		// refresh.c
-
-void			refresh(t_win *window);
-
 		// draw_vertical_utils.c
-
-// int				get_wall_color(const t_side side, const int color);
-int				get_wall_texture(const t_cast cast,
-					const t_texture texture);
 
 t_pos			init_wall_end(const int lineheight,
 					const int height, const int x);
@@ -490,6 +498,10 @@ void			put_line(t_data *data,
 					const t_pos pos1, const t_pos pos2, const int color);
 void			put_line_in_minimap(t_data *data,
 					const t_pos pos1, const t_pos pos2, const int color);
+
+		// refresh.c
+
+void			refresh(t_win *window);
 
 	/////////////////////////////////////////
 	/////			 loop				/////
