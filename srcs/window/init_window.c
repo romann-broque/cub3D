@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 09:39:32 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/25 09:52:56 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/26 12:45:08 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,7 @@ static t_key	*init_keys(void)
 	return (keys);
 }
 
-void	init_window(
-	t_win *const window,
-	t_map *const map,
-	const t_config *const config
-	)
+static void	init_mlx(t_win *const window)
 {
 	window->mlx_ptr = mlx_init();
 	if (window->mlx_ptr == NULL)
@@ -53,9 +49,40 @@ void	init_window(
 		return ;
 	}
 	init_data(window->mlx_ptr, &window->data);
-	window->map = map;
-	init_player(map);
-	window->keys = init_keys();
-	window->mod = E_STD;
-	window->config = config;
+}
+
+static void	init_map_in_window(
+	t_win *const window,
+	const ssize_t offset,
+	char *const *const file_content)
+{
+	window->map = init_map(file_content + offset);
+	if (window->map == NULL || is_map_valid(window->map) == false)
+	{
+		free_map(window->map);
+		window->map = NULL;
+	}
+}
+
+void	init_window(
+	t_win *const window,
+	char *const *const file_content
+	)
+{
+	ssize_t	offset;
+
+	window->map = NULL;
+	window->win_ptr = NULL;
+	init_mlx(window);
+	offset = build_config(&(window->config),
+			file_content, window->mlx_ptr);
+	if (offset == INVALID_OFFSET)
+		return ;
+	init_map_in_window(window, offset, file_content);
+	if (window->map != NULL)
+	{
+		init_player(window->map);
+		window->keys = init_keys();
+		window->mod = E_STD;
+	}
 }

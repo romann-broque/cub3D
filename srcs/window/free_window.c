@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 09:57:38 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/16 07:21:56 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/26 09:31:46 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	free_window(t_win *const window)
 {
 	if (window != NULL)
 	{
+		free_config(&(window->config), window->mlx_ptr);
 		if (window->mlx_ptr != NULL)
 		{
 			if (window->win_ptr != NULL)
@@ -26,5 +27,6 @@ void	free_window(t_win *const window)
 			mlx_destroy_display(window->mlx_ptr);
 		}
 		free(window->mlx_ptr);
+		free_map(window->map);
 	}
 }

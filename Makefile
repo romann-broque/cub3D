@@ -84,6 +84,7 @@ SRCS	 	+=	refresh.c
 SRCS	 	+=	draw_on_map.c
 SRCS	 	+=	draw_on_minimap.c
 SRCS	 	+=	draw_square.c
+SRCS	 	+=	get_wall_texture.c
 SRCS	 	+=	draw_vertical.c
 SRCS	 	+=	draw_vertical_utils.c
 SRCS	 	+=	draw_tile.c
@@ -320,7 +321,7 @@ run		: all
 
 norm	:
 	$(ECHOC) $(BLUE) "\n""NORM : "$(NC)""
-	./$(NORM)
+	bash -i ./$(NORM)
 
 test	: all
 	echo -e $(BLUE) "\n====> CUB3D TESTS"$(NC)"\n"
