@@ -257,12 +257,8 @@ ifeq ($(print_debug), true)
 	CFLAGS	+= -D PRINT_DEBUG=true
 endif
 
-ifeq ($(map), true)
-	CFLAGS	+= -D MAP_DISPLAY=true
-endif
-
-ifeq ($(minimap), true)
-	CFLAGS	+= -D MINIMAP_DISPLAY=true
+ifeq ($(filter bonus,$(MAKECMDGOALS)),bonus)
+	CFLAGS	+= -D BONUS=true
 endif
 
 ifeq ($(filter test,$(MAKECMDGOALS)),test)
@@ -340,6 +336,8 @@ test	: all
 	$(MAKE) -sC $(FUNCHECK_FOLDER_LIB)
 	$(MAKE) -sC $(FUNCHECK_FOLDER_HOST)
 	$(FUNCHECK_SCRIPT)
+
+bonus: all
 
 cunit: all
 	$(MAKE) -sC $(CUNIT_FOLDER)
