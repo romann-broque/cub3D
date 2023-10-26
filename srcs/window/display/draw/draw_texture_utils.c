@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_texture_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lechon <lechon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 09:05:50 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/26 11:20:04 by lechon           ###   ########.fr       */
+/*   Updated: 2023/10/26 12:28:29 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@ t_texture	*get_texture_from_side(
 	const t_side side
 )
 {
-	if (side == X_SIDE)
-		return (textures_array + E_WEST);
-	return (textures_array + E_SOUTH);
+	return (textures_array + side);
 }
 
 static int	get_tex_x(
@@ -41,7 +39,7 @@ static double	get_wall_x(const t_cast cast)
 {
 	double	wall_x;
 
-	if (cast.side == X_SIDE)
+	if (cast.side == WEST_FACE || cast.side == EAST_FACE)
 		wall_x = cast.hitpoint.y;
 	else
 		wall_x = cast.hitpoint.x;
@@ -62,8 +60,6 @@ int	get_wall_texture(
 	color = *(int *)(texture.data.addr
 			+ texture.data.line_length * tex_y
 			+ tex_x * texture.data.bits_per_pixel / 8);
-	if (cast.side == Y_SIDE)
-		color = (color >> 1);
 	return (color);
 }
 

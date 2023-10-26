@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 15:12:55 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/25 07:37:13 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/26 10:09:37 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int	enable_map_mod(t_win *const ptr)
 {
-	ptr->mod = E_MAP;
+	if (MAP_DISPLAY)
+		ptr->mod = E_MAP;
 	return (EXIT_SUCCESS);
 }
 
