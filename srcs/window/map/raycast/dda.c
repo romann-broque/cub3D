@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 20:07:09 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/26 12:28:22 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/26 12:59:04 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,14 @@ static void	set_hitpoint(
 		cast->hitpoint.x = (cast->hitpoint.y - player_pos.y) / cast->coeff
 			+ player_pos.x;
 	}
+}
+
+static void	set_side(t_side *const side, const t_vect step)
+{
+	if (*side == WEST_FACE && step.x < 0)
+		*side = EAST_FACE;
+	else if (*side == NORTH_FACE && step.y > 0)
+		*side = SOUTH_FACE;
 }
 
 static void	set_cast(
@@ -59,10 +67,7 @@ static void	set_cast(
 			cast->side = NORTH_FACE;
 		}
 	}
-	if (cast->side == WEST_FACE && cast->step.x < 0)
-		cast->side = EAST_FACE;
-	else if (cast->side == NORTH_FACE && cast->step.y < 0)
-		cast->side = SOUTH_FACE;
+	set_side(&(cast->side), cast->step);
 	set_hitpoint(cast, map->player.pos, x, y);
 }
 

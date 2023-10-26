@@ -1,7 +1,7 @@
-NO    ./assets/textures/w3d_redbrick.xpm
-SO ./assets/textures/w3d_redbrick.xpm
-EA ./assets/textures/w3d_wood.xpm
-WE    ./assets/textures/doom_curst.xpm
+NO    ./assets/textures/w3d_door.xpm
+SO ./assets/textures/doom_curst.xpm
+EA ./assets/textures/doom_hexagone.xpm
+WE    ./assets/textures/w3d_wood.xpm
 C 54,12,160
 F 210,53,71
 

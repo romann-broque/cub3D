@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 09:05:50 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/26 12:28:29 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/26 12:56:40 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,17 @@ static int	get_tex_x(
 	const t_texture texture
 	)
 {
-	int		tex_x;
+	const bool	is_pole_dir
+		= (cast.side == NORTH_FACE
+			|| cast.side == SOUTH_FACE);
+	int			tex_x;
 
 	tex_x = (int)(wall_x * (double)texture.width);
-	if ((cast.side == 0 && cast.ray.x > 0)
-		|| (cast.side == 1 && cast.ray.y < 0))
+	if ((is_pole_dir == false && cast.ray.x > 0)
+		|| (is_pole_dir == true && cast.ray.y < 0))
+	{
 		tex_x = texture.width - tex_x - 1;
+	}
 	return (tex_x);
 }
 
@@ -43,7 +48,7 @@ static double	get_wall_x(const t_cast cast)
 		wall_x = cast.hitpoint.y;
 	else
 		wall_x = cast.hitpoint.x;
-	wall_x -= (floor(wall_x));
+	wall_x = 1 - wall_x + floor(wall_x);
 	return (wall_x);
 }
 
@@ -59,7 +64,7 @@ int	get_wall_texture(
 
 	color = *(int *)(texture.data.addr
 			+ texture.data.line_length * tex_y
-			+ tex_x * texture.data.bits_per_pixel / 8);
+			+ tex_x * texture.data.bits_per_pixel / BITS_PER_BYTE);
 	return (color);
 }
 
