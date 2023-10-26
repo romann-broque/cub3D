@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_vertical_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lechon <lechon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 15:55:09 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/26 11:18:02 by lechon           ###   ########.fr       */
+/*   Updated: 2023/10/26 13:32:10 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,27 @@ t_pos	init_wall_start(
 		wall.y = fmax(0.0, wall.y);
 	wall.x = x;
 	return (wall);
+}
+
+t_texture	*get_texture_from_side(
+	t_texture	textures_array[TEXTURE_COUNT],
+	const t_side side
+)
+{
+	return (textures_array + side);
+}
+
+void	set_texture_start_pos(
+	t_win *const window,
+	const t_cast cast,
+	const int lineheight,
+	const double wall_start_y
+)
+{
+	t_texture *const	texture = get_texture_from_side(
+			window->config.textures, cast.side);
+
+	texture->step = 1.0 * texture->height / lineheight;
+	texture->tex_pos = (wall_start_y - WINDOW_HEIGHT / 2 + lineheight / 2)
+		* texture->step;
 }

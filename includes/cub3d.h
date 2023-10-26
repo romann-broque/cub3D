@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/26 12:57:04 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/26 13:35:09 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@
 # define WINDOW_WIDTH		1600
 # define WINDOW_HEIGHT		900
 # define WINDOW_TITLE		"cub3D"
+# define BRIGHTNESS_FACTOR	0.7
+# define BRIGHTNESS_POWER	0.7
 # define PLAYER_XOFFSET		0.5
 # define PLAYER_YOFFSET		0.5
 # define MINIMAP_XOFFSET	25
@@ -323,6 +325,8 @@ uint32_t		get_color_from_rgb(const char *const rgb_str);
 	// set_color.c
 
 void			set_color(t_config *const config);
+unsigned int	change_brightness(const unsigned int color,
+					const double factor);
 
 /////////////////////////////////////////
 /////			  math				/////
@@ -432,21 +436,11 @@ void			draw_line_on_minimap(t_win *const window,
 					const t_pos pos1, const t_pos pos2,
 					const int color);
 
-		// draw_texture_utils.c
-
-t_texture		*get_texture_from_side(
-					t_texture	textures_array[TEXTURE_COUNT],
-					const t_side side);
+		// get_wall_texture.c
 
 int				get_wall_texture(
 					const t_cast cast,
 					t_texture texture);
-
-void			set_texture_start_pos(
-					t_win *const window,
-					const t_cast cast,
-					const int lineheight,
-					const double wall_start_y);
 
 		// draw_vertical.c
 
@@ -462,6 +456,14 @@ t_pos			init_wall_end(const int lineheight,
 					const int height, const int x);
 t_pos			init_wall_start(const int lineheight,
 					const int height, const int x);
+t_texture		*get_texture_from_side(
+					t_texture	textures_array[TEXTURE_COUNT],
+					const t_side side);
+void			set_texture_start_pos(
+					t_win *const window,
+					const t_cast cast,
+					const int lineheight,
+					const double wall_start_y);
 
 		// draw_tile.c
 
