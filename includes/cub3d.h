@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lechon <lechon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/26 11:20:08 by lechon           ###   ########.fr       */
+/*   Updated: 2023/10/26 09:28:53 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -297,7 +297,7 @@ ssize_t			build_config(t_config *const config, char *const *const lines,
 
 // free_config.c
 
-void			free_config(t_config *const config);
+void			free_config(t_config *const config, void *const mlx_ptr);
 
 // print_config.c
 
