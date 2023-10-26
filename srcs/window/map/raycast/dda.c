@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 20:07:09 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/23 09:54:32 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/26 12:59:04 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	set_hitpoint(
 	const size_t y
 	)
 {
-	if (cast->side == X_SIDE)
+	if (cast->side == WEST_FACE || cast->side == EAST_FACE)
 	{
 		cast->hitpoint.x = x + (cast->step.x == -1);
 		cast->hitpoint.y = cast->coeff * (cast->hitpoint.x - player_pos.x)
@@ -31,6 +31,14 @@ static void	set_hitpoint(
 		cast->hitpoint.x = (cast->hitpoint.y - player_pos.y) / cast->coeff
 			+ player_pos.x;
 	}
+}
+
+static void	set_side(t_side *const side, const t_vect step)
+{
+	if (*side == WEST_FACE && step.x < 0)
+		*side = EAST_FACE;
+	else if (*side == NORTH_FACE && step.y > 0)
+		*side = SOUTH_FACE;
 }
 
 static void	set_cast(
@@ -50,15 +58,16 @@ static void	set_cast(
 		{
 			cast->dist.x += delta_dist.x;
 			x += cast->step.x;
-			cast->side = 0;
+			cast->side = WEST_FACE;
 		}
 		else
 		{
 			cast->dist.y += delta_dist.y;
 			y += cast->step.y;
-			cast->side = 1;
+			cast->side = NORTH_FACE;
 		}
 	}
+	set_side(&(cast->side), cast->step);
 	set_hitpoint(cast, map->player.pos, x, y);
 }
 
@@ -76,6 +85,7 @@ t_cast	dda(
 	cast.coeff = coeff;
 	cast.step = step;
 	cast.dist = side_dist;
+	cast.ray = ray;
 	set_cast(map, delta_dist, &cast);
 	return (cast);
 }

@@ -1,6 +1,6 @@
-NO      ./path1
-SO      ./path2
-EA      ./path3
+NO      ./assets/textures/w3d_redbrick.xpm
+SO      ./assets/textures/w3d_redbrick.xpm
+EA      ./assets/textures/w3d_redbrick.xpm
    
    
    C     1,45,21
@@ -10,7 +10,7 @@ F     12,23,45
 
 
 
-WE      ./path4
+WE      ./assets/textures/w3d_redbrick.xpm
 11111
 101101
 100N11

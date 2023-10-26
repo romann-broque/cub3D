@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 15:46:36 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/25 09:53:13 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/26 12:12:22 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static double	get_perp_wall_dist(
 	const t_vect delta_dist
 	)
 {
-	if (cast.side == X_SIDE)
+	if (cast.side == EAST_FACE || cast.side == WEST_FACE)
 		return (cast.dist.x - delta_dist.x);
 	return (cast.dist.y - delta_dist.y);
 }
@@ -35,7 +35,7 @@ static void	raycast(
 	const double	perp_wall_dist = get_perp_wall_dist(cast, delta_dist);
 
 	if (window->mod == E_STD)
-		draw_vertical(window, cast.side, perp_wall_dist, x);
+		draw_vertical(window, cast, perp_wall_dist, x);
 	hitpoint_array[x] = cast.hitpoint;
 }
 

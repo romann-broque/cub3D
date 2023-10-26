@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_vertical.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lechon <lechon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 14:46:43 by jess              #+#    #+#             */
-/*   Updated: 2023/10/25 09:51:53 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/26 11:21:02 by lechon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	display_ceil(
 	const int max_y
 )
 {
-	const int	color = window->config->ceil_color;
+	const int	color = window->config.ceil_color;
 	int			i;
 
 	i = 0;
@@ -35,7 +35,7 @@ static void	display_floor(
 	const int min_y
 )
 {
-	const int	color = window->config->floor_color;
+	const int	color = window->config.floor_color;
 	int			i;
 
 	i = min_y;
@@ -46,9 +46,33 @@ static void	display_floor(
 	}
 }
 
+static void	display_wall(
+	t_win *const window,
+	const t_cast cast,
+	const t_pos wall_start,
+	const t_pos wall_end
+)
+{
+	const int			x = wall_start.x;
+	t_texture *const	texture = get_texture_from_side(
+			window->config.textures, cast.side);
+	t_texture			texture_cpy;
+	int					i;
+
+	texture_cpy = *texture;
+	i = wall_start.y;
+	while (i < wall_end.y)
+	{
+		put_pixel(&(window->data), x, i,
+			get_wall_texture(cast, texture_cpy));
+		texture_cpy.tex_pos += texture_cpy.step;
+		++i;
+	}
+}
+
 void	draw_vertical(
 	t_win *const window,
-	const t_side side,
+	const t_cast cast,
 	const double perp_wall_dist,
 	const int x
 	)
@@ -56,14 +80,9 @@ void	draw_vertical(
 	const int	lineheight = WINDOW_HEIGHT / perp_wall_dist;
 	const t_pos	wall_start = init_wall_start(lineheight, WINDOW_HEIGHT, x);
 	const t_pos	wall_end = init_wall_end(lineheight, WINDOW_HEIGHT, x);
-	int			i;
 
 	display_ceil(window, x, wall_start.y);
-	i = wall_start.y;
-	while (i < wall_end.y)
-	{
-		put_pixel(&(window->data), x, i, get_wall_color(side, BLUE));
-		++i;
-	}
+	set_texture_start_pos(window, cast, lineheight, wall_start.y);
+	display_wall(window, cast, wall_start, wall_end);
 	display_floor(window, x, wall_end.y);
 }
