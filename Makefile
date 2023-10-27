@@ -18,6 +18,7 @@ PATH_SRCS	+=	srcs/window/
 PATH_SRCS	+=	srcs/window/data/
 PATH_SRCS	+=	srcs/window/display/
 PATH_SRCS	+=	srcs/window/display/draw/
+PATH_SRCS	+=	srcs/window/display/draw/raycast
 PATH_SRCS	+=	srcs/window/display/line/
 PATH_SRCS	+=	srcs/window/loop/
 PATH_SRCS	+=	srcs/window/loop/events/
@@ -84,11 +85,15 @@ SRCS	 	+=	refresh.c
 SRCS	 	+=	draw_on_map.c
 SRCS	 	+=	draw_on_minimap.c
 SRCS	 	+=	draw_square.c
-SRCS	 	+=	get_wall_texture.c
-SRCS	 	+=	draw_vertical.c
-SRCS	 	+=	draw_vertical_utils.c
 SRCS	 	+=	draw_tile.c
 SRCS	 	+=	put_pixel.c
+
+### srcs/window/display/draw/raycast/
+
+SRCS	 	+=	get_wall_texture.c
+SRCS	 	+=	draw_ceil_and_floor_utils.c
+SRCS	 	+=	draw_vertical.c
+SRCS	 	+=	draw_vertical_utils.c
 
 ### srcs/window/display/line/
 
@@ -342,7 +347,7 @@ bonus: all
 cunit: all
 	$(MAKE) -sC $(CUNIT_FOLDER)
 	$(CUNIT) $(VALGRIND)
-	
+
 funcheck: all
 	echo -e $(BLUE) "\n====> Building FUNCHECK TESTS <===="$(NC)"\n"
 	$(MAKE) -sC $(FUNCHECK_FOLDER_LIB)

@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:12:25 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/26 16:10:22 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/27 08:36:39 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,35 +79,6 @@ void		draw_line_on_minimap(t_win *const window,
 				const t_pos pos1, const t_pos pos2,
 				const int color);
 
-	// get_wall_texture.c
-
-int			get_wall_texture(
-				const t_cast cast,
-				t_texture texture);
-
-	// draw_vertical.c
-
-void		draw_vertical(
-				t_win *const window,
-				const t_cast cast,
-				const double perp_wall_dist,
-				const int x);
-
-	// draw_vertical_utils.c
-
-t_pos		init_wall_end(const int lineheight,
-				const int height, const int x);
-t_pos		init_wall_start(const int lineheight,
-				const int height, const int x);
-t_texture	*get_texture_from_side(
-				t_texture	textures_array[TEXTURE_COUNT],
-				const t_side side);
-void		set_texture_start_pos(
-				t_win *const window,
-				const t_cast cast,
-				const int lineheight,
-				const double wall_start_y);
-
 	// draw_tile.c
 
 void		draw_tile(t_win *const window,
@@ -125,6 +96,51 @@ void		draw_square(t_win *const window,
 
 void		put_pixel(t_data *data,
 				const int x, const int y, const int color);
+
+/////////////////////////////////////////
+/////			raycast				/////
+/////////////////////////////////////////
+
+		// get_wall_texture.c
+
+int			get_wall_texture(
+				const t_cast cast,
+				t_texture texture);
+double		get_wall_x(const t_cast cast);
+
+		// draw_vertical.c
+
+void		draw_vertical(
+				t_win *const window,
+				const t_cast cast,
+				const double perp_wall_dist,
+				const int x);
+
+		// draw_vertical_utils.c
+
+t_pos		init_wall_end(const int lineheight,
+				const int height, const int x);
+t_pos		init_wall_start(const int lineheight,
+				const int height, const int x);
+t_texture	*get_texture_from_side(
+				t_texture	textures_array[TEXTURE_COUNT],
+				const t_side side);
+void		set_texture_start_pos(
+				t_win *const window,
+				const t_cast cast,
+				const int lineheight,
+				const double wall_start_y);
+
+		// draw_ceil_and_floor_utils.c
+
+t_pos		get_floor_wall(
+				t_win *const window,
+				const t_cast cast);
+t_pos		get_floor_tex_pos(t_win *const window,
+				const int y, const t_pos floor_wall,
+				const double perp_wall_dist);
+uint32_t	get_color_from_floor_tex_pos(t_win *const window,
+				const t_pos floor_tex_pos);
 
 /////////////////////////////////////////
 /////			line				/////
@@ -153,4 +169,4 @@ void		put_line_in_minimap(t_data *data,
 
 void		refresh(t_win *window);
 
-#endif 
+#endif

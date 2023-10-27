@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 09:05:50 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/26 13:36:04 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/27 07:20:32 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	get_tex_x(
 	return (tex_x);
 }
 
-static double	get_wall_x(const t_cast cast)
+double	get_wall_x(const t_cast cast)
 {
 	double	wall_x;
 
