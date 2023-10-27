@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 14:46:43 by jess              #+#    #+#             */
-/*   Updated: 2023/10/27 08:42:14 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/27 10:12:56 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static void	display_ceil_and_floor_texture(
 	if (wall_end.y < 0)
 		wall_end.y = WINDOW_HEIGHT;
 	y = wall_end.y + 1;
-	while (y < WINDOW_HEIGHT + 1)
+	while (y < WINDOW_HEIGHT)
 	{
 		floor_tex_pos = get_floor_tex_pos(window, y,
 				floor_wall, perp_wall_dist);
