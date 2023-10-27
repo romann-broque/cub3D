@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:06:20 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/26 16:34:28 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/26 16:45:15 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,6 @@
 
 # ifndef TEST
 #  define TEST				0
-# endif
-
-# ifndef BONUS
-#  define BONUS 0
 # endif
 
 # define WINDOW_WIDTH		1600
@@ -54,7 +50,12 @@
 # define BITS_PER_BYTE		8
 # define ATTRIBUTE_COUNT	6
 # define KEY_COUNT			8
-# define TEXTURE_COUNT		4
+
+# ifdef BONUS
+#  define TEXTURE_COUNT		6
+# else
+#  define TEXTURE_COUNT		4
+# endif
 
 // CHAR
 
@@ -116,4 +117,8 @@
 # define K_ESC				0xff1b
 # define NO_KEY				0
 
-#endif 
+# ifndef BONUS
+#  define BONUS 0
+# endif
+
+#endif

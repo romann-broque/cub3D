@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 09:44:49 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/25 22:40:34 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/26 17:23:17 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ static int	set_texture(
 	void *const mlx_ptr
 	)
 {
-	int			height;
-	int			width;
+	int	height;
+	int	width;
 
 	texture->data.img = mlx_xpm_file_to_image(mlx_ptr,
 			texture_file, &width, &height);
@@ -105,7 +105,8 @@ ssize_t	build_config(
 	offset = build_attributes(config, lines);
 	if (offset != INVALID_OFFSET)
 	{
-		set_color(config);
+		if (BONUS == false)
+			set_color(config);
 		if (set_textures_array(config, mlx_ptr) == EXIT_FAILURE)
 			offset = INVALID_OFFSET;
 	}

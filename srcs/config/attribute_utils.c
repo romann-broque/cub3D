@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 07:57:46 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/25 14:47:46 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/27 06:59:44 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ void	assign_attribute(
 	const char *const str
 	)
 {
-	if ((type == E_CEIL || type == E_FLOOR) && is_rgb(str) == false)
+	if ((type == E_CEIL || type == E_FLOOR)
+		&& is_rgb(str) == false && BONUS == false)
 		print_format_error(WRONG_RGB);
 	else
 	{
