@@ -6,22 +6,22 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 09:05:50 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/27 10:00:31 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/27 14:11:29 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int	get_tex_x(
+int	get_tex_x(
 	const t_cast cast,
-	const double wall_x,
 	const t_texture texture
 	)
 {
-	const bool	is_pole_dir
+	const double	wall_x = get_wall_x(cast);
+	const bool		is_pole_dir
 		= (cast.side == NORTH_FACE
 			|| cast.side == SOUTH_FACE);
-	int			tex_x;
+	int				tex_x;
 
 	tex_x = (int)(wall_x * (double)texture.width);
 	if ((is_pole_dir == false && cast.ray.x > 0)
@@ -58,11 +58,10 @@ static void	change_texture_brightness(
 
 int	get_wall_texture(
 	const t_cast cast,
-	t_texture texture
+	t_texture texture,
+	const int tex_x
 	)
 {
-	const double	wall_x = get_wall_x(cast);
-	const int		tex_x = get_tex_x(cast, wall_x, texture);
 	const int		tex_y = (int)texture.tex_pos & (texture.height - 1);
 	unsigned int	color;
 

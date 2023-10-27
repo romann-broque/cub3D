@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:12:25 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/27 08:36:39 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/27 14:11:19 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,10 @@ void		put_pixel(t_data *data,
 
 int			get_wall_texture(
 				const t_cast cast,
-				t_texture texture);
+				t_texture texture,
+				const int tex_x);
+int			get_tex_x(const t_cast cast,
+				const t_texture texture);
 double		get_wall_x(const t_cast cast);
 
 		// draw_vertical.c

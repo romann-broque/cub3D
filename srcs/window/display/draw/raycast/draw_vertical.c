@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 14:46:43 by jess              #+#    #+#             */
-/*   Updated: 2023/10/27 10:12:56 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/27 14:12:01 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,19 @@ static void	display_wall(
 	const t_pos wall_end
 )
 {
-	const int			x = wall_start.x;
 	t_texture *const	texture = get_texture_from_side(
 			window->config.textures, cast.side);
-	t_texture			texture_cpy;
+	const int			tex_x = get_tex_x(cast, *texture);
+	const int			x = wall_start.x;
 	int					i;
+	t_texture			texture_cpy;
 
 	texture_cpy = *texture;
 	i = wall_start.y;
 	while (i < wall_end.y)
 	{
 		put_pixel(&(window->data), x, i,
-			get_wall_texture(cast, texture_cpy));
+			get_wall_texture(cast, texture_cpy, tex_x));
 		texture_cpy.tex_pos += texture_cpy.step;
 		++i;
 	}
