@@ -1,7 +1,7 @@
-NO    ./assets/textures/doom_hexagone.xpm
-SO ./assets/textures/doom_hexagone.xpm
-EA ./assets/textures/doom_hexagone.xpm
-WE         ./assets/textures/doom_hexagone.xpm
+NO    ./assets/textures/w3d_bluebrick.xpm
+SO ./assets/textures/w3d_bluebrick.xpm
+EA ./assets/textures/w3d_bluebrick.xpm
+WE         ./assets/textures/w3d_bluebrick.xpm
 C ./assets/textures/doom_ground.xpm
 F ./assets/textures/doom_ground.xpm
 
