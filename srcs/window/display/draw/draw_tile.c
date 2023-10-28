@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 09:05:17 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/24 22:19:12 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/28 22:26:59 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,12 @@ static void	draw_tile_width(
 
 void	draw_tile(
 	t_win *const window,
-	const t_pos pos,
+	const t_pos *const pos,
 	const size_t x,
 	const size_t y)
 {
-	const int	tile_posx = pos.x;
-	const int	tile_posy = pos.y;
+	const int	tile_posx = pos->x;
+	const int	tile_posy = pos->y;
 	t_pos		tile_pos;
 	t_pos		screen_pos;
 	size_t		i;

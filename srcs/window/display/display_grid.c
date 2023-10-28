@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 22:50:20 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/24 22:50:39 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/28 22:21:20 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static bool	draw_map_tile(
 			(pos_screen.y + offset.y) * (TILE_SIZE) + MINIMAP_YOFFSET);
 		if (is_closed_to_player(map, pos.x, pos.y) == true)
 		{
-			draw_tile(window, pos, pos_screen.x, pos_screen.y);
+			draw_tile(window, &pos, pos_screen.x, pos_screen.y);
 			return (true);
 		}
 	}
@@ -39,7 +39,7 @@ static bool	draw_map_tile(
 			* (TILE_SIZE) + WINDOW_WIDTH / 2,
 			(pos_screen.y - floor(map->player.pos.y))
 			* (TILE_SIZE) + WINDOW_HEIGHT / 2);
-		draw_tile(window, pos, pos_screen.x, pos_screen.y);
+		draw_tile(window, &pos, pos_screen.x, pos_screen.y);
 		return (true);
 	}
 	return (false);

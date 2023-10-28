@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:12:25 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/28 21:25:09 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/28 22:17:57 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,41 +54,41 @@ void		display_player_on_minimap(t_win *const window);
 	// draw_on_map.c
 
 void		draw_square_on_map(t_win *const window,
-				const t_pos pos, const size_t size,
+				const t_pos *const pos, const size_t size,
 				const int color);
 void		draw_pos_on_map(t_win *const window,
-				const t_pos pos, const int color);
+				const t_pos *const pos, const int color);
 void		draw_coordinate_on_map(t_win *const window,
 				const double x, const double y,
 				const int color);
 void		draw_line_on_map(t_win *const window,
-				const t_pos pos1, const t_pos pos2,
+				const t_pos *const pos1, const t_pos *const pos2,
 				const int color);
 
 	// draw_on_minimap.c
 
 void		draw_square_on_minimap(t_win *const window,
-				const t_pos pos, const size_t size,
+				const t_pos *const pos, const size_t size,
 				const int color);
 void		draw_pos_on_minimap(t_win *const window,
-				const t_pos pos, const int color);
+				const t_pos *const pos, const int color);
 void		draw_coordinate_on_minimap(t_win *const window,
 				const double x, const double y,
 				const int color);
 void		draw_line_on_minimap(t_win *const window,
-				const t_pos pos1, const t_pos pos2,
+				const t_pos *const pos1, const t_pos *const pos2,
 				const int color);
 
 	// draw_tile.c
 
 void		draw_tile(t_win *const window,
-				const t_pos pos,
+				const t_pos *const pos,
 				const size_t x, const size_t y);
 
 	// draw_square.c
 
 void		draw_square(t_win *const window,
-				const t_pos screen_pos,
+				const t_pos *const screen_pos,
 				const size_t size,
 				const int color);
 
@@ -105,7 +105,7 @@ void		put_pixel(t_data *data,
 
 void		draw_vertical(
 				t_win *const window,
-				const t_cast cast,
+				const t_cast *const cast,
 				const double perp_wall_dist,
 				const int x);
 
@@ -126,7 +126,7 @@ void		set_texture_start_pos(
 
 		// get_texture_pos.c
 
-int			get_tex_x(const t_cast cast,
+int			get_tex_x(const t_cast *const cast,
 				const t_texture texture);
 t_pos		get_floor_pos(t_win *const window,
 				const int y, const t_pos *floor_wall,
@@ -139,7 +139,7 @@ uint32_t	get_color_from_floor_pos(t_win *const window,
 uint32_t	get_color_from_ceil_pos(t_win *const window,
 				const t_pos *const curr_floor);
 uint32_t	get_wall_texture(
-				const t_cast cast,
+				const t_cast *const cast,
 				t_texture texture,
 				const int tex_x);
 

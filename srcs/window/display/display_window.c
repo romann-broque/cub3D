@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 10:09:13 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/28 20:56:18 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/28 22:32:54 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 static void	display_fov(
 	t_win *const window,
-	const t_pos hitpoint_array[WINDOW_WIDTH]
+	t_pos hitpoint_array[WINDOW_WIDTH]
 	)
 {
-	const t_pos	player_pos = window->map->player.pos;
-	size_t		i;
+	const t_pos *const	player_pos = &(window->map->player.pos);
+	size_t				i;
 
 	i = 0;
 	while (i < WINDOW_WIDTH)
@@ -26,10 +26,10 @@ static void	display_fov(
 		if (BONUS)
 		{
 			if (window->mod == E_MAP)
-				draw_line_on_map(window, player_pos, hitpoint_array[i], BLUE);
+				draw_line_on_map(window, player_pos, hitpoint_array + i, BLUE);
 			else if (window->mod == E_STD)
 				draw_line_on_minimap(window, player_pos,
-					hitpoint_array[i], BLUE);
+					hitpoint_array + i, BLUE);
 		}
 		++i;
 	}

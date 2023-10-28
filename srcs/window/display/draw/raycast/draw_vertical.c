@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 14:46:43 by jess              #+#    #+#             */
-/*   Updated: 2023/10/28 21:06:13 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/28 22:10:25 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 static void	display_wall(
 	t_win *const window,
-	const t_cast cast,
+	const t_cast *const cast,
 	const t_pos wall_start,
 	const t_pos wall_end
 )
 {
 	t_texture *const	texture = get_texture_from_side(
-			window->config.textures, cast.side);
+			window->config.textures, cast->side);
 	const int			tex_x = get_tex_x(cast, *texture);
 	const int			x = wall_start.x;
 	int					i;
@@ -40,11 +40,11 @@ static void	display_wall(
 static void	display_ceil_and_floor_texture(
 	t_win *const window,
 	t_pos wall_end,
-	const t_cast cast,
+	const t_cast *cast,
 	const double perp_wall_dist
 )
 {
-	const t_pos	floor_wall = cast.hitpoint;
+	const t_pos	floor_wall = cast->hitpoint;
 	const int	x = (int)wall_end.x;
 	int			y;
 	t_pos		floor_pos;
@@ -87,7 +87,7 @@ static void	display_ceil_and_floor_rgb(
 
 void	draw_vertical(
 	t_win *const window,
-	const t_cast cast,
+	const t_cast *cast,
 	const double perp_wall_dist,
 	const int x
 	)
@@ -96,7 +96,7 @@ void	draw_vertical(
 	const t_pos	wall_start = init_wall_start(lineheight, WINDOW_HEIGHT, x);
 	const t_pos	wall_end = init_wall_end(lineheight, WINDOW_HEIGHT, x);
 
-	set_texture_start_pos(window, cast.side, lineheight, wall_start.y);
+	set_texture_start_pos(window, cast->side, lineheight, wall_start.y);
 	display_wall(window, cast, wall_start, wall_end);
 	if (BONUS == true)
 		display_ceil_and_floor_texture(window, wall_end, cast, perp_wall_dist);

@@ -1,9 +1,9 @@
-NO    ./assets/textures/w3d_redbrick.xpm
-SO ./assets/textures/w3d_redbrick.xpm
-EA ./assets/textures/w3d_redbrick.xpmets/textures/w3d_redbrick.xpm
-WE         ./assets/textures/w3d_redbrick.xpm
-C ./assets/textures/w3d_redbrick.xpm
-F ./assets/textures/w3d_wood.xpm
+NO    ./assets/textures/doom_hexagone.xpm
+SO ./assets/textures/doom_hexagone.xpm
+EA ./assets/textures/doom_hexagone.xpm
+WE         ./assets/textures/doom_hexagone.xpm
+C ./assets/textures/doom_hexagone.xpm
+F ./assets/textures/w3d_bluebrick.xpm
 
 111111
 1E000111

@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 08:26:13 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/28 21:25:22 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/28 22:12:34 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ unsigned int	get_color_from_ceil_pos(
 }
 
 unsigned int	get_wall_texture(
-	const t_cast cast,
+	const t_cast *const cast,
 	t_texture texture,
 	const int tex_x
 	)
@@ -85,6 +85,6 @@ unsigned int	get_wall_texture(
 
 	set_pos(&tex_pos, tex_x, texture.tex_pos);
 	color = get_color_from_text_pos(texture, &tex_pos);
-	change_texture_brightness(&color, cast.side);
+	change_texture_brightness(&color, cast->side);
 	return (color);
 }
