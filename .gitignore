@@ -1,6 +1,8 @@
 # Prerequisites
 cub3d
 *.png
+*.jpeg
+*.jpg
 *.d
 .vscode
 minilibx-linux
