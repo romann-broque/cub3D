@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:12:25 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/28 16:01:44 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/28 21:05:57 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,19 +129,19 @@ t_texture	*get_texture_from_side(
 				const t_side side);
 void		set_texture_start_pos(
 				t_win *const window,
-				const t_cast cast,
+				const t_side side,
 				const int lineheight,
 				const double wall_start_y);
 
 		// draw_ceil_and_floor_utils.c
 
 t_pos		get_floor_pos(t_win *const window,
-				const int y, const t_pos floor_wall,
+				const int y, const t_pos *floor_wall,
 				const double perp_wall_dist);
 uint32_t	get_color_from_floor_pos(t_win *const window,
-				const t_pos curr_floor);
+				const t_pos *const curr_floor);
 uint32_t	get_color_from_ceil_pos(t_win *const window,
-				const t_pos curr_floor);
+				const t_pos *const curr_floor);
 
 /////////////////////////////////////////
 /////			line				/////
