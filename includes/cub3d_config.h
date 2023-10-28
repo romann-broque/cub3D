@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:10:33 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/26 16:10:22 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/28 21:23:19 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,6 @@
 /////								CONFIG								/////
 /////																	/////
 /////////////////////////////////////////////////////////////////////////////
-
-// is_rgb.c
-
-bool			is_rgb(const char *const str);
 
 // attribute_utils.c
 
@@ -52,8 +48,12 @@ void			print_config(t_config *const config);
 bool			is_sequence_valid(char *const *const sequence);
 
 /////////////////////////////////////////
-/////				color			/////
+/////			  color				/////
 /////////////////////////////////////////
+
+	// is_rgb.c
+
+bool			is_rgb(const char *const str);
 
 	// get_color_from_rgb.c
 

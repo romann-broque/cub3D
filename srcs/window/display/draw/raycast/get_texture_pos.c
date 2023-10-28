@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_wall_texture.c                                 :+:      :+:    :+:   */
+/*   get_texture_pos.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 09:05:50 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/28 16:03:04 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/28 21:21:56 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,30 +44,19 @@ int	get_tex_x(
 	return (tex_x);
 }
 
-static void	change_texture_brightness(
-	unsigned int *const color,
-	const t_side side
+t_pos	get_floor_pos(
+	t_win *const window,
+	const int y,
+	const t_pos *floor_wall,
+	const double perp_wall_dist
 	)
 {
-	if (side == EAST_FACE)
-		*color
-			= change_brightness(*color, BRIGHTNESS_FACTOR * BRIGHTNESS_POWER);
-	else if (side == NORTH_FACE || side == SOUTH_FACE)
-		*color = change_brightness(*color, BRIGHTNESS_FACTOR);
-}
+	const double	weight = WINDOW_HEIGHT
+		/ ((2.0 * y - WINDOW_HEIGHT) * (1e-10 + perp_wall_dist));
+	const t_pos		*player_pos = &(window->map->player.pos);
+	t_pos			curr_floor;
 
-int	get_wall_texture(
-	const t_cast cast,
-	t_texture texture,
-	const int tex_x
-	)
-{
-	const int		tex_y = (int)texture.tex_pos & (texture.height - 1);
-	unsigned int	color;
-
-	color = *(int *)(texture.data.addr
-			+ texture.data.line_length * tex_y
-			+ tex_x * texture.data.bits_per_pixel / BITS_PER_BYTE);
-	change_texture_brightness(&color, cast.side);
-	return (color);
+	curr_floor.x = weight * (floor_wall->x - player_pos->x) + player_pos->x;
+	curr_floor.y = weight * (floor_wall->y - player_pos->y) + player_pos->y;
+	return (curr_floor);
 }

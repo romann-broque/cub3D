@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 17:12:07 by lechon            #+#    #+#             */
-/*   Updated: 2023/10/26 16:39:09 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/28 21:22:53 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void			free_map(t_map *const map);
 // print_map.c
 
 void			print_map(const t_map *const map);
+
 // tile_type.c
 
 bool			is_blank(

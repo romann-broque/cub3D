@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_ceil_and_floor_utils.c                        :+:      :+:    :+:   */
+/*   get_texture_color.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 08:26:13 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/28 21:04:46 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/28 21:25:22 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-t_pos	get_floor_pos(
-	t_win *const window,
-	const int y,
-	const t_pos *floor_wall,
-	const double perp_wall_dist
+static void	change_texture_brightness(
+	unsigned int *const color,
+	const t_side side
 	)
 {
-	const double	weight = WINDOW_HEIGHT
-		/ ((2.0 * y - WINDOW_HEIGHT) * (0.000001 + perp_wall_dist));
-	const t_pos		*player_pos = &(window->map->player.pos);
-	t_pos			curr_floor;
-
-	curr_floor.x = weight * (floor_wall->x - player_pos->x) + player_pos->x;
-	curr_floor.y = weight * (floor_wall->y - player_pos->y) + player_pos->y;
-	return (curr_floor);
+	if (side == EAST_FACE)
+		*color
+			= change_brightness(*color, BRIGHTNESS_FACTOR * BRIGHTNESS_POWER);
+	else if (side == NORTH_FACE || side == SOUTH_FACE)
+		*color = change_brightness(*color, BRIGHTNESS_FACTOR);
 }
 
 static unsigned int	get_color_from_text_pos(
@@ -77,4 +72,19 @@ unsigned int	get_color_from_ceil_pos(
 		% ceil_texture->height;
 	color = get_color_from_text_pos(*ceil_texture, &ceil_tex_pos);
 	return (change_brightness(color, BRIGHTNESS_FACTOR));
+}
+
+unsigned int	get_wall_texture(
+	const t_cast cast,
+	t_texture texture,
+	const int tex_x
+	)
+{
+	unsigned int	color;
+	t_pos			tex_pos;
+
+	set_pos(&tex_pos, tex_x, texture.tex_pos);
+	color = get_color_from_text_pos(texture, &tex_pos);
+	change_texture_brightness(&color, cast.side);
+	return (color);
 }

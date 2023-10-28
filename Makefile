@@ -91,8 +91,8 @@ SRCS	 	+=	put_pixel.c
 
 ### srcs/window/display/draw/raycast/
 
-SRCS	 	+=	get_wall_texture.c
-SRCS	 	+=	draw_ceil_and_floor_utils.c
+SRCS	 	+=	get_texture_pos.c
+SRCS	 	+=	get_texture_color.c
 SRCS	 	+=	draw_vertical.c
 SRCS	 	+=	draw_vertical_utils.c
 
