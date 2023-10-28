@@ -2,8 +2,8 @@ NO    ./assets/textures/doom_hexagone.xpm
 SO ./assets/textures/doom_hexagone.xpm
 EA ./assets/textures/doom_hexagone.xpm
 WE         ./assets/textures/doom_hexagone.xpm
-C ./assets/textures/doom_hexagone.xpm
-F ./assets/textures/w3d_bluebrick.xpm
+C ./assets/textures/doom_ground.xpm
+F ./assets/textures/doom_ground.xpm
 
 111111
 1E000111

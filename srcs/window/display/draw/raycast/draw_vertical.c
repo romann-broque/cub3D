@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 14:46:43 by jess              #+#    #+#             */
-/*   Updated: 2023/10/28 22:10:25 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/28 22:43:54 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	display_wall(
 
 	texture_cpy = *texture;
 	i = wall_start.y;
-	while (i < wall_end.y)
+	while (i < wall_end.y + 1)
 	{
 		put_pixel(&(window->data), x, i,
 			get_wall_texture(cast, texture_cpy, tex_x));
@@ -51,8 +51,8 @@ static void	display_ceil_and_floor_texture(
 
 	if (wall_end.y < 0)
 		wall_end.y = WINDOW_HEIGHT;
-	y = wall_end.y;
-	while (y < WINDOW_HEIGHT)
+	y = wall_end.y + 1;
+	while (y < WINDOW_HEIGHT + 1)
 	{
 		floor_pos = get_floor_pos(window, y,
 				&floor_wall, perp_wall_dist);
@@ -76,7 +76,7 @@ static void	display_ceil_and_floor_rgb(
 
 	if (wall_end.y < 0)
 		wall_end.y = WINDOW_HEIGHT;
-	y = wall_end.y;
+	y = wall_end.y + 1;
 	while (y < WINDOW_HEIGHT + 1)
 	{
 		put_pixel(&(window->data), x, y, floor_color);
@@ -97,9 +97,9 @@ void	draw_vertical(
 	const t_pos	wall_end = init_wall_end(lineheight, WINDOW_HEIGHT, x);
 
 	set_texture_start_pos(window, cast->side, lineheight, wall_start.y);
-	display_wall(window, cast, wall_start, wall_end);
 	if (BONUS == true)
 		display_ceil_and_floor_texture(window, wall_end, cast, perp_wall_dist);
 	else
 		display_ceil_and_floor_rgb(window, wall_end);
+	display_wall(window, cast, wall_start, wall_end);
 }
