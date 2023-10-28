@@ -54,6 +54,7 @@ SRCS		+=	conversion.c
 ### srcs/print/
 
 SRCS		+=	print_format_error.c
+SRCS		+=	print_fps.c
 
 ### srcs/read_file/
 

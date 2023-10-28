@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 10:09:13 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/27 14:26:58 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/28 20:26:16 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,9 @@ void	display_window_content(t_win *const window)
 			display_map(window);
 		else if (window->mod == E_STD)
 			display_minimap(window);
+		display_fov(window, hitpoint_array);
+		print_fps();
 	}
-	display_fov(window, hitpoint_array);
 }
 
 void	display_window(t_win *const window)

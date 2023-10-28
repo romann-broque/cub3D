@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:06:20 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/26 16:45:15 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/28 18:07:19 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 #  define TEST				0
 # endif
 
-# define WINDOW_WIDTH		1600
-# define WINDOW_HEIGHT		900
+# define WINDOW_WIDTH		1200
+# define WINDOW_HEIGHT		800
 # define WINDOW_TITLE		"cub3D"
 # define BRIGHTNESS_FACTOR	0.7
 # define BRIGHTNESS_POWER	0.7

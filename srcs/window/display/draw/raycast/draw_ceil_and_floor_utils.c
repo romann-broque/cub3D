@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 08:26:13 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/28 17:03:49 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/28 20:18:36 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static unsigned int	get_color_from_text_pos(
 	)
 {
 	const t_data	texture_data = texture.data;
-	const int		t_x = (int)tex_pos.x;
+	const int		t_x = (int)tex_pos.x & (texture.width - 1);
 	const int		t_y = (int)tex_pos.y & (texture.height - 1);
 
 	return (*(int *)(texture_data.addr
@@ -50,7 +50,6 @@ unsigned int	get_color_from_floor_pos(
 {
 	const t_texture	floor_texture = window->config.textures[E_FLOOR];
 	t_pos			floor_tex_pos;
-	unsigned int	color;
 
 	floor_tex_pos.x
 		= ((int)(curr_floor.x * floor_texture.width))
@@ -58,8 +57,7 @@ unsigned int	get_color_from_floor_pos(
 	floor_tex_pos.y
 		= ((int)(curr_floor.y * floor_texture.height))
 		% floor_texture.height;
-	color = get_color_from_text_pos(floor_texture, floor_tex_pos);
-	return (change_brightness(color, BRIGHTNESS_FACTOR));
+	return (get_color_from_text_pos(floor_texture, floor_tex_pos));
 }
 
 unsigned int	get_color_from_ceil_pos(
@@ -69,6 +67,7 @@ unsigned int	get_color_from_ceil_pos(
 {
 	const t_texture	ceil_texture = window->config.textures[E_CEIL];
 	t_pos			ceil_tex_pos;
+	unsigned int	color;
 
 	ceil_tex_pos.x
 		= ((int)(curr_ceil.x * ceil_texture.width))
@@ -76,5 +75,6 @@ unsigned int	get_color_from_ceil_pos(
 	ceil_tex_pos.y
 		= ((int)(curr_ceil.y * ceil_texture.height))
 		% ceil_texture.height;
-	return (get_color_from_text_pos(ceil_texture, ceil_tex_pos));
+	color = get_color_from_text_pos(ceil_texture, ceil_tex_pos);
+	return (change_brightness(color, BRIGHTNESS_FACTOR));
 }
