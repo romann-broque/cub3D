@@ -6,11 +6,23 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 09:05:50 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/27 14:17:58 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/28 16:03:04 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+static double	get_wall_x(const t_cast cast)
+{
+	double	wall_x;
+
+	if (cast.side == WEST_FACE || cast.side == EAST_FACE)
+		wall_x = cast.hitpoint.y;
+	else
+		wall_x = cast.hitpoint.x;
+	wall_x = 1 - wall_x + floor(wall_x);
+	return (wall_x);
+}
 
 int	get_tex_x(
 	const t_cast cast,
@@ -30,18 +42,6 @@ int	get_tex_x(
 		tex_x = texture.width - tex_x - 1;
 	}
 	return (tex_x);
-}
-
-double	get_wall_x(const t_cast cast)
-{
-	double	wall_x;
-
-	if (cast.side == WEST_FACE || cast.side == EAST_FACE)
-		wall_x = cast.hitpoint.y;
-	else
-		wall_x = cast.hitpoint.x;
-	wall_x = 1 - wall_x + floor(wall_x);
-	return (wall_x);
 }
 
 static void	change_texture_brightness(
