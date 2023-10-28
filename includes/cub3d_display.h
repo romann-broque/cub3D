@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:12:25 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/27 14:11:19 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/28 15:42:53 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,9 +136,6 @@ void		set_texture_start_pos(
 
 		// draw_ceil_and_floor_utils.c
 
-t_pos		get_floor_wall(
-				t_win *const window,
-				const t_cast cast);
 t_pos		get_floor_tex_pos(t_win *const window,
 				const int y, const t_pos floor_wall,
 				const double perp_wall_dist);

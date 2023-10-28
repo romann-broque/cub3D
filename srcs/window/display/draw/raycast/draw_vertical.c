@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 14:46:43 by jess              #+#    #+#             */
-/*   Updated: 2023/10/27 14:12:01 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/28 15:42:34 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void	display_ceil_and_floor_texture(
 	const double perp_wall_dist
 )
 {
-	const t_pos	floor_wall = get_floor_wall(window, cast);
+	const t_pos	floor_wall = cast.hitpoint;
 	const int	x = (int)wall_end.x;
 	int			y;
 	t_pos		floor_tex_pos;
