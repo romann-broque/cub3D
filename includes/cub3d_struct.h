@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:08:41 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/26 16:10:22 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/28 23:33:44 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ typedef struct s_data
 	void	*img;
 	void	*addr;
 	int		bits_per_pixel;
+	int		byte_per_pixel;
 	int		line_length;
 	int		endian;
 }		t_data;
@@ -152,4 +153,4 @@ typedef struct s_event_mapping
 
 }		t_event_mapping;
 
-#endif 
+#endif

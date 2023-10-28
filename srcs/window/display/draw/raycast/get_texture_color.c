@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 08:26:13 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/28 22:12:34 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/28 23:35:42 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static unsigned int	get_color_from_text_pos(
 
 	return (*(int *)(texture_data.addr
 		+ t_y * texture_data.line_length
-		+ t_x * texture_data.bits_per_pixel / BITS_PER_BYTE));
+		+ t_x * texture_data.byte_per_pixel));
 }
 
 unsigned int	get_color_from_floor_pos(

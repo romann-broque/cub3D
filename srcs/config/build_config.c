@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 09:44:49 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/26 17:23:17 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/28 23:35:13 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,12 @@ static int	set_texture(
 	texture->data.addr = mlx_get_data_addr(texture->data.img,
 			&(texture->data.bits_per_pixel),
 			&(texture->data.line_length), &(texture->data.endian));
+	if (texture->data.addr == NULL)
+	{
+		print_format_error(MLX_ERROR);
+		return (EXIT_FAILURE);
+	}
+	texture->data.byte_per_pixel = texture->data.bits_per_pixel / BITS_PER_BYTE;
 	texture->height = height;
 	texture->width = width;
 	return (EXIT_SUCCESS);
