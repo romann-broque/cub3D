@@ -5,6 +5,7 @@ cub3d
 *.jpg
 *.d
 .vscode
+.DS_Store
 minilibx-linux
 minilibx-linux.tgz
 
