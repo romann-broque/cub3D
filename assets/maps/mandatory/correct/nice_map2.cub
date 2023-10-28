@@ -1,7 +1,7 @@
-NO    ./assets/textures/w3d_redbrick.xpm
-SO ./assets/textures/w3d_redbrick.xpm
-EA ./assets/textures/w3d_redbrick.xpm
-WE         ./assets/textures/w3d_redbrick.xpm
+NO    ./assets/textures/backroom_wall2.xpm
+SO ./assets/textures/backroom_wall2.xpm
+EA ./assets/textures/backroom_wall2.xpm
+WE         ./assets/textures/backroom_wall2.xpm
 C 100,93,255
 F 50,150,42
 

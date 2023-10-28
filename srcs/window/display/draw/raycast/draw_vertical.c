@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 14:46:43 by jess              #+#    #+#             */
-/*   Updated: 2023/10/28 16:00:47 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/28 16:57:30 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static void	display_ceil_and_floor_texture(
 
 	if (wall_end.y < 0)
 		wall_end.y = WINDOW_HEIGHT;
-	y = wall_end.y + 1;
+	y = wall_end.y;
 	while (y < WINDOW_HEIGHT)
 	{
 		floor_pos = get_floor_pos(window, y,
@@ -76,7 +76,7 @@ static void	display_ceil_and_floor_rgb(
 
 	if (wall_end.y < 0)
 		wall_end.y = WINDOW_HEIGHT;
-	y = wall_end.y + 1;
+	y = wall_end.y;
 	while (y < WINDOW_HEIGHT + 1)
 	{
 		put_pixel(&(window->data), x, y, floor_color);
