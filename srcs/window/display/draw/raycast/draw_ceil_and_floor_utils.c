@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 08:26:13 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/28 17:00:23 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/28 17:03:49 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ unsigned int	get_color_from_floor_pos(
 	floor_tex_pos.y
 		= ((int)(curr_floor.y * floor_texture.height))
 		% floor_texture.height;
-	color = get_color_from_floor_pos(floor_texture, floor_tex_pos);
+	color = get_color_from_text_pos(floor_texture, floor_tex_pos);
 	return (change_brightness(color, BRIGHTNESS_FACTOR));
 }
 
