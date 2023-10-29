@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 09:05:17 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/28 22:26:59 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/29 11:23:31 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,14 +65,12 @@ void	draw_tile(
 	const size_t x,
 	const size_t y)
 {
-	const int	tile_posx = pos->x;
-	const int	tile_posy = pos->y;
-	t_pos		tile_pos;
-	t_pos		screen_pos;
-	size_t		i;
+	t_pos	screen_pos;
+	t_pos	tile_pos;
+	size_t	i;
 
-	set_pos(&tile_pos, tile_posx, tile_posy);
 	set_pos(&screen_pos, (int)x, (int)y);
+	set_pos(&tile_pos, pos->x, pos->y);
 	i = 0;
 	while (i < TILE_SIZE)
 	{
