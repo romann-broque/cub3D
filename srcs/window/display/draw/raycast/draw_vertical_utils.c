@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 15:55:09 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/26 13:32:10 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/28 21:06:07 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,13 @@ t_texture	*get_texture_from_side(
 
 void	set_texture_start_pos(
 	t_win *const window,
-	const t_cast cast,
+	const t_side side,
 	const int lineheight,
 	const double wall_start_y
 )
 {
 	t_texture *const	texture = get_texture_from_side(
-			window->config.textures, cast.side);
+			window->config.textures, side);
 
 	texture->step = 1.0 * texture->height / lineheight;
 	texture->tex_pos = (wall_start_y - WINDOW_HEIGHT / 2 + lineheight / 2)

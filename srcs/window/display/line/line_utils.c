@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 17:46:19 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/20 11:59:18 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/29 11:12:24 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,12 @@ static bool	are_pixels_out(const double x1, const double y1,
 			|| (x1 > WINDOW_WIDTH && x2 > WINDOW_WIDTH));
 	return (((x1 < 0 && x2 < 0) || (x1 > WINDOW_WIDTH && x2 > WINDOW_WIDTH))
 		&& ((y1 < 0 && y2 < 0) || (y1 > WINDOW_HEIGHT && y2 > WINDOW_HEIGHT)));
+}
+
+bool	is_pos_in_screen(const t_pos *const pos)
+{
+	return (pos->x >= 0 && pos->x < WINDOW_WIDTH
+		&& pos->y >= 0 && pos->y < WINDOW_HEIGHT);
 }
 
 bool	is_line_printable(t_line *line)

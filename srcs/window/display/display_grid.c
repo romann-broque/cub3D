@@ -6,11 +6,20 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 22:50:20 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/24 22:50:39 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/29 11:25:15 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+static bool	is_tile_in_screen(const t_pos *const pos)
+{
+	t_pos	final_pos;
+
+	final_pos.x = pos->x + TILE_SIZE - 1;
+	final_pos.y = pos->y + TILE_SIZE - 1;
+	return (is_pos_in_screen(pos) || is_pos_in_screen(&final_pos));
+}
 
 static bool	draw_map_tile(
 	t_win *const window,
@@ -19,7 +28,7 @@ static bool	draw_map_tile(
 	t_pos pos_screen
 	)
 {
-	const t_map *const	map = window->map;
+	const t_map *const		map = window->map;
 
 	if (window->mod == E_STD)
 	{
@@ -28,7 +37,7 @@ static bool	draw_map_tile(
 			(pos_screen.y + offset.y) * (TILE_SIZE) + MINIMAP_YOFFSET);
 		if (is_closed_to_player(map, pos.x, pos.y) == true)
 		{
-			draw_tile(window, pos, pos_screen.x, pos_screen.y);
+			draw_tile(window, &pos, pos_screen.x, pos_screen.y);
 			return (true);
 		}
 	}
@@ -39,7 +48,8 @@ static bool	draw_map_tile(
 			* (TILE_SIZE) + WINDOW_WIDTH / 2,
 			(pos_screen.y - floor(map->player.pos.y))
 			* (TILE_SIZE) + WINDOW_HEIGHT / 2);
-		draw_tile(window, pos, pos_screen.x, pos_screen.y);
+		if (is_tile_in_screen(&pos_screen))
+			draw_tile(window, &pos, pos_screen.x, pos_screen.y);
 		return (true);
 	}
 	return (false);
