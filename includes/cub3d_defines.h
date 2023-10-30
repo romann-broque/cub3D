@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_defines.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lechon <lechon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:06:20 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/26 15:07:52 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/27 17:45:06 by lechon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@
 # define STEP_SIZE			0.001
 # define MOVE_SPEED			0.1
 # define ROTATE_SPEED		7
+# define IS_PRESSED        1
 
 // NUMBERS
 
@@ -118,6 +119,7 @@
 # define K_D				0x0064
 # define K_M				0x006d
 # define K_ESC				0xff1b
+# define XK_CLICK           XK_Mouse1
 # define NO_KEY				0
 
 #endif 

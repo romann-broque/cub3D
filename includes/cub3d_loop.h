@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_loop.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lechon <lechon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 17:14:28 by lechon            #+#    #+#             */
-/*   Updated: 2023/10/26 15:44:42 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/27 16:27:05 by lechon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,11 @@ void			loop(t_win *const window);
 int				browse_mapping(t_win *window);
 int				key_press(const int key, t_win *window);
 int				key_release(const int key, t_win *window);
+int				mouse_button_press(
+					const int button,
+					int x,
+					int y,
+					t_win *window);
 
 	// keyboard_utils.c
 
