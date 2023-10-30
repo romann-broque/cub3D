@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 20:26:37 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/28 20:27:51 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/30 09:43:46 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,6 @@ void	print_fps(void)
 	time = get_time();
 	frame_time = (time - old_time) / 1000.0;
 	++print_rate;
-	if (print_rate % 10 == 0)
+	if (print_rate % FPS_FREQUENCY == 0)
 		printf("FPS: %.0lf\n", 1.0 / frame_time);
 }

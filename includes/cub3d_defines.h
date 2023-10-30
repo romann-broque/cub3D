@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:06:20 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/28 18:07:19 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/30 09:43:42 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@
 # define INVALID_OFFSET		-1
 # define RGB_SIZE			3
 # define BITS_PER_BYTE		8
+# define FPS_FREQUENCY		10
 # define ATTRIBUTE_COUNT	6
 # define KEY_COUNT			8
 

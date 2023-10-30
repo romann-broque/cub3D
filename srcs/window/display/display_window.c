@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 10:09:13 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/28 22:32:54 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/30 09:44:19 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ void	display_window_content(t_win *const window)
 
 void	display_window(t_win *const window)
 {
-	print_config(&(window->config));
 	display_window_content(window);
 	mlx_put_image_to_window(window->mlx_ptr, window->win_ptr,
 		window->data.img, 0, 0);
