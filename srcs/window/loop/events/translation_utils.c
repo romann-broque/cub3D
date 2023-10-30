@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 09:03:14 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/24 14:50:38 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/30 22:04:43 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,10 @@ static t_pos	get_translated_pos(
 		check_pos.y = player_pos.y + dir_speed.y * i;
 		if (is_wall(map, check_pos.x, check_pos.y))
 		{
-			new_pos.x = player_pos.x + dir_speed.x * fmax(0.0, i - step_move);
-			new_pos.y = player_pos.y + dir_speed.y * fmax(0.0, i - step_move);
-			break ;
+			new_pos.x = (is_wall(map, check_pos.x, new_pos.y) == false)
+				* (player_pos.x + dir_speed.x * fmax(0.0, i - step_move));
+			new_pos.y = (is_wall(map, new_pos.x, check_pos.y) == false)
+				* (player_pos.y + dir_speed.y * fmax(0.0, i - step_move));
 		}
 		else
 			new_pos = check_pos;
