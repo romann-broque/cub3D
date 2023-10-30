@@ -18,6 +18,7 @@ PATH_SRCS	+=	srcs/window/
 PATH_SRCS	+=	srcs/window/data/
 PATH_SRCS	+=	srcs/window/display/
 PATH_SRCS	+=	srcs/window/display/draw/
+PATH_SRCS	+=	srcs/window/display/draw/raycast
 PATH_SRCS	+=	srcs/window/display/line/
 PATH_SRCS	+=	srcs/window/loop/
 PATH_SRCS	+=	srcs/window/loop/events/
@@ -53,6 +54,7 @@ SRCS		+=	conversion.c
 ### srcs/print/
 
 SRCS		+=	print_format_error.c
+SRCS		+=	print_fps.c
 
 ### srcs/read_file/
 
@@ -84,11 +86,15 @@ SRCS	 	+=	refresh.c
 SRCS	 	+=	draw_on_map.c
 SRCS	 	+=	draw_on_minimap.c
 SRCS	 	+=	draw_square.c
-SRCS	 	+=	get_wall_texture.c
-SRCS	 	+=	draw_vertical.c
-SRCS	 	+=	draw_vertical_utils.c
 SRCS	 	+=	draw_tile.c
 SRCS	 	+=	put_pixel.c
+
+### srcs/window/display/draw/raycast/
+
+SRCS	 	+=	get_texture_pos.c
+SRCS	 	+=	get_texture_color.c
+SRCS	 	+=	draw_vertical.c
+SRCS	 	+=	draw_vertical_utils.c
 
 ### srcs/window/display/line/
 
@@ -257,12 +263,8 @@ ifeq ($(print_debug), true)
 	CFLAGS	+= -D PRINT_DEBUG=true
 endif
 
-ifeq ($(map), true)
-	CFLAGS	+= -D MAP_DISPLAY=true
-endif
-
-ifeq ($(minimap), true)
-	CFLAGS	+= -D MINIMAP_DISPLAY=true
+ifeq ($(filter bonus,$(MAKECMDGOALS)),bonus)
+	CFLAGS	+= -D BONUS=true
 endif
 
 ifeq ($(filter test,$(MAKECMDGOALS)),test)
@@ -341,10 +343,12 @@ test	: all
 	$(MAKE) -sC $(FUNCHECK_FOLDER_HOST)
 	$(FUNCHECK_SCRIPT)
 
+bonus: all
+
 cunit: all
 	$(MAKE) -sC $(CUNIT_FOLDER)
 	$(CUNIT) $(VALGRIND)
-	
+
 funcheck: all
 	echo -e $(BLUE) "\n====> Building FUNCHECK TESTS <===="$(NC)"\n"
 	$(MAKE) -sC $(FUNCHECK_FOLDER_LIB)

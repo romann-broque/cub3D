@@ -6,7 +6,7 @@
 /*   By: lechon <lechon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:06:20 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/27 17:45:06 by lechon           ###   ########.fr       */
+/*   Updated: 2023/10/30 11:15:13 by lechon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,8 @@
 #  define TEST				0
 # endif
 
-# ifndef MINIMAP_DISPLAY
-#  define MINIMAP_DISPLAY	0
-# endif
-
-# ifndef MAP_DISPLAY
-#  define MAP_DISPLAY		0
-# endif
-
-# define WINDOW_WIDTH		1600
-# define WINDOW_HEIGHT		900
+# define WINDOW_WIDTH		1200
+# define WINDOW_HEIGHT		800
 # define WINDOW_TITLE		"cub3D"
 # define BRIGHTNESS_FACTOR	0.7
 # define BRIGHTNESS_POWER	0.7
@@ -57,9 +49,15 @@
 # define INVALID_OFFSET		-1
 # define RGB_SIZE			3
 # define BITS_PER_BYTE		8
+# define FPS_FREQUENCY		10
 # define ATTRIBUTE_COUNT	6
 # define KEY_COUNT			8
-# define TEXTURE_COUNT		4
+
+# ifdef BONUS
+#  define TEXTURE_COUNT		6
+# else
+#  define TEXTURE_COUNT		4
+# endif
 
 // CHAR
 
@@ -122,4 +120,8 @@
 # define XK_CLICK           XK_Mouse1
 # define NO_KEY				0
 
-#endif 
+# ifndef BONUS
+#  define BONUS 0
+# endif
+
+#endif

@@ -13,7 +13,7 @@ FUNCHECK_FOLDER="${TESTER_FOLDER}"/funcheck_dir/funcheck/
 FUNCHECK_BIN="${FUNCHECK_FOLDER}"/host/funcheck
 
 LOG="log"
-MAP_FOLDER=(assets/maps/correct/ assets/maps/wrong/ ${TESTER_FOLDER}/assets/maps/correct/ ${TESTER_FOLDER}/assets/maps/wrong/)
+MAP_FOLDER=(assets/maps/mandatory/correct/ assets/maps/mandatory/wrong/ ${TESTER_FOLDER}/assets/maps/correct/ ${TESTER_FOLDER}/assets/maps/wrong/)
 
 ret_val=0
 exit_val=0

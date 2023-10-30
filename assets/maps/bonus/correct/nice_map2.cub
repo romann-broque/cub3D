@@ -1,9 +1,9 @@
-NO    ./assets/textures/w3d_redbrick.xpm
-SO ./assets/textures/w3d_redbrick.xpm
-EA ./assets/textures/w3d_redbrick.xpm
-WE         ./assets/textures/w3d_redbrick.xpm
-C 100,93,255
-F 50,150,42
+NO    ./assets/textures/w3d_wood.xpm
+SO ./assets/textures/w3d_wood.xpm
+EA ./assets/textures/w3d_wood.xpm
+WE         ./assets/textures/w3d_wood.xpm
+C ./assets/textures/w3d_redbrick.xpm
+F ./assets/textures/doom_hexagone.xpm
 
 111111
 10000111

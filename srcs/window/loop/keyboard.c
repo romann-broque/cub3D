@@ -6,7 +6,7 @@
 /*   By: lechon <lechon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 15:02:28 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/30 09:54:02 by lechon           ###   ########.fr       */
+/*   Updated: 2023/10/30 11:14:49 by lechon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	browse_mapping(t_win *window)
 		++i;
 	}
 	if (ret_val == EXIT_SUCCESS)
-		refresh(window);
+		return (refresh(window));
 	return (ret_val);
 }
 

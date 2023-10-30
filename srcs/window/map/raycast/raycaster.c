@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 15:46:36 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/26 12:12:22 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/28 22:31:56 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,7 @@ static void	raycast(
 	const t_cast	cast = dda(window->map, player.pos, ray, delta_dist);
 	const double	perp_wall_dist = get_perp_wall_dist(cast, delta_dist);
 
-	if (window->mod == E_STD)
-		draw_vertical(window, cast, perp_wall_dist, x);
+	draw_vertical(window, &cast, perp_wall_dist, x);
 	hitpoint_array[x] = cast.hitpoint;
 }
 

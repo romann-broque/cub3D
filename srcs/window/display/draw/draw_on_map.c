@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 14:52:26 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/25 09:16:47 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/28 22:22:56 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 static t_pos	find_map_screen_pos(
 	t_win *const window,
-	const t_pos pos)
+	const t_pos *const pos)
 {
 	const t_pos		player_pos = window->map->player.pos;
 	const double	scale = TILE_SIZE;
-	const double	x_screen = (pos.x - floor(player_pos.x))
+	const double	x_screen = (pos->x - floor(player_pos.x))
 		* scale + WINDOW_WIDTH / 2;
-	const double	y_screen = (pos.y - floor(player_pos.y))
+	const double	y_screen = (pos->y - floor(player_pos.y))
 		* scale + WINDOW_HEIGHT / 2;
 	t_pos			screen_pos;
 
@@ -30,20 +30,20 @@ static t_pos	find_map_screen_pos(
 
 void	draw_square_on_map(
 	t_win *const window,
-	const t_pos pos,
+	const t_pos *const pos,
 	const size_t size,
 	const int color
 	)
 {
 	const t_pos	screen_pos = find_map_screen_pos(window, pos);
 
-	draw_square(window, screen_pos, size, color);
+	draw_square(window, &screen_pos, size, color);
 }
 
 void	draw_line_on_map(
 	t_win *const window,
-	const t_pos pos1,
-	const t_pos pos2,
+	const t_pos *const pos1,
+	const t_pos *const pos2,
 	const int color
 )
 {
@@ -55,11 +55,11 @@ void	draw_line_on_map(
 
 void	draw_pos_on_map(
 	t_win *const window,
-	const t_pos pos,
+	const t_pos *const pos,
 	const int color
 	)
 {
-	draw_coordinate_on_map(window, pos.x, pos.y, color);
+	draw_coordinate_on_map(window, pos->x, pos->y, color);
 }
 
 void	draw_coordinate_on_map(
@@ -75,7 +75,7 @@ void	draw_coordinate_on_map(
 	int		y_screen;
 
 	set_pos(&(pos), x, y);
-	screen_pos = find_map_screen_pos(window, pos);
+	screen_pos = find_map_screen_pos(window, &pos);
 	x_screen = (int)screen_pos.x;
 	y_screen = (int)screen_pos.y;
 	put_pixel(&(window->data), x_screen, y_screen, color);
