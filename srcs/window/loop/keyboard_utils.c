@@ -6,7 +6,7 @@
 /*   By: lechon <lechon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 23:38:34 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/27 17:45:03 by lechon           ###   ########.fr       */
+/*   Updated: 2023/10/30 09:53:34 by lechon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ void	set_key_status(
 		window->keys[index].pressure = is_pressed;
 }
 
+/* {.key = {.key_value = XK_CLICK, .pressure = true}, .event = rotate_side}, */
+
 t_event_mapping	*get_mapping(void)
 {
 	static t_event_mapping	mapping[] = {
@@ -60,7 +62,6 @@ t_event_mapping	*get_mapping(void)
 	{.key = {.key_value = K_M, .pressure = true}, .event = enable_map_mod},
 	{.key = {.key_value = K_M, .pressure = false}, .event = disable_map_mod},
 	{.key = {.key_value = K_ESC, .pressure = true}, .event = close_window},
-	// {.key = {.key_value = XK_CLICK, .pressure = true}, .event = rotate_side},
 	{.key = {.key_value = NO_KEY}, .event = NULL},
 	};
 

@@ -6,7 +6,7 @@
 /*   By: lechon <lechon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 15:02:28 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/27 17:27:10 by lechon           ###   ########.fr       */
+/*   Updated: 2023/10/30 09:54:02 by lechon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ Cursor	create_invisible_cursor(Display *display, Window rootWindow)
 	return (invisible_cursor);
 }
 
-int	mouse_button_press(const int button, int x, int y, t_win *window)
+/* int	mouse_button_press(const int button, int x, int y, t_win *window)
 {
 	static int	mouse_click;
 	Display		*display;
@@ -111,3 +111,4 @@ int	mouse_button_press(const int button, int x, int y, t_win *window)
 	}
 	return (EXIT_SUCCESS);
 }
+*/
