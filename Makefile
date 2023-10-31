@@ -85,6 +85,7 @@ SRCS	 	+=	refresh.c
 
 SRCS	 	+=	draw_on_map.c
 SRCS	 	+=	draw_on_minimap.c
+SRCS	 	+=	find_screen_pos.c
 SRCS	 	+=	draw_square.c
 SRCS	 	+=	draw_tile.c
 SRCS	 	+=	put_pixel.c

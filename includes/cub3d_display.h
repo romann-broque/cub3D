@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:12:25 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/29 13:42:11 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/31 10:08:58 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,13 @@ void		display_player_on_minimap(t_win *const window);
 /////				draw			/////
 /////////////////////////////////////////
 
+	// find_screen_pos.c
+
+t_pos		find_map_screen_pos(t_win *const window,
+				const t_pos *const pos);
+t_pos		find_minimap_screen_pos(t_win *const window,
+				const t_pos *const pos);
+
 	// draw_on_map.c
 
 void		draw_square_on_map(t_win *const window,
@@ -64,6 +71,8 @@ void		draw_coordinate_on_map(t_win *const window,
 void		draw_line_on_map(t_win *const window,
 				const t_pos *const pos1, const t_pos *const pos2,
 				const int color);
+void		draw_tile_on_map(t_win *const window,
+				const t_pos *const pos);
 
 	// draw_on_minimap.c
 
@@ -78,12 +87,16 @@ void		draw_coordinate_on_minimap(t_win *const window,
 void		draw_line_on_minimap(t_win *const window,
 				const t_pos *const pos1, const t_pos *const pos2,
 				const int color);
+void		draw_tile_on_minimap(
+				t_win *const window,
+				const t_pos *const pos);
 
 	// draw_tile.c
 
-void		draw_tile(t_win *const window,
+void		draw_tile(
+				t_win *const window,
 				const t_pos *const pos,
-				const size_t x, const size_t y);
+				const t_pos *const screen_pos);
 
 	// draw_square.c
 
@@ -96,6 +109,9 @@ void		draw_square(t_win *const window,
 
 void		put_pixel(t_data *data,
 				const int x, const int y, const int color);
+void		put_tile_pixel(t_win *const window,
+				const size_t x, const size_t y,
+				const unsigned int color);
 
 /////////////////////////////////////////
 /////			raycast				/////
