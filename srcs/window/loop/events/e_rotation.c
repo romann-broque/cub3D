@@ -6,7 +6,7 @@
 /*   By: lechon <lechon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 17:17:11 by lechon            #+#    #+#             */
-/*   Updated: 2023/10/24 18:44:28 by lechon           ###   ########.fr       */
+/*   Updated: 2023/10/31 14:52:43 by lechon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ static void	rotate_vect(t_vect *const object, const double rad_speed)
 		+ object->y * cos(rad_speed);
 }
 
-static void	rotate_side(
-	t_player *const player,
-	const double deg_speed
+void	rotate_side(
+			t_player *const player,
+			const double deg_speed
 )
 {
 	const double	rad_speed = convert_deg_to_rad(deg_speed);

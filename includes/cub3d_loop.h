@@ -6,7 +6,7 @@
 /*   By: lechon <lechon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 17:14:28 by lechon            #+#    #+#             */
-/*   Updated: 2023/10/30 11:15:07 by lechon           ###   ########.fr       */
+/*   Updated: 2023/10/31 14:52:59 by lechon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,18 @@ void			loop(t_win *const window);
 int				browse_mapping(t_win *window);
 int				key_press(const int key, t_win *window);
 int				key_release(const int key, t_win *window);
-int				mouse_button_press(
-					const int button,
-					int x,
-					int y,
-					t_win *window);
 
 	// keyboard_utils.c
 
 void			set_key_status(t_win *const window,
 					const int key, const bool is_pressed);
-t_event_mapping	*get_mapping(void);
+t_event_mapping	*get_key_mapping(void);
 ssize_t			find_key_index(const t_key *keys, const int key);
 bool			is_same_key_in(const t_key *const keys, const t_key key);
+
+	// mouse.c
+
+int				mouse_move(int x, int y, t_win *const window);
 
 /////////////////////////////////////////
 /////			events				/////
@@ -54,6 +53,9 @@ int				close_window(t_win *const ptr);
 
 	// e_rotation.c
 
+void			rotate_side(
+					t_player *const player,
+					const double deg_speed);
 int				rotate_right(t_win *const ptr);
 int				rotate_left(t_win *const ptr);
 

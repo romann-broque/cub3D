@@ -6,7 +6,7 @@
 /*   By: lechon <lechon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 23:38:34 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/30 09:53:34 by lechon           ###   ########.fr       */
+/*   Updated: 2023/10/31 11:03:50 by lechon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,7 @@ void	set_key_status(
 		window->keys[index].pressure = is_pressed;
 }
 
-/* {.key = {.key_value = XK_CLICK, .pressure = true}, .event = rotate_side}, */
-
-t_event_mapping	*get_mapping(void)
+t_event_mapping	*get_key_mapping(void)
 {
 	static t_event_mapping	mapping[] = {
 	{.key = {.key_value = K_LEFT, .pressure = true}, .event = rotate_left},

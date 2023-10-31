@@ -6,7 +6,7 @@
 /*   By: lechon <lechon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 14:43:23 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/30 11:14:42 by lechon           ###   ########.fr       */
+/*   Updated: 2023/10/31 15:35:55 by lechon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,11 @@ static void	hook(t_win *const window)
 		window);
 	mlx_hook(window->win_ptr, KeyPress, KeyPressMask, key_press, window);
 	mlx_hook(window->win_ptr, KeyRelease, KeyReleaseMask, key_release, window);
-	mlx_hook(window->win_ptr, ButtonPress, ButtonPressMask,
-		mouse_button_press, window);
+	if (BONUS == true)
+	{
+		mlx_hook(window->win_ptr, MotionNotify,
+			PointerMotionMask, mouse_move, window);
+	}
 }
 
 void	loop(t_win *const window)

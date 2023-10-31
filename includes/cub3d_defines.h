@@ -6,7 +6,7 @@
 /*   By: lechon <lechon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:06:20 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/30 11:15:13 by lechon           ###   ########.fr       */
+/*   Updated: 2023/10/31 15:42:00 by lechon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@
 # define STEP_SIZE			0.001
 # define MOVE_SPEED			0.1
 # define ROTATE_SPEED		7
-# define IS_PRESSED        1
+# define IS_PRESSED         1
 
 // NUMBERS
 
@@ -52,6 +52,7 @@
 # define FPS_FREQUENCY		10
 # define ATTRIBUTE_COUNT	6
 # define KEY_COUNT			8
+# define CURSOR_COUNT       1
 
 # ifdef BONUS
 #  define TEXTURE_COUNT		6
@@ -117,8 +118,11 @@
 # define K_D				0x0064
 # define K_M				0x006d
 # define K_ESC				0xff1b
-# define XK_CLICK           XK_Mouse1
 # define NO_KEY				0
+
+// Cursor
+
+# define MOUSE_DIST_EDGE    20
 
 # ifndef BONUS
 #  define BONUS 0
