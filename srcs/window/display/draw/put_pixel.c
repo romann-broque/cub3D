@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 09:03:33 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/31 10:09:01 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/31 15:59:12 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,12 @@ void	put_tile_pixel(
 	const unsigned int color
 )
 {
-	if (window->mod == E_STD)
+	const enum e_mod	mod = window->mod;
+
+	if (mod == E_STD)
 		put_pixel_on_minimap(window,
 			x, y, color);
-	else if (window->mod == E_MAP)
+	else if (mod == E_MAP)
 		put_pixel(&(window->data),
 			x, y, color);
 }
