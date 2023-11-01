@@ -6,7 +6,7 @@
 /*   By: lechon <lechon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 17:14:28 by lechon            #+#    #+#             */
-/*   Updated: 2023/10/31 14:52:59 by lechon           ###   ########.fr       */
+/*   Updated: 2023/11/01 11:49:03 by lechon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,21 @@ t_event_mapping	*get_key_mapping(void);
 ssize_t			find_key_index(const t_key *keys, const int key);
 bool			is_same_key_in(const t_key *const keys, const t_key key);
 
-	// mouse.c
+	// mouse_move.c
 
 int				mouse_move(int x, int y, t_win *const window);
+
+	// mouse_click.c
+
+int				mouse_click(const int click, t_win *const window);
+
+	// mouse_invisible.c
+
+bool			is_pair(const int nb);
+Cursor			create_invisible_cursor(Display *display, Window rootWindow);
+void			hide_window_cursor(Display *display, Cursor invisible_cursor);
+void			display_window_cursor(
+					Display *display, Cursor invisible_cursor);
 
 /////////////////////////////////////////
 /////			events				/////

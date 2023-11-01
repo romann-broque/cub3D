@@ -1,16 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mouse.c                                            :+:      :+:    :+:   */
+/*   mouse_move.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lechon <lechon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 11:42:39 by lechon            #+#    #+#             */
-/*   Updated: 2023/10/31 15:41:07 by lechon           ###   ########.fr       */
+/*   Updated: 2023/11/01 12:05:03 by lechon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+static void	define_window_cursor(t_win *const window)
+{
+	Display		*display;
+	Cursor		invisible_cursor;
+
+	display = XOpenDisplay(NULL);
+	if (display == NULL)
+		return ;
+	invisible_cursor = None;
+	if (is_pair(window->keys->mouse_clicks) == true)
+		display_window_cursor(display, invisible_cursor);
+	else
+		hide_window_cursor(display, invisible_cursor);
+}
 
 static void	wrap_mouse_position(t_win *const window, int x, int y)
 {
@@ -31,12 +46,13 @@ int	mouse_move(int x, int y, t_win *const window)
 	static int	prev_x = WINDOW_WIDTH / 2;
 
 	wrap_mouse_position(window, x, y);
+	define_window_cursor(window);
 	if (x == prev_x)
 		return (EXIT_SUCCESS);
 	else if (x < prev_x)
-		rotate_side(&(window->map->player), -ROTATE_SPEED / 2);
+		rotate_side(&(window->map->player), -ROTATE_SPEED / 3);
 	else if (x > prev_x)
-		rotate_side(&(window->map->player), ROTATE_SPEED / 2);
+		rotate_side(&(window->map->player), ROTATE_SPEED / 3);
 	prev_x = x;
 	return (EXIT_SUCCESS);
 }

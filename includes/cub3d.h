@@ -6,7 +6,7 @@
 /*   By: lechon <lechon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:43 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/30 11:14:57 by lechon           ###   ########.fr       */
+/*   Updated: 2023/11/01 11:43:54 by lechon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@
 # include <math.h>
 # include <X11/cursorfont.h>
 # include <stdio.h>
-// # include <X11/keysymdef.h>
 
 # include "cub3d_defines.h"
 # include "cub3d_struct.h"

@@ -6,7 +6,7 @@
 /*   By: lechon <lechon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:08:41 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/31 14:50:49 by lechon           ###   ########.fr       */
+/*   Updated: 2023/11/01 11:44:48 by lechon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,7 @@ typedef struct s_key
 {
 	int		key_value;
 	bool	pressure;
+	int		mouse_clicks;
 }		t_key;
 
 typedef struct s_win

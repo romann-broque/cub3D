@@ -6,7 +6,7 @@
 /*   By: lechon <lechon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:06:20 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/31 15:42:00 by lechon           ###   ########.fr       */
+/*   Updated: 2023/11/01 10:56:13 by lechon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@
 
 // Cursor
 
-# define MOUSE_DIST_EDGE    20
+# define MOUSE_DIST_EDGE    30
 
 # ifndef BONUS
 #  define BONUS 0
