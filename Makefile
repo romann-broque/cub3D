@@ -50,10 +50,12 @@ SRCS	 	+=	set_color.c
 ### srcs/math/
 
 SRCS		+=	conversion.c
+SRCS		+=	are_dimensions_valid.c
 
 ### srcs/print/
 
 SRCS		+=	print_format_error.c
+SRCS		+=	print_format_warning.c
 SRCS		+=	print_fps.c
 
 ### srcs/read_file/
