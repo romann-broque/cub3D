@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:12:25 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/31 10:08:58 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/03 13:59:46 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,6 +185,6 @@ void		put_line_in_minimap(t_data *data,
 
 	// refresh.c
 
-int			refresh(t_win *window);
+void		refresh(t_win *window);
 
 #endif

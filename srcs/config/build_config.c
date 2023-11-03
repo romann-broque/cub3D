@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 09:44:49 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/01 18:33:19 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/03 13:52:18 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ static int	set_texture(
 		return (EXIT_FAILURE);
 	}
 	texture->data.byte_per_pixel = texture->data.bits_per_pixel / BITS_PER_BYTE;
-	texture->height++;
 	if (are_dimensions_valid(texture->height, texture->width) == false)
 	{
 		print_format_warning(DIMENSIONS_NOT_SUPPORTED);
