@@ -50,10 +50,12 @@ SRCS	 	+=	set_color.c
 ### srcs/math/
 
 SRCS		+=	conversion.c
+SRCS		+=	are_dimensions_valid.c
 
 ### srcs/print/
 
 SRCS		+=	print_format_error.c
+SRCS		+=	print_format_warning.c
 SRCS		+=	print_fps.c
 
 ### srcs/read_file/
@@ -86,6 +88,7 @@ SRCS	 	+=	refresh.c
 
 SRCS	 	+=	draw_on_map.c
 SRCS	 	+=	draw_on_minimap.c
+SRCS	 	+=	find_screen_pos.c
 SRCS	 	+=	draw_square.c
 SRCS	 	+=	draw_tile.c
 SRCS	 	+=	put_pixel.c
@@ -115,7 +118,8 @@ SRCS	 	+=	e_close_window.c
 SRCS	 	+=	e_rotation.c
 SRCS	 	+=	e_translation.c
 SRCS	 	+=	e_map_mod.c
-SRCS	 	+=	translation_utils.c
+SRCS	 	+=	translate.c
+SRCS	 	+=	get_translated_pos.c
 
 ### srcs/window/map/
 

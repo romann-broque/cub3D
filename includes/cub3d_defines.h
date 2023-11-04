@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:06:20 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/04 23:31:04 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/04 23:34:46 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,11 +100,16 @@
 # define SPECIAL_TEXTURE_NOT_SET	"SPECIAL TEXTURE NOT SET"
 # define SPECIAL_TILE_NOT_SET		"SPECIAL TILE NOT SET"
 
+// Warning
+
+# define DIMENSIONS_NOT_SUPPORTED	"Dimensions not supported"
+
 // Print Colors
 
 # define NC					"\033[0m"
 # define RED_PRINT			"\033[0;31m"
 # define GREEN_PRINT		"\033[0;32m"
+# define ORANGE_PRINT		"\033[0;33m"
 
 // Pixel Colors
 

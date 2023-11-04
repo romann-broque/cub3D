@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 17:14:28 by lechon            #+#    #+#             */
-/*   Updated: 2023/10/26 16:10:22 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/30 22:27:42 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,17 @@ int				move_right(t_win *const ptr);
 int				enable_map_mod(t_win *const ptr);
 int				disable_map_mod(t_win *const ptr);
 
-	// translation_utils.c
+	// translate.c
 
 void			translate_side(t_map *const map,
 					t_player *const player, const double move_speed);
 void			translate_frontback(t_map *const map,
 					t_player *const player, const double move_speed);
+
+	// get_translated_pos.c
+
+t_pos			get_translated_pos(const t_map *const map,
+					const t_pos player_pos, const t_vect player_dir,
+					const double move_speed);
 
 #endif
