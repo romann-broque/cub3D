@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:10:33 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/28 21:23:19 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/03 15:30:32 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ void			print_config(t_config *const config);
 
 // is_config_sequence_valid.c
 
+bool			is_sequence_empty(char *const *const sequence);
+bool			is_sequence_format_valid(char *const *const sequence);
 bool			is_sequence_valid(char *const *const sequence);
 
 /////////////////////////////////////////

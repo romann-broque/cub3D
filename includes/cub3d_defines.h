@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:06:20 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/30 09:43:42 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/04 23:31:04 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,33 +42,37 @@
 
 // NUMBERS
 
-# define EXPECTED_ARG_COUNT	2
-# define INVALID_FD			-1
-# define COUNT_LINE_ERROR	-1
-# define INVALID_OFFSET		-1
-# define RGB_SIZE			3
-# define BITS_PER_BYTE		8
-# define FPS_FREQUENCY		10
-# define ATTRIBUTE_COUNT	6
-# define KEY_COUNT			8
+# define EXPECTED_ARG_COUNT			2
+# define INVALID_FD					-1
+# define COUNT_LINE_ERROR			-1
+# define INVALID_OFFSET				-1
+# define RGB_SIZE					3
+# define BITS_PER_BYTE				8
+# define FPS_FREQUENCY				10
+# define KEY_COUNT					8
+# define MANDATORY_ATTRIBUTE_COUNT	6
+# define SPECIAL_TILE_COUNT			1
 
 # ifdef BONUS
-#  define TEXTURE_COUNT		6
+#  define TEXTURE_COUNT		7
+#  define ATTRIBUTE_COUNT	7
 # else
 #  define TEXTURE_COUNT		4
+#  define ATTRIBUTE_COUNT	6
 # endif
 
 // CHAR
 
 # define NEWLINE			'\n'
 # define WALL				'1'
+# define DOOR				'D'
 # define BLANK				' '
 # define RGB_SEPARATOR		','
 
 // STRINGS
 
 # define FILE_EXTENSION		".cub"
-# define VALID_CHAR			"01 NSWE\n"
+# define VALID_CHAR			"01D NSWE\n"
 # define VALID_CHAR_DIR		"NSWE"
 # define GROUND				"0NSWE"
 # define NORTH_KEY			"NO"
@@ -77,20 +81,24 @@
 # define EAST_KEY			"EA"
 # define FLOOR_KEY			"F"
 # define CEIL_KEY			"C"
+# define DOOR_KEY			"D"
+# define SPECIAL_KEYS		"D"
 
 // Errors
 
-# define ERROR_USAGE		"Usage: ./cub3d <file.cub>"
-# define MLX_ERROR			"MLX_ERROR"
-# define MAP_NOT_CLOSED		"MAP NOT CLOSED"
-# define MAP_NOT_UNIQUE		"MAP NOT UNIQUE"
-# define MAP_TOO_BIG		"MAP TOO BIG"
-# define MAP_CONTENT_WRONG	"MAP CONTENT IS WRONG"
-# define UNKNOWN_CONFIG		"UNKNOWN CONFIG"
-# define DUPLICATED_CONFIG	"DUPLICATED CONFIG"
-# define WRONG_RGB			"WRONG RGB"
-# define INVALID_FILENAME	"FILENAME IS INVALID"
-# define INVALID_TEXTURE	"INVALID TEXTURE"
+# define ERROR_USAGE				"Usage: ./cub3d <file.cub>"
+# define MLX_ERROR					"MLX_ERROR"
+# define MAP_NOT_CLOSED				"MAP NOT CLOSED"
+# define MAP_NOT_UNIQUE				"MAP NOT UNIQUE"
+# define MAP_TOO_BIG				"MAP TOO BIG"
+# define MAP_CONTENT_WRONG			"MAP CONTENT IS WRONG"
+# define UNKNOWN_CONFIG				"UNKNOWN CONFIG"
+# define DUPLICATED_CONFIG			"DUPLICATED CONFIG"
+# define WRONG_RGB					"WRONG RGB"
+# define INVALID_FILENAME			"FILENAME IS INVALID"
+# define INVALID_TEXTURE			"INVALID TEXTURE"
+# define SPECIAL_TEXTURE_NOT_SET	"SPECIAL TEXTURE NOT SET"
+# define SPECIAL_TILE_NOT_SET		"SPECIAL TILE NOT SET"
 
 // Print Colors
 

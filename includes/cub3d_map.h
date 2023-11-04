@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 17:12:07 by lechon            #+#    #+#             */
-/*   Updated: 2023/10/28 22:33:06 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/04 17:10:04 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,10 @@ bool			is_blank(
 bool			is_wall(
 					const t_map *const map,
 					const size_t x, const size_t y);
-
+bool			is_door(
+					const t_map *const map,
+					const size_t x,
+					const size_t y);
 bool			is_ground(
 					const t_map *const map,
 					const size_t x, const size_t y);

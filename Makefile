@@ -64,6 +64,7 @@ SRCS		+=	is_file_valid.c
 ### srcs/window/
 
 SRCS	 	+=	init_window.c
+SRCS	 	+=	init_map_in_window.c
 SRCS	 	+=	free_window.c
 SRCS	 	+=	is_window_complete.c
 

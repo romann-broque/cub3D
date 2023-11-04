@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 09:39:32 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/26 12:45:08 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/04 23:27:32 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,19 +51,6 @@ static void	init_mlx(t_win *const window)
 	init_data(window->mlx_ptr, &window->data);
 }
 
-static void	init_map_in_window(
-	t_win *const window,
-	const ssize_t offset,
-	char *const *const file_content)
-{
-	window->map = init_map(file_content + offset);
-	if (window->map == NULL || is_map_valid(window->map) == false)
-	{
-		free_map(window->map);
-		window->map = NULL;
-	}
-}
-
 void	init_window(
 	t_win *const window,
 	char *const *const file_content
@@ -78,6 +65,7 @@ void	init_window(
 			file_content, window->mlx_ptr);
 	if (offset == INVALID_OFFSET)
 		return ;
+	print_config(&(window->config));
 	init_map_in_window(window, offset, file_content);
 	if (window->map != NULL)
 	{

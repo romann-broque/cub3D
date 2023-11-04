@@ -6,23 +6,24 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 07:57:46 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/27 09:10:09 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/03 15:42:16 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static bool	is_sequence_empty(char *const *const sequence)
-{
-	return (get_size_strs(sequence) == 0);
-}
-
 static enum e_attribute_type	find_attribute_type(
-	const char *attribute_name_array[ATTRIBUTE_COUNT + 1],
 	const char *name
 	)
 {
-	enum e_attribute_type	type;
+	static const char			*attribute_name_array[] = {
+		NORTH_KEY, SOUTH_KEY,
+		WEST_KEY, EAST_KEY,
+		FLOOR_KEY, CEIL_KEY,
+		DOOR_KEY,
+		NULL
+	};
+	enum e_attribute_type		type;
 
 	type = 0;
 	while (type < ATTRIBUTE_COUNT
@@ -54,14 +55,8 @@ static int	add_attribute_into_config(
 	const char *const value
 	)
 {
-	static const char			*attribute_name_array[] = {
-		NORTH_KEY, SOUTH_KEY,
-		WEST_KEY, EAST_KEY,
-		FLOOR_KEY, CEIL_KEY,
-		NULL
-	};
 	const enum e_attribute_type	type
-		= find_attribute_type(attribute_name_array, name);
+		= find_attribute_type(name);
 	int							ret_val;
 
 	ret_val = EXIT_FAILURE;
@@ -83,7 +78,7 @@ int	build_attribute_from_sequence(
 {
 	if (is_sequence_empty(sequence) == true)
 		return (EXIT_SUCCESS);
-	if (is_sequence_valid(sequence) == false)
+	if (is_sequence_format_valid(sequence) == false)
 	{
 		print_format_error(UNKNOWN_CONFIG);
 		return (EXIT_FAILURE);

@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 09:44:49 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/28 23:35:13 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/04 23:29:35 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static bool	is_config_complete(const t_config *const config)
 	i = 0;
 	while (config->attribute_array[i] != NULL)
 		++i;
-	return (i == ATTRIBUTE_COUNT);
+	return (i >= MANDATORY_ATTRIBUTE_COUNT);
 }
 
 static ssize_t	build_attributes(
@@ -30,20 +30,24 @@ static ssize_t	build_attributes(
 	ssize_t	offset;
 
 	offset = 0;
-	while (offset != INVALID_OFFSET && is_config_complete(config) == false)
+	sequence = ft_split(lines[offset], SPACE);
+	if (sequence == NULL)
+		print_format_error(strerror(errno));
+	while (offset != INVALID_OFFSET && is_sequence_valid(sequence))
 	{
-		sequence = ft_split(lines[offset], SPACE);
-		if (sequence == NULL
-			|| build_attribute_from_sequence(config, sequence) == EXIT_FAILURE)
-		{
-			if (sequence == NULL)
-				print_format_error(strerror(errno));
-			offset = INVALID_OFFSET;
-		}
-		else
+		if (build_attribute_from_sequence(config, sequence) == EXIT_SUCCESS)
 			++offset;
 		free_strs(sequence);
+		sequence = ft_split(lines[offset], SPACE);
+		if (sequence == NULL)
+		{
+			print_format_error(strerror(errno));
+			offset = INVALID_OFFSET;
+		}
 	}
+	if (is_config_complete(config) == false)
+		offset = INVALID_OFFSET;
+	free_strs(sequence);
 	return (offset);
 }
 
