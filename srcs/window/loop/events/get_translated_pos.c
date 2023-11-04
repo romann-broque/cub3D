@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 09:03:14 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/30 22:25:04 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/04 23:39:06 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ static void	get_new_pos_from_wall_collision(
 
 	if (player_pos == NULL)
 		player_pos = &(map->player.pos);
-	if (is_wall(map, check_pos->x, new_pos->y) == false)
+	if (is_ground(map, check_pos->x, new_pos->y) == true)
 		new_pos->x = player_pos->x + move_offset.x;
-	if (is_wall(map, new_pos->x, check_pos->y) == false)
+	if (is_ground(map, new_pos->x, check_pos->y) == true)
 		new_pos->y = player_pos->y + move_offset.y;
 }
 
@@ -76,7 +76,8 @@ t_pos	get_translated_pos(
 	{
 		check_pos.x = player_pos.x + dir_speed.x * i;
 		check_pos.y = player_pos.y + dir_speed.y * i;
-		if (is_wall(map, check_pos.x, check_pos.y))
+		if (is_wall(map, check_pos.x, check_pos.y)
+			|| is_door(map, check_pos.x, check_pos.y))
 			get_new_pos_from_wall_collision(&new_pos, &check_pos,
 				map, get_move_offset(&dir_speed, i, step_move));
 		else
