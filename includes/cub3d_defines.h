@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:06:20 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/04 23:34:46 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/05 11:55:09 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@
 // STRINGS
 
 # define FILE_EXTENSION		".cub"
-# define VALID_CHAR			"01D NSWE\n"
 # define VALID_CHAR_DIR		"NSWE"
 # define GROUND				"0NSWE"
 # define NORTH_KEY			"NO"
@@ -84,10 +83,17 @@
 # define DOOR_KEY			"D"
 # define SPECIAL_KEYS		"D"
 
+# ifdef BONUS
+#  define VALID_CHAR			"01D NSWE\n"
+# else
+#  define VALID_CHAR			"01 NSWE\n"
+# endif
+
 // Errors
 
 # define ERROR_USAGE				"Usage: ./cub3d <file.cub>"
 # define MLX_ERROR					"MLX_ERROR"
+# define EMPTY_FILE					"EMPTY FILE"
 # define MAP_NOT_CLOSED				"MAP NOT CLOSED"
 # define MAP_NOT_UNIQUE				"MAP NOT UNIQUE"
 # define MAP_TOO_BIG				"MAP TOO BIG"

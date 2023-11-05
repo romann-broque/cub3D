@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:08:41 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/04 23:34:39 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/05 10:26:15 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,7 @@ typedef struct s_cast
 	t_pos	hitpoint;
 	double	coeff;
 	t_side	side;
+	char	tile;
 }		t_cast;
 
 typedef struct s_map

@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 07:57:46 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/03 15:42:16 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/05 11:47:37 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,8 @@ int	build_attribute_from_sequence(
 	char *const *const sequence
 	)
 {
+	if (sequence == NULL)
+		return (EXIT_FAILURE);
 	if (is_sequence_empty(sequence) == true)
 		return (EXIT_SUCCESS);
 	if (is_sequence_format_valid(sequence) == false)

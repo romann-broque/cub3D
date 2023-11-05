@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 15:25:37 by jess              #+#    #+#             */
-/*   Updated: 2023/11/04 23:29:05 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/05 11:01:14 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static bool	is_attribute_key(const char *const key)
 {
 	size_t						i;
+	size_t						limit;
 	static const char *const	attribute_key[] = {
 		NORTH_KEY,
 		SOUTH_KEY,
@@ -26,9 +27,12 @@ static bool	is_attribute_key(const char *const key)
 	};
 
 	i = 0;
-	while (i < ATTRIBUTE_COUNT && streq(key, attribute_key[i]) == false)
+	limit = MANDATORY_ATTRIBUTE_COUNT;
+	if (BONUS)
+		limit = ATTRIBUTE_COUNT;
+	while (i < limit && streq(key, attribute_key[i]) == false)
 		i++;
-	return (i < ATTRIBUTE_COUNT);
+	return (i < limit);
 }
 
 static bool	has_two_elements(char *const *const sequence)

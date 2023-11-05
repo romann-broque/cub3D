@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 09:39:32 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/04 23:27:32 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/05 11:23:12 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	init_window(
 	window->win_ptr = NULL;
 	init_mlx(window);
 	offset = build_config(&(window->config),
-			file_content, window->mlx_ptr);
+			file_content, window->mlx_ptr, window->win_ptr);
 	if (offset == INVALID_OFFSET)
 		return ;
 	print_config(&(window->config));

@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 20:07:09 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/26 12:59:04 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/05 10:26:52 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,16 @@ static void	set_side(t_side *const side, const t_vect step)
 		*side = SOUTH_FACE;
 }
 
+static void	set_hit_tile(
+	t_cast *const cast,
+	const t_map *const map,
+	const size_t x,
+	const size_t y
+)
+{
+	cast->tile = map->matrix[y][x].tile_char;
+}
+
 static void	set_cast(
 	t_map *const map,
 	const t_vect delta_dist,
@@ -69,6 +79,7 @@ static void	set_cast(
 	}
 	set_side(&(cast->side), cast->step);
 	set_hitpoint(cast, map->player.pos, x, y);
+	set_hit_tile(cast, map, x, y);
 }
 
 t_cast	dda(

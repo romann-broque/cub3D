@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 14:46:43 by jess              #+#    #+#             */
-/*   Updated: 2023/10/28 22:43:54 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/05 10:32:32 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ static void	display_wall(
 	const t_pos wall_end
 )
 {
-	t_texture *const	texture = get_texture_from_side(
-			window->config.textures, cast->side);
+	t_texture *const	texture = get_texture_from_cast(
+			window->config.textures, cast);
 	const int			tex_x = get_tex_x(cast, *texture);
 	const int			x = wall_start.x;
 	int					i;
@@ -96,7 +96,7 @@ void	draw_vertical(
 	const t_pos	wall_start = init_wall_start(lineheight, WINDOW_HEIGHT, x);
 	const t_pos	wall_end = init_wall_end(lineheight, WINDOW_HEIGHT, x);
 
-	set_texture_start_pos(window, cast->side, lineheight, wall_start.y);
+	set_texture_start_pos(window, cast, lineheight, wall_start.y);
 	if (BONUS == true)
 		display_ceil_and_floor_texture(window, wall_end, cast, perp_wall_dist);
 	else

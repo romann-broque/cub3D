@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 09:44:49 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/04 23:36:06 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/05 11:54:03 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ static ssize_t	build_attributes(
 	sequence = ft_split(lines[offset], SPACE);
 	if (sequence == NULL)
 		print_format_error(strerror(errno));
-	while (offset != INVALID_OFFSET && is_sequence_valid(sequence))
+	while (offset != INVALID_OFFSET
+		&& build_attribute_from_sequence(config, sequence) == EXIT_SUCCESS)
 	{
-		if (build_attribute_from_sequence(config, sequence) == EXIT_SUCCESS)
-			++offset;
+		++offset;
 		free_strs(sequence);
 		sequence = ft_split(lines[offset], SPACE);
 		if (sequence == NULL)
@@ -104,13 +104,14 @@ static int	set_textures_array(
 ssize_t	build_config(
 	t_config *const config,
 	char *const *const lines,
-	void *const mlx_ptr
+	void *const mlx_ptr,
+	void *const win_ptr
 	)
 {
 	ssize_t	offset;
 
 	init_config(config);
-	if (mlx_ptr == NULL)
+	if (mlx_ptr == NULL || win_ptr == NULL)
 		return (INVALID_OFFSET);
 	offset = build_attributes(config, lines);
 	if (offset != INVALID_OFFSET)

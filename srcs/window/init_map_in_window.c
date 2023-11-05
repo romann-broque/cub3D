@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 23:26:56 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/04 23:32:06 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/05 11:24:59 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,8 @@ void	init_map_in_window(
 {
 	window->map = init_map(file_content + offset);
 	if (window->map == NULL || is_map_valid(window->map) == false
-		|| is_config_matching(window->map, &(window->config)) == false)
+		|| (BONUS == true
+			&& is_config_matching(window->map, &(window->config)) == false))
 	{
 		free_map(window->map);
 		window->map = NULL;
