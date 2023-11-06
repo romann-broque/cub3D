@@ -6,27 +6,11 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 14:52:26 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/28 22:22:56 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/31 10:06:25 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-static t_pos	find_map_screen_pos(
-	t_win *const window,
-	const t_pos *const pos)
-{
-	const t_pos		player_pos = window->map->player.pos;
-	const double	scale = TILE_SIZE;
-	const double	x_screen = (pos->x - floor(player_pos.x))
-		* scale + WINDOW_WIDTH / 2;
-	const double	y_screen = (pos->y - floor(player_pos.y))
-		* scale + WINDOW_HEIGHT / 2;
-	t_pos			screen_pos;
-
-	set_pos(&screen_pos, x_screen, y_screen);
-	return (screen_pos);
-}
 
 void	draw_square_on_map(
 	t_win *const window,
@@ -79,4 +63,14 @@ void	draw_coordinate_on_map(
 	x_screen = (int)screen_pos.x;
 	y_screen = (int)screen_pos.y;
 	put_pixel(&(window->data), x_screen, y_screen, color);
+}
+
+void	draw_tile_on_map(
+	t_win *const window,
+	const t_pos *const pos
+	)
+{
+	const t_pos	screen_pos = find_map_screen_pos(window, pos);
+
+	draw_tile(window, pos, &screen_pos);
 }

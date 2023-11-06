@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 09:44:49 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/28 23:35:13 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/03 13:52:18 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,8 @@ static int	set_texture(
 	void *const mlx_ptr
 	)
 {
-	int	height;
-	int	width;
-
 	texture->data.img = mlx_xpm_file_to_image(mlx_ptr,
-			texture_file, &width, &height);
+			texture_file, &texture->width, &texture->height);
 	if (texture->data.img == NULL)
 	{
 		print_format_error(INVALID_TEXTURE);
@@ -73,8 +70,11 @@ static int	set_texture(
 		return (EXIT_FAILURE);
 	}
 	texture->data.byte_per_pixel = texture->data.bits_per_pixel / BITS_PER_BYTE;
-	texture->height = height;
-	texture->width = width;
+	if (are_dimensions_valid(texture->height, texture->width) == false)
+	{
+		print_format_warning(DIMENSIONS_NOT_SUPPORTED);
+		print_error(ORANGE_PRINT"(%s)\n"NC, texture_file);
+	}
 	return (EXIT_SUCCESS);
 }
 

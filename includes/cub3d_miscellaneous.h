@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 17:09:05 by lechon            #+#    #+#             */
-/*   Updated: 2023/10/28 21:23:24 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/01 18:32:35 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@
 double			convert_deg_to_rad(const double degrees);
 double			convert_rad_to_deg(const double radian);
 
+	// are_dimensions_valid.c
+
+bool			are_dimensions_valid(const int height, const int width);
+
 /////////////////////////////////////////
 /////			  print				/////
 /////////////////////////////////////////
@@ -37,6 +41,10 @@ double			convert_rad_to_deg(const double radian);
 	// print_format_error.c
 
 void			print_format_error(const char *const error_message);
+
+	// print_format_warning.c
+
+void			print_format_warning(const char *const warning_message);
 
 	// print_fps.c
 

@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 09:03:33 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/24 22:35:18 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/06 13:50:05 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ static t_pos	get_min_pos(const t_pos pos)
 {
 	t_pos	min_pos;
 
-	min_pos.x = fmax(0.0, floor(pos.x - MINIMAP_RADIUS));
-	min_pos.y = fmax(0.0, floor(pos.y - MINIMAP_RADIUS));
+	min_pos.x = fmax(0.0, floor(pos.x - MINIMAP_RADIUS - 1));
+	min_pos.y = fmax(0.0, floor(pos.y - MINIMAP_RADIUS - 1));
 	return (min_pos);
 }
 
@@ -26,15 +26,15 @@ static t_pos	get_max_pos(const t_pos pos)
 	t_pos	max_pos;
 
 	max_pos.x = SIZE_MAX;
-	if (pos.x < SIZE_MAX - MINIMAP_RADIUS)
-		max_pos.x = pos.x + MINIMAP_RADIUS;
+	if (pos.x < SIZE_MAX - MINIMAP_RADIUS + 1)
+		max_pos.x = pos.x + MINIMAP_RADIUS + 1;
 	max_pos.y = SIZE_MAX;
-	if (pos.y < SIZE_MAX - MINIMAP_RADIUS)
-		max_pos.y = pos.y + MINIMAP_RADIUS;
+	if (pos.y < SIZE_MAX - MINIMAP_RADIUS + 1)
+		max_pos.y = pos.y + MINIMAP_RADIUS + 1;
 	return (max_pos);
 }
 
-bool	is_closed_to_player(
+bool	is_close_to_player(
 	const t_map *const map,
 	const size_t x,
 	const size_t y

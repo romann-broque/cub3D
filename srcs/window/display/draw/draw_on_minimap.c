@@ -6,27 +6,11 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 16:01:08 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/28 22:25:58 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/31 10:06:06 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-static t_pos	find_minimap_screen_pos(
-	t_win *const window,
-	const t_pos *const pos)
-{
-	const t_pos		player_pos = window->map->player.pos;
-	const double	scale = TILE_SIZE;
-	const double	x_screen = (pos->x - floor(player_pos.x)
-			+ MINIMAP_RADIUS) * scale + MINIMAP_XOFFSET;
-	const double	y_screen = (pos->y - floor(player_pos.y)
-			+ MINIMAP_RADIUS) * scale + MINIMAP_YOFFSET;
-	t_pos			screen_pos;
-
-	set_pos(&screen_pos, x_screen, y_screen);
-	return (screen_pos);
-}
 
 void	draw_square_on_minimap(
 	t_win *const window,
@@ -75,4 +59,14 @@ void	draw_coordinate_on_minimap(
 	set_pos(&pos, x, y);
 	screen_pos = find_minimap_screen_pos(window, &pos);
 	put_pixel(&(window->data), screen_pos.x, screen_pos.y, color);
+}
+
+void	draw_tile_on_minimap(
+	t_win *const window,
+	const t_pos *const pos
+)
+{
+	const t_pos	screen_pos = find_minimap_screen_pos(window, pos);
+
+	draw_tile(window, pos, &screen_pos);
 }
