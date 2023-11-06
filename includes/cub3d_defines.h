@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:06:20 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/06 12:36:15 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/06 14:21:57 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 # define MAP_YOFFSET		200
 # define MINIMAP_RADIUS		5
 # define TILE_SIZE			15
+# define DOOR_WIDTH			3
 # define DOOR_RADIUS		3
 # define DOOR_TIME			100
 # define PLAYER_SIZE		4
