@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 07:40:24 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/06 09:23:30 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/06 10:13:47 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	refresh_single_tile(t_tile *const tile)
 {
-	if (tile->tile_char == DOOR)
+	if (is_tile_door(tile) == true)
 		refresh_door(tile);
 }
 

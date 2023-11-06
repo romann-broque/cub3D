@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 06:40:48 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/06 09:31:55 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/06 10:13:31 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	solo_raycast(
 {
 	const t_cast	cast = raycast(window, x);
 
-	if (cast.perp_wall_dist < DOOR_RADIUS && cast.tile->tile_char == DOOR)
+	if (cast.perp_wall_dist < DOOR_RADIUS && is_tile_door(cast.tile) == true)
 		set_door_as_opened(window->map, cast.tile_pos);
 }
 

@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 09:05:50 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/06 09:27:50 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/06 10:13:03 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static int	get_new_tex_pos_door(
 	int		new_tex_pos;
 
 	new_tex_pos = tex_x;
-	if (cast->tile->tile_char == DOOR)
+	if (is_tile_door(cast->tile) == true)
 	{
 		offset = 0;
 		if (cast->tile->state == OPENING)
@@ -66,8 +66,13 @@ int	get_tex_x(
 	{
 		tex_x = texture.width - tex_x - 1;
 	}
-	if (BONUS == true && cast->tile->tile_char == DOOR)
-		tex_x = get_new_tex_pos_door(texture, cast, tex_x);
+	if (BONUS == true && is_tile_door(cast->tile) == true)
+	{
+		if (cast->side == NORTH_FACE || cast->side == SOUTH_FACE)
+			tex_x = get_new_tex_pos_door(texture, cast, tex_x);
+		else
+			tex_x = -1;
+	}
 	return (tex_x);
 }
 
