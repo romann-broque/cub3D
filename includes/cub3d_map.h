@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 17:12:07 by lechon            #+#    #+#             */
-/*   Updated: 2023/11/06 07:52:47 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/06 09:28:05 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,10 @@ t_cast			dda(t_map *const map, const t_pos pos,
 /////////////////////////
 ////     	tile     ////
 /////////////////////////
+
+// door.c
+
+void			refresh_door(t_tile *const door);
 
 // refresh_tiles.c
 

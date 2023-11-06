@@ -154,6 +154,7 @@ SRCS	 	+=	raycaster.c
 
 ### srcs/window/map/tile/
 
+SRCS	 	+=	door.c
 SRCS	 	+=	refresh_tiles.c
 SRCS	 	+=	tile_mark.c
 SRCS	 	+=	tile_type.c

@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 09:05:50 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/28 22:11:20 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/06 09:27:50 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,31 @@ static double	get_wall_x(const t_cast *const cast)
 		wall_x = cast->hitpoint.x;
 	wall_x = 1 - wall_x + floor(wall_x);
 	return (wall_x);
+}
+
+static int	get_new_tex_pos_door(
+	const t_texture texture,
+	const t_cast *const cast,
+	const int tex_x
+
+)
+{
+	double	offset;
+	int		new_tex_pos;
+
+	new_tex_pos = tex_x;
+	if (cast->tile->tile_char == DOOR)
+	{
+		offset = 0;
+		if (cast->tile->state == OPENING)
+			offset = cast->tile->progression;
+		else if (cast->tile->state == OPENED)
+			offset = 1;
+		else if (cast->tile->state == CLOSING)
+			offset = 1 - cast->tile->progression;
+		new_tex_pos += (texture.width * offset);
+	}
+	return (new_tex_pos);
 }
 
 int	get_tex_x(
@@ -41,6 +66,8 @@ int	get_tex_x(
 	{
 		tex_x = texture.width - tex_x - 1;
 	}
+	if (BONUS == true && cast->tile->tile_char == DOOR)
+		tex_x = get_new_tex_pos_door(texture, cast, tex_x);
 	return (tex_x);
 }
 

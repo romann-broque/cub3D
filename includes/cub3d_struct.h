@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:08:41 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/06 07:38:29 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/06 09:19:37 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,14 @@ enum e_mod
 	E_MAP,
 };
 
+typedef enum e_tile_state
+{
+	CLOSED,
+	OPENING,
+	OPENED,
+	CLOSING
+}		t_tile_state;
+
 ////////////////
 // STRUCTURES //
 ////////////////
@@ -77,9 +85,11 @@ typedef struct s_config
 
 typedef struct s_tile
 {
-	char	tile_char;
-	bool	is_marked;
-	size_t	interaction_time;
+	char			tile_char;
+	bool			is_marked;
+	size_t			interaction_time;
+	t_tile_state	state;
+	double			progression;
 }		t_tile;
 
 typedef struct s_pos

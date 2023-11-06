@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 07:40:24 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/06 07:51:59 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/06 09:23:30 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,8 @@
 
 static void	refresh_single_tile(t_tile *const tile)
 {
-	++tile->interaction_time;
-	if (tile->interaction_time > DOOR_TIME)
-	{
-		tile->is_marked = false;
-		tile->interaction_time = 0;
-	}
+	if (tile->tile_char == DOOR)
+		refresh_door(tile);
 }
 
 void	refresh_tiles(t_map *const map)

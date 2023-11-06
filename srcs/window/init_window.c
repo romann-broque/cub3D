@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 09:39:32 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/06 07:26:05 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/06 08:19:12 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,6 @@
 static void	init_player(t_map *const map)
 {
 	map->player = get_player(map);
-}
-
-static void	unset_mark(t_map *const map)
-{
-	size_t	i;
-	size_t	j;
-
-	i = 0;
-	while (i < map->height)
-	{
-		j = 0;
-		while (j < map->width)
-		{
-			map->matrix[i][j].is_marked = false;
-			++j;
-		}
-		++i;
-	}
 }
 
 static t_key	*init_keys(void)
@@ -89,7 +71,6 @@ void	init_window(
 	if (window->map != NULL)
 	{
 		init_player(window->map);
-		unset_mark(window->map);
 		window->keys = init_keys();
 		window->mod = E_STD;
 	}

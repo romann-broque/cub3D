@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 14:46:43 by jess              #+#    #+#             */
-/*   Updated: 2023/11/05 10:32:32 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/06 08:07:47 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ static void	display_wall(
 	int					i;
 	t_texture			texture_cpy;
 
+	if (tex_x < 0 || tex_x > texture->width)
+		return ;
 	texture_cpy = *texture;
 	i = wall_start.y;
 	while (i < wall_end.y + 1)
