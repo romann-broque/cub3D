@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 09:03:33 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/31 10:01:30 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/06 13:50:05 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static t_pos	get_max_pos(const t_pos pos)
 	return (max_pos);
 }
 
-bool	is_closed_to_player(
+bool	is_close_to_player(
 	const t_map *const map,
 	const size_t x,
 	const size_t y

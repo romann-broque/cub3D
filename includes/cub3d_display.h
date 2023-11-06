@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:12:25 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/03 13:59:46 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/06 13:50:05 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void		display_grid(t_win *const window);
 
 // display_grid_utils.c
 
-bool		is_closed_to_player(
+bool		is_close_to_player(
 				const t_map *const map,
 				const size_t x, const size_t y);
 t_pos		get_offset(const t_pos player_pos);
