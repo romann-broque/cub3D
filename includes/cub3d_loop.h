@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 17:14:28 by lechon            #+#    #+#             */
-/*   Updated: 2023/10/30 22:27:42 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/06 06:47:14 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,10 @@ int				move_right(t_win *const ptr);
 
 int				enable_map_mod(t_win *const ptr);
 int				disable_map_mod(t_win *const ptr);
+
+	// e_open_door.c
+
+int				open_door(t_win *const ptr);
 
 	// translate.c
 

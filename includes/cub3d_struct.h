@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:08:41 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/05 10:26:15 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/06 06:54:23 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,7 @@ typedef struct s_cast
 	t_vect	step;
 	t_pos	hitpoint;
 	double	coeff;
+	double	perp_wall_dist;
 	t_side	side;
 	char	tile;
 }		t_cast;

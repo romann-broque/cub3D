@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 09:39:32 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/05 11:23:12 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/06 07:09:47 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ static t_key	*init_keys(void)
 	{.key_value = K_D, .pressure = false},
 	{.key_value = K_LEFT, .pressure = false},
 	{.key_value = K_RIGHT, .pressure = false},
+	{.key_value = K_SPACE, .pressure = false},
 	{.key_value = K_ESC, .pressure = false}
 	};
 

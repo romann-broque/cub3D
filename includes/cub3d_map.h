@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 17:12:07 by lechon            #+#    #+#             */
-/*   Updated: 2023/11/04 17:10:04 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/06 06:58:18 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,8 @@ void			set_vect(t_vect *const vect,
 
 	// raycaster.c
 
+t_cast			raycast(t_win *const window,
+					const size_t x);
 void			raycaster(t_win *const window,
 					t_pos hitpoint_array[WINDOW_WIDTH]);
 

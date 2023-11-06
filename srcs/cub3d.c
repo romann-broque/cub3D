@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:14 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/05 12:01:17 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/06 07:00:03 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static int	start_game(const char *const filename)
 	{
 		free_strs(content);
 		print_format_error(EMPTY_FILE);
+		return (EXIT_FAILURE);
 	}
 	ret_val = EXIT_FAILURE;
 	init_window(&window, content);

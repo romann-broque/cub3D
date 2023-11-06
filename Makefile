@@ -118,6 +118,7 @@ SRCS	 	+=	e_close_window.c
 SRCS	 	+=	e_rotation.c
 SRCS	 	+=	e_translation.c
 SRCS	 	+=	e_map_mod.c
+SRCS	 	+=	e_open_door.c
 SRCS	 	+=	translate.c
 SRCS	 	+=	get_translated_pos.c
 

@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 20:07:09 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/05 10:26:52 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/06 07:14:49 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,6 @@ static void	set_side(t_side *const side, const t_vect step)
 		*side = SOUTH_FACE;
 }
 
-static void	set_hit_tile(
-	t_cast *const cast,
-	const t_map *const map,
-	const size_t x,
-	const size_t y
-)
-{
-	cast->tile = map->matrix[y][x].tile_char;
-}
-
 static void	set_cast(
 	t_map *const map,
 	const t_vect delta_dist,
@@ -79,7 +69,17 @@ static void	set_cast(
 	}
 	set_side(&(cast->side), cast->step);
 	set_hitpoint(cast, map->player.pos, x, y);
-	set_hit_tile(cast, map, x, y);
+	cast->tile = map->matrix[y][x].tile_char;
+}
+
+static double	get_perp_wall_dist(
+	const t_cast cast,
+	const t_vect delta_dist
+	)
+{
+	if (cast.side == EAST_FACE || cast.side == WEST_FACE)
+		return (cast.dist.x - delta_dist.x);
+	return (cast.dist.y - delta_dist.y);
 }
 
 t_cast	dda(
@@ -98,5 +98,6 @@ t_cast	dda(
 	cast.dist = side_dist;
 	cast.ray = ray;
 	set_cast(map, delta_dist, &cast);
+	cast.perp_wall_dist = get_perp_wall_dist(cast, delta_dist);
 	return (cast);
 }

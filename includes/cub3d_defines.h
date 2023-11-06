@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:06:20 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/05 11:55:09 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/06 07:12:05 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 # define MAP_YOFFSET		200
 # define MINIMAP_RADIUS		5
 # define TILE_SIZE			15
+# define DOOR_RADIUS		3
 # define PLAYER_SIZE		4
 # define FOV				80
 # define STEP_SIZE			0.001
@@ -49,7 +50,7 @@
 # define RGB_SIZE					3
 # define BITS_PER_BYTE				8
 # define FPS_FREQUENCY				10
-# define KEY_COUNT					8
+# define KEY_COUNT					9
 # define MANDATORY_ATTRIBUTE_COUNT	6
 # define SPECIAL_TILE_COUNT			1
 
@@ -134,6 +135,7 @@
 # define K_A				0x0061
 # define K_D				0x0064
 # define K_M				0x006d
+# define K_SPACE			0x0020
 # define K_ESC				0xff1b
 # define NO_KEY				0
 
