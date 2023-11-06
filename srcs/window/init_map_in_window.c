@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 23:26:56 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/06 13:48:01 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/06 13:48:35 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static bool	is_config_matching(
 }
 
 static bool	can_map_be_used(
-	const t_map *const map,
+	t_map *const map,
 	const t_config *const config
 )
 {
