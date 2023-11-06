@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 08:26:13 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/30 08:07:38 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/06 07:36:42 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,8 @@ unsigned int	get_wall_texture(
 	unsigned int	color;
 	t_pos			tex_pos;
 
+	if (cast->tile->is_marked == true)
+		return (GREEN);
 	set_pos(&tex_pos, tex_x, texture.tex_pos);
 	color = get_color_from_text_pos(texture, &tex_pos);
 	change_texture_brightness(&color, cast->side);

@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:08:41 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/06 06:54:23 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/06 07:38:29 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ typedef struct s_tile
 {
 	char	tile_char;
 	bool	is_marked;
+	size_t	interaction_time;
 }		t_tile;
 
 typedef struct s_pos
@@ -121,7 +122,8 @@ typedef struct s_cast
 	double	coeff;
 	double	perp_wall_dist;
 	t_side	side;
-	char	tile;
+	t_tile	*tile;
+	t_pos	tile_pos;
 }		t_cast;
 
 typedef struct s_map

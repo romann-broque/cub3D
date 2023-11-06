@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 17:12:07 by lechon            #+#    #+#             */
-/*   Updated: 2023/11/06 06:58:18 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/06 07:52:47 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,28 +26,10 @@
 
 void			free_tile_matrix(t_tile **const matrix, const size_t size);
 void			free_map(t_map *const map);
+
 // print_map.c
 
 void			print_map(const t_map *const map);
-
-// tile_type.c
-
-bool			is_blank(
-					const t_map *const map,
-					const size_t x, const size_t y);
-bool			is_wall(
-					const t_map *const map,
-					const size_t x, const size_t y);
-bool			is_door(
-					const t_map *const map,
-					const size_t x,
-					const size_t y);
-bool			is_ground(
-					const t_map *const map,
-					const size_t x, const size_t y);
-
-bool			is_player(const t_map *const map,
-					const size_t x, const size_t y);
 
 /////////////////////////
 ////     init_map    ////
@@ -128,5 +110,41 @@ t_vect			get_side_dist(
 
 t_cast			dda(t_map *const map, const t_pos pos,
 					const t_vect ray, const t_vect delta_dist);
+
+/////////////////////////
+////     	tile     ////
+/////////////////////////
+
+// refresh_tiles.c
+
+void			refresh_tiles(t_map *const map);
+
+// tile_mark.c
+
+bool			is_marked(const t_map *const map,
+					const size_t x,
+					const size_t y);
+void			mark_as_viewed(const t_map *const map,
+					const size_t x,
+					const size_t y);
+
+// tile_type.c
+
+bool			is_blank(
+					const t_map *const map,
+					const size_t x, const size_t y);
+bool			is_wall(
+					const t_map *const map,
+					const size_t x, const size_t y);
+bool			is_door(
+					const t_map *const map,
+					const size_t x,
+					const size_t y);
+bool			is_ground(
+					const t_map *const map,
+					const size_t x, const size_t y);
+
+bool			is_player(const t_map *const map,
+					const size_t x, const size_t y);
 
 #endif

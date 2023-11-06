@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 14:15:46 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/23 14:40:10 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/06 07:45:08 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static void	set_tile(t_tile *tile, const char c, const bool is_marked)
 {
 	tile->tile_char = c;
 	tile->is_marked = is_marked;
+	tile->interaction_time = 0;
 }
 
 static void	fill_with_empty_tiles(t_tile *tile, const size_t len)

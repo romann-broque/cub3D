@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 20:07:09 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/06 07:14:49 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/06 07:35:06 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,8 @@ static void	set_cast(
 	}
 	set_side(&(cast->side), cast->step);
 	set_hitpoint(cast, map->player.pos, x, y);
-	cast->tile = map->matrix[y][x].tile_char;
+	cast->tile = &(map->matrix[y][x]);
+	set_pos(&(cast->tile_pos), x, y);
 }
 
 static double	get_perp_wall_dist(

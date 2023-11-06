@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 10:09:13 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/31 15:47:24 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/06 07:48:42 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	display_window_content(t_win *const window)
 		else if (window->mod == E_STD)
 			display_minimap(window);
 		display_fov(window, hitpoint_array);
+		refresh_tiles(window->map);
 		print_fps();
 	}
 }

@@ -27,6 +27,7 @@ PATH_SRCS	+=	srcs/window/map/init_map/
 PATH_SRCS	+=	srcs/window/map/is_map_valid/
 PATH_SRCS	+=	srcs/window/map/player/
 PATH_SRCS	+=	srcs/window/map/raycast/
+PATH_SRCS	+=	srcs/window/map/tile/
 
 ### srcs/
 
@@ -126,7 +127,6 @@ SRCS	 	+=	get_translated_pos.c
 
 SRCS	 	+=	free_map.c
 SRCS	 	+=	print_map.c
-SRCS	 	+=	tile_type.c
 
 ### srcs/window/map/init_map/
 
@@ -151,6 +151,12 @@ SRCS	 	+=	set_pos.c
 SRCS	 	+=	get_vect.c
 SRCS	 	+=	dda.c
 SRCS	 	+=	raycaster.c
+
+### srcs/window/map/tile/
+
+SRCS	 	+=	refresh_tiles.c
+SRCS	 	+=	tile_mark.c
+SRCS	 	+=	tile_type.c
 
 vpath %.c $(PATH_SRCS)
 
