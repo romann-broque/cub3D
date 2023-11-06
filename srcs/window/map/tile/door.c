@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 09:23:18 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/06 12:36:55 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/06 15:13:55 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 
 static void	set_progression(t_tile *const door)
 {
-	door->progression = door->interaction_time / (double)DOOR_TIME;
+	if (door->state == OPENING)
+		door->progression = door->interaction_time / (double)DOOR_TIME;
+	else if (door->state == CLOSING)
+		door->progression = 1 - door->interaction_time / (double)DOOR_TIME;
 }
 
 bool	is_tile_door(const t_tile *const tile)

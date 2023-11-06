@@ -150,12 +150,14 @@ SRCS	 	+=	set_pos.c
 
 SRCS	 	+=	get_vect.c
 SRCS	 	+=	dda.c
+SRCS	 	+=	cast_utils.c
 SRCS	 	+=	raycaster.c
 
 ### srcs/window/map/tile/
 
 SRCS	 	+=	door.c
 SRCS	 	+=	refresh_tiles.c
+SRCS	 	+=	get_tile_from_map.c
 SRCS	 	+=	tile_mark.c
 SRCS	 	+=	tile_type.c
 

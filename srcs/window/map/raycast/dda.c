@@ -6,39 +6,47 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 20:07:09 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/06 07:35:06 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/06 16:00:56 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	set_hitpoint(
+static bool	is_open_door(
+	t_map *const map,
 	t_cast *const cast,
-	const t_pos player_pos,
-	const size_t x,
-	const size_t y
-	)
+	const double x,
+	const double y
+)
 {
-	if (cast->side == WEST_FACE || cast->side == EAST_FACE)
+	const t_tile *const	tile = get_tile_from_map(map, x, y);
+
+	if (is_tile_door(tile))
 	{
-		cast->hitpoint.x = x + (cast->step.x == -1);
-		cast->hitpoint.y = cast->coeff * (cast->hitpoint.x - player_pos.x)
-			+ player_pos.y;
+		if (tile->state == OPENED)
+			return (true);
+		if (tile->state != CLOSED)
+		{
+			set_hitpoint(cast, map->player.pos, x, y);
+			if (tile->tile_char == DOOR_HOR)
+				return (cast->hitpoint.y
+					- floor(cast->hitpoint.y) >= 1 - tile->progression);
+			return (cast->hitpoint.x
+				- floor(cast->hitpoint.x) >= 1 - tile->progression);
+		}
 	}
-	else
-	{
-		cast->hitpoint.y = y + (cast->step.y == -1);
-		cast->hitpoint.x = (cast->hitpoint.y - player_pos.y) / cast->coeff
-			+ player_pos.x;
-	}
+	return (false);
 }
 
-static void	set_side(t_side *const side, const t_vect step)
+static bool	is_transparent(
+	t_map *const map,
+	t_cast *const cast,
+	const double x,
+	const double y
+	)
 {
-	if (*side == WEST_FACE && step.x < 0)
-		*side = EAST_FACE;
-	else if (*side == NORTH_FACE && step.y > 0)
-		*side = SOUTH_FACE;
+	return (is_ground(map, x, y)
+		|| is_open_door(map, cast, x, y));
 }
 
 static void	set_cast(
@@ -47,12 +55,12 @@ static void	set_cast(
 	t_cast *const cast
 	)
 {
-	size_t	x;
-	size_t	y;
+	double	x;
+	double	y;
 
 	x = map->player.pos.x;
 	y = map->player.pos.y;
-	while (is_ground(map, x, y))
+	while (is_transparent(map, cast, x, y))
 	{
 		if (cast->dist.x < cast->dist.y)
 		{
@@ -68,8 +76,8 @@ static void	set_cast(
 		}
 	}
 	set_side(&(cast->side), cast->step);
+	cast->tile = get_tile_from_map(map, x, y);
 	set_hitpoint(cast, map->player.pos, x, y);
-	cast->tile = &(map->matrix[y][x]);
 	set_pos(&(cast->tile_pos), x, y);
 }
 

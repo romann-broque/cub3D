@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 09:05:50 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/06 13:01:33 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/06 15:56:40 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,14 @@ static int	get_new_tex_pos_door(
 	if (is_tile_door(cast->tile) == true)
 	{
 		offset = 0;
-		if (cast->tile->state == OPENING)
+		if (cast->tile->state == OPENING || cast->tile->state == CLOSING)
+		{
 			offset = cast->tile->progression;
+			if (cast->side == WEST_FACE || cast->side == SOUTH_FACE)
+				offset = 1 - cast->tile->progression;
+		}
 		else if (cast->tile->state == OPENED)
 			offset = 1;
-		else if (cast->tile->state == CLOSING)
-			offset = 1 - cast->tile->progression;
 		new_tex_pos += (texture.width * offset);
 	}
 	return (new_tex_pos);

@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 17:12:07 by lechon            #+#    #+#             */
-/*   Updated: 2023/11/06 10:11:26 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/06 16:01:25 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,13 @@ t_vect			get_side_dist(
 					const t_pos pos, const t_vect ray,
 					const t_vect delta_dist);
 
+	// cast_utils.c
+
+void			set_hitpoint(t_cast *const cast,
+					const t_pos player_pos,
+					const size_t x, const size_t y);
+void			set_side(t_side *const side, const t_vect step);
+
 	// dda.c
 
 t_cast			dda(t_map *const map, const t_pos pos,
@@ -123,6 +130,12 @@ void			refresh_door(t_tile *const door);
 // refresh_tiles.c
 
 void			refresh_tiles(t_map *const map);
+
+// get_tile_from_map.c
+
+t_tile			*get_tile_from_map(t_map *const map,
+					const size_t x,
+					const size_t y);
 
 // tile_mark.c
 
