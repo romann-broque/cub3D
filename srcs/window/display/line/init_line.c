@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 17:54:53 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/25 09:39:43 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/10/31 15:53:22 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	get_signd(const double nb)
 
 static size_t	get_nb_points(const double dx, const double dy)
 {
-	return ((size_t)(sqrt(pow(dx, 2) + pow(dy, 2))));
+	return (round(sqrt(pow(dx, 2) + pow(dy, 2))));
 }
 
 static void	set_line(t_line *line, const t_pos pos1, const t_pos pos2)

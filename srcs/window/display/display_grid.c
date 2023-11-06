@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 22:50:20 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/29 11:25:15 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/06 13:50:05 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,32 +24,21 @@ static bool	is_tile_in_screen(const t_pos *const pos)
 static bool	draw_map_tile(
 	t_win *const window,
 	const t_pos pos,
-	const t_pos offset,
 	t_pos pos_screen
 	)
 {
-	const t_map *const		map = window->map;
-
 	if (window->mod == E_STD)
 	{
-		set_pos(&pos_screen,
-			(pos_screen.x + offset.x) * (TILE_SIZE) + MINIMAP_XOFFSET,
-			(pos_screen.y + offset.y) * (TILE_SIZE) + MINIMAP_YOFFSET);
-		if (is_closed_to_player(map, pos.x, pos.y) == true)
+		if (is_close_to_player(window->map, pos.x, pos.y))
 		{
-			draw_tile(window, &pos, pos_screen.x, pos_screen.y);
+			draw_tile_on_minimap(window, &pos);
 			return (true);
 		}
 	}
 	else if (window->mod == E_MAP)
 	{
-		set_pos(&pos_screen,
-			(pos_screen.x - floor(map->player.pos.x))
-			* (TILE_SIZE) + WINDOW_WIDTH / 2,
-			(pos_screen.y - floor(map->player.pos.y))
-			* (TILE_SIZE) + WINDOW_HEIGHT / 2);
 		if (is_tile_in_screen(&pos_screen))
-			draw_tile(window, &pos, pos_screen.x, pos_screen.y);
+			draw_tile_on_map(window, &pos);
 		return (true);
 	}
 	return (false);
@@ -59,22 +48,21 @@ static bool	is_tile_sequence_drawn(
 	t_win *const window,
 	const t_map *const map,
 	const size_t y,
-	const size_t i
+	const double i
 	)
 {
-	const t_pos			offset = get_offset(map->player.pos);
-	size_t				x;
-	size_t				j;
-	t_pos				pos;
-	t_pos				pos_screen;
+	size_t	x;
+	size_t	j;
+	t_pos	pos;
+	t_pos	pos_screen;
 
 	x = 0;
-	j = 0;
+	j = map->player.pos.x - floor(map->player.pos.x);
 	while (j < map->width)
 	{
 		set_pos(&pos, j, i);
 		set_pos(&pos_screen, x, y);
-		x += draw_map_tile(window, pos, offset, pos_screen);
+		x += draw_map_tile(window, pos, pos_screen);
 		++j;
 	}
 	return (x > 0);
@@ -87,7 +75,7 @@ void	display_grid(t_win *const window)
 	size_t				y;
 
 	y = 0;
-	i = 0;
+	i = map->player.pos.y - floor(map->player.pos.y);
 	while (i < map->height)
 	{
 		y += is_tile_sequence_drawn(window, map, y, i);

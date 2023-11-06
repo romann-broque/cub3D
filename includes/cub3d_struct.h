@@ -6,7 +6,7 @@
 /*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:08:41 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/06 14:12:55 by jess             ###   ########.fr       */
+/*   Updated: 2023/11/06 15:41:02 by jess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,12 +94,12 @@ typedef struct s_line
 	t_pos	pos2;
 	t_pos	min_pos;
 	t_pos	max_pos;
-	long	dx;
+	double	dx;
 	int		sx;
-	long	dy;
+	double	dy;
 	int		sy;
-	long	error;
-	long	e2;
+	double	error;
+	double	e2;
 	size_t	nb_points;
 }		t_line;
 

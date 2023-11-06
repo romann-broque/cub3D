@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keyboard.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lechon <lechon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 15:02:28 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/31 11:39:38 by lechon           ###   ########.fr       */
+/*   Updated: 2023/11/06 15:41:28 by jess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	browse_mapping(t_win *window)
 		++i;
 	}
 	if (ret_val == EXIT_SUCCESS)
-		return (refresh(window));
+		refresh(window);
 	return (ret_val);
 }
 

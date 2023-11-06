@@ -6,7 +6,7 @@
 /*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:06:20 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/06 14:08:51 by jess             ###   ########.fr       */
+/*   Updated: 2023/11/06 15:40:46 by jess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,11 +94,16 @@
 # define INVALID_FILENAME	"FILENAME IS INVALID"
 # define INVALID_TEXTURE	"INVALID TEXTURE"
 
+// Warning
+
+# define DIMENSIONS_NOT_SUPPORTED	"Dimensions not supported"
+
 // Print Colors
 
 # define NC					"\033[0m"
 # define RED_PRINT			"\033[0;31m"
 # define GREEN_PRINT		"\033[0;32m"
+# define ORANGE_PRINT		"\033[0;33m"
 
 // Pixel Colors
 
