@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 06:40:48 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/06 08:42:45 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/06 09:31:55 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ static void	set_door_as_opened(
 	const size_t	x = door_pos.x;
 	const size_t	y = door_pos.y;
 
-	printf("DOOR_STATE -> %d\n", map->matrix[y][x].state);
-	map->matrix[y][x].state = OPENING;
+	if (map->matrix[y][x].state == CLOSED)
+		map->matrix[y][x].state = OPENING;
 }
 
 void	solo_raycast(
