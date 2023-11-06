@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 08:51:46 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/06 10:13:54 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/06 12:36:40 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ bool	is_door(
 	const size_t y
 	)
 {
-	return (map->matrix[y][x].tile_char == DOOR);
+	return (map->matrix[y][x].tile_char == DOOR_VERT
+		|| map->matrix[y][x].tile_char == DOOR_HOR);
 }
 
 bool	is_blank(

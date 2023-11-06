@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 23:26:56 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/05 11:24:59 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/06 13:48:01 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,10 @@ static bool	is_tile_in_matrix(
 	return (false);
 }
 
-static bool	is_texture_set(const size_t id, const t_config *const config)
+static bool	is_texture_set(size_t id, const t_config *const config)
 {
+	if (id == E_DOOR + 1)
+		id = E_DOOR;
 	return (config->attribute_array[id] != NULL);
 }
 
@@ -61,14 +63,20 @@ static bool	is_config_matching(
 				return (false);
 			}
 		}
-		else if (is_texture_set(MANDATORY_ATTRIBUTE_COUNT + i, config) == true)
-		{
-			print_format_error(SPECIAL_TILE_NOT_SET);
-			return (false);
-		}
 		++i;
 	}
 	return (true);
+}
+
+static bool	can_map_be_used(
+	const t_map *const map,
+	const t_config *const config
+)
+{
+	return (map == NULL
+		|| (is_map_valid(map) == false
+			|| (BONUS == true
+				&& is_config_matching(map, config) == false)));
 }
 
 void	init_map_in_window(
@@ -77,9 +85,7 @@ void	init_map_in_window(
 	char *const *const file_content)
 {
 	window->map = init_map(file_content + offset);
-	if (window->map == NULL || is_map_valid(window->map) == false
-		|| (BONUS == true
-			&& is_config_matching(window->map, &(window->config)) == false))
+	if (can_map_be_used(window->map, &(window->config)) == true)
 	{
 		free_map(window->map);
 		window->map = NULL;

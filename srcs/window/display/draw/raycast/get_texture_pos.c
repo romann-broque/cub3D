@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 09:05:50 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/06 10:13:03 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/06 13:01:33 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,16 @@ static int	get_new_tex_pos_door(
 	return (new_tex_pos);
 }
 
+static bool	can_door_be_displayed(
+	const t_cast *const cast
+)
+{
+	return ((cast->tile->tile_char == DOOR_VERT
+			&& (cast->side == NORTH_FACE || cast->side == SOUTH_FACE))
+		|| (cast->tile->tile_char == DOOR_HOR
+			&& (cast->side == EAST_FACE || cast->side == WEST_FACE)));
+}
+
 int	get_tex_x(
 	const t_cast *const cast,
 	const t_texture texture
@@ -68,7 +78,7 @@ int	get_tex_x(
 	}
 	if (BONUS == true && is_tile_door(cast->tile) == true)
 	{
-		if (cast->side == NORTH_FACE || cast->side == SOUTH_FACE)
+		if (can_door_be_displayed(cast) == true)
 			tex_x = get_new_tex_pos_door(texture, cast, tex_x);
 		else
 			tex_x = -1;

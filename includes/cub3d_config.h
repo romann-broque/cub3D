@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:10:33 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/05 11:24:15 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/06 13:45:07 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 
 // attribute_utils.c
 
+bool			is_config_complete(const t_config *const config);
 int				build_attribute_from_sequence(
 					t_config *const config, char *const *const sequence);
 

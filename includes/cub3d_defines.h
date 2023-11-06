@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:06:20 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/06 07:49:26 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/06 12:36:15 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,8 @@
 
 # define NEWLINE			'\n'
 # define WALL				'1'
-# define DOOR				'D'
+# define DOOR_HOR			'D'
+# define DOOR_VERT			'd'
 # define BLANK				' '
 # define RGB_SEPARATOR		','
 
@@ -83,10 +84,10 @@
 # define FLOOR_KEY			"F"
 # define CEIL_KEY			"C"
 # define DOOR_KEY			"D"
-# define SPECIAL_KEYS		"D"
+# define SPECIAL_KEYS		"Dd"
 
 # ifdef BONUS
-#  define VALID_CHAR			"01D NSWE\n"
+#  define VALID_CHAR			"01Dd NSWE\n"
 # else
 #  define VALID_CHAR			"01 NSWE\n"
 # endif

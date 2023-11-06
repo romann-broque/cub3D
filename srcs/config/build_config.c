@@ -6,20 +6,24 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 09:44:49 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/05 11:54:03 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/06 13:43:45 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static bool	is_config_complete(const t_config *const config)
+static ssize_t	check_complete_config(
+	ssize_t offset,
+	const t_config *const config
+)
 {
-	size_t	i;
-
-	i = 0;
-	while (config->attribute_array[i] != NULL)
-		++i;
-	return (i >= MANDATORY_ATTRIBUTE_COUNT);
+	if (offset != INVALID_OFFSET
+		&& is_config_complete(config) == false)
+	{
+		print_format_error(UNKNOWN_CONFIG);
+		offset = INVALID_OFFSET;
+	}
+	return (offset);
 }
 
 static ssize_t	build_attributes(
@@ -45,8 +49,7 @@ static ssize_t	build_attributes(
 			offset = INVALID_OFFSET;
 		}
 	}
-	if (is_config_complete(config) == false)
-		offset = INVALID_OFFSET;
+	offset = check_complete_config(offset, config);
 	free_strs(sequence);
 	return (offset);
 }
@@ -57,6 +60,8 @@ static int	set_texture(
 	void *const mlx_ptr
 	)
 {
+	if (texture_file == NULL)
+		return (EXIT_SUCCESS);
 	texture->data.img = mlx_xpm_file_to_image(mlx_ptr,
 			texture_file, &texture->width, &texture->height);
 	if (texture->data.img == NULL)

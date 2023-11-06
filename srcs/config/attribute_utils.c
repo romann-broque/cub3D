@@ -6,11 +6,21 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 07:57:46 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/05 11:47:37 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/06 13:43:51 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+bool	is_config_complete(const t_config *const config)
+{
+	size_t	i;
+
+	i = 0;
+	while (config->attribute_array[i] != NULL)
+		++i;
+	return (i >= MANDATORY_ATTRIBUTE_COUNT);
+}
 
 static enum e_attribute_type	find_attribute_type(
 	const char *name
@@ -81,10 +91,7 @@ int	build_attribute_from_sequence(
 	if (is_sequence_empty(sequence) == true)
 		return (EXIT_SUCCESS);
 	if (is_sequence_format_valid(sequence) == false)
-	{
-		print_format_error(UNKNOWN_CONFIG);
 		return (EXIT_FAILURE);
-	}
 	if (add_attribute_into_config(
 			config, sequence[0], sequence[1]) == EXIT_SUCCESS)
 		return (EXIT_SUCCESS);
