@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   mouse_invisible.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lechon <lechon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 10:50:30 by lechon            #+#    #+#             */
-/*   Updated: 2023/11/01 12:21:32 by lechon           ###   ########.fr       */
+/*   Updated: 2023/11/06 14:47:24 by jess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-bool	is_pair(const int nb)
-{
-	return (nb % 2 == 0);
-}
+// bool	is_pair(const int nb)
+// {
+// 	return (nb % 2 == 0);
+// }
 
 static void	set_window_cursor(
 		Display *display,
@@ -50,6 +50,7 @@ void	hide_window_cursor(Display *display, Cursor invisible_cursor)
 		set_window_cursor(display,
 			DefaultRootWindow(display), invisible_cursor);
 	}
+	XCloseDisplay(display);
 }
 
 void	display_window_cursor(Display *display, Cursor invisible_cursor)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_struct.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lechon <lechon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:08:41 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/01 11:44:48 by lechon           ###   ########.fr       */
+/*   Updated: 2023/11/06 14:12:55 by jess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,6 @@ typedef struct s_key
 {
 	int		key_value;
 	bool	pressure;
-	int		mouse_clicks;
 }		t_key;
 
 typedef struct s_win
@@ -145,6 +144,7 @@ typedef struct s_win
 	t_map		*map;
 	enum e_mod	mod;
 	t_key		*keys;
+	bool		is_mouse_in_window;
 }		t_win;
 
 typedef struct s_event_mapping

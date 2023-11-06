@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_loop.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lechon <lechon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 17:14:28 by lechon            #+#    #+#             */
-/*   Updated: 2023/11/01 11:49:03 by lechon           ###   ########.fr       */
+/*   Updated: 2023/11/06 15:01:51 by jess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,11 @@ int				mouse_move(int x, int y, t_win *const window);
 
 	// mouse_click.c
 
-int				mouse_click(const int click, t_win *const window);
+int				mouse_click(
+					const int click,
+					__attribute__((unused))int x,
+					__attribute__((unused))int y,
+					t_win *const window);
 
 	// mouse_invisible.c
 

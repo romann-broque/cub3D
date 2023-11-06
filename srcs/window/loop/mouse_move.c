@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouse_move.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lechon <lechon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 11:42:39 by lechon            #+#    #+#             */
-/*   Updated: 2023/11/01 12:05:03 by lechon           ###   ########.fr       */
+/*   Updated: 2023/11/06 15:07:48 by jess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	define_window_cursor(t_win *const window)
 	if (display == NULL)
 		return ;
 	invisible_cursor = None;
-	if (is_pair(window->keys->mouse_clicks) == true)
+	if (window->is_mouse_in_window == false)
 		display_window_cursor(display, invisible_cursor);
 	else
 		hide_window_cursor(display, invisible_cursor);

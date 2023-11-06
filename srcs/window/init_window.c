@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_window.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lechon <lechon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 09:39:32 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/01 11:59:53 by lechon           ###   ########.fr       */
+/*   Updated: 2023/11/06 14:17:45 by jess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void	init_window(
 
 	window->map = NULL;
 	window->win_ptr = NULL;
+	window->is_mouse_in_window = false;
 	init_mlx(window);
 	offset = build_config(&(window->config),
 			file_content, window->mlx_ptr);
@@ -83,7 +84,6 @@ void	init_window(
 	{
 		init_player(window->map);
 		window->keys = init_keys();
-		window->keys->mouse_clicks = 0;
 		window->mod = E_STD;
 	}
 }
