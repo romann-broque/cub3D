@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 22:50:20 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/07 14:57:39 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/07 22:55:34 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 
 static bool	is_tile_in_screen(const t_pos *const pos)
 {
-	t_pos	final_pos;
+	static const size_t	offset = TILE_SIZE - 1;
+	t_pos				final_pos;
 
-	final_pos.x = pos->x + TILE_SIZE - 1;
-	final_pos.y = pos->y + TILE_SIZE - 1;
+	final_pos.x = pos->x + offset;
+	final_pos.y = pos->y + offset;
 	return (is_pos_in_screen(pos) || is_pos_in_screen(&final_pos));
 }
 
