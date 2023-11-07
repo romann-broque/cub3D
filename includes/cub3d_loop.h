@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_loop.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrouillo <jrouillo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 17:14:28 by lechon            #+#    #+#             */
-/*   Updated: 2023/11/07 13:51:13 by jrouillo         ###   ########.fr       */
+/*   Updated: 2023/11/07 15:11:59 by jess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,6 @@ t_event_mapping	*get_key_mapping(void);
 ssize_t			find_key_index(const t_key *keys, const int key);
 bool			is_same_key_in(const t_key *const keys, const t_key key);
 
-	// mouse_move.c
-
-int				mouse_move(int x, __attribute__((unused))int y,
-					t_win *const window);
-
 	// mouse_click.c
 
 int				mouse_click(
@@ -62,9 +57,8 @@ int				close_window(t_win *const ptr);
 
 	// e_rotation.c
 
-void			rotate_side(
-					t_player *const player,
-					const double deg_speed);
+int				mouse_move(int x, __attribute__((unused))int y,
+					t_win *const window);
 int				rotate_right(t_win *const ptr);
 int				rotate_left(t_win *const ptr);
 

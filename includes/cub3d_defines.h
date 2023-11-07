@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_defines.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrouillo <jrouillo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:06:20 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/07 12:58:00 by jrouillo         ###   ########.fr       */
+/*   Updated: 2023/11/07 15:05:50 by jess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@
 # define STEP_SIZE			0.001
 # define MOVE_SPEED			0.1
 # define ROTATE_SPEED		7
-# define IS_PRESSED         1
+# define MOUSE_ROTATE_COEFF	0.3
 
 // NUMBERS
 
@@ -52,7 +52,6 @@
 # define FPS_FREQUENCY		10
 # define ATTRIBUTE_COUNT	6
 # define KEY_COUNT			8
-# define CURSOR_COUNT       1
 
 # ifdef BONUS
 #  define TEXTURE_COUNT		6
@@ -124,6 +123,10 @@
 # define K_M				0x006d
 # define K_ESC				0xff1b
 # define NO_KEY				0
+
+// Cursor
+
+# define LEFT_CLICK			1
 
 # ifndef BONUS
 #  define BONUS 0

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   e_rotation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lechon <lechon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 17:17:11 by lechon            #+#    #+#             */
-/*   Updated: 2023/10/31 14:52:43 by lechon           ###   ########.fr       */
+/*   Updated: 2023/11/07 15:13:46 by jess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	rotate_vect(t_vect *const object, const double rad_speed)
 		+ object->y * cos(rad_speed);
 }
 
-void	rotate_side(
+static void	rotate_side(
 			t_player *const player,
 			const double deg_speed
 )
@@ -31,6 +31,27 @@ void	rotate_side(
 
 	rotate_vect(&(player->dir), rad_speed);
 	rotate_vect(&(player->plane), rad_speed);
+}
+
+int	mouse_move(int x, __attribute__((unused))int y, t_win *const window)
+{
+	static int	prev_x = WINDOW_WIDTH / 2;
+
+	if (window->is_mouse_in_window == true)
+	{
+		mlx_mouse_move(window->mlx_ptr, window->win_ptr,
+			WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
+		if (x == prev_x)
+			return (EXIT_SUCCESS);
+		else if (x < prev_x)
+			rotate_side(&(window->map->player),
+				-ROTATE_SPEED * MOUSE_ROTATE_COEFF);
+		else if (x > prev_x)
+			rotate_side(&(window->map->player),
+				ROTATE_SPEED * MOUSE_ROTATE_COEFF);
+		prev_x = x;
+	}
+	return (EXIT_SUCCESS);
 }
 
 int	rotate_right(t_win *const ptr)

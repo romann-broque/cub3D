@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouse_click.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrouillo <jrouillo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 11:35:41 by lechon            #+#    #+#             */
-/*   Updated: 2023/11/07 12:50:11 by jrouillo         ###   ########.fr       */
+/*   Updated: 2023/11/07 15:04:04 by jess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	mouse_click(
 	t_win *const window
 )
 {
-	if (click == 1)
+	if (click == LEFT_CLICK)
 	{
 		if (window->is_mouse_in_window == true)
 			window->is_mouse_in_window = false;

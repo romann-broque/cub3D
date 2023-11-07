@@ -110,7 +110,6 @@ SRCS	 	+=	put_line.c
 SRCS	 	+=	loop.c
 SRCS	 	+=	keyboard.c
 SRCS	 	+=	keyboard_utils.c
-SRCS		+=	mouse_move.c
 SRCS		+=	mouse_click.c
 
 ### srcs/window/loop/events/

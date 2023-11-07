@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_struct.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrouillo <jrouillo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:08:41 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/07 12:58:16 by jrouillo         ###   ########.fr       */
+/*   Updated: 2023/11/07 15:03:15 by jess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,8 +149,8 @@ typedef struct s_win
 
 typedef struct s_event_mapping
 {
-	t_key		key;
-	int			(*event)(t_win *const);
+	t_key	key;
+	int		(*event)(t_win *const);
 
 }		t_event_mapping;
 
