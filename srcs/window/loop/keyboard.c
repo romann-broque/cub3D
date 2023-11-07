@@ -6,7 +6,7 @@
 /*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 15:02:28 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/06 15:41:28 by jess             ###   ########.fr       */
+/*   Updated: 2023/11/07 15:32:07 by jess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	browse_mapping(t_win *window)
 {
-	const t_event_mapping	*mapping = get_key_mapping();
+	const t_event_mapping	*const mapping = get_key_mapping();
 	int						ret_val;
 	size_t					i;
 
