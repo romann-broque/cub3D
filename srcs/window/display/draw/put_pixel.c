@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 09:03:33 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/31 15:59:12 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/07 14:28:27 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ static void	put_pixel_on_minimap(
 {
 	static const double	min_x = MINIMAP_XOFFSET;
 	static const double	max_x = MINIMAP_XOFFSET
-		+ 2 * MINIMAP_RADIUS * TILE_SIZE + TILE_SIZE;
+		+ 2 * MINIMAP_RADIUS * (TILE_SIZE - 1) + TILE_SIZE - 1;
 	static const double	min_y = MINIMAP_YOFFSET;
 	static const double	max_y = MINIMAP_YOFFSET
-		+ 2 * MINIMAP_RADIUS * TILE_SIZE + TILE_SIZE;
+		+ 2 * MINIMAP_RADIUS * (TILE_SIZE - 1) + TILE_SIZE - 1;
 
 	if (x >= min_x && x < max_x
 		&& y >= min_y && y < max_y)
