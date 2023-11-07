@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 20:07:09 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/06 16:00:56 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/07 10:50:53 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,17 +78,16 @@ static void	set_cast(
 	set_side(&(cast->side), cast->step);
 	cast->tile = get_tile_from_map(map, x, y);
 	set_hitpoint(cast, map->player.pos, x, y);
-	set_pos(&(cast->tile_pos), x, y);
 }
 
 static double	get_perp_wall_dist(
-	const t_cast cast,
-	const t_vect delta_dist
+	const t_cast *const cast,
+	const t_vect *const delta_dist
 	)
 {
-	if (cast.side == EAST_FACE || cast.side == WEST_FACE)
-		return (cast.dist.x - delta_dist.x);
-	return (cast.dist.y - delta_dist.y);
+	if (cast->side == EAST_FACE || cast->side == WEST_FACE)
+		return (cast->dist.x - delta_dist->x);
+	return (cast->dist.y - delta_dist->y);
 }
 
 t_cast	dda(
@@ -107,6 +106,6 @@ t_cast	dda(
 	cast.dist = side_dist;
 	cast.ray = ray;
 	set_cast(map, delta_dist, &cast);
-	cast.perp_wall_dist = get_perp_wall_dist(cast, delta_dist);
+	cast.perp_wall_dist = get_perp_wall_dist(&cast, &delta_dist);
 	return (cast);
 }
