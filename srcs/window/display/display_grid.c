@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 22:50:20 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/31 10:01:46 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/07 14:57:39 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,23 +23,25 @@ static bool	is_tile_in_screen(const t_pos *const pos)
 
 static bool	draw_map_tile(
 	t_win *const window,
-	const t_pos pos,
-	t_pos pos_screen
+	const t_pos *const pos,
+	const t_pos *const pos_screen
 	)
 {
 	if (window->mod == E_STD)
 	{
-		if (is_closed_to_player(window->map, pos.x, pos.y))
+		if (is_closed_to_player(window->map, pos->x, pos->y))
 		{
-			draw_tile_on_minimap(window, &pos);
+			draw_tile_on_minimap(window, pos);
 			return (true);
 		}
 	}
 	else if (window->mod == E_MAP)
 	{
-		if (is_tile_in_screen(&pos_screen))
-			draw_tile_on_map(window, &pos);
-		return (true);
+		if (is_tile_in_screen(pos_screen))
+		{
+			draw_tile_on_map(window, pos);
+			return (true);
+		}
 	}
 	return (false);
 }
@@ -62,7 +64,7 @@ static bool	is_tile_sequence_drawn(
 	{
 		set_pos(&pos, j, i);
 		set_pos(&pos_screen, x, y);
-		x += draw_map_tile(window, pos, pos_screen);
+		x += draw_map_tile(window, &pos, &pos_screen);
 		++j;
 	}
 	return (x > 0);
