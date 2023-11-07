@@ -140,6 +140,7 @@ SRCS	 	+=	is_map_closed.c
 SRCS	 	+=	is_map_closed_utils.c
 SRCS		+=	is_map_content_valid.c
 SRCS	 	+=	is_map_unique.c
+SRCS		+=	are_doors_surrounded.c
 
 ### srcs/window/map/player/
 

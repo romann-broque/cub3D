@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 20:43:14 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/06 13:36:15 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/07 13:22:06 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ bool	is_map_valid(t_map *const map)
 		print_format_error(MAP_NOT_UNIQUE);
 	else if (is_map_closed(map) == false)
 		print_format_error(MAP_NOT_CLOSED);
+	else if (BONUS == true && are_doors_surrounded(map) == false)
+		print_format_error(DOOR_NOT_SURROUNDED);
 	else
 		is_valid = true;
 	return (is_valid);

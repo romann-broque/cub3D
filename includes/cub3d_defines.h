@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:06:20 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/07 13:14:38 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/07 13:31:55 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@
 # define MAP_NOT_UNIQUE				"MAP NOT UNIQUE"
 # define MAP_TOO_BIG				"MAP TOO BIG"
 # define MAP_CONTENT_WRONG			"MAP CONTENT IS WRONG"
+# define DOOR_NOT_SURROUNDED		"DOOR NOT SURROUNDED"
 # define UNKNOWN_CONFIG				"UNKNOWN CONFIG"
 # define DUPLICATED_CONFIG			"DUPLICATED CONFIG"
 # define WRONG_RGB					"WRONG RGB"

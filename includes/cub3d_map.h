@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 17:12:07 by lechon            #+#    #+#             */
-/*   Updated: 2023/11/06 23:18:39 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/07 13:24:47 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,10 @@ bool			is_map_content_valid(const t_map *const map);
 	// is_map_unique.c
 
 bool			is_map_unique(const t_map *const map);
+
+	// are_doors_surrounded.c
+
+bool			are_doors_surrounded(const t_map *const map);
 
 	// is_map_valid.c
 
