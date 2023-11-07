@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_defines.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jrouillo <jrouillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:06:20 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/06 15:40:46 by jess             ###   ########.fr       */
+/*   Updated: 2023/11/07 12:58:00 by jrouillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,10 +124,6 @@
 # define K_M				0x006d
 # define K_ESC				0xff1b
 # define NO_KEY				0
-
-// Cursor
-
-# define MOUSE_DIST_EDGE    30
 
 # ifndef BONUS
 #  define BONUS 0

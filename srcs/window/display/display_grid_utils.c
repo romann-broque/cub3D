@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display_grid_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jrouillo <jrouillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 09:03:33 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/06 13:50:05 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/07 12:33:54 by jrouillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,14 @@ static t_pos	get_min_pos(const t_pos pos)
 
 static t_pos	get_max_pos(const t_pos pos)
 {
-	t_pos	max_pos;
+	const double	max_limit = (double)SIZE_MAX - MINIMAP_RADIUS + 1;
+	t_pos			max_pos;
 
-	max_pos.x = SIZE_MAX;
-	if (pos.x < SIZE_MAX - MINIMAP_RADIUS + 1)
+	max_pos.x = (double)SIZE_MAX;
+	if (pos.x < max_limit)
 		max_pos.x = pos.x + MINIMAP_RADIUS + 1;
-	max_pos.y = SIZE_MAX;
-	if (pos.y < SIZE_MAX - MINIMAP_RADIUS + 1)
+	max_pos.y = (double)SIZE_MAX;
+	if (pos.y < max_limit)
 		max_pos.y = pos.y + MINIMAP_RADIUS + 1;
 	return (max_pos);
 }

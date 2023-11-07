@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_window.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jrouillo <jrouillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 09:39:32 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/07 12:16:31 by jess             ###   ########.fr       */
+/*   Updated: 2023/11/07 12:58:46 by jrouillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,4 @@ void	init_window(
 		window->mod = E_STD;
 	}
 	window->is_mouse_in_window = false;
-	window->display = XOpenDisplay(NULL);
-	if (window->display == NULL)
-		return ;
-	window->cursor = None;
 }

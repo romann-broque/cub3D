@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_loop.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jrouillo <jrouillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 17:14:28 by lechon            #+#    #+#             */
-/*   Updated: 2023/11/07 12:13:48 by jess             ###   ########.fr       */
+/*   Updated: 2023/11/07 12:56:26 by jrouillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ bool			is_same_key_in(const t_key *const keys, const t_key key);
 
 	// mouse_move.c
 
-int				mouse_move(int x, int y, t_win *const window);
+int				mouse_move(int x, __attribute__((unused))int y, 
+					t_win *const window);
 
 	// mouse_click.c
 
@@ -50,14 +51,6 @@ int				mouse_click(
 					__attribute__((unused))int x,
 					__attribute__((unused))int y,
 					t_win *const window);
-
-	// mouse_invisible.c
-
-bool			is_pair(const int nb);
-Cursor			create_invisible_cursor(Display *display, Window rootWindow);
-void			hide_window_cursor(Display *display, Cursor *invisible_cursor);
-void			display_window_cursor(
-					Display *display, Cursor *invisible_cursor);
 
 /////////////////////////////////////////
 /////			events				/////

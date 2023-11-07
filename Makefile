@@ -112,7 +112,6 @@ SRCS	 	+=	keyboard.c
 SRCS	 	+=	keyboard_utils.c
 SRCS		+=	mouse_move.c
 SRCS		+=	mouse_click.c
-SRCS		+=	mouse_invisible.c
 
 ### srcs/window/loop/events/
 
