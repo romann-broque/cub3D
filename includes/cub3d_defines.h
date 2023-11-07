@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:06:20 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/07 07:17:52 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/07 13:14:38 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@
 # define MINIMAP_RADIUS		5
 # define TILE_SIZE			15
 # define DOOR_WIDTH			3
-# define DOOR_RADIUS		3
+# define DOOR_RADIUS		1.5
 # define DOOR_TIME			50
 # define PLAYER_SIZE		4
 # define FOV				80
