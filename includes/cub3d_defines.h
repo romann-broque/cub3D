@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:06:20 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/07 16:47:00 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/07 22:23:35 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@
 # define FPS_FREQUENCY				10
 # define KEY_COUNT					9
 # define MANDATORY_ATTRIBUTE_COUNT	6
-# define SPECIAL_TILE_COUNT			1
+# define SPECIAL_TILE_COUNT			2
 
 # ifdef BONUS
 #  define TEXTURE_COUNT		7

@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 23:26:56 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/06 13:48:35 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/07 22:22:09 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,10 @@ static bool	can_map_be_used(
 	const t_config *const config
 )
 {
-	return (map == NULL
-		|| (is_map_valid(map) == false
-			|| (BONUS == true
-				&& is_config_matching(map, config) == false)));
+	return (map != NULL
+		&& is_map_valid(map) == true
+		&& (BONUS == false
+			|| is_config_matching(map, config) == true));
 }
 
 void	init_map_in_window(
@@ -85,7 +85,7 @@ void	init_map_in_window(
 	char *const *const file_content)
 {
 	window->map = init_map(file_content + offset);
-	if (can_map_be_used(window->map, &(window->config)) == true)
+	if (can_map_be_used(window->map, &(window->config)) == false)
 	{
 		free_map(window->map);
 		window->map = NULL;
