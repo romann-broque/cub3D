@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 17:12:07 by lechon            #+#    #+#             */
-/*   Updated: 2023/11/06 16:01:25 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/06 23:18:39 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ t_cast			dda(t_map *const map, const t_pos pos,
 // door.c
 
 bool			is_tile_door(const t_tile *const tile);
-void			refresh_door(t_tile *const door);
+void			refresh_door(const t_player *const player, t_tile *const door);
 
 // refresh_tiles.c
 
@@ -133,7 +133,7 @@ void			refresh_tiles(t_map *const map);
 
 // get_tile_from_map.c
 
-t_tile			*get_tile_from_map(t_map *const map,
+t_tile			*get_tile_from_map(const t_map *const map,
 					const size_t x,
 					const size_t y);
 

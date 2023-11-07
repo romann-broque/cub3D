@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:06:20 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/06 14:21:57 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/07 07:17:52 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@
 # define TILE_SIZE			15
 # define DOOR_WIDTH			3
 # define DOOR_RADIUS		3
-# define DOOR_TIME			100
+# define DOOR_TIME			50
 # define PLAYER_SIZE		4
 # define FOV				80
 # define STEP_SIZE			0.001

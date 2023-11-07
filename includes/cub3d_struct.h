@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:08:41 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/06 09:19:37 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/06 23:13:24 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,15 +83,6 @@ typedef struct s_config
 	t_texture	textures[TEXTURE_COUNT];
 }		t_config;
 
-typedef struct s_tile
-{
-	char			tile_char;
-	bool			is_marked;
-	size_t			interaction_time;
-	t_tile_state	state;
-	double			progression;
-}		t_tile;
-
 typedef struct s_pos
 {
 	double	x;
@@ -99,6 +90,16 @@ typedef struct s_pos
 }		t_pos;
 
 typedef t_pos	t_vect;
+
+typedef struct s_tile
+{
+	char			tile_char;
+	bool			is_marked;
+	size_t			interaction_time;
+	t_tile_state	state;
+	double			progression;
+	t_pos			pos;
+}		t_tile;
 
 typedef struct s_line
 {

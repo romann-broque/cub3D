@@ -6,16 +6,18 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 07:40:24 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/06 10:13:47 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/06 23:18:00 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	refresh_single_tile(t_tile *const tile)
+static void	refresh_single_tile(
+	const t_map *const map,
+	t_tile *const tile)
 {
 	if (is_tile_door(tile) == true)
-		refresh_door(tile);
+		refresh_door(&(map->player), tile);
 }
 
 void	refresh_tiles(t_map *const map)
@@ -29,7 +31,7 @@ void	refresh_tiles(t_map *const map)
 		j = 0;
 		while (j < map->width)
 		{
-			refresh_single_tile(&(map->matrix[i][j]));
+			refresh_single_tile(map, &(map->matrix[i][j]));
 			++j;
 		}
 		++i;

@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 09:03:14 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/04 23:39:06 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/06 23:14:16 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,17 @@ static t_vect	get_move_offset(
 	return (move_offset);
 }
 
+static bool	is_open_door(
+	const t_map *const map,
+	const size_t x,
+	const size_t y
+)
+{
+	const t_tile *const	tile = get_tile_from_map(map, x, y);
+
+	return (is_tile_door(tile) && tile->state == OPENED);
+}
+
 t_pos	get_translated_pos(
 	const t_map *const map,
 	const t_pos player_pos,
@@ -77,7 +88,7 @@ t_pos	get_translated_pos(
 		check_pos.x = player_pos.x + dir_speed.x * i;
 		check_pos.y = player_pos.y + dir_speed.y * i;
 		if (is_wall(map, check_pos.x, check_pos.y)
-			|| is_door(map, check_pos.x, check_pos.y))
+			|| is_open_door(map, check_pos.x, check_pos.y) == false)
 			get_new_pos_from_wall_collision(&new_pos, &check_pos,
 				map, get_move_offset(&dir_speed, i, step_move));
 		else
