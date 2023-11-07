@@ -6,7 +6,7 @@
 /*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 09:39:32 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/06 14:17:45 by jess             ###   ########.fr       */
+/*   Updated: 2023/11/07 12:16:31 by jess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ void	init_window(
 
 	window->map = NULL;
 	window->win_ptr = NULL;
-	window->is_mouse_in_window = false;
 	init_mlx(window);
 	offset = build_config(&(window->config),
 			file_content, window->mlx_ptr);
@@ -86,4 +85,9 @@ void	init_window(
 		window->keys = init_keys();
 		window->mod = E_STD;
 	}
+	window->is_mouse_in_window = false;
+	window->display = XOpenDisplay(NULL);
+	if (window->display == NULL)
+		return ;
+	window->cursor = None;
 }

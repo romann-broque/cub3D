@@ -6,7 +6,7 @@
 /*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 10:50:30 by lechon            #+#    #+#             */
-/*   Updated: 2023/11/06 15:37:20 by jess             ###   ########.fr       */
+/*   Updated: 2023/11/07 12:15:27 by jess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,28 +40,26 @@ Cursor	create_invisible_cursor(Display *display, Window rootWindow)
 	return (invisible_cursor);
 }
 
-void	hide_window_cursor(Display *display, Cursor invisible_cursor)
+void	hide_window_cursor(Display *display, Cursor *invisible_cursor)
 {
-	if (invisible_cursor == None)
-		invisible_cursor = create_invisible_cursor(display,
+	if (*invisible_cursor == None)
+		*invisible_cursor = create_invisible_cursor(display,
 				DefaultRootWindow(display));
-	if (invisible_cursor != None)
+	if (*invisible_cursor != None)
 	{
 		set_window_cursor(display,
-			DefaultRootWindow(display), invisible_cursor);
+			DefaultRootWindow(display), *invisible_cursor);
 	}
-	XCloseDisplay(display);
 }
 
-void	display_window_cursor(Display *display, Cursor invisible_cursor)
+void	display_window_cursor(Display *display, Cursor *invisible_cursor)
 {
 	if (display != NULL)
 	{
-		if (invisible_cursor != None)
+		if (*invisible_cursor != None)
 		{
-			XFreeCursor(display, invisible_cursor);
-			invisible_cursor = None;
+			XFreeCursor(display, *invisible_cursor);
+			*invisible_cursor = None;
 		}
 	}
-	XCloseDisplay(display);
 }

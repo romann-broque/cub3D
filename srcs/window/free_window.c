@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_window.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 09:57:38 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/27 06:49:40 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/07 12:05:41 by jess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,7 @@ void	free_window(t_win *const window)
 		}
 		free(window->mlx_ptr);
 		free_map(window->map);
+		// if (window->display != NULL)
+			XCloseDisplay(window->display);
 	}
 }

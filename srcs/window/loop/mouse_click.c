@@ -6,7 +6,7 @@
 /*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 11:35:41 by lechon            #+#    #+#             */
-/*   Updated: 2023/11/06 15:04:34 by jess             ###   ########.fr       */
+/*   Updated: 2023/11/07 12:21:18 by jess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,18 @@ int	mouse_click(
 	t_win *const window
 )
 {
-	if (click == 1 && window != NULL)
+	if (click == 1)
 	{
 		if (window->is_mouse_in_window == true)
+		{
 			window->is_mouse_in_window = false;
+			display_window_cursor(window->display, &window->cursor);
+		}
 		else
+		{
 			window->is_mouse_in_window = true;
+			hide_window_cursor(window->display, &window->cursor);
+		}
 	}
 	return (EXIT_SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:08:41 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/06 15:41:02 by jess             ###   ########.fr       */
+/*   Updated: 2023/11/07 12:16:05 by jess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,6 +145,8 @@ typedef struct s_win
 	enum e_mod	mod;
 	t_key		*keys;
 	bool		is_mouse_in_window;
+	Display		*display;
+	Cursor		cursor;
 }		t_win;
 
 typedef struct s_event_mapping

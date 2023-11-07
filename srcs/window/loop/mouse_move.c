@@ -6,7 +6,7 @@
 /*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 11:42:39 by lechon            #+#    #+#             */
-/*   Updated: 2023/11/06 15:37:25 by jess             ###   ########.fr       */
+/*   Updated: 2023/11/07 12:22:49 by jess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,10 @@ static void	wrap_mouse_position(t_win *const window, int x, int y)
 int	mouse_move(int x, int y, t_win *const window)
 {
 	static int	prev_x = WINDOW_WIDTH / 2;
-	Display		*display;
-	Cursor		invisible_cursor;
 
-	display = XOpenDisplay(NULL);
-	if (display == NULL)
-		return (EXIT_FAILURE);
-	invisible_cursor = None;
 	if (window->is_mouse_in_window == true)
 	{
 		wrap_mouse_position(window, x, y);
-		hide_window_cursor(display, invisible_cursor);
 		if (x == prev_x)
 			return (EXIT_SUCCESS);
 		else if (x < prev_x)
@@ -48,7 +41,5 @@ int	mouse_move(int x, int y, t_win *const window)
 			rotate_side(&(window->map->player), ROTATE_SPEED / 3);
 		prev_x = x;
 	}
-	else
-		display_window_cursor(display, invisible_cursor);
 	return (EXIT_SUCCESS);
 }

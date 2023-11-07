@@ -6,7 +6,7 @@
 /*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 17:14:28 by lechon            #+#    #+#             */
-/*   Updated: 2023/11/06 15:40:55 by jess             ###   ########.fr       */
+/*   Updated: 2023/11/07 12:13:48 by jess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,9 @@ int				mouse_click(
 
 bool			is_pair(const int nb);
 Cursor			create_invisible_cursor(Display *display, Window rootWindow);
-void			hide_window_cursor(Display *display, Cursor invisible_cursor);
+void			hide_window_cursor(Display *display, Cursor *invisible_cursor);
 void			display_window_cursor(
-					Display *display, Cursor invisible_cursor);
+					Display *display, Cursor *invisible_cursor);
 
 /////////////////////////////////////////
 /////			events				/////
