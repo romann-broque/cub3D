@@ -6,7 +6,7 @@
 /*   By: jrouillo <jrouillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 17:14:28 by lechon            #+#    #+#             */
-/*   Updated: 2023/11/07 12:56:26 by jrouillo         ###   ########.fr       */
+/*   Updated: 2023/11/07 13:51:13 by jrouillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ bool			is_same_key_in(const t_key *const keys, const t_key key);
 
 	// mouse_move.c
 
-int				mouse_move(int x, __attribute__((unused))int y, 
+int				mouse_move(int x, __attribute__((unused))int y,
 					t_win *const window);
 
 	// mouse_click.c
