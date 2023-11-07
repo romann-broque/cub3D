@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 09:05:50 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/06 23:01:38 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/07 21:55:15 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,26 +28,20 @@ static int	get_new_tex_pos_door(
 	const t_texture texture,
 	const t_cast *const cast,
 	const int tex_x
-
 )
 {
 	double	offset;
 	int		new_tex_pos;
 
-	new_tex_pos = tex_x;
-	if (is_tile_door(cast->tile) == true)
-	{
-		offset = 0;
-		if (cast->tile->state == OPENING || cast->tile->state == CLOSING)
-		{
-			offset = cast->tile->progression;
-			if (cast->side == EAST_FACE || cast->side == SOUTH_FACE)
-				offset *= -1;
-		}
-		else if (cast->tile->state == OPENED)
-			offset = 1;
-		new_tex_pos += (texture.width * offset);
-	}
+	offset = 0;
+	if (cast->tile->state == OPENING || cast->tile->state == CLOSING)
+		offset = -cast->tile->progression;
+	else if (cast->tile->state == OPENED)
+		offset = 1;
+	if (cast->side == EAST_FACE || cast->side == SOUTH_FACE)
+		new_tex_pos = tex_x + (texture.width * offset);
+	else
+		new_tex_pos = texture.width - tex_x + (texture.width * offset);
 	return (new_tex_pos);
 }
 
