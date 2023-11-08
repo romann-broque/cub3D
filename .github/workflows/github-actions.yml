@@ -39,6 +39,12 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y libx11-dev libxext-dev libxpm-dev libxrandr-dev libxrender-dev libxinerama-dev libxcursor-dev
 
+      - name: Set Up Xvfb
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y xvfb
+          Xvfb :99 -screen 0 1200x800x24 & export DISPLAY=:99
+
       - name: Compilation Test
         run: make re
 
