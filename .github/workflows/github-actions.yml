@@ -35,7 +35,7 @@ jobs:
         run: sudo apt-get update && sudo apt-get install xorg libxext-dev zlib1g-dev libbsd-dev
 
       - name: Install MiniLibX Dependencies
-        run:
+        run: |
           sudo apt-get update
           sudo apt-get install -y libx11-dev libxext-dev libxpm-dev libxrandr-dev libxrender-dev libxinerama-dev libxcursor-dev
 
