@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_defines.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:06:20 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/08 11:27:45 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/08 16:45:31 by jess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@
 # define KEY_COUNT					9
 # define MANDATORY_ATTRIBUTE_COUNT	6
 # define SPECIAL_TILE_COUNT			2
+# define SPRITES_COUNT				5
 
 # ifdef BONUS
 #  define TEXTURE_COUNT		7

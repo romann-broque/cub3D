@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_struct.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:08:41 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/08 09:42:41 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/08 16:56:23 by jess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,14 @@ typedef struct s_player
 
 }		t_player;
 
+typedef struct s_sprite
+{
+	double	x;
+	double	y;
+	int		order[SPRITES_COUNT];
+	double	distance[SPRITES_COUNT];
+}		t_sprite;
+
 typedef struct s_cast
 {
 	t_vect	dist;
@@ -142,6 +150,7 @@ typedef struct s_map
 	size_t		height;
 	size_t		width;
 	t_player	player;
+	t_sprite	sprite;
 }		t_map;
 
 typedef struct s_key
