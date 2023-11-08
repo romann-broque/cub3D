@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:08:41 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/07 07:57:13 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/08 09:42:41 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,6 +159,7 @@ typedef struct s_win
 	t_map		*map;
 	enum e_mod	mod;
 	t_key		*keys;
+	bool		is_mouse_in_window;
 }		t_win;
 
 typedef struct s_event_mapping

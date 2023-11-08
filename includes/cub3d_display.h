@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:12:25 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/07 08:16:17 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/08 09:42:17 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void		display_grid(t_win *const window);
 
 // display_grid_utils.c
 
-bool		is_closed_to_player(
+bool		is_close_to_player(
 				const t_map *const map,
 				const size_t x, const size_t y);
 t_pos		get_offset(const t_pos player_pos);
@@ -185,6 +185,6 @@ void		put_line_in_minimap(t_data *data,
 
 	// refresh.c
 
-int			refresh(t_win *window);
+void		refresh(t_win *window);
 
 #endif

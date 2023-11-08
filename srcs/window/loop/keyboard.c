@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 15:02:28 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/06 07:10:19 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/08 09:51:20 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	browse_mapping(t_win *window)
 {
-	const t_event_mapping	*mapping = get_mapping();
-	int						ret_val;
-	size_t					i;
+	const t_event_mapping *const	mapping = get_key_mapping();
+	int								ret_val;
+	size_t							i;
 
 	ret_val = EXIT_SUCCESS;
 	i = 0;
@@ -27,7 +27,7 @@ int	browse_mapping(t_win *window)
 		++i;
 	}
 	if (ret_val == EXIT_SUCCESS)
-		return (refresh(window));
+		refresh(window);
 	return (ret_val);
 }
 

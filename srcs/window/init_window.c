@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 09:39:32 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/06 08:19:12 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/08 09:48:06 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,5 @@ void	init_window(
 		window->keys = init_keys();
 		window->mod = E_STD;
 	}
+	window->is_mouse_in_window = false;
 }

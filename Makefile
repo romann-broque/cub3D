@@ -112,6 +112,7 @@ SRCS	 	+=	put_line.c
 SRCS	 	+=	loop.c
 SRCS	 	+=	keyboard.c
 SRCS	 	+=	keyboard_utils.c
+SRCS		+=	mouse_click.c
 
 ### srcs/window/loop/events/
 
@@ -119,7 +120,10 @@ SRCS	 	+=	e_close_window.c
 SRCS	 	+=	e_rotation.c
 SRCS	 	+=	e_translation.c
 SRCS	 	+=	e_map_mod.c
+<<<<<<< HEAD
 SRCS	 	+=	e_open_door.c
+=======
+>>>>>>> MVE6
 SRCS	 	+=	translate.c
 SRCS	 	+=	get_translated_pos.c
 
