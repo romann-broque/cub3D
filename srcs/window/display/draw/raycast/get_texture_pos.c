@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 09:05:50 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/28 22:11:20 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/08 11:29:07 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,37 @@ static double	get_wall_x(const t_cast *const cast)
 		wall_x = cast->hitpoint.x;
 	wall_x = 1 - wall_x + floor(wall_x);
 	return (wall_x);
+}
+
+static int	get_new_tex_pos_door(
+	const t_texture texture,
+	const t_cast *const cast,
+	const int tex_x
+)
+{
+	double	offset;
+	int		new_tex_pos;
+
+	offset = 0;
+	if (cast->tile->state == OPENING || cast->tile->state == CLOSING)
+		offset = -cast->tile->progression;
+	else if (cast->tile->state == OPENED)
+		offset = 1;
+	if (cast->side == EAST_FACE || cast->side == SOUTH_FACE)
+		new_tex_pos = tex_x + (texture.width * offset);
+	else
+		new_tex_pos = texture.width - tex_x + (texture.width * offset);
+	return (new_tex_pos);
+}
+
+static bool	can_door_be_displayed(
+	const t_cast *const cast
+)
+{
+	return ((cast->tile->tile_char == DOOR_VERT
+			&& (cast->side == NORTH_FACE || cast->side == SOUTH_FACE))
+		|| (cast->tile->tile_char == DOOR_HOR
+			&& (cast->side == EAST_FACE || cast->side == WEST_FACE)));
 }
 
 int	get_tex_x(
@@ -40,6 +71,13 @@ int	get_tex_x(
 		|| (is_pole_dir == true && cast->ray.y < 0))
 	{
 		tex_x = texture.width - tex_x - 1;
+	}
+	if (BONUS == true && is_tile_door(cast->tile) == true)
+	{
+		if (can_door_be_displayed(cast) == true)
+			tex_x = get_new_tex_pos_door(texture, cast, tex_x);
+		else
+			tex_x = INVALID_OFFSET;
 	}
 	return (tex_x);
 }

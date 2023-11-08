@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:14 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/26 16:25:02 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/08 10:22:46 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,18 @@ static int	start_game(const char *const filename)
 
 	if (content == NULL)
 		return (EXIT_FAILURE);
+	if (content != NULL && content[0] == NULL)
+	{
+		free_strs(content);
+		print_format_error(EMPTY_FILE);
+		return (EXIT_FAILURE);
+	}
 	ret_val = EXIT_FAILURE;
 	init_window(&window, content);
 	if (is_window_complete(&window) == true)
 	{
-		display_window(&window);
+		if (TEST == false)
+			display_window(&window);
 		ret_val = EXIT_SUCCESS;
 	}
 	free_window(&window);

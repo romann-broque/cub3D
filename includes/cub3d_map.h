@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 17:12:07 by lechon            #+#    #+#             */
-/*   Updated: 2023/10/28 22:33:06 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/07 13:24:47 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,25 +26,10 @@
 
 void			free_tile_matrix(t_tile **const matrix, const size_t size);
 void			free_map(t_map *const map);
+
 // print_map.c
 
 void			print_map(const t_map *const map);
-
-// tile_type.c
-
-bool			is_blank(
-					const t_map *const map,
-					const size_t x, const size_t y);
-bool			is_wall(
-					const t_map *const map,
-					const size_t x, const size_t y);
-
-bool			is_ground(
-					const t_map *const map,
-					const size_t x, const size_t y);
-
-bool			is_player(const t_map *const map,
-					const size_t x, const size_t y);
 
 /////////////////////////
 ////     init_map    ////
@@ -82,6 +67,10 @@ bool			is_map_content_valid(const t_map *const map);
 
 bool			is_map_unique(const t_map *const map);
 
+	// are_doors_surrounded.c
+
+bool			are_doors_surrounded(const t_map *const map);
+
 	// is_map_valid.c
 
 bool			is_map_valid(t_map *const map);
@@ -107,6 +96,8 @@ void			set_vect(t_vect *const vect,
 
 	// raycaster.c
 
+t_cast			raycast(t_win *const window,
+					const size_t x);
 void			raycaster(t_win *const window,
 					t_pos hitpoint_array[WINDOW_WIDTH]);
 
@@ -119,9 +110,63 @@ t_vect			get_side_dist(
 					const t_pos pos, const t_vect ray,
 					const t_vect delta_dist);
 
+	// cast_utils.c
+
+void			set_hitpoint(t_cast *const cast,
+					const t_pos player_pos,
+					const size_t x, const size_t y);
+void			set_side(t_side *const side, const t_vect step);
+
 	// dda.c
 
 t_cast			dda(t_map *const map, const t_pos pos,
 					const t_vect ray, const t_vect delta_dist);
+
+/////////////////////////
+////     	tile     ////
+/////////////////////////
+
+// door.c
+
+bool			is_tile_door(const t_tile *const tile);
+void			refresh_door(const t_player *const player, t_tile *const door);
+
+// refresh_tiles.c
+
+void			refresh_tiles(t_map *const map);
+
+// get_tile_from_map.c
+
+t_tile			*get_tile_from_map(const t_map *const map,
+					const size_t x,
+					const size_t y);
+
+// tile_mark.c
+
+bool			is_marked(const t_map *const map,
+					const size_t x,
+					const size_t y);
+void			mark_as_viewed(const t_map *const map,
+					const size_t x,
+					const size_t y);
+
+// tile_type.c
+
+bool			is_blank(
+					const t_map *const map,
+					const size_t x, const size_t y);
+bool			is_wall(
+					const t_map *const map,
+					const size_t x, const size_t y);
+bool			is_door(
+					const t_map *const map,
+					const size_t x,
+					const size_t y);
+bool			is_ground(
+					const t_map *const map,
+					const size_t x, const size_t y);
+
+bool			is_player(const t_map *const map,
+					const size_t x, const size_t y);
 
 #endif

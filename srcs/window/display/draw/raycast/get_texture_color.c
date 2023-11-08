@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 08:26:13 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/30 08:07:38 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/06 07:58:19 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ unsigned int	get_color_from_ceil_pos(
 unsigned int	get_wall_texture(
 	const t_cast *const cast,
 	t_texture texture,
-	const int tex_x
+	int tex_x
 	)
 {
 	unsigned int	color;

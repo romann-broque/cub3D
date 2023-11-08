@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_struct.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:08:41 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/07 15:03:15 by jess             ###   ########.fr       */
+/*   Updated: 2023/11/08 09:42:41 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ enum e_attribute_type
 	E_WEST,
 	E_EAST,
 	E_FLOOR,
-	E_CEIL
+	E_CEIL,
+	E_DOOR
 };
 
 typedef enum e_side
@@ -42,6 +43,14 @@ enum e_mod
 	E_STD,
 	E_MAP,
 };
+
+typedef enum e_tile_state
+{
+	CLOSED,
+	OPENING,
+	OPENED,
+	CLOSING
+}		t_tile_state;
 
 ////////////////
 // STRUCTURES //
@@ -74,12 +83,6 @@ typedef struct s_config
 	t_texture	textures[TEXTURE_COUNT];
 }		t_config;
 
-typedef struct s_tile
-{
-	char	tile_char;
-	bool	is_marked;
-}		t_tile;
-
 typedef struct s_pos
 {
 	double	x;
@@ -87,6 +90,16 @@ typedef struct s_pos
 }		t_pos;
 
 typedef t_pos	t_vect;
+
+typedef struct s_tile
+{
+	char			tile_char;
+	bool			is_marked;
+	size_t			interaction_time;
+	t_tile_state	state;
+	double			progression;
+	t_pos			pos;
+}		t_tile;
 
 typedef struct s_line
 {
@@ -118,7 +131,9 @@ typedef struct s_cast
 	t_vect	step;
 	t_pos	hitpoint;
 	double	coeff;
+	double	perp_wall_dist;
 	t_side	side;
+	t_tile	*tile;
 }		t_cast;
 
 typedef struct s_map

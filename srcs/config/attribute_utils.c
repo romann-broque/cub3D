@@ -3,26 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   attribute_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lechon <lechon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 07:57:46 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/01 11:14:58 by lechon           ###   ########.fr       */
+/*   Updated: 2023/11/08 09:43:06 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static bool	is_sequence_empty(char *const *const sequence)
+bool	is_config_complete(const t_config *const config)
 {
-	return (get_size_strs(sequence) == 0);
+	size_t	i;
+
+	i = 0;
+	while (config->attribute_array[i] != NULL)
+		++i;
+	return (i >= MANDATORY_ATTRIBUTE_COUNT);
 }
 
 static enum e_attribute_type	find_attribute_type(
-	const char *attribute_name_array[ATTRIBUTE_COUNT + 1],
 	const char *name
 	)
 {
-	enum e_attribute_type	type;
+	static const char			*attribute_name_array[] = {
+		NORTH_KEY, SOUTH_KEY,
+		WEST_KEY, EAST_KEY,
+		FLOOR_KEY, CEIL_KEY,
+		DOOR_KEY,
+		NULL
+	};
+	enum e_attribute_type		type;
 
 	type = 0;
 	while (type < ATTRIBUTE_COUNT
@@ -54,14 +65,8 @@ static int	add_attribute_into_config(
 	const char *const value
 	)
 {
-	static const char			*attribute_name_array[] = {
-		NORTH_KEY, SOUTH_KEY,
-		WEST_KEY, EAST_KEY,
-		FLOOR_KEY, CEIL_KEY,
-		NULL
-	};
 	const enum e_attribute_type	type
-		= find_attribute_type(attribute_name_array, name);
+		= find_attribute_type(name);
 	int							ret_val;
 
 	ret_val = EXIT_FAILURE;
@@ -81,13 +86,12 @@ int	build_attribute_from_sequence(
 	char *const *const sequence
 	)
 {
+	if (sequence == NULL)
+		return (EXIT_FAILURE);
 	if (is_sequence_empty(sequence) == true)
 		return (EXIT_SUCCESS);
-	if (is_sequence_valid(sequence) == false)
-	{
-		print_format_error(UNKNOWN_CONFIG);
+	if (is_sequence_format_valid(sequence) == false)
 		return (EXIT_FAILURE);
-	}
 	if (add_attribute_into_config(
 			config, sequence[0], sequence[1]) == EXIT_SUCCESS)
 		return (EXIT_SUCCESS);

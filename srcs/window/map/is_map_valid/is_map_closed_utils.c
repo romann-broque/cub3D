@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 08:39:37 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/17 08:55:24 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/06 07:25:20 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,24 +20,6 @@ static bool	is_inside_map(
 {
 	return (x >= 0 && y >= 0
 		&& (size_t)x < map->width && (size_t)y < map->height);
-}
-
-static bool	is_marked(
-	const t_map *const map,
-	const size_t x,
-	const size_t y
-	)
-{
-	return (map->matrix[y][x].is_marked == true);
-}
-
-static void	mark_as_viewed(
-	const t_map *const map,
-	const size_t x,
-	const size_t y
-	)
-{
-	map->matrix[y][x].is_marked = true;
 }
 
 bool	is_closed_dfs(

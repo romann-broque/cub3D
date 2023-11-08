@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_window.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrouillo <jrouillo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 09:39:32 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/07 12:58:46 by jrouillo         ###   ########.fr       */
+/*   Updated: 2023/11/08 09:48:06 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ static t_key	*init_keys(void)
 	{.key_value = K_D, .pressure = false},
 	{.key_value = K_LEFT, .pressure = false},
 	{.key_value = K_RIGHT, .pressure = false},
+	{.key_value = K_SPACE, .pressure = false},
 	{.key_value = K_ESC, .pressure = false}
 	};
 
@@ -51,19 +52,6 @@ static void	init_mlx(t_win *const window)
 	init_data(window->mlx_ptr, &window->data);
 }
 
-static void	init_map_in_window(
-	t_win *const window,
-	const ssize_t offset,
-	char *const *const file_content)
-{
-	window->map = init_map(file_content + offset);
-	if (window->map == NULL || is_map_valid(window->map) == false)
-	{
-		free_map(window->map);
-		window->map = NULL;
-	}
-}
-
 void	init_window(
 	t_win *const window,
 	char *const *const file_content
@@ -75,9 +63,10 @@ void	init_window(
 	window->win_ptr = NULL;
 	init_mlx(window);
 	offset = build_config(&(window->config),
-			file_content, window->mlx_ptr);
+			file_content, window->mlx_ptr, window->win_ptr);
 	if (offset == INVALID_OFFSET)
 		return ;
+	print_config(&(window->config));
 	init_map_in_window(window, offset, file_content);
 	if (window->map != NULL)
 	{

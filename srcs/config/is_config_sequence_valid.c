@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_config_sequence_valid.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 15:25:37 by jess              #+#    #+#             */
-/*   Updated: 2023/10/16 10:37:35 by jess             ###   ########.fr       */
+/*   Updated: 2023/11/08 11:28:26 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ static bool	is_attribute_key(const char *const key)
 		WEST_KEY,
 		EAST_KEY,
 		FLOOR_KEY,
-		CEIL_KEY
+		CEIL_KEY,
+		DOOR_KEY
 	};
 
 	i = 0;
@@ -35,7 +36,18 @@ static bool	has_two_elements(char *const *const sequence)
 	return (get_size_strs(sequence) == 2);
 }
 
-bool	is_sequence_valid(char *const *const sequence)
+bool	is_sequence_empty(char *const *const sequence)
+{
+	return (get_size_strs(sequence) == 0);
+}
+
+bool	is_sequence_format_valid(char *const *const sequence)
 {
 	return (has_two_elements(sequence) && is_attribute_key(sequence[0]));
+}
+
+bool	is_sequence_valid(char *const *const sequence)
+{
+	return (sequence != NULL && (is_sequence_empty(sequence)
+			|| is_sequence_format_valid(sequence)));
 }

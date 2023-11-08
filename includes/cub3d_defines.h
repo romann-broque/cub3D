@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_defines.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:06:20 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/07 15:05:50 by jess             ###   ########.fr       */
+/*   Updated: 2023/11/08 11:27:45 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,10 @@
 # define MAP_YOFFSET		200
 # define MINIMAP_RADIUS		5
 # define TILE_SIZE			15
+# define DOOR_WIDTH			3
+# define DOOR_RADIUS		2
+# define DOOR_TIME			50
+# define WAIT_DOOR_TIME		150
 # define PLAYER_SIZE		4
 # define FOV				80
 # define STEP_SIZE			0.001
@@ -43,33 +47,37 @@
 
 // NUMBERS
 
-# define EXPECTED_ARG_COUNT	2
-# define INVALID_FD			-1
-# define COUNT_LINE_ERROR	-1
-# define INVALID_OFFSET		-1
-# define RGB_SIZE			3
-# define BITS_PER_BYTE		8
-# define FPS_FREQUENCY		10
-# define ATTRIBUTE_COUNT	6
-# define KEY_COUNT			8
+# define EXPECTED_ARG_COUNT			2
+# define INVALID_FD					-1
+# define COUNT_LINE_ERROR			-1
+# define INVALID_OFFSET				-1
+# define RGB_SIZE					3
+# define BITS_PER_BYTE				8
+# define FPS_FREQUENCY				10
+# define KEY_COUNT					9
+# define MANDATORY_ATTRIBUTE_COUNT	6
+# define SPECIAL_TILE_COUNT			2
 
 # ifdef BONUS
-#  define TEXTURE_COUNT		6
+#  define TEXTURE_COUNT		7
+#  define ATTRIBUTE_COUNT	7
 # else
 #  define TEXTURE_COUNT		4
+#  define ATTRIBUTE_COUNT	6
 # endif
 
 // CHAR
 
 # define NEWLINE			'\n'
 # define WALL				'1'
+# define DOOR_HOR			'D'
+# define DOOR_VERT			'd'
 # define BLANK				' '
 # define RGB_SEPARATOR		','
 
 // STRINGS
 
 # define FILE_EXTENSION		".cub"
-# define VALID_CHAR			"01 NSWE\n"
 # define VALID_CHAR_DIR		"NSWE"
 # define GROUND				"0NSWE"
 # define NORTH_KEY			"NO"
@@ -78,20 +86,35 @@
 # define EAST_KEY			"EA"
 # define FLOOR_KEY			"F"
 # define CEIL_KEY			"C"
+# define DOOR_KEY			"D"
+# define SPECIAL_TILES		"Dd"
+
+# ifdef BONUS
+#  define VALID_CHAR			"01Dd NSWE\n"
+# else
+#  define VALID_CHAR			"01 NSWE\n"
+# endif
 
 // Errors
 
-# define ERROR_USAGE		"Usage: ./cub3d <file.cub>"
-# define MLX_ERROR			"MLX_ERROR"
-# define MAP_NOT_CLOSED		"MAP NOT CLOSED"
-# define MAP_NOT_UNIQUE		"MAP NOT UNIQUE"
-# define MAP_TOO_BIG		"MAP TOO BIG"
-# define MAP_CONTENT_WRONG	"MAP CONTENT IS WRONG"
-# define UNKNOWN_CONFIG		"UNKNOWN CONFIG"
-# define DUPLICATED_CONFIG	"DUPLICATED CONFIG"
-# define WRONG_RGB			"WRONG RGB"
-# define INVALID_FILENAME	"FILENAME IS INVALID"
-# define INVALID_TEXTURE	"INVALID TEXTURE"
+# define ERROR_USAGE				"Usage: ./cub3d <file.cub>"
+# define MLX_ERROR					"MLX_ERROR"
+# define EMPTY_FILE					"EMPTY FILE"
+# define MAP_NOT_CLOSED				"MAP NOT CLOSED"
+# define MAP_NOT_UNIQUE				"MAP NOT UNIQUE"
+# define MAP_TOO_BIG				"MAP TOO BIG"
+# define MAP_CONTENT_WRONG			"MAP CONTENT IS WRONG"
+# define DOOR_NOT_SURROUNDED		"DOOR NOT SURROUNDED"
+# define UNKNOWN_CONFIG				"UNKNOWN CONFIG"
+# define DUPLICATED_CONFIG			"DUPLICATED CONFIG"
+# define WRONG_RGB					"WRONG RGB"
+# define INVALID_FILENAME			"FILENAME IS INVALID"
+# define INVALID_TEXTURE			"INVALID TEXTURE"
+# define SPECIAL_TEXTURE_NOT_SET	"SPECIAL TEXTURE NOT SET"
+
+// Warning
+
+# define DIMENSIONS_NOT_SUPPORTED	"Dimensions not supported"
 
 // Warning
 
@@ -121,6 +144,7 @@
 # define K_A				0x0061
 # define K_D				0x0064
 # define K_M				0x006d
+# define K_SPACE			0x0020
 # define K_ESC				0xff1b
 # define NO_KEY				0
 

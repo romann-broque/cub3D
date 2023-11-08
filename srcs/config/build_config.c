@@ -3,23 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   build_config.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 09:44:49 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/06 15:41:07 by jess             ###   ########.fr       */
+/*   Updated: 2023/11/08 09:43:21 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static bool	is_config_complete(const t_config *const config)
+static ssize_t	check_complete_config(
+	ssize_t offset,
+	const t_config *const config
+)
 {
-	size_t	i;
-
-	i = 0;
-	while (config->attribute_array[i] != NULL)
-		++i;
-	return (i == ATTRIBUTE_COUNT);
+	if (offset != INVALID_OFFSET
+		&& is_config_complete(config) == false)
+	{
+		print_format_error(UNKNOWN_CONFIG);
+		offset = INVALID_OFFSET;
+	}
+	return (offset);
 }
 
 static ssize_t	build_attributes(
@@ -30,20 +34,23 @@ static ssize_t	build_attributes(
 	ssize_t	offset;
 
 	offset = 0;
-	while (offset != INVALID_OFFSET && is_config_complete(config) == false)
+	sequence = ft_split(lines[offset], SPACE);
+	if (sequence == NULL)
+		print_format_error(strerror(errno));
+	while (offset != INVALID_OFFSET
+		&& build_attribute_from_sequence(config, sequence) == EXIT_SUCCESS)
 	{
+		++offset;
+		free_strs(sequence);
 		sequence = ft_split(lines[offset], SPACE);
-		if (sequence == NULL
-			|| build_attribute_from_sequence(config, sequence) == EXIT_FAILURE)
+		if (sequence == NULL)
 		{
-			if (sequence == NULL)
-				print_format_error(strerror(errno));
+			print_format_error(strerror(errno));
 			offset = INVALID_OFFSET;
 		}
-		else
-			++offset;
-		free_strs(sequence);
 	}
+	offset = check_complete_config(offset, config);
+	free_strs(sequence);
 	return (offset);
 }
 
@@ -53,6 +60,8 @@ static int	set_texture(
 	void *const mlx_ptr
 	)
 {
+	if (texture_file == NULL)
+		return (EXIT_SUCCESS);
 	texture->data.img = mlx_xpm_file_to_image(mlx_ptr,
 			texture_file, &texture->width, &texture->height);
 	if (texture->data.img == NULL)
@@ -100,13 +109,14 @@ static int	set_textures_array(
 ssize_t	build_config(
 	t_config *const config,
 	char *const *const lines,
-	void *const mlx_ptr
+	void *const mlx_ptr,
+	void *const win_ptr
 	)
 {
 	ssize_t	offset;
 
 	init_config(config);
-	if (mlx_ptr == NULL)
+	if (mlx_ptr == NULL || win_ptr == NULL)
 		return (INVALID_OFFSET);
 	offset = build_attributes(config, lines);
 	if (offset != INVALID_OFFSET)

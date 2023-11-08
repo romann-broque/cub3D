@@ -3,33 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   init_matrix.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lechon <lechon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 14:15:46 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/01 11:20:04 by lechon           ###   ########.fr       */
+/*   Updated: 2023/11/08 09:49:21 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	set_tile(t_tile *tile, const char c, const bool is_marked)
+static void	set_tile(
+	t_tile *tile,
+	const char c,
+	const size_t x,
+	const size_t y
+	)
 {
 	tile->tile_char = c;
-	tile->is_marked = is_marked;
+	tile->is_marked = false;
+	tile->interaction_time = 0;
+	tile->state = CLOSED;
+	set_pos(&(tile->pos), x, y);
 }
 
-static void	fill_with_empty_tiles(t_tile *tile, const size_t len)
+static void	fill_with_empty_tiles(
+	t_tile *const tile,
+	const size_t len,
+	const size_t x,
+	const size_t y
+	)
 {
 	size_t	i;
 
-	i = 0;
+	i = x;
 	while (i < len)
 	{
-		set_tile(tile + i, SPACE, false);
-		tile[i].tile_char = SPACE;
+		set_tile(tile + i, SPACE, i, y);
 		++i;
 	}
-	set_tile(tile + i, END_CHAR, false);
+	set_tile(tile + i, END_CHAR, i, y);
 }
 
 static void	fill_matrix(
@@ -47,10 +59,10 @@ static void	fill_matrix(
 		j = 0;
 		while (j < width && lines[i][j] != END_CHAR)
 		{
-			set_tile((&matrix[i][j]), lines[i][j], false);
+			set_tile((&matrix[i][j]), lines[i][j], j, i);
 			++j;
 		}
-		fill_with_empty_tiles(matrix[i] + j, width - j);
+		fill_with_empty_tiles(matrix[i], width, j, i);
 		++i;
 	}
 }

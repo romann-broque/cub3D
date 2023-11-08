@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:10:33 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/28 21:23:19 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/06 13:45:07 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 
 // attribute_utils.c
 
+bool			is_config_complete(const t_config *const config);
 int				build_attribute_from_sequence(
 					t_config *const config, char *const *const sequence);
 
@@ -33,7 +34,7 @@ void			init_config(t_config *const config);
 // build_config.c
 
 ssize_t			build_config(t_config *const config, char *const *const lines,
-					void *const mlx_ptr);
+					void *const mlx_ptr, void *const win_ptr);
 
 // free_config.c
 
@@ -45,6 +46,8 @@ void			print_config(t_config *const config);
 
 // is_config_sequence_valid.c
 
+bool			is_sequence_empty(char *const *const sequence);
+bool			is_sequence_format_valid(char *const *const sequence);
 bool			is_sequence_valid(char *const *const sequence);
 
 /////////////////////////////////////////

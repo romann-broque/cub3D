@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display_window.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 10:09:13 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/06 15:41:21 by jess             ###   ########.fr       */
+/*   Updated: 2023/11/08 09:47:51 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	display_window_content(t_win *const window)
 		else if (window->mod == E_STD)
 			display_minimap(window);
 		display_fov(window, hitpoint_array);
+		refresh_tiles(window->map);
 		print_fps();
 	}
 }

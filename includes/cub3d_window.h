@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 17:17:42 by lechon            #+#    #+#             */
-/*   Updated: 2023/10/26 16:10:22 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/04 23:28:10 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,11 @@ void			init_window(t_win *const window,
 // free_window.c
 
 void			free_window(t_win *const window);
+
+// init_map_in_window.c
+
+void			init_map_in_window(t_win *const window, const ssize_t offset,
+					char *const *const file_content);
 
 // is_window_complete.c
 

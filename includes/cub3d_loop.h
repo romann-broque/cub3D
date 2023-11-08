@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_loop.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 17:14:28 by lechon            #+#    #+#             */
-/*   Updated: 2023/11/07 15:11:59 by jess             ###   ########.fr       */
+/*   Updated: 2023/11/08 09:42:32 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,10 @@ int				move_right(t_win *const ptr);
 
 int				enable_map_mod(t_win *const ptr);
 int				disable_map_mod(t_win *const ptr);
+
+	// e_open_door.c
+
+int				open_door(t_win *const ptr);
 
 	// translate.c
 

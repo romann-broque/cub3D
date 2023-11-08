@@ -27,6 +27,7 @@ PATH_SRCS	+=	srcs/window/map/init_map/
 PATH_SRCS	+=	srcs/window/map/is_map_valid/
 PATH_SRCS	+=	srcs/window/map/player/
 PATH_SRCS	+=	srcs/window/map/raycast/
+PATH_SRCS	+=	srcs/window/map/tile/
 
 ### srcs/
 
@@ -66,6 +67,7 @@ SRCS		+=	is_file_valid.c
 ### srcs/window/
 
 SRCS	 	+=	init_window.c
+SRCS	 	+=	init_map_in_window.c
 SRCS	 	+=	free_window.c
 SRCS	 	+=	is_window_complete.c
 
@@ -118,6 +120,7 @@ SRCS	 	+=	e_close_window.c
 SRCS	 	+=	e_rotation.c
 SRCS	 	+=	e_translation.c
 SRCS	 	+=	e_map_mod.c
+SRCS	 	+=	e_open_door.c
 SRCS	 	+=	translate.c
 SRCS	 	+=	get_translated_pos.c
 
@@ -125,7 +128,6 @@ SRCS	 	+=	get_translated_pos.c
 
 SRCS	 	+=	free_map.c
 SRCS	 	+=	print_map.c
-SRCS	 	+=	tile_type.c
 
 ### srcs/window/map/init_map/
 
@@ -139,6 +141,7 @@ SRCS	 	+=	is_map_closed.c
 SRCS	 	+=	is_map_closed_utils.c
 SRCS		+=	is_map_content_valid.c
 SRCS	 	+=	is_map_unique.c
+SRCS		+=	are_doors_surrounded.c
 
 ### srcs/window/map/player/
 
@@ -149,7 +152,16 @@ SRCS	 	+=	set_pos.c
 
 SRCS	 	+=	get_vect.c
 SRCS	 	+=	dda.c
+SRCS	 	+=	cast_utils.c
 SRCS	 	+=	raycaster.c
+
+### srcs/window/map/tile/
+
+SRCS	 	+=	door.c
+SRCS	 	+=	refresh_tiles.c
+SRCS	 	+=	get_tile_from_map.c
+SRCS	 	+=	tile_mark.c
+SRCS	 	+=	tile_type.c
 
 vpath %.c $(PATH_SRCS)
 
