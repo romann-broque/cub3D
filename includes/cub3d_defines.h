@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:06:20 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/08 09:42:09 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/08 11:27:45 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@
 # define FLOOR_KEY			"F"
 # define CEIL_KEY			"C"
 # define DOOR_KEY			"D"
-# define SPECIAL_KEYS		"Dd"
+# define SPECIAL_TILES		"Dd"
 
 # ifdef BONUS
 #  define VALID_CHAR			"01Dd NSWE\n"
@@ -111,7 +111,6 @@
 # define INVALID_FILENAME			"FILENAME IS INVALID"
 # define INVALID_TEXTURE			"INVALID TEXTURE"
 # define SPECIAL_TEXTURE_NOT_SET	"SPECIAL TEXTURE NOT SET"
-# define SPECIAL_TILE_NOT_SET		"SPECIAL TILE NOT SET"
 
 // Warning
 

@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 15:55:09 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/07 08:16:06 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/08 11:27:26 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ t_texture	*get_texture_from_cast(
 		return (textures_array + E_DOOR);
 	return (textures_array
 		+ MANDATORY_ATTRIBUTE_COUNT
-		+ index_of(SPECIAL_KEYS, cast->tile->tile_char));
+		+ index_of(SPECIAL_TILES, cast->tile->tile_char));
 }
 
 void	set_texture_start_pos(

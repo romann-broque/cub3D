@@ -6,13 +6,13 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 20:07:09 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/07 10:50:53 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/08 11:30:50 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static bool	is_open_door(
+static bool	is_going_through_door(
 	t_map *const map,
 	t_cast *const cast,
 	const double x,
@@ -46,7 +46,7 @@ static bool	is_transparent(
 	)
 {
 	return (is_ground(map, x, y)
-		|| is_open_door(map, cast, x, y));
+		|| is_going_through_door(map, cast, x, y));
 }
 
 static void	set_cast(

@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 23:26:56 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/07 22:22:09 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/08 11:27:26 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static bool	is_config_matching(
 	i = 0;
 	while (i < SPECIAL_TILE_COUNT)
 	{
-		key = SPECIAL_KEYS[i];
+		key = SPECIAL_TILES[i];
 		if (is_tile_in_matrix(key, map->matrix, map->height, map->width))
 		{
 			if (is_texture_set(MANDATORY_ATTRIBUTE_COUNT + i, config) == false)

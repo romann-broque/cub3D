@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 09:05:50 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/07 21:55:15 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/08 11:29:07 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	get_tex_x(
 		if (can_door_be_displayed(cast) == true)
 			tex_x = get_new_tex_pos_door(texture, cast, tex_x);
 		else
-			tex_x = -1;
+			tex_x = INVALID_OFFSET;
 	}
 	return (tex_x);
 }

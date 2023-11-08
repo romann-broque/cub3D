@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 09:03:14 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/08 09:51:06 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/08 11:29:34 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static t_pos	get_dir_speed(
 	return (dir_speed);
 }
 
-static bool	is_open_door(
+static bool	is_door_opened(
 	const t_map *const map,
 	const size_t x,
 	const size_t y
@@ -48,10 +48,10 @@ static void	get_new_pos_from_wall_collision(
 	if (player_pos == NULL)
 		player_pos = &(map->player.pos);
 	if (is_ground(map, check_pos->x, new_pos->y)
-		|| is_open_door(map, check_pos->x, new_pos->y))
+		|| is_door_opened(map, check_pos->x, new_pos->y))
 		new_pos->x = player_pos->x + move_offset.x;
 	if (is_ground(map, new_pos->x, check_pos->y)
-		|| is_open_door(map, new_pos->x, check_pos->y))
+		|| is_door_opened(map, new_pos->x, check_pos->y))
 		new_pos->y = player_pos->y + move_offset.y;
 }
 
@@ -90,7 +90,7 @@ t_pos	get_translated_pos(
 		check_pos.x = player_pos.x + dir_speed.x * i;
 		check_pos.y = player_pos.y + dir_speed.y * i;
 		if (is_wall(map, check_pos.x, check_pos.y)
-			|| is_open_door(map, check_pos.x, check_pos.y) == false)
+			|| is_door_opened(map, check_pos.x, check_pos.y) == false)
 			get_new_pos_from_wall_collision(&new_pos, &check_pos,
 				map, get_move_offset(&dir_speed, i, step_move));
 		else
