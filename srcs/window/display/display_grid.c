@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 22:50:20 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/08 09:47:45 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/08 09:52:48 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static bool	draw_map_tile(
 {
 	if (window->mod == E_STD)
 	{
-		if (is_closed_to_player(window->map, pos->x, pos->y))
+		if (is_close_to_player(window->map, pos->x, pos->y))
 		{
 			draw_tile_on_minimap(window, pos);
 			return (true);
