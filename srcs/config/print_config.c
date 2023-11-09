@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 18:44:51 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/09 08:32:38 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/09 09:52:59 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,16 @@ void	print_config(t_config *const config)
 	print_attribute("east_texture", config->attribute_array[E_EAST]);
 	print_attribute("ceil_texture", config->attribute_array[E_CEIL]);
 	print_attribute("floor_texture", config->attribute_array[E_FLOOR]);
-	print_attribute("door", config->attribute_array[E_DOOR]);
-	print_attribute("sprite1", config->attribute_array[E_SP1]);
-	print_attribute("sprite2", config->attribute_array[E_SP2]);
-	print_attribute("sprite3", config->attribute_array[E_SP3]);
-	print_attribute("sprite4", config->attribute_array[E_SP4]);
-	print_attribute("sprite5", config->attribute_array[E_SP5]);
-	print_attribute("sprite6", config->attribute_array[E_SP6]);
-	print_attribute("sprite7", config->attribute_array[E_SP7]);
-	print_attribute("sprite8", config->attribute_array[E_SP8]);
+	if (BONUS)
+	{
+		print_attribute("door", config->attribute_array[E_DOOR]);
+		print_attribute("sprite1", config->attribute_array[E_SP1]);
+		print_attribute("sprite2", config->attribute_array[E_SP2]);
+		print_attribute("sprite3", config->attribute_array[E_SP3]);
+		print_attribute("sprite4", config->attribute_array[E_SP4]);
+		print_attribute("sprite5", config->attribute_array[E_SP5]);
+		print_attribute("sprite6", config->attribute_array[E_SP6]);
+		print_attribute("sprite7", config->attribute_array[E_SP7]);
+		print_attribute("sprite8", config->attribute_array[E_SP8]);
+	}
 }

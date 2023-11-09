@@ -1,5 +1,16 @@
 #!/bin/bash
 
+bonus=0
+if [ $# -eq 1 ]; then
+    ARGUMENT="$1"
+    if [ "${ARGUMENT}" = "bonus" ]; then
+        echo "BONUS"
+        bonus=1
+    fi
+else
+    echo "No bonus"
+fi
+
 # CHECK PROTECTIONS
 
 RED="\033[31m"
@@ -15,12 +26,21 @@ FUNCHECK_FOLDER="${TESTER_FOLDER}"/funcheck_dir/funcheck/
 FUNCHECK_BIN="${FUNCHECK_FOLDER}"/host/funcheck
 
 LOG="log"
-GOOD_MAP_FOLDER=(
-    assets/maps/mandatory/correct/
-    ${TESTER_FOLDER}/assets/maps/correct/)
-WRONG_MAP_FOLDER=(
-    assets/maps/mandatory/wrong/
-    ${TESTER_FOLDER}/assets/maps/wrong/)
+
+if [ $bonus -eq 0 ]; then
+    GOOD_MAP_FOLDER=(
+        assets/maps/mandatory/correct/
+        ${TESTER_FOLDER}/assets/maps/correct/)
+    WRONG_MAP_FOLDER=(
+        assets/maps/mandatory/wrong/
+        ${TESTER_FOLDER}/assets/maps/wrong/)
+else
+    GOOD_MAP_FOLDER=(
+        assets/maps/bonus/correct/)
+    WRONG_MAP_FOLDER=(
+        assets/maps/bonus/wrong/)
+fi
+
 MAP_FOLDER=(
     assets/maps/mandatory/correct/ assets/maps/mandatory/wrong/
     assets/maps/bonus/correct/ assets/maps/bonus/wrong/
@@ -33,48 +53,48 @@ exit_val=0
 #### GOOD_MAP ####
 ##################
 
-# echo -e "\n${BLUE}<------ GOOD MAPS ------>\n${NC}"
+echo -e "\n${BLUE}<------ GOOD MAPS ------>\n${NC}"
 
-# for folder in "${GOOD_MAP_FOLDER[@]}"; do
-#     for file in "$folder"/*; do
-#         # Check if the file exists and is a regular file
-#         if [ -f "$file" ]; then
-#             # Call your program with the file as an argument
-# 			"${BIN}" "$file" &> "${LOG}"
-#             ret_val=$?
-#             if [ "${ret_val}" != "0" ]; then
-#                 echo -e "\n${YELLOW}${file}\n${NC}"
-#                 cat "${LOG}"
-#                 exit_val=1
-#             else
-#                 echo -e "\n${GREEN}${file}\n${NC}"
-#             fi
-#         fi
-#     done
-# done
+for folder in "${GOOD_MAP_FOLDER[@]}"; do
+    for file in "$folder"/*; do
+        # Check if the file exists and is a regular file
+        if [ -f "$file" ]; then
+            # Call your program with the file as an argument
+			"${BIN}" "$file" &> "${LOG}"
+            ret_val=$?
+            if [ "${ret_val}" != "0" ]; then
+                echo -e "\n${YELLOW}${file}\n${NC}"
+                cat "${LOG}"
+                exit_val=1
+            else
+                echo -e "\n${GREEN}${file}\n${NC}"
+            fi
+        fi
+    done
+done
 
-# ###################
-# #### WRONG_MAP ####
-# ###################
+###################
+#### WRONG_MAP ####
+###################
 
-# echo -e "\n${BLUE}<------ WRONG MAPS ------>\n${NC}"
+echo -e "\n${BLUE}<------ WRONG MAPS ------>\n${NC}"
 
-# for folder in "${WRONG_MAP_FOLDER[@]}"; do
-#     for file in "$folder"/*; do
-#         # Check if the file exists and is a regular file
-#         if [ -f "$file" ]; then
-#             # Call your program with the file as an argument
-# 			"${BIN}" "$file" &> "${LOG}"
-#             ret_val=$?
-#             if [ "${ret_val}" != "1" ]; then
-#                 cat "${LOG}"
-#                 exit_val=1
-#             else
-#                 echo -e "\n${GREEN}${file}\n${NC}"
-#             fi
-#         fi
-#     done
-# done
+for folder in "${WRONG_MAP_FOLDER[@]}"; do
+    for file in "$folder"/*; do
+        # Check if the file exists and is a regular file
+        if [ -f "$file" ]; then
+            # Call your program with the file as an argument
+			"${BIN}" "$file" &> "${LOG}"
+            ret_val=$?
+            if [ "${ret_val}" != "1" ]; then
+                cat "${LOG}"
+                exit_val=1
+            else
+                echo -e "\n${GREEN}${file}\n${NC}"
+            fi
+        fi
+    done
+done
 
 ##################
 #### FUNCHECK ####

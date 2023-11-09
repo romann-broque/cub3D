@@ -282,6 +282,7 @@ endif
 
 ifeq ($(filter bonus,$(MAKECMDGOALS)),bonus)
 	CFLAGS	+= -D BONUS=true
+	BONUS = "bonus"
 endif
 
 ifeq ($(filter test,$(MAKECMDGOALS)),test)
@@ -358,7 +359,7 @@ test	: all
 	echo -e $(BLUE) "\n====> Building FUNCHECK TESTS <===="$(NC)"\n"
 	$(MAKE) -sC $(FUNCHECK_FOLDER_LIB)
 	$(MAKE) -sC $(FUNCHECK_FOLDER_HOST)
-	$(FUNCHECK_SCRIPT)
+	$(FUNCHECK_SCRIPT) $(BONUS)
 
 bonus: all
 
