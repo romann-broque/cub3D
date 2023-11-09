@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display_map.c                                      :+:      :+:    :+:   */
+/*   display_sprites.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/16 16:11:15 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/09 14:37:27 by rbroque          ###   ########.fr       */
+/*   Created: 2023/11/09 13:21:18 by rbroque           #+#    #+#             */
+/*   Updated: 2023/11/09 14:39:42 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	display_map(t_win *const window)
+void	display_sprites_on_map(t_win *const window)
 {
-	display_grid(window);
-}
+	const t_sprite *const	sprite_array = window->map->sprite_array;
+	const size_t			sprite_count = window->map->sprite_count;
+	size_t					i;
 
-void	display_minimap(t_win *const window)
-{
-	display_grid(window);
+	i = 0;
+	while (i < sprite_count)
+	{
+		draw_square_on_map(window, &(sprite_array[i].pos),
+			SPRITE_SIZE, MAGENTA);
+		++i;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:06:20 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/09 11:27:16 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/09 14:38:44 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@
 # define DOOR_TIME			50
 # define WAIT_DOOR_TIME		150
 # define PLAYER_SIZE		4
+# define SPRITE_SIZE		2
 # define FOV				80
 # define STEP_SIZE			0.001
 # define MOVE_SPEED			0.1
@@ -149,6 +150,7 @@
 # define RED				0xff0000
 # define BLUE				0x0000ff
 # define GREEN				0x00ff00
+# define MAGENTA			0xff00ff
 
 // Key
 

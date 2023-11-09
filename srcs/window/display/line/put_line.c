@@ -6,23 +6,27 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 06:28:34 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/31 15:33:31 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/09 13:33:19 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static bool	can_put_pixel(const t_line *const line, const t_pos pos)
+bool	can_put_pixel(
+	const t_pos min_pos,
+	const t_pos max_pos,
+	const t_pos pos
+	)
 {
-	return (floor(pos.x) < line->max_pos.x
-		&& floor(pos.y) < line->max_pos.y
-		&& floor(pos.x) >= line->min_pos.x
-		&& floor(pos.y) >= line->min_pos.y);
+	return (floor(pos.x) < max_pos.x
+		&& floor(pos.y) < max_pos.y
+		&& floor(pos.x) >= min_pos.x
+		&& floor(pos.y) >= min_pos.y);
 }
 
 static void	put_point(t_data *data, const t_line *const line, const int color)
 {
-	if (can_put_pixel(line, line->pos1) == true)
+	if (can_put_pixel(line->min_pos, line->max_pos, line->pos1) == true)
 		put_pixel(data, line->pos1.x, line->pos1.y, color);
 }
 

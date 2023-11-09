@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 09:05:17 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/08 09:44:37 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/09 14:24:10 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,24 @@ static uint32_t	get_color_from_door_pos(
 }
 
 static uint32_t	get_color_from_tile(
-	const t_map *const map,
+	const t_win *const window,
 	const t_pos tile_pos,
 	const size_t x_pos,
 	const size_t y_pos
 	)
 {
+	const t_map *const	map = window->map;
+
 	if (is_wall(map, tile_pos.x, tile_pos.y)
 		&& is_tile_side(x_pos, y_pos) == false)
 		return (BLACK);
-	if (is_door(map, tile_pos.x, tile_pos.y))
-		return (get_color_from_door_pos(map, tile_pos, x_pos, y_pos));
+	else if (is_door(map, tile_pos.x, tile_pos.y))
+	{
+		if (window->mod == E_MAP)
+			return (get_color_from_door_pos(map, tile_pos, x_pos, y_pos));
+		else if (is_tile_side(x_pos, y_pos) == false)
+			return (BLACK);
+	}
 	return (WHITE);
 }
 
@@ -69,7 +76,7 @@ static void	draw_tile_width(
 		if (is_blank(window->map, tile_pos->x, tile_pos->y) == false)
 		{
 			color = get_color_from_tile(
-					window->map, *tile_pos, j, line_index);
+					window, *tile_pos, j, line_index);
 			put_tile_pixel(window,
 				screen_pos->x + j,
 				screen_pos->y + line_index,

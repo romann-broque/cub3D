@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:12:25 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/08 09:42:17 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/09 14:36:35 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,11 @@ t_pos		get_offset(const t_pos player_pos);
 
 // display_player.c
 
-void		display_player_on_map(t_win *const window);
-void		display_player_on_minimap(t_win *const window);
+void		display_player(t_win *const window);
+
+// display_sprites.c
+
+void		display_sprites_on_map(t_win *const window);
 
 /////////////////////////////////////////
 /////				draw			/////
@@ -178,6 +181,9 @@ bool		are_pos_same(const t_pos pos1, const t_pos pos2);
 
 	// put_line.c
 
+bool		can_put_pixel(const t_pos min_pos,
+				const t_pos max_pos,
+				const t_pos pos);
 void		put_line(t_data *data,
 				const t_pos pos1, const t_pos pos2, const int color);
 void		put_line_in_minimap(t_data *data,
