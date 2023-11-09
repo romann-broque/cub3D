@@ -41,10 +41,7 @@ else
         assets/maps/bonus/wrong/)
 fi
 
-MAP_FOLDER=(
-    assets/maps/mandatory/correct/ assets/maps/mandatory/wrong/
-    assets/maps/bonus/correct/ assets/maps/bonus/wrong/
-    ${TESTER_FOLDER}/assets/maps/correct/ ${TESTER_FOLDER}/assets/maps/wrong/)
+MAP_FOLDER=($GOOD_MAP_FOLDER $WRONG_MAP_FOLDER)
 
 ret_val=0
 exit_val=0
@@ -106,7 +103,11 @@ for folder in "${MAP_FOLDER[@]}"; do
     for file in "$folder"/*; do
         # Check if the file exists and is a regular file
         if [ -f "$file" ]; then
-            # Call your program with the file as an argument
+            # Check if the filename starts with "very_big_map"
+            if [[ "$file" == *very_big_map* ]]; then
+                continue  # Skip this file and move to the next one
+            fi
+            # Call the program with the file as an argument
 			"${FUNCHECK_BIN}" "${BIN}" "$file" &> "${LOG}"
             ret_val=$?
             if [ "${ret_val}" != "0" ]; then

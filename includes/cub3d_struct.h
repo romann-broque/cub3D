@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:08:41 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/09 08:48:16 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/09 10:14:17 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,12 @@ typedef struct s_pos
 }		t_pos;
 
 typedef t_pos	t_vect;
+
+typedef struct s_sprite
+{
+	t_pos		*pos;
+	t_texture	*texture;
+}		t_sprite;
 
 typedef struct s_tile
 {
