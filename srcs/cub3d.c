@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:14 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/09 10:03:27 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/09 11:31:41 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ static int	start_game(const char *const filename)
 	init_window(&window, content);
 	if (is_window_complete(&window) == true)
 	{
+		if (PRINT_DEBUG)
+			print_map(window.map);
 		display_window(&window);
 		ret_val = EXIT_SUCCESS;
 	}

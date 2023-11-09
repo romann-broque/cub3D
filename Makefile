@@ -27,6 +27,7 @@ PATH_SRCS	+=	srcs/window/map/init_map/
 PATH_SRCS	+=	srcs/window/map/is_map_valid/
 PATH_SRCS	+=	srcs/window/map/player/
 PATH_SRCS	+=	srcs/window/map/raycast/
+PATH_SRCS	+=	srcs/window/map/sprites/
 PATH_SRCS	+=	srcs/window/map/tile/
 
 ### srcs/
@@ -154,6 +155,10 @@ SRCS	 	+=	get_vect.c
 SRCS	 	+=	dda.c
 SRCS	 	+=	cast_utils.c
 SRCS	 	+=	raycaster.c
+
+### srcs/window/map/sprites/
+
+SRCS	 	+=	init_sprites.c
 
 ### srcs/window/map/tile/
 

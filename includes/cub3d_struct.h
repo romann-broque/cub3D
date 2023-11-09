@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:08:41 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/09 10:14:17 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/09 11:40:17 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,8 +101,8 @@ typedef t_pos	t_vect;
 
 typedef struct s_sprite
 {
-	t_pos		*pos;
-	t_texture	*texture;
+	t_pos			pos;
+	const t_texture	*texture;
 }		t_sprite;
 
 typedef struct s_tile
@@ -156,6 +156,8 @@ typedef struct s_map
 	size_t		height;
 	size_t		width;
 	t_player	player;
+	t_sprite	*sprite_array;
+	size_t		sprite_count;
 }		t_map;
 
 typedef struct s_key

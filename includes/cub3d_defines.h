@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:06:20 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/09 09:42:59 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/09 11:27:16 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@
 # define BRIGHTNESS_POWER	0.7
 # define PLAYER_XOFFSET		0.5
 # define PLAYER_YOFFSET		0.5
+# define SPRITE_XOFFSET		0.5
+# define SPRITE_YOFFSET		0.5
 # define MINIMAP_XOFFSET	25
 # define MINIMAP_YOFFSET	25
 # define MAP_XOFFSET		25
@@ -99,6 +101,7 @@
 # define SP6_KEY			"7"
 # define SP7_KEY			"8"
 # define SP8_KEY			"9"
+# define SPRITES			"23456789"
 # define SPECIAL_TILES		"Dd23456789"
 
 # ifdef BONUS
