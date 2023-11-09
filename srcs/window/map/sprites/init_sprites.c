@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 11:18:16 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/09 11:36:47 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/09 13:06:58 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,6 @@ static t_sprite	get_sprite(
 	sprite.pos.y = y + SPRITE_YOFFSET;
 	sprite.texture = &(config->textures[texture_index]);
 	return (sprite);
-}
-
-static bool	is_sprite(const t_map *const map, const size_t x, const size_t y)
-{
-	return (is_in_str(SPRITES, map->matrix[y][x].tile_char));
 }
 
 static size_t	count_sprites(const t_map *const map)

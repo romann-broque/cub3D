@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 17:12:07 by lechon            #+#    #+#             */
-/*   Updated: 2023/11/09 11:23:46 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/09 13:19:32 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,11 @@ t_cast			dda(t_map *const map, const t_pos pos,
 /////////////////////////
 ////     sprites     ////
 /////////////////////////
+
+	// is_sprite.c
+
+bool			is_sprite(const t_map *const map, const size_t x,
+					const size_t y);
 
 	// init_sprites.c
 

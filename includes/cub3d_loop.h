@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 17:14:28 by lechon            #+#    #+#             */
-/*   Updated: 2023/11/08 09:42:32 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/09 13:16:35 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,11 @@ void			translate_side(t_map *const map,
 					t_player *const player, const double move_speed);
 void			translate_frontback(t_map *const map,
 					t_player *const player, const double move_speed);
+
+	// is_crossable.c
+
+bool			is_crossable(const t_map *const map, const size_t x,
+					const size_t y);
 
 	// get_translated_pos.c
 
