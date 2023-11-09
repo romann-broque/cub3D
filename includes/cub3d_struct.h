@@ -6,7 +6,7 @@
 /*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:08:41 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/08 16:56:23 by jess             ###   ########.fr       */
+/*   Updated: 2023/11/09 16:21:29 by jess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,10 +126,10 @@ typedef struct s_player
 
 typedef struct s_sprite
 {
-	double	x;
-	double	y;
-	int		order[SPRITES_COUNT];
-	double	distance[SPRITES_COUNT];
+	t_pos			pos;
+	const t_texture	*texture;
+	double			sq_distance;
+	bool			is_viewed;
 }		t_sprite;
 
 typedef struct s_cast
@@ -149,8 +149,9 @@ typedef struct s_map
 	t_tile		**matrix;
 	size_t		height;
 	size_t		width;
+	size_t		sprite_count;
 	t_player	player;
-	t_sprite	sprite;
+	t_sprite	*sprite_array;
 }		t_map;
 
 typedef struct s_key

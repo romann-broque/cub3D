@@ -20,7 +20,6 @@ PATH_SRCS	+=	srcs/window/display/
 PATH_SRCS	+=	srcs/window/display/draw/
 PATH_SRCS	+=	srcs/window/display/draw/raycast
 PATH_SRCS	+=	srcs/window/display/line/
-PATH_SRCS	+=	srcs/window/display/sprites/
 PATH_SRCS	+=	srcs/window/loop/
 PATH_SRCS	+=	srcs/window/loop/events/
 PATH_SRCS	+=	srcs/window/map/
@@ -101,6 +100,8 @@ SRCS	 	+=	get_texture_pos.c
 SRCS	 	+=	get_texture_color.c
 SRCS	 	+=	draw_vertical.c
 SRCS	 	+=	draw_vertical_utils.c
+SRCS	 	+=	draw_sprites.c
+SRCS	 	+=	sort_sprites.c
 
 ### srcs/window/display/line/
 
@@ -110,7 +111,6 @@ SRCS	 	+=	put_line.c
 
 ### srcs/window/display/sprites/
 
-SRCS	 	+=	display_sprites.c
 
 ### srcs/window/loop/
 
