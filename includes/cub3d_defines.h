@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:06:20 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/08 11:27:45 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/09 09:42:59 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,16 +51,20 @@
 # define INVALID_FD					-1
 # define COUNT_LINE_ERROR			-1
 # define INVALID_OFFSET				-1
+# define ATTRIBUTE_SUCCESS			0
+# define ATTRIBUTE_FAILURE			1
+# define ATTRIBUTE_DUPLICATED		2
+# define INVALID_OFFSET				-1
 # define RGB_SIZE					3
 # define BITS_PER_BYTE				8
 # define FPS_FREQUENCY				10
 # define KEY_COUNT					9
 # define MANDATORY_ATTRIBUTE_COUNT	6
-# define SPECIAL_TILE_COUNT			2
+# define SPECIAL_TILE_COUNT			10
 
 # ifdef BONUS
-#  define TEXTURE_COUNT		7
-#  define ATTRIBUTE_COUNT	7
+#  define TEXTURE_COUNT		15
+#  define ATTRIBUTE_COUNT	15
 # else
 #  define TEXTURE_COUNT		4
 #  define ATTRIBUTE_COUNT	6
@@ -87,10 +91,18 @@
 # define FLOOR_KEY			"F"
 # define CEIL_KEY			"C"
 # define DOOR_KEY			"D"
-# define SPECIAL_TILES		"Dd"
+# define SP1_KEY			"2"
+# define SP2_KEY			"3"
+# define SP3_KEY			"4"
+# define SP4_KEY			"5"
+# define SP5_KEY			"6"
+# define SP6_KEY			"7"
+# define SP7_KEY			"8"
+# define SP8_KEY			"9"
+# define SPECIAL_TILES		"Dd23456789"
 
 # ifdef BONUS
-#  define VALID_CHAR			"01Dd NSWE\n"
+#  define VALID_CHAR			"0123456789Dd NSWE\n"
 # else
 #  define VALID_CHAR			"01 NSWE\n"
 # endif

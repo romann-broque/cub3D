@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:08:41 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/08 09:42:41 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/09 08:48:16 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,15 @@ enum e_attribute_type
 	E_EAST,
 	E_FLOOR,
 	E_CEIL,
-	E_DOOR
+	E_DOOR,
+	E_SP1,
+	E_SP2,
+	E_SP3,
+	E_SP4,
+	E_SP5,
+	E_SP6,
+	E_SP7,
+	E_SP8
 };
 
 typedef enum e_side

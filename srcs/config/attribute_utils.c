@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 07:57:46 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/08 09:43:06 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/09 09:09:11 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,11 @@ static enum e_attribute_type	find_attribute_type(
 		NORTH_KEY, SOUTH_KEY,
 		WEST_KEY, EAST_KEY,
 		FLOOR_KEY, CEIL_KEY,
-		DOOR_KEY,
-		NULL
+		DOOR_KEY, SP1_KEY,
+		SP2_KEY, SP3_KEY,
+		SP4_KEY, SP5_KEY,
+		SP6_KEY, SP7_KEY,
+		SP8_KEY, NULL
 	};
 	enum e_attribute_type		type;
 
@@ -69,14 +72,17 @@ static int	add_attribute_into_config(
 		= find_attribute_type(name);
 	int							ret_val;
 
-	ret_val = EXIT_FAILURE;
+	ret_val = ATTRIBUTE_FAILURE;
 	if (config->attribute_array[type] != NULL)
+	{
 		print_format_error(DUPLICATED_CONFIG);
+		ret_val = ATTRIBUTE_DUPLICATED;
+	}
 	else
 	{
 		assign_attribute(config, type, value);
 		if (config->attribute_array[type] != NULL)
-			ret_val = EXIT_SUCCESS;
+			ret_val = ATTRIBUTE_SUCCESS;
 	}
 	return (ret_val);
 }
@@ -92,8 +98,6 @@ int	build_attribute_from_sequence(
 		return (EXIT_SUCCESS);
 	if (is_sequence_format_valid(sequence) == false)
 		return (EXIT_FAILURE);
-	if (add_attribute_into_config(
-			config, sequence[0], sequence[1]) == EXIT_SUCCESS)
-		return (EXIT_SUCCESS);
-	return (EXIT_FAILURE);
+	return (add_attribute_into_config(
+			config, sequence[0], sequence[1]));
 }
