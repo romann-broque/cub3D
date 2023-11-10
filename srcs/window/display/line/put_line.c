@@ -6,13 +6,13 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 06:28:34 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/09 13:33:19 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/10 07:27:08 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-bool	can_put_pixel(
+static bool	can_put_pixel(
 	const t_pos min_pos,
 	const t_pos max_pos,
 	const t_pos pos

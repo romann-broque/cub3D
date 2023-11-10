@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:08:41 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/09 11:40:17 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/10 07:28:09 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,12 +121,12 @@ typedef struct s_line
 	t_pos	pos2;
 	t_pos	min_pos;
 	t_pos	max_pos;
-	double	dx;
-	int		sx;
-	double	dy;
-	int		sy;
 	double	error;
 	double	e2;
+	double	dx;
+	double	dy;
+	int		sx;
+	int		sy;
 	size_t	nb_points;
 }		t_line;
 
@@ -155,9 +155,9 @@ typedef struct s_map
 	t_tile		**matrix;
 	size_t		height;
 	size_t		width;
-	t_player	player;
-	t_sprite	*sprite_array;
 	size_t		sprite_count;
+	t_sprite	*sprite_array;
+	t_player	player;
 }		t_map;
 
 typedef struct s_key
