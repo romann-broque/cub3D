@@ -101,6 +101,7 @@ SRCS	 	+=	get_texture_color.c
 SRCS	 	+=	draw_vertical.c
 SRCS	 	+=	draw_vertical_utils.c
 SRCS	 	+=	draw_sprites.c
+SRCS	 	+=	draw_sprites_utils.c
 SRCS	 	+=	sort_sprites.c
 
 ### srcs/window/display/line/

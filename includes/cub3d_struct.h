@@ -6,7 +6,7 @@
 /*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:08:41 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/09 16:21:29 by jess             ###   ########.fr       */
+/*   Updated: 2023/11/10 16:10:49 by jess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,8 @@ typedef struct s_player
 typedef struct s_sprite
 {
 	t_pos			pos;
+	t_pos			sprite_start;
+	t_pos			sprite_end;
 	const t_texture	*texture;
 	double			sq_distance;
 	bool			is_viewed;

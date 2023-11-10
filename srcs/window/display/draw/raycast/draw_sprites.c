@@ -6,42 +6,74 @@
 /*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 11:33:58 by jess              #+#    #+#             */
-/*   Updated: 2023/11/09 17:15:27 by jess             ###   ########.fr       */
+/*   Updated: 2023/11/10 16:20:02 by jess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	get_sprite_screen(
-	const double sprite_x,
-	const double sprite_y,
-	const double inv_det,
-	const t_map *map
+static int	get_sprite_tex_x(
+	const t_sprite sprite,
+	const int sprite_height_width,
+	const int sprite_screen_x,
+	const int i)
+{
+	return((256 * (i - (-sprite_height_width / 2 + sprite_screen_x)) *
+			sprite.texture->width / sprite_height_width) / 256);
+}
+
+static void	draw_sprite_pixel(
+	const t_sprite sprite,
+	const t_pos transform,
+	const int sprite_screen_x,
+	const int sprite_height_width
 )
 {
-	const t_player	player = map->player;
-	const double	transform_x = inv_det *
-			(player.dir.y * sprite_x - player.dir.y * sprite_y);
-	const double	transform_y = inv_det *
-			(-player.plane.y * sprite_x + player.plane.x * sprite_y);
-	const int		sprite_screen = int((map->sprite->texture->width / 2) *
-			(1 + transform_x / transform_y));
+	int		tex_x;
+	size_t	i;
+	size_t	j;
+
+	i = sprite.sprite_start.x;
+	while (i < sprite.sprite_end.x)
+	{
+		tex_x = get_sprite_tex_x(sprite, sprite_height_width, sprite_screen_x, i);
+		if (transform.y > 0 && i > 0 && i < WINDOW_WIDTH && transform.y < /* hitpoints[i]*/)
+		{
+			j = sprite.sprite_start.y;
+			while (j < sprite.sprite_end.y)
+			{
+				display_sprite_vertical();
+				j++;
+			}
+		}
+		i++;
+	}
 }
 
-static double	get_inv_det(const t_player player)
+static void	draw_sprite(
+	t_sprite sprite,
+	const t_pos transform
+)
 {
-	return (1.0 / player.plane.x * player.dir.y
-		- player.dir.x * player.plane.y);
+	const int	sprite_height_width = abs((int)(WINDOW_HEIGHT / transform.y));
+	const int	sprite_screen_x = (int)((WINDOW_WIDTH / 2) *
+			(1 + transform.x / transform.y));
+
+	sprite.sprite_start = init_sprite_start(
+			sprite_height_width, sprite_screen_x);
+	sprite.sprite_end = init_sprite_end(
+			sprite_height_width, sprite_screen_x);
+	draw_sprite_pixel(sprite, transform, sprite_screen_x, sprite_height_width);
 }
 
-static void	translate_sprite(const t_sprite sprite, const t_map *map)
+static void	transform_sprite(const t_sprite sprite, const t_player player)
 {
-	const t_player	player = map->player;
-	const double	sprite_x = sprite.pos.x - player.pos.x;
-	const double	sprite_y = sprite.pos.y - player.pos.y;
 	const double	inv_det = get_inv_det(player);
+	const t_pos		sprite_pos = get_sprite_position_to_camera(sprite, player);
+	const t_pos		transform = get_transformed_sprite_position(
+			sprite, inv_det, sprite_pos, player);
 
-	get_sprite_screen(sprite_x, sprite_y, inv_det, map);
+	draw_sprite(sprite, transform);
 }
  
 void	display_sprite(t_win *const window)
@@ -54,7 +86,7 @@ void	display_sprite(t_win *const window)
 	while (i < window->map->sprite_count)
 	{
 		if (sprite[i].is_viewed == true)
-			translate_sprite(sprite[i], window->map);
+			transform_sprite(sprite[i], window->map->player);
 		i++;
 	}
 }

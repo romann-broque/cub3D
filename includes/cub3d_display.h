@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_display.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:12:25 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/08 09:42:17 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/10 15:59:21 by jess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,6 +158,24 @@ uint32_t	get_wall_texture(
 				const t_cast *const cast,
 				t_texture texture,
 				const int tex_x);
+
+		// sort_sprites.c
+
+void		sort_sprites(t_win *const window);
+
+		// draw_sprites_utils.c
+
+double		get_inv_det(const t_player player);
+t_pos		get_sprite_position_to_camera(
+				const t_sprite sprite,
+				const t_player player);
+t_pos		get_transformed_sprite_position(
+				const t_sprite sprite,
+				const double inv_det,
+				const t_pos sprite_pos,
+				const t_player player);
+t_pos		init_sprite_end(const int sprite_height, const int x);
+t_pos		init_sprite_start(const int sprite_height, const int x);
 
 /////////////////////////////////////////
 /////			line				/////

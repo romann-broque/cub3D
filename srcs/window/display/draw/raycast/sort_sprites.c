@@ -6,7 +6,7 @@
 /*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 16:37:04 by jess              #+#    #+#             */
-/*   Updated: 2023/11/09 16:34:07 by jess             ###   ########.fr       */
+/*   Updated: 2023/11/10 10:45:27 by jess             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ static double	calculate_sprite_distance(
 
 	return (pow(dist1, 2) + pow(dist2, 2));
 }
-
 static void	set_sprite_distance(t_win *const window)
 {
 	const t_player	player = window->map->player;
