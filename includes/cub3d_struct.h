@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:08:41 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/08 09:42:41 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/10 07:28:09 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,15 @@ enum e_attribute_type
 	E_EAST,
 	E_FLOOR,
 	E_CEIL,
-	E_DOOR
+	E_DOOR,
+	E_SP1,
+	E_SP2,
+	E_SP3,
+	E_SP4,
+	E_SP5,
+	E_SP6,
+	E_SP7,
+	E_SP8
 };
 
 typedef enum e_side
@@ -91,6 +99,12 @@ typedef struct s_pos
 
 typedef t_pos	t_vect;
 
+typedef struct s_sprite
+{
+	t_pos			pos;
+	const t_texture	*texture;
+}		t_sprite;
+
 typedef struct s_tile
 {
 	char			tile_char;
@@ -107,12 +121,12 @@ typedef struct s_line
 	t_pos	pos2;
 	t_pos	min_pos;
 	t_pos	max_pos;
-	double	dx;
-	int		sx;
-	double	dy;
-	int		sy;
 	double	error;
 	double	e2;
+	double	dx;
+	double	dy;
+	int		sx;
+	int		sy;
 	size_t	nb_points;
 }		t_line;
 
@@ -141,6 +155,8 @@ typedef struct s_map
 	t_tile		**matrix;
 	size_t		height;
 	size_t		width;
+	size_t		sprite_count;
+	t_sprite	*sprite_array;
 	t_player	player;
 }		t_map;
 

@@ -1,44 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_config.c                                      :+:      :+:    :+:   */
+/*   display_sprites.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/11 10:57:21 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/09 11:39:57 by rbroque          ###   ########.fr       */
+/*   Created: 2023/11/09 13:21:18 by rbroque           #+#    #+#             */
+/*   Updated: 2023/11/09 14:39:42 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	init_attributes(t_config *const config)
+void	display_sprites_on_map(t_win *const window)
 {
-	size_t	i;
+	const t_sprite *const	sprite_array = window->map->sprite_array;
+	const size_t			sprite_count = window->map->sprite_count;
+	size_t					i;
 
 	i = 0;
-	while (i < ATTRIBUTE_COUNT)
+	while (i < sprite_count)
 	{
-		config->attribute_array[i] = NULL;
+		draw_square_on_map(window, &(sprite_array[i].pos),
+			SPRITE_SIZE, MAGENTA);
 		++i;
 	}
-	config->attribute_array[i] = NULL;
-}
-
-static void	init_textures(t_config *const config)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < TEXTURE_COUNT)
-	{
-		config->textures[i].data.img = NULL;
-		++i;
-	}
-}
-
-void	init_config(t_config *const config)
-{
-	init_attributes(config);
-	init_textures(config);
 }

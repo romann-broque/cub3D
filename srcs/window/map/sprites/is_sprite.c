@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display_map.c                                      :+:      :+:    :+:   */
+/*   is_sprite.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/16 16:11:15 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/09 14:37:27 by rbroque          ###   ########.fr       */
+/*   Created: 2023/11/09 13:05:37 by rbroque           #+#    #+#             */
+/*   Updated: 2023/11/09 13:06:20 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	display_map(t_win *const window)
+bool	is_sprite(const t_map *const map, const size_t x, const size_t y)
 {
-	display_grid(window);
-}
-
-void	display_minimap(t_win *const window)
-{
-	display_grid(window);
+	return (is_in_str(SPRITES, map->matrix[y][x].tile_char));
 }

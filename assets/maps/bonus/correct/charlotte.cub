@@ -1,0 +1,14 @@
+NO ./assets/textures/doom_grid.xpm
+SO ./assets/textures/doom_grid.xpm
+EA ./assets/textures/doom_grid.xpm
+WE ./assets/textures/doom_grid.xpm
+C ./assets/textures/doom_hexagone.xpm
+F ./assets/textures/doom_ground.xpm
+D ./assets/textures/doom_grid.xpm
+
+11111111111111111111111111111
+10010000000010000100000000001
+100D00000000D0100000001000001
+1d11000100001d1001N0000001001
+10000000000000000000100000001
+11111111111111111111111111111
