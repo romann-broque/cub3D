@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 07:57:46 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/13 16:57:16 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/13 21:31:27 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ static bool	assign_attribute(
 			}
 			++i;
 		}
+		if (i == MAX_TEXTURE_COUNT && values[i] != NULL)
+			print_format_warning(TOO_MANY_TEXTURES);
 	}
 	return (EXIT_SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:06:20 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/13 21:04:40 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/13 21:31:54 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,10 +134,7 @@
 // Warning
 
 # define DIMENSIONS_NOT_SUPPORTED	"Dimensions not supported"
-
-// Warning
-
-# define DIMENSIONS_NOT_SUPPORTED	"Dimensions not supported"
+# define TOO_MANY_TEXTURES			"Too many textures"
 
 // Print Colors
 
