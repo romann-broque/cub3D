@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 07:57:46 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/09 09:09:11 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/13 16:57:16 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ bool	is_config_complete(const t_config *const config)
 	size_t	i;
 
 	i = 0;
-	while (config->attribute_array[i] != NULL)
+	while (config->attribute_array[i][0] != NULL)
 		++i;
 	return (i >= MANDATORY_ATTRIBUTE_COUNT);
 }
@@ -45,27 +45,38 @@ static enum e_attribute_type	find_attribute_type(
 	return (type);
 }
 
-void	assign_attribute(
+static bool	assign_attribute(
 	t_config *const config,
 	const enum e_attribute_type type,
-	const char *const str
+	char *const *const values
 	)
 {
+	size_t	i;
+
 	if ((type == E_CEIL || type == E_FLOOR)
-		&& BONUS == false && is_rgb(str) == false)
+		&& BONUS == false && is_rgb(values[0]) == false)
 		print_format_error(WRONG_RGB);
 	else
 	{
-		config->attribute_array[type] = ft_strdup(str);
-		if (config->attribute_array[type] == NULL)
-			print_format_error(strerror(errno));
+		i = 0;
+		while (i < MAX_TEXTURE_COUNT && values[i] != NULL)
+		{
+			config->attribute_array[type][i] = ft_strdup(values[i]);
+			if (config->attribute_array[type][i] == NULL)
+			{
+				print_format_error(strerror(errno));
+				return (EXIT_FAILURE);
+			}
+			++i;
+		}
 	}
+	return (EXIT_SUCCESS);
 }
 
 static int	add_attribute_into_config(
 	t_config *const config,
 	const char *const name,
-	const char *const value
+	char *const *const values
 	)
 {
 	const enum e_attribute_type	type
@@ -73,15 +84,14 @@ static int	add_attribute_into_config(
 	int							ret_val;
 
 	ret_val = ATTRIBUTE_FAILURE;
-	if (config->attribute_array[type] != NULL)
+	if (config->attribute_array[type][0] != NULL)
 	{
 		print_format_error(DUPLICATED_CONFIG);
 		ret_val = ATTRIBUTE_DUPLICATED;
 	}
 	else
 	{
-		assign_attribute(config, type, value);
-		if (config->attribute_array[type] != NULL)
+		if (assign_attribute(config, type, values) == EXIT_SUCCESS)
 			ret_val = ATTRIBUTE_SUCCESS;
 	}
 	return (ret_val);
@@ -99,5 +109,5 @@ int	build_attribute_from_sequence(
 	if (is_sequence_format_valid(sequence) == false)
 		return (EXIT_FAILURE);
 	return (add_attribute_into_config(
-			config, sequence[0], sequence[1]));
+			config, sequence[0], sequence + 1));
 }

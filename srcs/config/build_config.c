@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 09:44:49 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/09 09:25:45 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/13 16:48:35 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,13 +99,19 @@ static int	set_textures_array(
 {
 	int		ret_val;
 	size_t	i;
+	size_t	j;
 
 	ret_val = EXIT_SUCCESS;
 	i = 0;
 	while (i < TEXTURE_COUNT && ret_val == EXIT_SUCCESS)
 	{
-		ret_val = set_texture(config->textures + i,
-				config->attribute_array[i], mlx_ptr);
+		j = 0;
+		while (j < MAX_TEXTURE_COUNT && config->attribute_array[i][j] != NULL)
+		{
+			ret_val = set_texture(&(config->textures[i][j]),
+					config->attribute_array[i][j], mlx_ptr);
+			++j;
+		}
 		++i;
 	}
 	return (ret_val);

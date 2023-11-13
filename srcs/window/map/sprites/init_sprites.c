@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 11:18:16 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/13 14:09:10 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/13 16:54:54 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static t_sprite	get_sprite(
 
 	sprite.pos.x = x + SPRITE_XOFFSET;
 	sprite.pos.y = y + SPRITE_YOFFSET;
-	sprite.texture = &(config->textures[texture_index]);
+	sprite.texture = config->textures[texture_index];
 	sprite.is_viewed = true;
 	return (sprite);
 }

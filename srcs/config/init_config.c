@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 10:57:21 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/09 11:39:57 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/13 16:56:51 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,35 @@
 static void	init_attributes(t_config *const config)
 {
 	size_t	i;
+	size_t	j;
 
 	i = 0;
 	while (i < ATTRIBUTE_COUNT)
 	{
-		config->attribute_array[i] = NULL;
+		j = 0;
+		while (j < MAX_TEXTURE_COUNT)
+		{
+			config->attribute_array[i][j] = NULL;
+			++j;
+		}
 		++i;
 	}
-	config->attribute_array[i] = NULL;
 }
 
 static void	init_textures(t_config *const config)
 {
 	size_t	i;
+	size_t	j;
 
 	i = 0;
 	while (i < TEXTURE_COUNT)
 	{
-		config->textures[i].data.img = NULL;
+		j = 0;
+		while (j < MAX_TEXTURE_COUNT)
+		{
+			config->textures[i][j].data.img = NULL;
+			++j;
+		}
 		++i;
 	}
 }

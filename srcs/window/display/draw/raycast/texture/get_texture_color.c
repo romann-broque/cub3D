@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 08:26:13 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/13 14:20:53 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/13 16:52:47 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ unsigned int	get_color_from_floor_pos(
 	const t_pos *const curr_floor
 	)
 {
-	const t_texture	*floor_texture = window->config.textures + E_FLOOR;
+	const t_texture	*floor_texture = (window->config.textures + E_FLOOR)[0];
 	t_pos			floor_tex_pos;
 
 	floor_tex_pos.x
@@ -34,7 +34,7 @@ unsigned int	get_color_from_ceil_pos(
 	const t_pos *const curr_ceil
 	)
 {
-	const t_texture	*ceil_texture = window->config.textures + E_CEIL;
+	const t_texture	*ceil_texture = (window->config.textures + E_CEIL)[0];
 	t_pos			ceil_tex_pos;
 	unsigned int	color;
 

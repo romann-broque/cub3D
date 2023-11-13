@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 15:55:09 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/13 09:06:29 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/13 17:06:53 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,16 @@ t_pos	init_wall_start(
 }
 
 t_texture	*get_texture_from_cast(
-	t_texture	textures_array[TEXTURE_COUNT],
+	t_texture	textures_array[TEXTURE_COUNT][MAX_TEXTURE_COUNT],
 	const t_cast *const cast
 )
 {
 	if (cast->tile->tile_char == WALL)
-		return (textures_array + cast->side);
+		return ((textures_array + cast->side)[0]);
 	if (is_tile_door(cast->tile) == true)
-		return (textures_array + E_DOOR);
-	return (textures_array + MANDATORY_ATTRIBUTE_COUNT
-		+ index_of(SPECIAL_TILES, cast->tile->tile_char) - 1);
+		return ((textures_array + E_DOOR)[0]);
+	return ((textures_array + MANDATORY_ATTRIBUTE_COUNT
+			+ index_of(SPECIAL_TILES, cast->tile->tile_char) - 1)[0]);
 }
 
 void	set_texture_start_pos(

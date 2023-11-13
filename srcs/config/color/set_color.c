@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 16:21:13 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/26 17:01:32 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/13 17:06:37 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 
 void	set_color(t_config *const config)
 {
-	config->ceil_color = get_color_from_rgb(config->attribute_array[E_CEIL]);
-	config->floor_color = get_color_from_rgb(config->attribute_array[E_FLOOR]);
+	config->ceil_color = get_color_from_rgb(
+			config->attribute_array[E_CEIL][0]);
+	config->floor_color = get_color_from_rgb(
+			config->attribute_array[E_FLOOR][0]);
 }
 
 unsigned int	change_brightness(const unsigned int color, const double factor)

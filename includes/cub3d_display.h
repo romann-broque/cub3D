@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:12:25 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/13 16:04:56 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/13 16:51:33 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,7 @@ t_pos		init_wall_end(const int lineheight,
 t_pos		init_wall_start(const int lineheight,
 				const int height, const int x);
 t_texture	*get_texture_from_cast(
-				t_texture	textures_array[TEXTURE_COUNT],
+				t_texture	textures_array[TEXTURE_COUNT][MAX_TEXTURE_COUNT],
 				const t_cast *const cast);
 void		set_texture_start_pos(
 				t_win *const window,
