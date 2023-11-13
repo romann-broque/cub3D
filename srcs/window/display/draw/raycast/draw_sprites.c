@@ -6,33 +6,33 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 11:33:58 by jess              #+#    #+#             */
-/*   Updated: 2023/11/13 09:38:08 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/13 10:01:18 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-// static int	get_sprite_tex_x(
-// 	const t_sprite *const sprite,
-// 	const int sprite_height_width,
-// 	const int sprite_screen_x,
-// 	const int i)
-// {
-// 	return ((256 * (i - (-sprite_height_width / 2 + sprite_screen_x))
-// 			* sprite->texture->width / sprite_height_width) / 256);
-// }
+static int	get_sprite_tex_x(
+	const t_sprite *const sprite,
+	const int sprite_height_width,
+	const int sprite_screen_x,
+	const int i)
+{
+	return ((256 * (i - (-sprite_height_width / 2 + sprite_screen_x))
+			* sprite->texture->width / sprite_height_width) / 256);
+}
 
-// static int	get_sprite_tex_y(
-// 	const t_sprite *const sprite,
-// 	const int sprite_height_width,
-// 	const size_t y
-// )
-// {
-// 	const int	d = y * 256 - WINDOW_HEIGHT * 128 + sprite_height_width * 128;
-// 	const int	tex_y = ((d * sprite->texture->height) / sprite_height_width) / 256;
+static int	get_sprite_tex_y(
+	const t_sprite *const sprite,
+	const int sprite_height_width,
+	const size_t y
+)
+{
+	const int	d = y * 256 - WINDOW_HEIGHT * 128 + sprite_height_width * 128;
+	const int	tex_y = ((d * sprite->texture->height) / sprite_height_width) / 256;
 
-// 	return (tex_y);
-// }
+	return (tex_y);
+}
 
 static void	draw_sprite_pixel(
 	t_data *const data,
@@ -42,7 +42,7 @@ static void	draw_sprite_pixel(
 	const int sprite_height_width
 )
 {
-	// t_pos	tex_pos;
+	t_pos	tex_pos;
 	size_t	i;
 	size_t	j;
 
@@ -51,13 +51,13 @@ static void	draw_sprite_pixel(
 	{
 		if (transform.y > 0 && i > 0 && i < WINDOW_WIDTH)
 		{
-			// tex_pos.x = get_sprite_tex_x(sprite, sprite_height_width,
-			// 		sprite_screen_x, i);
+			tex_pos.x = get_sprite_tex_x(sprite, sprite_height_width,
+					sprite_screen_x, i);
 			j = sprite->sprite_start.y;
 			while (j < sprite->sprite_end.y)
 			{
-				// tex_pos.y = get_sprite_tex_y(sprite, sprite_height_width, i, j);
-				put_pixel(data, i, j, WHITE);
+				tex_pos.y = get_sprite_tex_y(sprite, sprite_height_width, j);
+				put_pixel(data, i, j, get_sprite_texture(sprite->texture, tex_pos));
 				j++;
 			}
 		}
