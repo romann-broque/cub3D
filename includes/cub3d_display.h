@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:12:25 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/13 10:00:23 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/13 14:46:35 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ t_pos		get_offset(const t_pos player_pos);
 
 void		display_player(t_win *const window);
 
-// display_sprites.c
+// display_sprites_on_map.c
 
 void		display_sprites_on_map(t_win *const window);
 
@@ -143,44 +143,13 @@ void		set_texture_start_pos(
 				const int lineheight,
 				const double wall_start_y);
 
-		// draw_sprites.c
+/////////////////////////////////////////
+/////			sprite				/////
+/////////////////////////////////////////
 
-void		display_sprite(t_win *const window);
+		// display_sprites.c
 
-		// draw_sprites_utils.c
-
-t_pos		init_sprite_end(const int sprite_height, const int x);
-t_pos		init_sprite_start(const int sprite_height, const int x);
-t_pos		get_transformed_sprite_position(const double inv_det,
-				const t_pos sprite_pos, const t_player *const player);
-t_pos		get_sprite_position_to_camera(const t_sprite *const sprite,
-				const t_player *const player);
-double		get_inv_det(const t_player *const player);
-
-		// get_texture_pos.c
-
-int			get_tex_x(const t_cast *const cast,
-				const t_texture texture);
-t_pos		get_floor_pos(t_win *const window,
-				const int y, const t_pos *floor_wall,
-				const double perp_wall_dist);
-
-		// get_texture_color.c
-
-uint32_t	get_color_from_floor_pos(t_win *const window,
-				const t_pos *const curr_floor);
-uint32_t	get_color_from_ceil_pos(t_win *const window,
-				const t_pos *const curr_floor);
-uint32_t	get_wall_texture(
-				const t_cast *const cast,
-				t_texture texture,
-				const int tex_x);
-uint32_t	get_sprite_texture(const t_texture *const texture,
-				t_pos tex_pos);
-
-		// sort_sprites.c
-
-void		sort_sprites(t_win *const window);
+void		display_sprites(t_win *const window);
 
 		// draw_sprites_utils.c
 
@@ -194,6 +163,47 @@ t_pos		get_transformed_sprite_position(
 				const t_player *const player);
 t_pos		init_sprite_end(const int sprite_height, const int x);
 t_pos		init_sprite_start(const int sprite_height, const int x);
+
+		// draw_sprite.c
+
+void		draw_sprite(t_data *const data, t_sprite *const sprite,
+				const t_pos transform);
+
+		// sort_sprites.c
+
+void		sort_sprites(t_win *const window);
+
+/////////////////////////////////////////
+/////			texture				/////
+/////////////////////////////////////////
+
+		// get_texture_pos.c
+
+int			get_tex_x(const t_cast *const cast,
+				const t_texture texture);
+t_pos		get_floor_pos(t_win *const window,
+				const int y, const t_pos *floor_wall,
+				const double perp_wall_dist);
+
+		// texture_color_utils.c
+
+void		change_texture_brightness(unsigned int *const color,
+				const t_side side);
+uint32_t	get_color_from_text_pos(const t_texture texture,
+				const t_pos *const tex_pos);
+
+		// get_texture_color.c
+
+uint32_t	get_color_from_floor_pos(t_win *const window,
+				const t_pos *const curr_floor);
+uint32_t	get_color_from_ceil_pos(t_win *const window,
+				const t_pos *const curr_floor);
+uint32_t	get_wall_texture(
+				const t_cast *const cast,
+				t_texture texture,
+				const int tex_x);
+uint32_t	get_sprite_texture(const t_texture *const texture,
+				t_pos tex_pos);
 
 /////////////////////////////////////////
 /////			line				/////

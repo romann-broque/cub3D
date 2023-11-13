@@ -6,37 +6,11 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 08:26:13 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/13 10:00:38 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/13 14:20:53 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-static void	change_texture_brightness(
-	unsigned int *const color,
-	const t_side side
-	)
-{
-	if (side == EAST_FACE)
-		*color
-			= change_brightness(*color, BRIGHTNESS_FACTOR * BRIGHTNESS_POWER);
-	else if (side == NORTH_FACE || side == SOUTH_FACE)
-		*color = change_brightness(*color, BRIGHTNESS_FACTOR);
-}
-
-static unsigned int	get_color_from_text_pos(
-	const t_texture texture,
-	const t_pos *const tex_pos
-	)
-{
-	const t_data	texture_data = texture.data;
-	const int		t_x = (int)tex_pos->x & (texture.width - 1);
-	const int		t_y = (int)tex_pos->y & (texture.height - 1);
-
-	return (*(int *)(texture_data.addr
-		+ t_y * texture_data.line_length
-		+ t_x * texture_data.byte_per_pixel));
-}
 
 unsigned int	get_color_from_floor_pos(
 	t_win *const window,
@@ -94,7 +68,5 @@ unsigned int	get_sprite_texture(
 	t_pos tex_pos
 	)
 {
-	unsigned int color;
-	color = get_color_from_text_pos(*texture, &tex_pos);
-	return (color);
+	return (get_color_from_text_pos(*texture, &tex_pos));
 }

@@ -18,7 +18,9 @@ PATH_SRCS	+=	srcs/window/
 PATH_SRCS	+=	srcs/window/data/
 PATH_SRCS	+=	srcs/window/display/
 PATH_SRCS	+=	srcs/window/display/draw/
-PATH_SRCS	+=	srcs/window/display/draw/raycast
+PATH_SRCS	+=	srcs/window/display/draw/raycast/
+PATH_SRCS	+=	srcs/window/display/draw/raycast/sprite/
+PATH_SRCS	+=	srcs/window/display/draw/raycast/texture/
 PATH_SRCS	+=	srcs/window/display/line/
 PATH_SRCS	+=	srcs/window/loop/
 PATH_SRCS	+=	srcs/window/loop/events/
@@ -83,7 +85,7 @@ SRCS	 	+=	display_window.c
 SRCS	 	+=	display_map.c
 SRCS	 	+=	display_grid.c
 SRCS	 	+=	display_grid_utils.c
-SRCS	 	+=	display_sprites.c
+SRCS	 	+=	display_sprites_on_map.c
 SRCS	 	+=	display_player.c
 SRCS	 	+=	refresh.c
 
@@ -98,13 +100,21 @@ SRCS	 	+=	put_pixel.c
 
 ### srcs/window/display/draw/raycast/
 
-SRCS	 	+=	get_texture_pos.c
-SRCS	 	+=	get_texture_color.c
 SRCS	 	+=	draw_vertical.c
 SRCS	 	+=	draw_vertical_utils.c
-SRCS	 	+=	draw_sprites.c
+
+### srcs/window/display/draw/raycast/sprite/
+
+SRCS	 	+=	display_sprites.c
+SRCS	 	+=	draw_sprite.c
 SRCS	 	+=	draw_sprites_utils.c
 SRCS	 	+=	sort_sprites.c
+
+### srcs/window/display/draw/raycast/texture
+
+SRCS	 	+=	get_texture_pos.c
+SRCS	 	+=	get_texture_color.c
+SRCS	 	+=	texture_color_utils.c
 
 ### srcs/window/display/line/
 

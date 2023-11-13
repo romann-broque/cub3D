@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 10:09:13 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/13 10:41:05 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/13 14:52:25 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	display_window_content(t_win *const window)
 	raycaster(window, hitpoint_array);
 	if (BONUS)
 	{
-		display_sprite(window);
+		display_sprites(window);
 		display_map_or_minimap(window);
 		display_fov(window, hitpoint_array);
 		display_sprites_on_map(window);

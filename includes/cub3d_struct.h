@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:08:41 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/13 09:07:11 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/13 14:53:54 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,6 +141,13 @@ typedef struct s_sprite
 	double			sq_distance;
 	bool			is_viewed;
 }		t_sprite;
+
+typedef struct s_transform
+{
+	t_pos	pos;
+	int		square_size;
+	int		screen_x;
+}		t_transform;
 
 typedef struct s_cast
 {
