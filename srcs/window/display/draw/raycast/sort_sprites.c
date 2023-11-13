@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_sprites.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 16:37:04 by jess              #+#    #+#             */
-/*   Updated: 2023/11/10 10:45:27 by jess             ###   ########.fr       */
+/*   Updated: 2023/11/13 09:01:58 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,20 @@ static void	swap_sprites(t_win *const window)
 	size_t		i;
 	size_t		j;
 	t_sprite	tmp;
-	t_sprite	*sprite;
+	t_sprite	*sprites;
 
 	i = 0;
-	sprite = &(window->map->sprite_array);
+	sprites = window->map->sprite_array;
 	while (i < window->map->sprite_count)
 	{
 		j = i + 1;
 		while (j < window->map->sprite_count)
 		{
-			if (sprite[i].sq_distance < sprite[j].sq_distance)
+			if (sprites[i].sq_distance < sprites[j].sq_distance)
 			{
-				tmp = sprite[i];
-				sprite[i] = sprite[j];
-				sprite[j] = tmp;
+				tmp = sprites[i];
+				sprites[i] = sprites[j];
+				sprites[j] = tmp;
 			}
 			j++;
 		}
@@ -50,21 +50,24 @@ static double	calculate_sprite_distance(
 
 	return (pow(dist1, 2) + pow(dist2, 2));
 }
+
 static void	set_sprite_distance(t_win *const window)
 {
 	const t_player	player = window->map->player;
-	t_sprite		*sprite;
+	t_sprite		*sprites;
 	size_t			i;
 
 	i = 0;
-	sprite = &(window->map->sprite_array);
+	sprites = window->map->sprite_array;
 	while (i < window->map->sprite_count)
 	{
-		if (sprite[i].is_viewed == true)
-			sprite[i].sq_distance = calculate_sprite_distance(
-				player.pos.x, player.pos.y, sprite[i].pos.x, sprite[i].pos.y);
-		else
-			sprite[i].sq_distance = 0;
+		sprites[i].sq_distance = 0;
+		if (sprites[i].is_viewed == true)
+		{
+			sprites[i].sq_distance = calculate_sprite_distance(
+					player.pos.x, player.pos.y,
+					sprites[i].pos.x, sprites[i].pos.y);
+		}
 		i++;
 	}
 }

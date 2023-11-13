@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display_window.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 10:09:13 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/09 16:03:50 by jess             ###   ########.fr       */
+/*   Updated: 2023/11/13 08:58:21 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	display_window_content(t_win *const window)
 	raycaster(window, hitpoint_array);
 	if (BONUS)
 	{
+		display_sprite(window);
 		if (window->mod == E_MAP)
 			display_map(window);
 		else if (window->mod == E_STD)

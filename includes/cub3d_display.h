@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_display.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:12:25 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/10 15:59:21 by jess             ###   ########.fr       */
+/*   Updated: 2023/11/13 09:01:17 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,6 +140,20 @@ void		set_texture_start_pos(
 				const int lineheight,
 				const double wall_start_y);
 
+		// draw_sprites.c
+
+void		display_sprite(t_win *const window);
+
+		// draw_sprites_utils.c
+
+t_pos		init_sprite_end(const int sprite_height, const int x);
+t_pos		init_sprite_start(const int sprite_height, const int x);
+t_pos		get_transformed_sprite_position(const double inv_det,
+				const t_pos sprite_pos, const t_player *const player);
+t_pos		get_sprite_position_to_camera(const t_sprite *const sprite,
+				const t_player *const player);
+double		get_inv_det(const t_player *const player);
+
 		// get_texture_pos.c
 
 int			get_tex_x(const t_cast *const cast,
@@ -165,15 +179,14 @@ void		sort_sprites(t_win *const window);
 
 		// draw_sprites_utils.c
 
-double		get_inv_det(const t_player player);
+double		get_inv_det(const t_player *const player);
 t_pos		get_sprite_position_to_camera(
-				const t_sprite sprite,
-				const t_player player);
+				const t_sprite *const sprite,
+				const t_player *const player);
 t_pos		get_transformed_sprite_position(
-				const t_sprite sprite,
 				const double inv_det,
 				const t_pos sprite_pos,
-				const t_player player);
+				const t_player *const player);
 t_pos		init_sprite_end(const int sprite_height, const int x);
 t_pos		init_sprite_start(const int sprite_height, const int x);
 
