@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:06:20 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/13 16:32:21 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/13 21:04:40 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@
 # define DOOR_WIDTH			3
 # define DOOR_RADIUS		2
 # define DOOR_TIME			50
+# define SPRITE_TIME		5
 # define WAIT_DOOR_TIME		150
 # define PLAYER_SIZE		4
 # define SPRITE_SIZE		2

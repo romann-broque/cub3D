@@ -89,7 +89,7 @@ SRCS	 	+=	display_sprites_on_map.c
 SRCS	 	+=	display_player.c
 SRCS	 	+=	refresh.c
 
-### srcs/window/display/draw
+### srcs/window/display/draw/
 
 SRCS	 	+=	draw_on_map.c
 SRCS	 	+=	draw_on_minimap.c
@@ -107,6 +107,7 @@ SRCS	 	+=	draw_vertical_utils.c
 
 SRCS	 	+=	display_sprites.c
 SRCS	 	+=	draw_sprite.c
+SRCS	 	+=	draw_sprite_stripe.c
 SRCS	 	+=	draw_sprites_utils.c
 SRCS	 	+=	sort_sprites.c
 

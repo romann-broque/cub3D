@@ -6,57 +6,20 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 14:36:03 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/13 16:01:38 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/13 21:25:23 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int	get_sprite_tex_x(
-	const t_sprite *const sprite,
-	const int sprite_height_width,
-	const int sprite_screen_x,
-	const int i)
+static size_t	get_tex_index_from_time(const t_sprite *const sprite)
 {
-	return ((256 * (i + sprite_height_width / 2 - sprite_screen_x)
-			* sprite->texture->width / sprite_height_width) / 256);
-}
+	size_t	new_index;
 
-static int	get_sprite_tex_y(
-	const t_sprite *const sprite,
-	const int sprite_height_width,
-	const size_t y
-)
-{
-	const int	d = y * 256 + (sprite_height_width - WINDOW_HEIGHT) * 128;
-	const int	tex_y
-		= ((d * sprite->texture->height) / sprite_height_width) / 256;
-
-	return (tex_y);
-}
-
-static void	draw_sprite_stripe(
-	t_data *const data,
-	const t_sprite *const sprite,
-	const t_transform *transform,
-	const size_t stripe_index
-)
-{
-	uint32_t	color;
-	t_pos		tex_pos;
-	size_t		i;
-
-	tex_pos.x = get_sprite_tex_x(sprite, transform->square_size,
-			transform->screen_x, stripe_index);
-	i = sprite->sprite_start.y;
-	while (i < sprite->sprite_end.y)
-	{
-		tex_pos.y = get_sprite_tex_y(sprite, transform->square_size, i);
-		color = get_sprite_texture(sprite->texture, tex_pos);
-		if (color & WHITE)
-			put_pixel(data, stripe_index, i, color);
-		++i;
-	}
+	new_index = sprite->time / SPRITE_TIME;
+	if (new_index >= sprite->tex_count)
+		new_index = 0;
+	return (new_index);
 }
 
 static void	draw_sprite_pixel(
@@ -79,6 +42,13 @@ static void	draw_sprite_pixel(
 	}
 }
 
+static void	set_curr_texture(t_sprite *const sprite)
+{
+	const size_t	tex_index = get_tex_index_from_time(sprite);
+
+	sprite->curr_texture = sprite->textures + tex_index;
+}
+
 void	draw_sprite(
 	t_data *data,
 	t_sprite *const sprite,
@@ -99,5 +69,6 @@ void	draw_sprite(
 	transform.pos = transform_pos;
 	transform.screen_x = sprite_screen_x;
 	transform.square_size = sprite_height_width;
+	set_curr_texture(sprite);
 	draw_sprite_pixel(data, sprite, transform, distance_array);
 }

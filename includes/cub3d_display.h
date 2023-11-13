@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:12:25 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/13 16:51:33 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/13 21:24:25 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,6 +164,14 @@ t_pos		get_transformed_sprite_position(
 				const t_player *const player);
 t_pos		init_sprite_end(const int sprite_height, const int x);
 t_pos		init_sprite_start(const int sprite_height, const int x);
+
+		// draw_sprite_stripe.c
+
+void		draw_sprite_stripe(
+				t_data *const data,
+				const t_sprite *const sprite,
+				const t_transform *transform,
+				const size_t stripe_index);
 
 		// draw_sprite.c
 

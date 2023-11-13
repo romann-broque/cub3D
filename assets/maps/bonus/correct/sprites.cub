@@ -7,12 +7,12 @@ F ./assets/textures/doom_ground.xpm
 D ./assets/textures/doom_grid.xpm
 2 ./assets/textures/w3d_lamp.xpm
 3 ./assets/textures/w3d_lamp.xpm
-4 ./assets/textures/sprites/burning_barrel/burning_barrel1.xpm ./assets/textures/sprites/burning_barrel/burning_barrel2.xpm
-5 ./assets/textures/sprites/burning_barrel/burning_barrel2.xpm
-6 ./assets/textures/sprites/burning_barrel/burning_barrel3.xpm
+4 ./assets/textures/sprites/burning_barrel/burning_barrel1.xpm ./assets/textures/sprites/burning_barrel/burning_barrel2.xpm ./assets/textures/sprites/burning_barrel/burning_barrel3.xpm
+5 ./assets/textures/sprites/exploding_barrel/exploding_barrel1.xpm ./assets/textures/sprites/exploding_barrel/exploding_barrel2.xpm ./assets/textures/sprites/exploding_barrel/exploding_barrel3.xpm ./assets/textures/sprites/exploding_barrel/exploding_barrel4.xpm ./assets/textures/sprites/exploding_barrel/exploding_barrel5.xpm
+6 ./assets/textures/sprites/metallic_lamp/metallic_lamp1.xpm ./assets/textures/sprites/metallic_lamp/metallic_lamp2.xpm ./assets/textures/sprites/metallic_lamp/metallic_lamp3.xpm ./assets/textures/sprites/metallic_lamp/metallic_lamp4.xpm
 
 11111111111111111111111111111
-10010000000012000456000000001
+10010000000012004446000000001
 100D00003000D000000001000001
 1d11000100001d1001N0000001001
 10000000000000000000100000001
