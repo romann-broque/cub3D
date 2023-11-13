@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 17:09:05 by lechon            #+#    #+#             */
-/*   Updated: 2023/11/01 18:32:35 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/13 21:49:41 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,10 @@ void			print_format_error(const char *const error_message);
 	// print_format_warning.c
 
 void			print_format_warning(const char *const warning_message);
+
+	// print_help.c
+
+void			print_help(void);
 
 	// print_fps.c
 

@@ -60,6 +60,7 @@ SRCS		+=	are_dimensions_valid.c
 
 SRCS		+=	print_format_error.c
 SRCS		+=	print_format_warning.c
+SRCS		+=	print_help.c
 SRCS		+=	print_fps.c
 
 ### srcs/read_file/

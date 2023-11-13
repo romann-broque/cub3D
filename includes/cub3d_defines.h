@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:06:20 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/13 21:31:54 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/13 22:00:06 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,34 +114,13 @@
 #  define VALID_CHAR			"01 NSWE\n"
 # endif
 
-// Errors
-
-# define ERROR_USAGE				"Usage: ./cub3d <file.cub>"
-# define MLX_ERROR					"MLX_ERROR"
-# define EMPTY_FILE					"EMPTY FILE"
-# define MAP_NOT_CLOSED				"MAP NOT CLOSED"
-# define MAP_NOT_UNIQUE				"MAP NOT UNIQUE"
-# define MAP_TOO_BIG				"MAP TOO BIG"
-# define MAP_CONTENT_WRONG			"MAP CONTENT IS WRONG"
-# define DOOR_NOT_SURROUNDED		"DOOR NOT SURROUNDED"
-# define UNKNOWN_CONFIG				"UNKNOWN CONFIG"
-# define DUPLICATED_CONFIG			"DUPLICATED CONFIG"
-# define WRONG_RGB					"WRONG RGB"
-# define INVALID_FILENAME			"FILENAME IS INVALID"
-# define INVALID_TEXTURE			"INVALID TEXTURE"
-# define SPECIAL_TEXTURE_NOT_SET	"SPECIAL TEXTURE NOT SET"
-
-// Warning
-
-# define DIMENSIONS_NOT_SUPPORTED	"Dimensions not supported"
-# define TOO_MANY_TEXTURES			"Too many textures"
-
 // Print Colors
 
 # define NC					"\033[0m"
 # define RED_PRINT			"\033[0;31m"
 # define GREEN_PRINT		"\033[0;32m"
 # define ORANGE_PRINT		"\033[0;33m"
+# define BLUE_PRINT			"\033[0;34m"
 
 // Pixel Colors
 
@@ -168,6 +147,68 @@
 // Cursor
 
 # define LEFT_CLICK			1
+
+// Errors
+
+# define ERROR_USAGE				"Usage: ./cub3d <file.cub>"
+# define MLX_ERROR					"MLX_ERROR"
+# define EMPTY_FILE					"EMPTY FILE"
+# define INVALID_FILENAME			"FILENAME IS INVALID"
+# define MAP_NOT_CLOSED				"MAP NOT CLOSED"
+# define MAP_NOT_UNIQUE				"MAP NOT UNIQUE"
+# define MAP_TOO_BIG				"MAP TOO BIG"
+# define MAP_CONTENT_WRONG			"MAP CONTENT IS WRONG"
+# define DOOR_NOT_SURROUNDED		"DOOR NOT SURROUNDED"
+# define UNKNOWN_CONFIG				"UNKNOWN CONFIG"
+# define DUPLICATED_CONFIG			"DUPLICATED CONFIG"
+# define WRONG_RGB					"WRONG RGB"
+# define INVALID_TEXTURE			"INVALID TEXTURE"
+# define SPECIAL_TEXTURE_NOT_SET	"SPECIAL TEXTURE NOT SET"
+
+// Warning
+
+# define DIMENSIONS_NOT_SUPPORTED	"Dimensions not supported"
+# define TOO_MANY_TEXTURES			"Too many textures"
+
+// Help
+
+# define HELP_KEYWORD				"--help"
+# ifdef BONUS
+#  define CUB_USAGE					"\
+\nFile example:\n\n\
+NO ./folder/tex1.xpm\n\
+SO ./folder/tex2.xpm\n\
+WE ./folder/tex3.xpm\n\
+EA ./folder/tex4.xpm\n\
+C ./folder/tex5.xpm\n\
+F ./folder/tex6.xpm\n\
+2 ./folder/sprite/candle1.xpm ./folder/candle2.xpm\n\
+3 ./folder/sprite/water1.xpm ./folder/water2.xpm ./folder/water3.xpm\n\
+4 ./folder/sprite/explosion1.xpm\n\
+D ./folder/door.xpm\n\
+\n\
+ 1111111\n\
+11024011\n\
+11300N01\n\
+11000011\n\
+1101d11\n\
+110D0011\n\
+11111111\n"
+# else
+#  define CUB_USAGE					"\
+\nFile example:\n\n\
+NO ./folder/tex1.xpm\n\
+SO ./folder/tex2.xpm\n\
+WE ./folder/tex3.xpm\n\
+EA ./folder/tex4.xpm\n\
+C 94,12,243\n\
+F 14,230,98\n\
+\n\
+ 1111111\n\
+11000011\n\
+11000N01\n\
+1111111\n"
+# endif
 
 # ifndef BONUS
 #  define BONUS 0
