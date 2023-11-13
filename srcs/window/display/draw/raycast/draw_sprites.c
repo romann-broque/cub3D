@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 11:33:58 by jess              #+#    #+#             */
-/*   Updated: 2023/11/13 10:01:18 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/13 10:37:56 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,9 @@ static void	draw_sprite_pixel(
 			while (j < sprite->sprite_end.y)
 			{
 				tex_pos.y = get_sprite_tex_y(sprite, sprite_height_width, j);
-				put_pixel(data, i, j, get_sprite_texture(sprite->texture, tex_pos));
+				uint32_t	color = get_sprite_texture(sprite->texture, tex_pos);
+				if ((color & 0x00ffffff) != 0)
+					put_pixel(data, i, j, color);
 				j++;
 			}
 		}

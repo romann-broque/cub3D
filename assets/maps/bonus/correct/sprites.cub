@@ -5,18 +5,18 @@ WE ./assets/textures/doom_grid.xpm
 C ./assets/textures/doom_hexagone.xpm
 F ./assets/textures/doom_ground.xpm
 D ./assets/textures/doom_grid.xpm
-2 ./assets/textures/w3d_door.xpm
-3 ./assets/textures/doom_curst.xpm
-4 ./assets/textures/doom_hexagone.xpm
-5 ./assets/textures/doom_grid.xpm
-6 ./assets/textures/doom_ground.xpm
+2 ./assets/textures/w3d_lamp.xpm
+3 ./assets/textures/w3d_lamp.xpm
+4 ./assets/textures/w3d_lamp.xpm
+5 ./assets/textures/w3d_lamp.xpm
+6 ./assets/textures/w3d_lamp.xpm
 7 ./assets/textures/w3d_wood.xpm
 8 ./assets/textures/w3d_bluebrick.xpm
 9 ./assets/textures/w3d_redbrick.xpm
 
 11111111111111111111111111111
-10010000000012345678900000001
-100D00000000D0040000001000001
-1d11000100001d1001N0000401001
+10010000000012000000000000001
+100D00000000D0000000001000001
+1d11000100001d1001N0000001001
 10000000000000000000100000001
 11111111111111111111111111111
