@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:06:20 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/13 09:04:55 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/13 16:16:38 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@
 # define BITS_PER_BYTE				8
 # define FPS_FREQUENCY				10
 # define KEY_COUNT					9
+# define SPRITE_KIND_COUNT			8
 # define MANDATORY_ATTRIBUTE_COUNT	6
 # define SPECIAL_TILE_COUNT			10
 
