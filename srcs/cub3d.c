@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:14 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/13 21:49:03 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/13 22:53:14 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	main(int ac, char **av)
 	ret_val = EXIT_FAILURE;
 	if (ac == EXPECTED_ARG_COUNT)
 	{
-		if (streq(av[1], HELP_KEYWORD))
+		if (streq(av[1], HELP_KEYWORD1) || streq(av[1], HELP_KEYWORD2))
 		{
 			print_help();
 			ret_val = EXIT_SUCCESS;

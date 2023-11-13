@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:06:20 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/13 22:00:06 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/13 22:52:47 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,7 +172,8 @@
 
 // Help
 
-# define HELP_KEYWORD				"--help"
+# define HELP_KEYWORD1				"--help"
+# define HELP_KEYWORD2				"-h"
 # ifdef BONUS
 #  define CUB_USAGE					"\
 \nFile example:\n\n\
