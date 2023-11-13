@@ -1,39 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   refresh_tiles.c                                    :+:      :+:    :+:   */
+/*   sprite_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/06 07:40:24 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/13 15:50:31 by rbroque          ###   ########.fr       */
+/*   Created: 2023/11/13 15:45:13 by rbroque           #+#    #+#             */
+/*   Updated: 2023/11/13 15:45:35 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	refresh_single_tile(
-	const t_map *const map,
-	t_tile *const tile)
+void	set_sprite_as_viewed(
+	t_map *const map,
+	const double x,
+	const double y
+	)
 {
-	if (is_tile_door(tile) == true)
-		refresh_door(&(map->player), tile);
-}
-
-void	refresh_tiles(t_map *const map)
-{
-	size_t	i;
-	size_t	j;
+	t_sprite	*sprite;
+	size_t		i;
 
 	i = 0;
-	while (i < map->height)
+	while (i < map->sprite_count)
 	{
-		j = 0;
-		while (j < map->width)
-		{
-			refresh_single_tile(map, &(map->matrix[i][j]));
-			++j;
-		}
+		sprite = map->sprite_array + i;
+		if (is_on_tile(&(sprite->pos), x, y))
+			sprite->is_viewed = true;
 		++i;
 	}
+}
+
+bool	is_sprite(const t_map *const map, const size_t x, const size_t y)
+{
+	return (is_in_str(SPRITES, map->matrix[y][x].tile_char));
 }

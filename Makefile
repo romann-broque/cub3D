@@ -176,14 +176,15 @@ SRCS	 	+=	raycaster.c
 
 ### srcs/window/map/sprites/
 
-SRCS	 	+=	is_sprite.c
 SRCS	 	+=	init_sprites.c
+SRCS	 	+=	refresh_sprites.c
+SRCS	 	+=	sprite_utils.c
 
 ### srcs/window/map/tile/
 
 SRCS	 	+=	door.c
 SRCS	 	+=	refresh_tiles.c
-SRCS	 	+=	get_tile_from_map.c
+SRCS	 	+=	tile_utils.c
 SRCS	 	+=	tile_mark.c
 SRCS	 	+=	tile_type.c
 

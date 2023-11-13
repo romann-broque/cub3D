@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_tile_from_map.c                                :+:      :+:    :+:   */
+/*   refresh_sprites.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/06 14:33:23 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/06 23:14:21 by rbroque          ###   ########.fr       */
+/*   Created: 2023/11/13 15:53:28 by rbroque           #+#    #+#             */
+/*   Updated: 2023/11/13 15:53:40 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-t_tile	*get_tile_from_map(
-	const t_map *const map,
-	const size_t x,
-	const size_t y
-)
+void	refresh_sprites(t_map *const map)
 {
-	return (&(map->matrix[y][x]));
+	size_t	i;
+
+	i = 0;
+	while (i < map->sprite_count)
+	{
+		map->sprite_array[i].is_viewed = false;
+		++i;
+	}
 }

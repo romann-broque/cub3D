@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 10:09:13 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/13 14:52:25 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/13 15:53:44 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	display_window_content(t_win *const window)
 		display_sprites_on_map(window);
 		display_player(window);
 		refresh_tiles(window->map);
+		refresh_sprites(window->map);
 		print_fps();
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 20:07:09 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/09 13:05:00 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/13 15:45:21 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,13 @@ static bool	is_transparent(
 	const double y
 	)
 {
+	if (BONUS)
+	{
+		if (is_sprite(map, x, y))
+			set_sprite_as_viewed(map, x, y);
+		return (is_ground(map, x, y) || is_sprite(map, x, y)
+			|| is_going_through_door(map, cast, x, y));
+	}
 	return (is_ground(map, x, y) || is_sprite(map, x, y)
 		|| is_going_through_door(map, cast, x, y));
 }
