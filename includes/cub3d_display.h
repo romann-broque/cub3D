@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:12:25 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/13 09:01:17 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/13 09:06:22 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,11 @@ t_pos		get_offset(const t_pos player_pos);
 
 // display_player.c
 
-void		display_player_on_map(t_win *const window);
-void		display_player_on_minimap(t_win *const window);
+void		display_player(t_win *const window);
+
+// display_sprites.c
+
+void		display_sprites_on_map(t_win *const window);
 
 /////////////////////////////////////////
 /////				draw			/////

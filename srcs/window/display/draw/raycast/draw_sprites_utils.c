@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 11:16:12 by jess              #+#    #+#             */
-/*   Updated: 2023/11/13 08:54:48 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/13 09:43:51 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ t_pos	get_transformed_sprite_position(
 	t_pos	new;
 
 	new.x = inv_det
-		* (player->dir.y * sprite_pos.x - player->dir.y * sprite_pos.y);
+		* (player->dir.y * sprite_pos.x - player->dir.x * sprite_pos.y);
 	new.y = inv_det
 		* (-player->plane.y * sprite_pos.x + player->plane.x * sprite_pos.y);
 	return (new);
@@ -63,6 +63,6 @@ t_pos	get_sprite_position_to_camera(
 
 double	get_inv_det(const t_player *const player)
 {
-	return (1.0 / player->plane.x * player->dir.y
-		- player->dir.x * player->plane.y);
+	return (1.0 / (player->plane.x * player->dir.y
+			- player->dir.x * player->plane.y));
 }

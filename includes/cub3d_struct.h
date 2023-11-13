@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_struct.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:08:41 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/10 16:10:49 by jess             ###   ########.fr       */
+/*   Updated: 2023/11/13 09:07:11 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,15 @@ enum e_attribute_type
 	E_EAST,
 	E_FLOOR,
 	E_CEIL,
-	E_DOOR
+	E_DOOR,
+	E_SP1,
+	E_SP2,
+	E_SP3,
+	E_SP4,
+	E_SP5,
+	E_SP6,
+	E_SP7,
+	E_SP8
 };
 
 typedef enum e_side
@@ -107,12 +115,12 @@ typedef struct s_line
 	t_pos	pos2;
 	t_pos	min_pos;
 	t_pos	max_pos;
-	double	dx;
-	int		sx;
-	double	dy;
-	int		sy;
 	double	error;
 	double	e2;
+	double	dx;
+	double	dy;
+	int		sx;
+	int		sy;
 	size_t	nb_points;
 }		t_line;
 

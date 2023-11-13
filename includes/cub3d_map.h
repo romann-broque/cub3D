@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 17:12:07 by lechon            #+#    #+#             */
-/*   Updated: 2023/11/07 13:24:47 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/09 13:19:32 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,19 @@ void			set_side(t_side *const side, const t_vect step);
 
 t_cast			dda(t_map *const map, const t_pos pos,
 					const t_vect ray, const t_vect delta_dist);
+
+/////////////////////////
+////     sprites     ////
+/////////////////////////
+
+	// is_sprite.c
+
+bool			is_sprite(const t_map *const map, const size_t x,
+					const size_t y);
+
+	// init_sprites.c
+
+void			init_sprites(t_map *const map, const t_config *const config);
 
 /////////////////////////
 ////     	tile     ////

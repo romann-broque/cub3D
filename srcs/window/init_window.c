@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 09:39:32 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/08 09:48:06 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/09 11:22:30 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ void	init_window(
 	init_map_in_window(window, offset, file_content);
 	if (window->map != NULL)
 	{
+		if (BONUS)
+			init_sprites(window->map, &(window->config));
 		init_player(window->map);
 		window->keys = init_keys();
 		window->mod = E_STD;

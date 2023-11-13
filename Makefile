@@ -27,6 +27,7 @@ PATH_SRCS	+=	srcs/window/map/init_map/
 PATH_SRCS	+=	srcs/window/map/is_map_valid/
 PATH_SRCS	+=	srcs/window/map/player/
 PATH_SRCS	+=	srcs/window/map/raycast/
+PATH_SRCS	+=	srcs/window/map/sprites/
 PATH_SRCS	+=	srcs/window/map/tile/
 
 ### srcs/
@@ -82,6 +83,7 @@ SRCS	 	+=	display_window.c
 SRCS	 	+=	display_map.c
 SRCS	 	+=	display_grid.c
 SRCS	 	+=	display_grid_utils.c
+SRCS	 	+=	display_sprites.c
 SRCS	 	+=	display_player.c
 SRCS	 	+=	refresh.c
 
@@ -128,6 +130,7 @@ SRCS	 	+=	e_translation.c
 SRCS	 	+=	e_map_mod.c
 SRCS	 	+=	e_open_door.c
 SRCS	 	+=	translate.c
+SRCS	 	+=	is_crossable.c
 SRCS	 	+=	get_translated_pos.c
 
 ### srcs/window/map/
@@ -160,6 +163,11 @@ SRCS	 	+=	get_vect.c
 SRCS	 	+=	dda.c
 SRCS	 	+=	cast_utils.c
 SRCS	 	+=	raycaster.c
+
+### srcs/window/map/sprites/
+
+SRCS	 	+=	is_sprite.c
+SRCS	 	+=	init_sprites.c
 
 ### srcs/window/map/tile/
 
@@ -288,6 +296,7 @@ endif
 
 ifeq ($(filter bonus,$(MAKECMDGOALS)),bonus)
 	CFLAGS	+= -D BONUS=true
+	BONUS = "bonus"
 endif
 
 ifeq ($(filter test,$(MAKECMDGOALS)),test)
@@ -364,7 +373,7 @@ test	: all
 	echo -e $(BLUE) "\n====> Building FUNCHECK TESTS <===="$(NC)"\n"
 	$(MAKE) -sC $(FUNCHECK_FOLDER_LIB)
 	$(MAKE) -sC $(FUNCHECK_FOLDER_HOST)
-	$(FUNCHECK_SCRIPT)
+	$(FUNCHECK_SCRIPT) $(BONUS)
 
 bonus: all
 

@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 10:09:13 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/13 08:58:21 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/13 09:07:44 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,14 @@ static void	display_fov(
 	}
 }
 
+static void	display_map_or_minimap(t_win *const window)
+{
+	if (window->mod == E_MAP)
+		display_map(window);
+	else if (window->mod == E_STD)
+		display_minimap(window);
+}
+
 void	display_window_content(t_win *const window)
 {
 	t_pos	hitpoint_array[WINDOW_WIDTH];
@@ -43,11 +51,10 @@ void	display_window_content(t_win *const window)
 	if (BONUS)
 	{
 		display_sprite(window);
-		if (window->mod == E_MAP)
-			display_map(window);
-		else if (window->mod == E_STD)
-			display_minimap(window);
+		display_map_or_minimap(window);
 		display_fov(window, hitpoint_array);
+		display_sprites_on_map(window);
+		display_player(window);
 		refresh_tiles(window->map);
 		print_fps();
 	}

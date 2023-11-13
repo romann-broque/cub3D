@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 15:00:52 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/18 09:38:57 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/10 07:44:28 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,34 @@ static void	print_matrix(
 	}
 }
 
+static void	print_sprites(
+	const t_sprite *const sprite_array,
+	const size_t sprite_count
+	)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < sprite_count)
+	{
+		printf("%zu -> %lf;%lf (%p)\n", i + 1,
+			sprite_array[i].pos.x,
+			sprite_array[i].pos.y,
+			sprite_array[i].texture);
+		++i;
+	}
+}
+
 void	print_map(const t_map *const map)
 {
 	if (map != NULL)
 	{
 		printf("Height: %zu\nWidth: %zu\n\n", map->height, map->width);
 		print_matrix(map->matrix, map->height, map->width);
+		if (BONUS)
+		{
+			printf("sprites_count -> %zu\n", map->sprite_count);
+			print_sprites(map->sprite_array, map->sprite_count);
+		}
 	}
 }

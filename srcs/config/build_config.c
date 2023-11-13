@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 09:44:49 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/08 09:43:21 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/09 09:25:45 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,13 @@
 
 static ssize_t	check_complete_config(
 	ssize_t offset,
+	const int attribute_status,
 	const t_config *const config
 )
 {
-	if (offset != INVALID_OFFSET
+	if (attribute_status == ATTRIBUTE_DUPLICATED)
+		offset = INVALID_OFFSET;
+	else if (offset != INVALID_OFFSET
 		&& is_config_complete(config) == false)
 	{
 		print_format_error(UNKNOWN_CONFIG);
@@ -31,14 +34,15 @@ static ssize_t	build_attributes(
 	char *const *const lines)
 {
 	char	**sequence;
+	int		attribute_status;
 	ssize_t	offset;
 
 	offset = 0;
 	sequence = ft_split(lines[offset], SPACE);
 	if (sequence == NULL)
 		print_format_error(strerror(errno));
-	while (offset != INVALID_OFFSET
-		&& build_attribute_from_sequence(config, sequence) == EXIT_SUCCESS)
+	attribute_status = build_attribute_from_sequence(config, sequence);
+	while (offset != INVALID_OFFSET && attribute_status == EXIT_SUCCESS)
 	{
 		++offset;
 		free_strs(sequence);
@@ -48,8 +52,9 @@ static ssize_t	build_attributes(
 			print_format_error(strerror(errno));
 			offset = INVALID_OFFSET;
 		}
+		attribute_status = build_attribute_from_sequence(config, sequence);
 	}
-	offset = check_complete_config(offset, config);
+	offset = check_complete_config(offset, attribute_status, config);
 	free_strs(sequence);
 	return (offset);
 }

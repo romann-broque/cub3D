@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 15:25:37 by jess              #+#    #+#             */
-/*   Updated: 2023/11/08 11:28:26 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/09 09:28:54 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,14 @@ static bool	is_attribute_key(const char *const key)
 {
 	size_t						i;
 	static const char *const	attribute_key[] = {
-		NORTH_KEY,
-		SOUTH_KEY,
-		WEST_KEY,
-		EAST_KEY,
-		FLOOR_KEY,
-		CEIL_KEY,
-		DOOR_KEY
+		NORTH_KEY, SOUTH_KEY,
+		WEST_KEY, EAST_KEY,
+		FLOOR_KEY, CEIL_KEY,
+		DOOR_KEY, SP1_KEY,
+		SP2_KEY, SP3_KEY,
+		SP4_KEY, SP5_KEY,
+		SP6_KEY, SP7_KEY,
+		SP8_KEY, NULL
 	};
 
 	i = 0;

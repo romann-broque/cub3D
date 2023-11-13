@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 09:03:14 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/08 11:29:34 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/09 13:13:59 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,6 @@ static t_pos	get_dir_speed(
 	return (dir_speed);
 }
 
-static bool	is_door_opened(
-	const t_map *const map,
-	const size_t x,
-	const size_t y
-)
-{
-	const t_tile *const	tile = get_tile_from_map(map, x, y);
-
-	return (is_tile_door(tile) && tile->state == OPENED);
-}
-
 static void	get_new_pos_from_wall_collision(
 	t_pos *const new_pos,
 	const t_pos *const check_pos,
@@ -47,11 +36,9 @@ static void	get_new_pos_from_wall_collision(
 
 	if (player_pos == NULL)
 		player_pos = &(map->player.pos);
-	if (is_ground(map, check_pos->x, new_pos->y)
-		|| is_door_opened(map, check_pos->x, new_pos->y))
+	if (is_crossable(map, check_pos->x, new_pos->y))
 		new_pos->x = player_pos->x + move_offset.x;
-	if (is_ground(map, new_pos->x, check_pos->y)
-		|| is_door_opened(map, new_pos->x, check_pos->y))
+	if (is_crossable(map, new_pos->x, check_pos->y))
 		new_pos->y = player_pos->y + move_offset.y;
 }
 
@@ -89,8 +76,7 @@ t_pos	get_translated_pos(
 	{
 		check_pos.x = player_pos.x + dir_speed.x * i;
 		check_pos.y = player_pos.y + dir_speed.y * i;
-		if (is_wall(map, check_pos.x, check_pos.y)
-			|| is_door_opened(map, check_pos.x, check_pos.y) == false)
+		if (is_crossable(map, check_pos.x, check_pos.y) == false)
 			get_new_pos_from_wall_collision(&new_pos, &check_pos,
 				map, get_move_offset(&dir_speed, i, step_move));
 		else

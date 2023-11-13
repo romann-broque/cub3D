@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_vertical_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jess <jess@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 15:55:09 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/10 14:26:16 by jess             ###   ########.fr       */
+/*   Updated: 2023/11/13 09:06:29 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,8 @@ t_texture	*get_texture_from_cast(
 		return (textures_array + cast->side);
 	if (is_tile_door(cast->tile) == true)
 		return (textures_array + E_DOOR);
-	return (textures_array
-		+ MANDATORY_ATTRIBUTE_COUNT
-		+ index_of(SPECIAL_TILES, cast->tile->tile_char));
+	return (textures_array + MANDATORY_ATTRIBUTE_COUNT
+		+ index_of(SPECIAL_TILES, cast->tile->tile_char) - 1);
 }
 
 void	set_texture_start_pos(
