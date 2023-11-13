@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 15:46:36 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/13 08:42:40 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/13 15:58:54 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ t_cast	raycast(
 	return (cast);
 }
 
-void	raycaster(t_win *const window, t_pos hitpoint_array[WINDOW_WIDTH])
+void	raycaster(
+	t_win *const window,
+	t_pos hitpoint_array[WINDOW_WIDTH],
+	double distance_array[WINDOW_WIDTH])
 {
 	size_t	x;
 	t_cast	cast;
@@ -36,6 +39,7 @@ void	raycaster(t_win *const window, t_pos hitpoint_array[WINDOW_WIDTH])
 		cast = raycast(window, x);
 		draw_vertical(window, &cast, cast.perp_wall_dist, x);
 		hitpoint_array[x] = cast.hitpoint;
+		distance_array[x] = cast.perp_wall_dist;
 		++x;
 	}
 }

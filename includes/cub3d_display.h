@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:12:25 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/13 15:50:31 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/13 16:04:56 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,7 +149,8 @@ void		set_texture_start_pos(
 
 		// display_sprites.c
 
-void		display_sprites(t_win *const window);
+void		display_sprites(t_win *const window,
+				const double distance_array[WINDOW_WIDTH]);
 
 		// draw_sprites_utils.c
 
@@ -167,7 +168,8 @@ t_pos		init_sprite_start(const int sprite_height, const int x);
 		// draw_sprite.c
 
 void		draw_sprite(t_data *const data, t_sprite *const sprite,
-				const t_pos transform);
+				const t_pos transform,
+				const double distance_array[WINDOW_WIDTH]);
 
 		// sort_sprites.c
 

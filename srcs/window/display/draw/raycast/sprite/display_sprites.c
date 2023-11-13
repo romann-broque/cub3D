@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 11:33:58 by jess              #+#    #+#             */
-/*   Updated: 2023/11/13 15:50:31 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/13 16:06:01 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ static t_pos	transform_sprite(
 	return (transform);
 }
 
-void	display_sprites(t_win *const window)
+void	display_sprites(
+	t_win *const window,
+	const double distance_array[WINDOW_WIDTH]
+	)
 {
 	t_sprite *const	sprites = window->map->sprite_array;
 	t_pos			transform;
@@ -38,7 +41,8 @@ void	display_sprites(t_win *const window)
 		if (sprites[i].is_viewed == true)
 		{
 			transform = transform_sprite(sprites + i, &(window->map->player));
-			draw_sprite(&(window->data), sprites + i, transform);
+			draw_sprite(&(window->data),
+				sprites + i, transform, distance_array);
 		}
 		i++;
 	}
