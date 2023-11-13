@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:12:25 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/13 09:06:22 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/13 10:00:23 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,6 +175,8 @@ uint32_t	get_wall_texture(
 				const t_cast *const cast,
 				t_texture texture,
 				const int tex_x);
+uint32_t	get_sprite_texture(const t_texture *const texture,
+				t_pos tex_pos);
 
 		// sort_sprites.c
 
