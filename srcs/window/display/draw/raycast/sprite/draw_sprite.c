@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 14:36:03 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/13 15:02:42 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/13 15:05:14 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ static void	draw_sprite_stripe(
 	{
 		tex_pos.y = get_sprite_tex_y(sprite, transform->square_size, i);
 		color = get_sprite_texture(sprite->texture, tex_pos);
-		if ((color & 0x00ffffff) != 0)
+		if (color & WHITE)
 			put_pixel(data, stripe_index, i, color);
-		i++;
+		++i;
 	}
 }
 
