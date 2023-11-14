@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 11:09:16 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/14 11:16:31 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/14 18:07:29 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static bool	assign_attribute(
 		print_format_error(WRONG_DARK_VALUE);
 	else
 		return (fill_attribute(config, type, values));
-	return (EXIT_FAILURE);
+	return (ATTRIBUTE_VALUE_FAILURE);
 }
 
 static int	add_attribute_into_config(
@@ -45,10 +45,7 @@ static int	add_attribute_into_config(
 		ret_val = ATTRIBUTE_DUPLICATED;
 	}
 	else
-	{
-		if (assign_attribute(config, type, values) == EXIT_SUCCESS)
-			ret_val = ATTRIBUTE_SUCCESS;
-	}
+		ret_val = assign_attribute(config, type, values);
 	return (ret_val);
 }
 

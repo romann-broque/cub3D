@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 13:50:14 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/14 13:51:05 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/14 18:06:28 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ ssize_t	check_complete_config(
 	const t_config *const config
 )
 {
-	if (attribute_status == ATTRIBUTE_DUPLICATED)
+	if (attribute_status == ATTRIBUTE_DUPLICATED
+		|| attribute_status == ATTRIBUTE_VALUE_FAILURE)
 		offset = INVALID_OFFSET;
 	else if (offset != INVALID_OFFSET
 		&& is_config_complete(config) == false)

@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:06:20 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/14 16:51:07 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/14 18:03:09 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@
 # define ATTRIBUTE_SUCCESS			0
 # define ATTRIBUTE_FAILURE			1
 # define ATTRIBUTE_DUPLICATED		2
+# define ATTRIBUTE_VALUE_FAILURE	3
 # define RGB_SIZE					3
 # define BITS_PER_BYTE				8
 # define FPS_FREQUENCY				10
