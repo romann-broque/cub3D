@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 15:25:37 by jess              #+#    #+#             */
-/*   Updated: 2023/11/13 16:20:32 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/14 10:44:31 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ static bool	is_attribute_key(const char *const key)
 		SP2_KEY, SP3_KEY,
 		SP4_KEY, SP5_KEY,
 		SP6_KEY, SP7_KEY,
-		SP8_KEY, NULL
+		SP8_KEY, DARK_KEY,
+		NULL
 	};
 
 	i = 0;

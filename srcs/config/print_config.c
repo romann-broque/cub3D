@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 18:44:51 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/13 17:04:42 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/14 10:46:15 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,7 @@ void	print_config(t_config *const config)
 		print_attribute("door",
 			config->attribute_array[E_DOOR]);
 		print_sprites(config);
+		print_attribute("DARK",
+			config->attribute_array[E_DARK]);
 	}
 }

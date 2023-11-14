@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:08:41 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/14 10:10:05 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/14 10:44:25 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ enum e_attribute_type
 	E_SP5,
 	E_SP6,
 	E_SP7,
-	E_SP8
+	E_SP8,
+	E_DARK
 };
 
 typedef enum e_side

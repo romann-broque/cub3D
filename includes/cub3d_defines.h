@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:06:20 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/14 10:36:35 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/14 10:57:03 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@
 
 # ifdef BONUS
 #  define TEXTURE_COUNT		15
-#  define ATTRIBUTE_COUNT	15
+#  define ATTRIBUTE_COUNT	16
 #  define MAX_TEXTURE_COUNT	15
 # else
 #  define TEXTURE_COUNT		4
@@ -105,6 +105,9 @@
 # define SP6_KEY			"7"
 # define SP7_KEY			"8"
 # define SP8_KEY			"9"
+# define DARK_KEY			"DARK"
+# define DARK_ON			"1"
+# define DARK_OFF			"0"
 # define SPRITES			"23456789"
 # define SPECIAL_TILES		"Dd23456789"
 
@@ -162,6 +165,7 @@
 # define UNKNOWN_CONFIG				"UNKNOWN CONFIG"
 # define DUPLICATED_CONFIG			"DUPLICATED CONFIG"
 # define WRONG_RGB					"WRONG RGB"
+# define WRONG_DARK_VALUE			"WRONG DARK VALUE"
 # define INVALID_TEXTURE			"INVALID TEXTURE"
 # define SPECIAL_TEXTURE_NOT_SET	"SPECIAL TEXTURE NOT SET"
 

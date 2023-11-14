@@ -41,6 +41,7 @@ SRCS	 	+=	cub3d.c
 SRCS		+=	is_rgb.c
 SRCS		+=	attribute_utils.c
 SRCS		+=	init_config.c
+SRCS		+=	build_attribute_from_sequence.c
 SRCS		+=	build_config.c
 SRCS		+=	free_config.c
 SRCS		+=	print_config.c
