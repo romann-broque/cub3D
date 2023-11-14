@@ -6,28 +6,11 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 09:44:49 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/13 16:48:35 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/14 13:50:12 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-static ssize_t	check_complete_config(
-	ssize_t offset,
-	const int attribute_status,
-	const t_config *const config
-)
-{
-	if (attribute_status == ATTRIBUTE_DUPLICATED)
-		offset = INVALID_OFFSET;
-	else if (offset != INVALID_OFFSET
-		&& is_config_complete(config) == false)
-	{
-		print_format_error(UNKNOWN_CONFIG);
-		offset = INVALID_OFFSET;
-	}
-	return (offset);
-}
 
 static ssize_t	build_attributes(
 	t_config *const config,
@@ -117,6 +100,15 @@ static int	set_textures_array(
 	return (ret_val);
 }
 
+static void	set_dark_status(t_config *const config)
+{
+	if (BONUS)
+	{
+		config->is_dark
+			= (streq(config->attribute_array[E_DARK][0], DARK_ON));
+	}
+}
+
 ssize_t	build_config(
 	t_config *const config,
 	char *const *const lines,
@@ -134,6 +126,7 @@ ssize_t	build_config(
 	{
 		if (BONUS == false)
 			set_color(config);
+		set_dark_status(config);
 		if (set_textures_array(config, mlx_ptr) == EXIT_FAILURE)
 			offset = INVALID_OFFSET;
 	}

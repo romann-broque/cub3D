@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:08:41 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/14 10:44:25 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/14 13:41:37 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ typedef struct s_config
 	char		*attribute_array[ATTRIBUTE_COUNT + 1][MAX_TEXTURE_COUNT];
 	int			ceil_color;
 	int			floor_color;
+	bool		is_dark;
 	t_texture	textures[TEXTURE_COUNT][MAX_TEXTURE_COUNT];
 }		t_config;
 

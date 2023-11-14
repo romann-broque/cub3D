@@ -8,7 +8,7 @@ D ./assets/textures/doom_grid.xpm
 3 ./assets/textures/w3d_lamp.xpm
 4 ./assets/textures/sprites/burning_barrel/burning_barrel1.xpm ./assets/textures/sprites/burning_barrel/burning_barrel2.xpm ./assets/textures/sprites/burning_barrel/burning_barrel3.xpm
 5 ./assets/textures/sprites/exploding_barrel/exploding_barrel1.xpm ./assets/textures/sprites/exploding_barrel/exploding_barrel2.xpm ./assets/textures/sprites/exploding_barrel/exploding_barrel3.xpm ./assets/textures/sprites/exploding_barrel/exploding_barrel4.xpm ./assets/textures/sprites/exploding_barrel/exploding_barrel5.xpm
-DARK 0
+DARK 1
 6 ./assets/textures/sprites/metallic_lamp/metallic_lamp1.xpm ./assets/textures/sprites/metallic_lamp/metallic_lamp2.xpm ./assets/textures/sprites/metallic_lamp/metallic_lamp3.xpm ./assets/textures/sprites/metallic_lamp/metallic_lamp4.xpm
 
 11111111111111111111111111111

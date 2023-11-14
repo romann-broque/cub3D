@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:10:33 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/14 11:16:18 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/14 13:51:49 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,12 @@ void					init_config(t_config *const config);
 ssize_t					build_config(t_config *const config,
 							char *const *const lines,
 							void *const mlx_ptr, void *const win_ptr);
+
+// check_complete_config.c
+
+ssize_t					check_complete_config(ssize_t offset,
+							const int attribute_status,
+							const t_config *const config);
 
 // free_config.c
 
