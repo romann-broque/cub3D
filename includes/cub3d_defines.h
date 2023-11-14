@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:06:20 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/14 18:35:57 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/14 18:44:35 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -202,6 +202,7 @@ F ./folder/tex6.xpm\n\
 3 ./folder/sprite/water1.xpm ./folder/water2.xpm ./folder/water3.xpm\n\
 4 ./folder/sprite/explosion1.xpm\n\
 D ./folder/door.xpm\n\
+DARK 1\n\
 \n\
  1111111\n\
 11024011\n\
@@ -215,6 +216,7 @@ D ./folder/door.xpm\n\
 - d is for vertical door and D is for horizontal door.\n\
 - Sprites keys are 2-9.\n\
 - Odd sprites are crossable, even ones are not.\n\
+- Darkness can be specified by the key \"DARK\" and by the values 0 (disabled) and 1 (enabled).\n\
 "
 # else
 #  define CUB_USAGE					"\
