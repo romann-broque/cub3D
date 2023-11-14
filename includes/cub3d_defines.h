@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:06:20 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/14 18:03:09 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/14 18:35:57 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,15 @@
 # define SPRITE_SIZE		2
 # define FOV				80
 # define STEP_SIZE			0.001
-# define MOVE_SPEED			0.1
-# define ROTATE_SPEED		7
 # define MOUSE_ROTATE_COEFF	0.3
+
+# ifdef BONUS
+#  define MOVE_SPEED		0.1
+#  define ROTATE_SPEED		7
+# else
+#  define MOVE_SPEED		0.05
+#  define ROTATE_SPEED		3
+# endif
 
 // NUMBERS
 
