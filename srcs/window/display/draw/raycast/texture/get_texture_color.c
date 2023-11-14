@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 08:26:13 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/13 16:52:47 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/14 15:29:36 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,13 @@
 
 unsigned int	get_color_from_floor_pos(
 	t_win *const window,
+	const t_cast *const cast,
 	const t_pos *const curr_floor
 	)
 {
 	const t_texture	*floor_texture = (window->config.textures + E_FLOOR)[0];
 	t_pos			floor_tex_pos;
+	unsigned int	color;
 
 	floor_tex_pos.x
 		= ((int)(curr_floor->x * floor_texture->width))
@@ -26,11 +28,14 @@ unsigned int	get_color_from_floor_pos(
 	floor_tex_pos.y
 		= ((int)(curr_floor->y * floor_texture->height))
 		% floor_texture->height;
-	return (get_color_from_text_pos(*floor_texture, &floor_tex_pos));
+	color = get_color_from_text_pos(*floor_texture, &floor_tex_pos);
+	change_texture_brightness(&color, cast, window->config.is_dark);
+	return (color);
 }
 
 unsigned int	get_color_from_ceil_pos(
 	t_win *const window,
+	const t_cast *const cast,
 	const t_pos *const curr_ceil
 	)
 {
@@ -45,13 +50,16 @@ unsigned int	get_color_from_ceil_pos(
 		= ((int)(curr_ceil->y * ceil_texture->height))
 		% ceil_texture->height;
 	color = get_color_from_text_pos(*ceil_texture, &ceil_tex_pos);
-	return (change_brightness(color, BRIGHTNESS_FACTOR));
+	color = change_brightness(color, BRIGHTNESS_FACTOR);
+	change_texture_brightness(&color, cast, window->config.is_dark);
+	return (color);
 }
 
 unsigned int	get_wall_texture(
 	const t_cast *const cast,
 	t_texture texture,
-	int tex_x
+	const int tex_x,
+	t_config *const config
 	)
 {
 	unsigned int	color;
@@ -59,7 +67,7 @@ unsigned int	get_wall_texture(
 
 	set_pos(&tex_pos, tex_x, texture.tex_pos);
 	color = get_color_from_text_pos(texture, &tex_pos);
-	change_texture_brightness(&color, cast->side);
+	change_texture_brightness(&color, cast, config->is_dark);
 	return (color);
 }
 

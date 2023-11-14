@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:12:25 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/13 21:24:25 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/14 15:30:04 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,20 +198,23 @@ t_pos		get_floor_pos(t_win *const window,
 		// texture_color_utils.c
 
 void		change_texture_brightness(unsigned int *const color,
-				const t_side side);
+				const t_cast *const cast, const bool is_dark);
 uint32_t	get_color_from_text_pos(const t_texture texture,
 				const t_pos *const tex_pos);
 
 		// get_texture_color.c
 
 uint32_t	get_color_from_floor_pos(t_win *const window,
+				const t_cast *const cast,
 				const t_pos *const curr_floor);
 uint32_t	get_color_from_ceil_pos(t_win *const window,
+				const t_cast *const cast,
 				const t_pos *const curr_floor);
 uint32_t	get_wall_texture(
 				const t_cast *const cast,
 				t_texture texture,
-				const int tex_x);
+				const int tex_x,
+				t_config *const config);
 uint32_t	get_sprite_texture(const t_texture *const texture,
 				t_pos tex_pos);
 

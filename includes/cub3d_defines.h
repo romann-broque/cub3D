@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:06:20 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/14 10:57:03 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/14 14:59:30 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@
 # define DOOR_TIME			50
 # define SPRITE_TIME		5
 # define WAIT_DOOR_TIME		150
+# define DARK_DIST			4
 # define PLAYER_SIZE		4
 # define SPRITE_SIZE		2
 # define FOV				80

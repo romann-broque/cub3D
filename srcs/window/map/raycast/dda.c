@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 20:07:09 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/14 10:26:00 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/14 15:32:34 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,5 +113,7 @@ t_cast	dda(
 	cast.ray = ray;
 	set_cast(map, delta_dist, &cast);
 	cast.perp_wall_dist = get_perp_wall_dist(&cast, &delta_dist);
+	cast.hit_dist = sqrt(pow(pos.x - cast.hitpoint.x, 2)
+			+ pow(pos.y - cast.hitpoint.y, 2));
 	return (cast);
 }

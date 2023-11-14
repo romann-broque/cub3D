@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 14:14:58 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/13 14:16:57 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/14 15:32:14 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,17 @@
 
 void	change_texture_brightness(
 	unsigned int *const color,
-	const t_side side
+	const t_cast *const cast,
+	const bool is_dark
 	)
 {
-	if (side == EAST_FACE)
+	if (cast->side == EAST_FACE)
 		*color
 			= change_brightness(*color, BRIGHTNESS_FACTOR * BRIGHTNESS_POWER);
-	else if (side == NORTH_FACE || side == SOUTH_FACE)
+	else if (cast->side == NORTH_FACE || cast->side == SOUTH_FACE)
 		*color = change_brightness(*color, BRIGHTNESS_FACTOR);
+	if (is_dark == true)
+		*color = change_brightness(*color, 1 / cast->hit_dist);
 }
 
 unsigned int	get_color_from_text_pos(

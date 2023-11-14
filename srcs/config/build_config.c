@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 09:44:49 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/14 13:50:12 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/14 14:40:59 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,8 @@ static void	set_dark_status(t_config *const config)
 	if (BONUS)
 	{
 		config->is_dark
-			= (streq(config->attribute_array[E_DARK][0], DARK_ON));
+			= (config->attribute_array[E_DARK][0] != NULL
+				&& streq(config->attribute_array[E_DARK][0], DARK_ON));
 	}
 }
 
