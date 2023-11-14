@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:06:20 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/14 14:59:30 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/14 16:51:07 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@
 # define WINDOW_TITLE		"cub3D"
 # define BRIGHTNESS_FACTOR	0.7
 # define BRIGHTNESS_POWER	0.7
+# define DARK_COEFF			0.5
+# define DARK_DIST			4
+# define MINIMAL_DARK_DIST	0.2
 # define PLAYER_XOFFSET		0.5
 # define PLAYER_YOFFSET		0.5
 # define SPRITE_XOFFSET		0.5
@@ -41,7 +44,6 @@
 # define DOOR_TIME			50
 # define SPRITE_TIME		5
 # define WAIT_DOOR_TIME		150
-# define DARK_DIST			4
 # define PLAYER_SIZE		4
 # define SPRITE_SIZE		2
 # define FOV				80

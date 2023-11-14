@@ -57,6 +57,7 @@ SRCS	 	+=	set_color.c
 
 SRCS		+=	conversion.c
 SRCS		+=	are_dimensions_valid.c
+SRCS		+=	distance.c
 
 ### srcs/print/
 

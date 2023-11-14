@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 14:46:43 by jess              #+#    #+#             */
-/*   Updated: 2023/11/14 15:30:26 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/14 17:56:18 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ static void	display_ceil_and_floor_texture(
 	const t_pos	floor_wall = cast->hitpoint;
 	const int	x = (int)wall_end.x;
 	int			y;
+	double		dist;
 	t_pos		floor_pos;
 
 	if (wall_end.y < 0)
@@ -58,10 +59,11 @@ static void	display_ceil_and_floor_texture(
 	{
 		floor_pos = get_floor_pos(window, y,
 				&floor_wall, perp_wall_dist);
+		dist = square_dist(&(window->map->player.pos), &floor_pos);
 		put_pixel(&(window->data), x, y,
-			get_color_from_floor_pos(window, cast, &floor_pos));
+			get_color_from_floor_pos(window, &floor_pos, dist));
 		put_pixel(&(window->data), x, WINDOW_HEIGHT - y,
-			get_color_from_ceil_pos(window, cast, &floor_pos));
+			get_color_from_ceil_pos(window, &floor_pos, dist));
 		++y;
 	}
 }
