@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 13:13:41 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/09 13:18:39 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/14 10:15:56 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,6 @@ static bool	is_door_opened(
 	const t_tile *const	tile = get_tile_from_map(map, x, y);
 
 	return (is_tile_door(tile) && tile->state == OPENED);
-}
-
-static bool	is_sprite_crossable(
-	const t_map *const map,
-	const size_t x,
-	const size_t y
-)
-{
-	return (is_sprite(map, x, y));
 }
 
 bool	is_crossable(

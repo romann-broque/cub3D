@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:06:20 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/13 22:52:47 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/14 10:36:35 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,6 +177,7 @@
 # ifdef BONUS
 #  define CUB_USAGE					"\
 \nFile example:\n\n\
+\"\n\
 NO ./folder/tex1.xpm\n\
 SO ./folder/tex2.xpm\n\
 WE ./folder/tex3.xpm\n\
@@ -194,7 +195,13 @@ D ./folder/door.xpm\n\
 11000011\n\
 1101d11\n\
 110D0011\n\
-11111111\n"
+11111111\n\
+\"\n\
+\n\nTIPS:\n\n\
+- d is for vertical door and D is for horizontal door.\n\
+- Sprites keys are 2-9.\n\
+- Odd sprites are crossable, even ones are not.\n\
+"
 # else
 #  define CUB_USAGE					"\
 \nFile example:\n\n\

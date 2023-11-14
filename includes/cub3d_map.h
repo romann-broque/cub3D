@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 17:12:07 by lechon            #+#    #+#             */
-/*   Updated: 2023/11/13 15:59:19 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/14 10:15:48 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,6 +132,10 @@ t_cast			dda(t_map *const map, const t_pos pos,
 bool			is_sprite(const t_map *const map, const size_t x,
 					const size_t y);
 void			set_sprite_as_viewed(t_map *const map,
+					const double x,
+					const double y);
+bool			is_sprite_crossable(
+					const t_map *const map,
 					const double x,
 					const double y);
 

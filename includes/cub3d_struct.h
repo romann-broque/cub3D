@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:08:41 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/13 21:22:05 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/14 10:10:05 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,6 +142,7 @@ typedef struct s_sprite
 	size_t			tex_count;
 	size_t			time;
 	double			sq_distance;
+	bool			is_crossable;
 	bool			is_viewed;
 
 }		t_sprite;
