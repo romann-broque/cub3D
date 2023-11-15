@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:06:20 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/14 18:44:35 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/14 19:46:51 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define WINDOW_TITLE		"cub3D"
 # define BRIGHTNESS_FACTOR	0.7
 # define BRIGHTNESS_POWER	0.7
-# define DARK_COEFF			0.5
+# define DARK_COEFF			1
 # define DARK_DIST			4
 # define MINIMAL_DARK_DIST	0.2
 # define PLAYER_XOFFSET		0.5

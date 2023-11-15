@@ -6,13 +6,13 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 11:09:16 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/14 18:07:29 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/15 09:08:17 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static bool	assign_attribute(
+static int	assign_attribute(
 	t_config *const config,
 	const enum e_attribute_type type,
 	char *const *const values

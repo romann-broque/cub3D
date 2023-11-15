@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 18:44:51 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/14 13:46:18 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/15 08:57:39 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,5 @@ void	print_config(t_config *const config)
 		print_sprites(config);
 		print_attribute("DARK",
 			config->attribute_array[E_DARK]);
-		printf("is dark? -> %d\n", config->is_dark);
 	}
 }
