@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:06:20 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/14 19:46:51 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/15 09:26:22 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define BRIGHTNESS_FACTOR	0.7
 # define BRIGHTNESS_POWER	0.7
 # define DARK_COEFF			1
-# define DARK_DIST			4
+# define DARK_DIST			10
 # define MINIMAL_DARK_DIST	0.2
 # define PLAYER_XOFFSET		0.5
 # define PLAYER_YOFFSET		0.5

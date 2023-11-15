@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 14:14:58 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/14 18:24:56 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/15 09:32:23 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	apply_darkness(
 	if (is_dark == true)
 	{
 		new_color = change_brightness(*color,
-				1 / (DARK_COEFF * (1e-10 + dist)));
+				+ DARK_DIST / (DARK_COEFF * (1e-10 + dist)));
 		if (*color > new_color)
 			*color = new_color;
 	}
