@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 14:46:43 by jess              #+#    #+#             */
-/*   Updated: 2023/11/15 09:30:00 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/15 15:53:57 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,9 +101,9 @@ void	draw_vertical(
 	const t_pos	wall_end = init_wall_end(lineheight, WINDOW_HEIGHT, x);
 
 	set_texture_start_pos(window, cast, lineheight, wall_start.y);
-	display_wall(window, cast, wall_start, wall_end);
 	if (BONUS == true)
 		display_ceil_and_floor_texture(window, wall_end, cast, perp_wall_dist);
 	else
 		display_ceil_and_floor_rgb(window, wall_end);
+	display_wall(window, cast, wall_start, wall_end);
 }

@@ -1,9 +1,10 @@
-NO    ./assets/textures/backroom_wall2.xpm
-SO ./assets/textures/backroom_wall2.xpm
-EA ./assets/textures/backroom_wall2.xpm
-WE    ./assets/textures/backroom_wall2.xpm
-C ./assets/textures/ground1.xpm
-F ./assets/textures/ground1.xpm
+NO    ./assets/textures/gigachad.xpm
+SO ./assets/textures/gigachad.xpm
+EA ./assets/textures/gigachad.xpm
+WE    ./assets/textures/gigachad.xpm
+C ./assets/textures/gigachad.xpm
+F ./assets/textures/gigachad.xpm
+DARK 1
 
 1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
 1100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001

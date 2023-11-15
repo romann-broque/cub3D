@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 15:55:09 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/14 10:30:30 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/15 15:31:18 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_pos	init_wall_end(
 	const int x
 	)
 {
-	t_pos		wall;
+	t_pos	wall;
 
 	wall.y = (lineheight / 2) + (height / 2);
 	if (wall.y >= height)
@@ -33,7 +33,7 @@ t_pos	init_wall_start(
 	const int x
 	)
 {
-	t_pos		wall;
+	t_pos	wall;
 
 	wall.y = (-lineheight / 2) + (height / 2);
 	if (wall.y < 0)

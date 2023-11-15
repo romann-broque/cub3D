@@ -1,7 +1,7 @@
 NO    ./assets/textures/backroom_wall2.xpm
-SO ./assets/textures/backroom_wall2.xpm
+SO ./assets/textures/backroom_wall.xpm
 EA ./assets/textures/backroom_wall2.xpm
-WE    ./assets/textures/backroom_wall2.xpm
+WE    ./assets/textures/backroom_wall.xpm
 C ./assets/textures/ground1.xpm
 D ./assets/textures/w3d_door.xpm
 F ./assets/textures/ground1.xpm
