@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:06:20 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/15 15:02:50 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/15 21:49:34 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@
 # define SPRITE_KIND_COUNT			8
 # define MANDATORY_ATTRIBUTE_COUNT	6
 # define SPECIAL_TILE_COUNT			10
+# define COLLISION_DIST				0.1
 
 # ifdef BONUS
 #  define TEXTURE_COUNT		15

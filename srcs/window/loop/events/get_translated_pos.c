@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 09:03:14 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/09 13:13:59 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/15 21:47:39 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,10 @@ t_pos	get_translated_pos(
 		check_pos.x = player_pos.x + dir_speed.x * i;
 		check_pos.y = player_pos.y + dir_speed.y * i;
 		if (is_crossable(map, check_pos.x, check_pos.y) == false)
+		{
 			get_new_pos_from_wall_collision(&new_pos, &check_pos,
 				map, get_move_offset(&dir_speed, i, step_move));
+		}
 		else
 			new_pos = check_pos;
 		i += step_move;
