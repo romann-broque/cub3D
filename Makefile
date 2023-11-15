@@ -296,10 +296,15 @@ CC			=	cc
 
 CFLAGS		+=	-Wall
 CFLAGS		+=	-Wextra
-CFLAGS		+=	-g3
 
 ifneq ($(no_error), true)
 	CFLAGS		+=	-Werror
+endif
+
+ifeq ($(profiler), true)
+	CFLAGS		+=	-pg
+else
+	CFLAGS		+=	-g3
 endif
 
 ifeq ($(debug), true)

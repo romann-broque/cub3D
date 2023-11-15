@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 16:21:13 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/13 17:06:37 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/15 09:43:21 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ void	set_color(t_config *const config)
 
 unsigned int	change_brightness(const unsigned int color, const double factor)
 {
-	const unsigned int	red = fmin(CHAR_MAX, ((color >> 16) & 0xFF) * factor);
-	const unsigned int	green = fmin(CHAR_MAX, ((color >> 8) & 0xFF) * factor);
-	const unsigned int	blue = fmin(CHAR_MAX, (color & 0xFF) * factor);
+	const unsigned int	red = ((color >> 16) & 0xFF) * factor;
+	const unsigned int	green = ((color >> 8) & 0xFF) * factor;
+	const unsigned int	blue = (color & 0xFF) * factor;
 	const unsigned int	new_color = (red << 16) | (green << 8) | blue;
 
 	return (new_color);
