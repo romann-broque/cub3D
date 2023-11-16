@@ -1,0 +1,19 @@
+NO ./assets/textures/doom_grid.xpm
+SO ./assets/textures/doom_grid.xpm
+EA ./assets/textures/doom_grid.xpm
+WE ./assets/textures/doom_grid.xpm
+C ./assets/textures/doom_hexagone.xpm
+F ./assets/textures/doom_ground.xpm
+D ./assets/textures/doom_grid.xpm
+3 ./assets/textures/w3d_lamp.xpm
+4 ./assets/textures/sprites/burning_barrel/burning_barrel1.xpm ./assets/textures/sprites/burning_barrel/burning_barrel2.xpm ./assets/textures/sprites/burning_barrel/burning_barrel3.xpm
+5 ./assets/textures/sprites/exploding_barrel/exploding_barrel1.xpm ./assets/textures/sprites/exploding_barrel/exploding_barrel2.xpm ./assets/textures/sprites/exploding_barrel/exploding_barrel3.xpm ./assets/textures/sprites/exploding_barrel/exploding_barrel4.xpm ./assets/textures/sprites/exploding_barrel/exploding_barrel5.xpm
+6 ./assets/textures/sprites/red_torch/red_torch1.xpm ./assets/textures/sprites/red_torch/red_torch2.xpm ./assets/textures/sprites/red_torch/red_torch3.xpm ./assets/textures/sprites/red_torch/red_torch4.xpm
+DARK 1
+
+11111111111111111111111111111
+10010000000013004446000000001
+100D00003000D000000001000001
+1d11000100001d1001N0000001001
+10000000000000000000100000001
+11111111111111111111111111111

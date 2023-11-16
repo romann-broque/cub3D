@@ -1,10 +1,15 @@
 # Prerequisites
 cub3d
 *.png
+*.jpeg
+*.jpg
 *.d
 .vscode
+.DS_Store
 minilibx-linux
 minilibx-linux.tgz
+*.py
+square_map.cub
 
 # Object files
 *.o

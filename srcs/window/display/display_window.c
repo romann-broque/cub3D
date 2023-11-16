@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 10:09:13 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/25 09:39:01 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/15 15:57:51 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,52 @@
 
 static void	display_fov(
 	t_win *const window,
-	const t_pos hitpoint_array[WINDOW_WIDTH]
+	t_pos hitpoint_array[WINDOW_WIDTH]
 	)
 {
-	const t_pos	player_pos = window->map->player.pos;
-	size_t		i;
+	const t_pos *const	player_pos = &(window->map->player.pos);
+	size_t				i;
 
 	i = 0;
 	while (i < WINDOW_WIDTH)
 	{
-		if (MAP_DISPLAY && window->mod == E_MAP)
-			draw_line_on_map(window, player_pos, hitpoint_array[i], BLUE);
-		else if (MINIMAP_DISPLAY && window->mod == E_STD)
-			draw_line_on_minimap(window, player_pos, hitpoint_array[i], BLUE);
+		if (BONUS)
+		{
+			if (window->mod == E_MAP)
+				draw_line_on_map(window, player_pos, hitpoint_array + i, BLUE);
+			else if (window->mod == E_STD)
+				draw_line_on_minimap(window, player_pos,
+					hitpoint_array + i, BLUE);
+		}
 		++i;
 	}
+}
+
+static void	display_map_or_minimap(t_win *const window)
+{
+	if (window->mod == E_MAP)
+		display_map(window);
+	else if (window->mod == E_STD)
+		display_minimap(window);
 }
 
 void	display_window_content(t_win *const window)
 {
 	t_pos	hitpoint_array[WINDOW_WIDTH];
+	double	distance_array[WINDOW_WIDTH];
 
-	raycaster(window, hitpoint_array);
-	if (MAP_DISPLAY && window->mod == E_MAP)
-		display_map(window);
-	else if (MINIMAP_DISPLAY && window->mod == E_STD)
-		display_minimap(window);
-	display_fov(window, hitpoint_array);
+	raycaster(window, hitpoint_array, distance_array);
+	if (BONUS)
+	{
+		display_sprites(window, distance_array);
+		display_map_or_minimap(window);
+		display_fov(window, hitpoint_array);
+		display_sprites_on_map(window);
+		display_player(window);
+		refresh_tiles(window->map);
+		refresh_sprites(window->map);
+		print_fps();
+	}
 }
 
 void	display_window(t_win *const window)
