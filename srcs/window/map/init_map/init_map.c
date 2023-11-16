@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 13:43:54 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/16 14:45:46 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/16 14:55:01 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static size_t	count_lines(char *const *const lines)
 {
-	return (count_no_empty_lines(lines));
+	return (get_size_strs(lines));
 }
 
 static size_t	find_max_line_length(char *const *const lines)

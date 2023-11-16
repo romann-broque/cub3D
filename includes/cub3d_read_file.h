@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 17:16:19 by lechon            #+#    #+#             */
-/*   Updated: 2023/11/16 14:25:39 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/16 14:55:45 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,5 @@ bool			is_file_valid(const char *const filename, const int fd);
 // count_lines.c
 
 size_t			count_empty_lines(char *const *const lines);
-size_t			count_no_empty_lines(char *const *const lines);
 
 #endif
