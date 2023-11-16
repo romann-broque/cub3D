@@ -1,0 +1,43 @@
+NO    ./assets/textures/doom_hexagone.xpm
+SO    ./assets/textures/doom_hexagone.xpm
+EA    ./assets/textures/doom_hexagone.xpm
+WE    ./assets/textures/doom_hexagone.xpm
+C     ./assets/textures/doom_grid.xpm
+F     ./assets/textures/doom_grid.xpm
+D    ./assets/textures/w3d_door.xpm
+2    ./assets/textures/sprites/burning_barrel/burning_barrel1.xpm ./assets/textures/sprites/burning_barrel/burning_barrel2.xpm ./assets/textures/sprites/burning_barrel/burning_barrel3.xpm
+3    ./assets/textures/sprites/skull/skull1.xpm ./assets/textures/sprites/skull/skull2.xpm ./assets/textures/sprites/skull/skull3.xpm ./assets/textures/sprites/skull/skull4.xpm ./assets/textures/sprites/skull/skull5.xpm ./assets/textures/sprites/skull/skull6.xpm ./assets/textures/sprites/skull/skull7.xpm ./assets/textures/sprites/skull/skull8.xpm
+DARK 1
+
+                     11111              11111              11111
+                    1000001            1000001            1000001
+                   100000001          100000001          100000001
+                  10000000001        10000000001        10000000001
+                 100001d100001      100001d100001      1000000000001
+                 100001210000111111110000121000011111111000000000001
+                 100001110000D000000D00001110000D000000D000000000001
+                 100000000000111111110000000000011111111000000000001
+                 1000000000001      1000000000001      1000000000001
+                  10000200001        10000000001        10000000001
+                   100000001          100000001          100000001
+                    1000001            1000001            1000001
+                     11d11              11d11              11d11
+                      101                101                101
+    111111111111111111101                101                101
+    1E0000000000000000D01                101                101
+    111111111111111111101                101                101
+                      101                101                101
+                      101                101                101
+                     11d11              11d11              11d11
+                    1000001            1000001            1000001
+                   100000001          100000001          100000001
+                  10000000001        10000000001        10000000001
+                 100001d100001      100001d100001      1000000000001
+                 100001010000111111110000131000011111111000000000001
+                 100001110000D000000D00001110000D000000D000000000001
+                 100000000000111111110000000000011111111000000000001
+                 1000202020001      1000000000001      1000000000001
+                  10000000001        10000000001        10000000001
+                   100000001          100000001          100000001
+                    1000001            1000001            1000001
+                     11111              11111              11111
