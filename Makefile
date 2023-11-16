@@ -326,7 +326,7 @@ endif
 #### NAME ####
 ##############
 
-NAME		+=	cub3d
+NAME		+=	cub3D
 
 #################
 #### DISPLAY ####
