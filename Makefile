@@ -128,6 +128,9 @@ SRCS	 	+=	init_line.c
 SRCS	 	+=	line_utils.c
 SRCS	 	+=	put_line.c
 
+### srcs/window/display/sprites/
+
+
 ### srcs/window/loop/
 
 SRCS	 	+=	loop.c
