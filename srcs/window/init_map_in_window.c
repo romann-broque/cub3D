@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 23:26:56 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/09 08:49:10 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/13 17:08:04 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static bool	is_texture_set(size_t id, const t_config *const config)
 		id = E_DOOR;
 	else if (id > E_DOOR + 1)
 		--id;
-	return (config->attribute_array[id] != NULL);
+	return (config->attribute_array[id][0] != NULL);
 }
 
 static bool	is_config_matching(

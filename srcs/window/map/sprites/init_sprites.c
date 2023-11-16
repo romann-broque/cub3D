@@ -6,11 +6,21 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 11:18:16 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/09 13:06:58 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/16 12:22:53 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+static size_t	get_tex_count(const t_texture *const textures)
+{
+	size_t	count;
+
+	count = 0;
+	while (count < MAX_TEXTURE_COUNT && textures[count].data.img != NULL)
+		++count;
+	return (count);
+}
 
 static t_sprite	get_sprite(
 	t_map *const map,
@@ -26,7 +36,11 @@ static t_sprite	get_sprite(
 
 	sprite.pos.x = x + SPRITE_XOFFSET;
 	sprite.pos.y = y + SPRITE_YOFFSET;
-	sprite.texture = &(config->textures[texture_index]);
+	sprite.textures = config->textures[texture_index];
+	sprite.tex_count = get_tex_count(sprite.textures);
+	sprite.is_viewed = false;
+	sprite.time = 0;
+	sprite.is_crossable = (tile_char % 2);
 	return (sprite);
 }
 

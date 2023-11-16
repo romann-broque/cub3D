@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 17:14:28 by lechon            #+#    #+#             */
-/*   Updated: 2023/11/09 13:16:35 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/15 21:25:05 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,8 @@ void			translate_frontback(t_map *const map,
 
 	// is_crossable.c
 
-bool			is_crossable(const t_map *const map, const size_t x,
-					const size_t y);
+bool			is_crossable(const t_map *const map, const double x,
+					const double y);
 
 	// get_translated_pos.c
 

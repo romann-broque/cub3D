@@ -6,35 +6,49 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 07:29:33 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/26 09:31:55 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/13 17:06:09 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	free_attribute_array(char *attribute_array[ATTRIBUTE_COUNT + 1])
+static void	free_attribute_array(
+	char *attribute_array[ATTRIBUTE_COUNT + 1][MAX_TEXTURE_COUNT]
+)
 {
 	size_t	i;
+	size_t	j;
 
 	i = 0;
 	while (i < ATTRIBUTE_COUNT)
 	{
-		free(attribute_array[i]);
+		j = 0;
+		while (j < MAX_TEXTURE_COUNT && attribute_array[i][j] != NULL)
+		{
+			free(attribute_array[i][j]);
+			++j;
+		}
 		++i;
 	}
 }
 
 static void	destroy_textures(
-	t_texture textures[TEXTURE_COUNT],
+	t_texture textures[TEXTURE_COUNT][MAX_TEXTURE_COUNT],
 	void *const mlx_ptr
 	)
 {
 	size_t	i;
+	size_t	j;
 
 	i = 0;
 	while (i < TEXTURE_COUNT)
 	{
-		free_data(&(textures[i].data), mlx_ptr);
+		j = 0;
+		while (j < MAX_TEXTURE_COUNT)
+		{
+			free_data(&(textures[i][j].data), mlx_ptr);
+			++j;
+		}
 		++i;
 	}
 }

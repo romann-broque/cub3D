@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:06:20 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/10 07:26:48 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/16 12:47:21 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,13 @@
 # define WINDOW_WIDTH		1200
 # define WINDOW_HEIGHT		800
 # define WINDOW_TITLE		"cub3D"
+# define MAX_MAP_HEIGHT		2048
+# define MAX_MAP_WIDTH		2048
 # define BRIGHTNESS_FACTOR	0.7
 # define BRIGHTNESS_POWER	0.7
+# define DARK_COEFF			1
+# define DARK_DIST			5
+# define MINIMAL_DARK_DIST	0.2
 # define PLAYER_XOFFSET		0.5
 # define PLAYER_YOFFSET		0.5
 # define SPRITE_XOFFSET		0.5
@@ -39,16 +44,26 @@
 # define DOOR_WIDTH			3
 # define DOOR_RADIUS		2
 # define DOOR_TIME			50
+# define SPRITE_TIME		5
 # define WAIT_DOOR_TIME		150
 # define PLAYER_SIZE		4
 # define SPRITE_SIZE		2
 # define FOV				80
 # define STEP_SIZE			0.001
-# define MOVE_SPEED			0.1
-# define ROTATE_SPEED		7
 # define MOUSE_ROTATE_COEFF	0.3
 
+# ifdef BONUS
+#  define MOVE_SPEED		0.1
+#  define ROTATE_SPEED		7
+# else
+#  define MOVE_SPEED		0.05
+#  define ROTATE_SPEED		3
+# endif
+
 // NUMBERS
+
+# define POW2_7				128
+# define POW2_8				256
 
 # define EXPECTED_ARG_COUNT			2
 # define INVALID_FD					-1
@@ -57,19 +72,24 @@
 # define ATTRIBUTE_SUCCESS			0
 # define ATTRIBUTE_FAILURE			1
 # define ATTRIBUTE_DUPLICATED		2
+# define ATTRIBUTE_VALUE_FAILURE	3
 # define RGB_SIZE					3
 # define BITS_PER_BYTE				8
 # define FPS_FREQUENCY				10
 # define KEY_COUNT					9
+# define SPRITE_KIND_COUNT			8
 # define MANDATORY_ATTRIBUTE_COUNT	6
 # define SPECIAL_TILE_COUNT			10
+# define COLLISION_DIST				0.1
 
 # ifdef BONUS
 #  define TEXTURE_COUNT		15
-#  define ATTRIBUTE_COUNT	15
+#  define ATTRIBUTE_COUNT	16
+#  define MAX_TEXTURE_COUNT	15
 # else
 #  define TEXTURE_COUNT		4
 #  define ATTRIBUTE_COUNT	6
+#  define MAX_TEXTURE_COUNT	1
 # endif
 
 // CHAR
@@ -101,6 +121,9 @@
 # define SP6_KEY			"7"
 # define SP7_KEY			"8"
 # define SP8_KEY			"9"
+# define DARK_KEY			"DARK"
+# define DARK_ON			"1"
+# define DARK_OFF			"0"
 # define SPRITES			"23456789"
 # define SPECIAL_TILES		"Dd23456789"
 
@@ -110,37 +133,13 @@
 #  define VALID_CHAR			"01 NSWE\n"
 # endif
 
-// Errors
-
-# define ERROR_USAGE				"Usage: ./cub3d <file.cub>"
-# define MLX_ERROR					"MLX_ERROR"
-# define EMPTY_FILE					"EMPTY FILE"
-# define MAP_NOT_CLOSED				"MAP NOT CLOSED"
-# define MAP_NOT_UNIQUE				"MAP NOT UNIQUE"
-# define MAP_TOO_BIG				"MAP TOO BIG"
-# define MAP_CONTENT_WRONG			"MAP CONTENT IS WRONG"
-# define DOOR_NOT_SURROUNDED		"DOOR NOT SURROUNDED"
-# define UNKNOWN_CONFIG				"UNKNOWN CONFIG"
-# define DUPLICATED_CONFIG			"DUPLICATED CONFIG"
-# define WRONG_RGB					"WRONG RGB"
-# define INVALID_FILENAME			"FILENAME IS INVALID"
-# define INVALID_TEXTURE			"INVALID TEXTURE"
-# define SPECIAL_TEXTURE_NOT_SET	"SPECIAL TEXTURE NOT SET"
-
-// Warning
-
-# define DIMENSIONS_NOT_SUPPORTED	"Dimensions not supported"
-
-// Warning
-
-# define DIMENSIONS_NOT_SUPPORTED	"Dimensions not supported"
-
 // Print Colors
 
 # define NC					"\033[0m"
 # define RED_PRINT			"\033[0;31m"
 # define GREEN_PRINT		"\033[0;32m"
 # define ORANGE_PRINT		"\033[0;33m"
+# define BLUE_PRINT			"\033[0;34m"
 
 // Pixel Colors
 
@@ -167,6 +166,79 @@
 // Cursor
 
 # define LEFT_CLICK			1
+
+// Errors
+
+# define ERROR_USAGE				"Usage: ./cub3d <file.cub>"
+# define MLX_ERROR					"MLX_ERROR"
+# define EMPTY_FILE					"EMPTY FILE"
+# define INVALID_FILENAME			"FILENAME IS INVALID"
+# define MAP_NOT_CLOSED				"MAP NOT CLOSED"
+# define MAP_NOT_UNIQUE				"MAP NOT UNIQUE"
+# define MAP_TOO_BIG				"MAP TOO BIG"
+# define MAP_CONTENT_WRONG			"MAP CONTENT IS WRONG"
+# define DOOR_NOT_SURROUNDED		"DOOR NOT SURROUNDED"
+# define UNKNOWN_CONFIG				"UNKNOWN CONFIG"
+# define DUPLICATED_CONFIG			"DUPLICATED CONFIG"
+# define WRONG_RGB					"WRONG RGB"
+# define WRONG_DARK_VALUE			"WRONG DARK VALUE"
+# define INVALID_TEXTURE			"INVALID TEXTURE"
+# define SPECIAL_TEXTURE_NOT_SET	"SPECIAL TEXTURE NOT SET"
+
+// Warning
+
+# define DIMENSIONS_NOT_SUPPORTED	"Dimensions not supported"
+# define TOO_MANY_TEXTURES			"Too many textures"
+
+// Help
+
+# define HELP_KEYWORD1				"--help"
+# define HELP_KEYWORD2				"-h"
+# ifdef BONUS
+#  define CUB_USAGE					"\
+\nFile example:\n\n\
+\"\n\
+NO ./folder/tex1.xpm\n\
+SO ./folder/tex2.xpm\n\
+WE ./folder/tex3.xpm\n\
+EA ./folder/tex4.xpm\n\
+C ./folder/tex5.xpm\n\
+F ./folder/tex6.xpm\n\
+2 ./folder/sprite/candle1.xpm ./folder/candle2.xpm\n\
+3 ./folder/sprite/water1.xpm ./folder/water2.xpm ./folder/water3.xpm\n\
+4 ./folder/sprite/explosion1.xpm\n\
+D ./folder/door.xpm\n\
+DARK 1\n\
+\n\
+ 1111111\n\
+11024011\n\
+11300N01\n\
+11000011\n\
+1101d11\n\
+110D0011\n\
+11111111\n\
+\"\n\
+\n\nTIPS:\n\n\
+- d is for vertical door and D is for horizontal door.\n\
+- Sprites keys are 2-9.\n\
+- Odd sprites are crossable, even ones are not.\n\
+- Darkness can be specified by the key \"DARK\" and by the values 0 (disabled) and 1 (enabled).\n\
+"
+# else
+#  define CUB_USAGE					"\
+\nFile example:\n\n\
+NO ./folder/tex1.xpm\n\
+SO ./folder/tex2.xpm\n\
+WE ./folder/tex3.xpm\n\
+EA ./folder/tex4.xpm\n\
+C 94,12,243\n\
+F 14,230,98\n\
+\n\
+ 1111111\n\
+11000011\n\
+11000N01\n\
+1111111\n"
+# endif
 
 # ifndef BONUS
 #  define BONUS 0

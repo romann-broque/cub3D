@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 15:00:52 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/10 07:44:28 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/13 21:22:22 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static void	print_sprites(
 		printf("%zu -> %lf;%lf (%p)\n", i + 1,
 			sprite_array[i].pos.x,
 			sprite_array[i].pos.y,
-			sprite_array[i].texture);
+			sprite_array[i].textures);
 		++i;
 	}
 }

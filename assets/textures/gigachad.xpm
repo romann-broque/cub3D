@@ -1,7 +1,7 @@
 /* XPM */
 static char *a7fad5092c724f67bf18eb9a71030174r5aG9aVAzK9eoC15[] = {
 /* columns rows colors chars-per-pixel */
-"255 256 198 2 ",
+"256 256 198 2 ",
 "   c black",
 ".  c #010101",
 "X  c #020202",
@@ -201,6 +201,7 @@ static char *a7fad5092c724f67bf18eb9a71030174r5aG9aVAzK9eoC15[] = {
 "=X c #F8F8F8",
 "-X c white",
 /* pixels */
+"( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ( ~ ~ ~ ~ E E E ~ ~ ~ ~ ~ ~ ~ ~ ~ E E E E E E E E E E E E E E E E E E E U U U U U U E U U U U U U U U U U U U U U U U U U U U U U U U U U U U U U U U K K K K K K K K K K K K K K K K K K K K K K K K F F F F F K K K K K K K K K F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F K K F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F K K K K K K K K K K F F F F F F F F F F F F F ",
 "( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ( ~ ~ ~ ~ E E E ~ ~ ~ ~ ~ ~ ~ ~ ~ E E E E E E E E E E E E E E E E E E E U U U U U U E U U U U U U U U U U U U U U U U U U U U U U U U U U U U U U U U K K K K K K K K K K K K K K K K K K K K K K K K F F F F F K K K K K K K K K F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F K K F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F K K K K K K K K K K F F F F F F F F F F F F F ",
 "( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ( ~ ~ ~ ~ E E E ~ ~ ~ ~ ~ ~ ~ ~ ~ E E E E E E E E E E E E E E E E E E E E E U U U U E U U U U U U U U U U U U U U U U U U U U K U U U U U U U U U U U U K K K K K K K K K K K K K K K K K K K K K K K K F F F F K K K K K K K K K F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F K K F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F K K K K K K K K F F F F F F F F F F F F F F F ",
 "( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ( ~ ~ ~ ~ E E E E E ~ ~ ~ ~ E E ~ E E E E E E E E E E E E E E E E E E E E E E U U E E U U U U U U U U U U U U U U U U U U U U K U U U U U U U U U U U K K K K K K K K K K K K K K K K K K K K K K K K F F F F F F F K K K K F F K F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F K K F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F F K K K K F F F F F F F F F F F F F F F F F ",

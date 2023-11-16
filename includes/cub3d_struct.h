@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:08:41 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/10 07:28:09 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/16 12:14:37 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ enum e_attribute_type
 	E_SP5,
 	E_SP6,
 	E_SP7,
-	E_SP8
+	E_SP8,
+	E_DARK
 };
 
 typedef enum e_side
@@ -85,10 +86,11 @@ typedef struct s_texture
 
 typedef struct s_config
 {
-	char		*attribute_array[ATTRIBUTE_COUNT + 1];
+	char		*attribute_array[ATTRIBUTE_COUNT + 1][MAX_TEXTURE_COUNT];
 	int			ceil_color;
 	int			floor_color;
-	t_texture	textures[TEXTURE_COUNT];
+	bool		is_dark;
+	t_texture	textures[TEXTURE_COUNT][MAX_TEXTURE_COUNT];
 }		t_config;
 
 typedef struct s_pos
@@ -98,12 +100,6 @@ typedef struct s_pos
 }		t_pos;
 
 typedef t_pos	t_vect;
-
-typedef struct s_sprite
-{
-	t_pos			pos;
-	const t_texture	*texture;
-}		t_sprite;
 
 typedef struct s_tile
 {
@@ -138,12 +134,35 @@ typedef struct s_player
 
 }		t_player;
 
+typedef struct s_sprite
+{
+	t_pos			pos;
+	t_pos			sprite_start;
+	t_pos			sprite_end;
+	const t_texture	*textures;
+	const t_texture	*curr_texture;
+	size_t			tex_count;
+	size_t			time;
+	double			sq_distance;
+	bool			is_crossable;
+	bool			is_viewed;
+
+}		t_sprite;
+
+typedef struct s_transform
+{
+	t_pos	pos;
+	int		square_size;
+	int		screen_x;
+}		t_transform;
+
 typedef struct s_cast
 {
 	t_vect	dist;
 	t_vect	ray;
 	t_vect	step;
 	t_pos	hitpoint;
+	double	hit_dist;
 	double	coeff;
 	double	perp_wall_dist;
 	t_side	side;
@@ -156,8 +175,8 @@ typedef struct s_map
 	size_t		height;
 	size_t		width;
 	size_t		sprite_count;
-	t_sprite	*sprite_array;
 	t_player	player;
+	t_sprite	*sprite_array;
 }		t_map;
 
 typedef struct s_key

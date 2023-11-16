@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 07:57:46 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/09 09:09:11 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/14 11:12:25 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,13 @@ bool	is_config_complete(const t_config *const config)
 	size_t	i;
 
 	i = 0;
-	while (config->attribute_array[i] != NULL)
+	while (i < MANDATORY_ATTRIBUTE_COUNT
+		&& config->attribute_array[i][0] != NULL)
 		++i;
 	return (i >= MANDATORY_ATTRIBUTE_COUNT);
 }
 
-static enum e_attribute_type	find_attribute_type(
+enum e_attribute_type	find_attribute_type(
 	const char *name
 	)
 {
@@ -34,7 +35,8 @@ static enum e_attribute_type	find_attribute_type(
 		SP2_KEY, SP3_KEY,
 		SP4_KEY, SP5_KEY,
 		SP6_KEY, SP7_KEY,
-		SP8_KEY, NULL
+		SP8_KEY, DARK_KEY,
+		NULL
 	};
 	enum e_attribute_type		type;
 
@@ -45,59 +47,31 @@ static enum e_attribute_type	find_attribute_type(
 	return (type);
 }
 
-void	assign_attribute(
+bool	is_valid_dark_value(const char *const value)
+{
+	return (streq(value, DARK_ON) || streq(value, DARK_OFF));
+}
+
+int	fill_attribute(
 	t_config *const config,
 	const enum e_attribute_type type,
-	const char *const str
-	)
+	char *const *const values
+)
 {
-	if ((type == E_CEIL || type == E_FLOOR)
-		&& BONUS == false && is_rgb(str) == false)
-		print_format_error(WRONG_RGB);
-	else
+	size_t	i;
+
+	i = 0;
+	while (i < MAX_TEXTURE_COUNT && values[i] != NULL)
 	{
-		config->attribute_array[type] = ft_strdup(str);
-		if (config->attribute_array[type] == NULL)
+		config->attribute_array[type][i] = ft_strdup(values[i]);
+		if (config->attribute_array[type][i] == NULL)
+		{
 			print_format_error(strerror(errno));
+			return (EXIT_FAILURE);
+		}
+		++i;
 	}
-}
-
-static int	add_attribute_into_config(
-	t_config *const config,
-	const char *const name,
-	const char *const value
-	)
-{
-	const enum e_attribute_type	type
-		= find_attribute_type(name);
-	int							ret_val;
-
-	ret_val = ATTRIBUTE_FAILURE;
-	if (config->attribute_array[type] != NULL)
-	{
-		print_format_error(DUPLICATED_CONFIG);
-		ret_val = ATTRIBUTE_DUPLICATED;
-	}
-	else
-	{
-		assign_attribute(config, type, value);
-		if (config->attribute_array[type] != NULL)
-			ret_val = ATTRIBUTE_SUCCESS;
-	}
-	return (ret_val);
-}
-
-int	build_attribute_from_sequence(
-	t_config *const config,
-	char *const *const sequence
-	)
-{
-	if (sequence == NULL)
-		return (EXIT_FAILURE);
-	if (is_sequence_empty(sequence) == true)
-		return (EXIT_SUCCESS);
-	if (is_sequence_format_valid(sequence) == false)
-		return (EXIT_FAILURE);
-	return (add_attribute_into_config(
-			config, sequence[0], sequence[1]));
+	if (i == MAX_TEXTURE_COUNT && values[i] != NULL)
+		print_format_warning(TOO_MANY_TEXTURES);
+	return (EXIT_SUCCESS);
 }

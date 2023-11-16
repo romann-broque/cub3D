@@ -18,7 +18,9 @@ PATH_SRCS	+=	srcs/window/
 PATH_SRCS	+=	srcs/window/data/
 PATH_SRCS	+=	srcs/window/display/
 PATH_SRCS	+=	srcs/window/display/draw/
-PATH_SRCS	+=	srcs/window/display/draw/raycast
+PATH_SRCS	+=	srcs/window/display/draw/raycast/
+PATH_SRCS	+=	srcs/window/display/draw/raycast/sprite/
+PATH_SRCS	+=	srcs/window/display/draw/raycast/texture/
 PATH_SRCS	+=	srcs/window/display/line/
 PATH_SRCS	+=	srcs/window/loop/
 PATH_SRCS	+=	srcs/window/loop/events/
@@ -39,6 +41,8 @@ SRCS	 	+=	cub3d.c
 SRCS		+=	is_rgb.c
 SRCS		+=	attribute_utils.c
 SRCS		+=	init_config.c
+SRCS		+=	check_complete_config.c
+SRCS		+=	build_attribute_from_sequence.c
 SRCS		+=	build_config.c
 SRCS		+=	free_config.c
 SRCS		+=	print_config.c
@@ -53,11 +57,13 @@ SRCS	 	+=	set_color.c
 
 SRCS		+=	conversion.c
 SRCS		+=	are_dimensions_valid.c
+SRCS		+=	distance.c
 
 ### srcs/print/
 
 SRCS		+=	print_format_error.c
 SRCS		+=	print_format_warning.c
+SRCS		+=	print_help.c
 SRCS		+=	print_fps.c
 
 ### srcs/read_file/
@@ -83,11 +89,11 @@ SRCS	 	+=	display_window.c
 SRCS	 	+=	display_map.c
 SRCS	 	+=	display_grid.c
 SRCS	 	+=	display_grid_utils.c
-SRCS	 	+=	display_sprites.c
+SRCS	 	+=	display_sprites_on_map.c
 SRCS	 	+=	display_player.c
 SRCS	 	+=	refresh.c
 
-### srcs/window/display/draw
+### srcs/window/display/draw/
 
 SRCS	 	+=	draw_on_map.c
 SRCS	 	+=	draw_on_minimap.c
@@ -98,16 +104,31 @@ SRCS	 	+=	put_pixel.c
 
 ### srcs/window/display/draw/raycast/
 
-SRCS	 	+=	get_texture_pos.c
-SRCS	 	+=	get_texture_color.c
 SRCS	 	+=	draw_vertical.c
 SRCS	 	+=	draw_vertical_utils.c
+
+### srcs/window/display/draw/raycast/sprite/
+
+SRCS	 	+=	display_sprites.c
+SRCS	 	+=	draw_sprite.c
+SRCS	 	+=	draw_sprite_stripe.c
+SRCS	 	+=	draw_sprites_utils.c
+SRCS	 	+=	sort_sprites.c
+
+### srcs/window/display/draw/raycast/texture
+
+SRCS	 	+=	get_texture_pos.c
+SRCS	 	+=	get_texture_color.c
+SRCS	 	+=	texture_color_utils.c
 
 ### srcs/window/display/line/
 
 SRCS	 	+=	init_line.c
 SRCS	 	+=	line_utils.c
 SRCS	 	+=	put_line.c
+
+### srcs/window/display/sprites/
+
 
 ### srcs/window/loop/
 
@@ -160,14 +181,15 @@ SRCS	 	+=	raycaster.c
 
 ### srcs/window/map/sprites/
 
-SRCS	 	+=	is_sprite.c
 SRCS	 	+=	init_sprites.c
+SRCS	 	+=	refresh_sprites.c
+SRCS	 	+=	sprite_utils.c
 
 ### srcs/window/map/tile/
 
 SRCS	 	+=	door.c
 SRCS	 	+=	refresh_tiles.c
-SRCS	 	+=	get_tile_from_map.c
+SRCS	 	+=	tile_utils.c
 SRCS	 	+=	tile_mark.c
 SRCS	 	+=	tile_type.c
 
@@ -274,10 +296,15 @@ CC			=	cc
 
 CFLAGS		+=	-Wall
 CFLAGS		+=	-Wextra
-CFLAGS		+=	-g3
 
 ifneq ($(no_error), true)
 	CFLAGS		+=	-Werror
+endif
+
+ifeq ($(profiler), true)
+	CFLAGS		+=	-pg
+else
+	CFLAGS		+=	-g3
 endif
 
 ifeq ($(debug), true)

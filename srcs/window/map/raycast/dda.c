@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 20:07:09 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/09 13:05:00 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/16 12:22:15 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,14 @@ static bool	is_transparent(
 	const double y
 	)
 {
-	return (is_ground(map, x, y) || is_sprite(map, x, y)
-		|| is_going_through_door(map, cast, x, y));
+	if (BONUS)
+	{
+		if (is_sprite(map, x, y))
+			set_sprite_as_viewed(map, x, y);
+		return (is_ground(map, x, y) || is_sprite(map, x, y)
+			|| is_going_through_door(map, cast, x, y));
+	}
+	return (is_ground(map, x, y));
 }
 
 static void	set_cast(
@@ -107,5 +113,6 @@ t_cast	dda(
 	cast.ray = ray;
 	set_cast(map, delta_dist, &cast);
 	cast.perp_wall_dist = get_perp_wall_dist(&cast, &delta_dist);
+	cast.hit_dist = square_dist(&pos, &cast.hitpoint);
 	return (cast);
 }

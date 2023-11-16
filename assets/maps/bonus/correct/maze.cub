@@ -4,6 +4,7 @@ EA ./assets/textures/w3d_redbrick.xpm
 WE    ./assets/textures/w3d_redbrick.xpm
 C ./assets/textures/w3d_redbrick.xpm
 F ./assets/textures/w3d_wood.xpm
+DARK 1
 111111111111111111111
 101000001000000000001
 101010101011111110001

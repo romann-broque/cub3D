@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 17:12:07 by lechon            #+#    #+#             */
-/*   Updated: 2023/11/09 13:19:32 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/14 10:15:48 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,8 @@ void			set_vect(t_vect *const vect,
 t_cast			raycast(t_win *const window,
 					const size_t x);
 void			raycaster(t_win *const window,
-					t_pos hitpoint_array[WINDOW_WIDTH]);
+					t_pos hitpoint_array[WINDOW_WIDTH],
+					double distance_array[WINDOW_WIDTH]);
 
 	// get_vect.c
 
@@ -126,14 +127,25 @@ t_cast			dda(t_map *const map, const t_pos pos,
 ////     sprites     ////
 /////////////////////////
 
-	// is_sprite.c
+	// sprite_utils.c
 
 bool			is_sprite(const t_map *const map, const size_t x,
 					const size_t y);
+void			set_sprite_as_viewed(t_map *const map,
+					const double x,
+					const double y);
+bool			is_sprite_crossable(
+					const t_map *const map,
+					const double x,
+					const double y);
 
 	// init_sprites.c
 
 void			init_sprites(t_map *const map, const t_config *const config);
+
+	// refresh_sprites.c
+
+void			refresh_sprites(t_map *const map);
 
 /////////////////////////
 ////     	tile     ////
@@ -148,8 +160,11 @@ void			refresh_door(const t_player *const player, t_tile *const door);
 
 void			refresh_tiles(t_map *const map);
 
-// get_tile_from_map.c
+// tile_utils.c
 
+bool			is_on_tile(const t_pos *const pos,
+					const size_t x,
+					const size_t y);
 t_tile			*get_tile_from_map(const t_map *const map,
 					const size_t x,
 					const size_t y);
