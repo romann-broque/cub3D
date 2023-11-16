@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   build_config.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jrouillo <jrouillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 09:44:49 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/15 09:08:29 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/16 12:43:04 by jrouillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,8 @@ static int	set_textures_array(
 	while (i < TEXTURE_COUNT && ret_val == EXIT_SUCCESS)
 	{
 		j = 0;
-		while (j < MAX_TEXTURE_COUNT && config->attribute_array[i][j] != NULL)
+		while (j < MAX_TEXTURE_COUNT
+			&& config->attribute_array[i][j] != NULL && ret_val == EXIT_SUCCESS)
 		{
 			ret_val = set_texture(&(config->textures[i][j]),
 					config->attribute_array[i][j], mlx_ptr);
