@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:06:20 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/16 12:17:31 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/16 12:47:21 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 # define WINDOW_WIDTH		1200
 # define WINDOW_HEIGHT		800
 # define WINDOW_TITLE		"cub3D"
+# define MAX_MAP_HEIGHT		2048
+# define MAX_MAP_WIDTH		2048
 # define BRIGHTNESS_FACTOR	0.7
 # define BRIGHTNESS_POWER	0.7
 # define DARK_COEFF			1
