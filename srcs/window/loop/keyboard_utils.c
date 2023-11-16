@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 23:38:34 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/25 08:10:16 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/08 09:51:36 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	set_key_status(
 		window->keys[index].pressure = is_pressed;
 }
 
-t_event_mapping	*get_mapping(void)
+t_event_mapping	*get_key_mapping(void)
 {
 	static t_event_mapping	mapping[] = {
 	{.key = {.key_value = K_LEFT, .pressure = true}, .event = rotate_left},
@@ -59,6 +59,7 @@ t_event_mapping	*get_mapping(void)
 	{.key = {.key_value = K_D, .pressure = true}, .event = move_right},
 	{.key = {.key_value = K_M, .pressure = true}, .event = enable_map_mod},
 	{.key = {.key_value = K_M, .pressure = false}, .event = disable_map_mod},
+	{.key = {.key_value = K_SPACE, .pressure = true}, .event = open_door},
 	{.key = {.key_value = K_ESC, .pressure = true}, .event = close_window},
 	{.key = {.key_value = NO_KEY}, .event = NULL},
 	};

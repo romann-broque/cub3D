@@ -3,47 +3,42 @@
 /*                                                        :::      ::::::::   */
 /*   build_config.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jrouillo <jrouillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 09:44:49 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/25 22:40:34 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/16 12:43:04 by jrouillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-static bool	is_config_complete(const t_config *const config)
-{
-	size_t	i;
-
-	i = 0;
-	while (config->attribute_array[i] != NULL)
-		++i;
-	return (i == ATTRIBUTE_COUNT);
-}
 
 static ssize_t	build_attributes(
 	t_config *const config,
 	char *const *const lines)
 {
 	char	**sequence;
+	int		attribute_status;
 	ssize_t	offset;
 
 	offset = 0;
-	while (offset != INVALID_OFFSET && is_config_complete(config) == false)
+	sequence = ft_split(lines[offset], SPACE);
+	if (sequence == NULL)
+		print_format_error(strerror(errno));
+	attribute_status = build_attribute_from_sequence(config, sequence);
+	while (offset != INVALID_OFFSET && attribute_status == EXIT_SUCCESS)
 	{
+		++offset;
+		free_strs(sequence);
 		sequence = ft_split(lines[offset], SPACE);
-		if (sequence == NULL
-			|| build_attribute_from_sequence(config, sequence) == EXIT_FAILURE)
+		if (sequence == NULL)
 		{
-			if (sequence == NULL)
-				print_format_error(strerror(errno));
+			print_format_error(strerror(errno));
 			offset = INVALID_OFFSET;
 		}
-		else
-			++offset;
-		free_strs(sequence);
+		attribute_status = build_attribute_from_sequence(config, sequence);
 	}
+	offset = check_complete_config(offset, attribute_status, config);
+	free_strs(sequence);
 	return (offset);
 }
 
@@ -53,11 +48,10 @@ static int	set_texture(
 	void *const mlx_ptr
 	)
 {
-	int			height;
-	int			width;
-
+	if (texture_file == NULL)
+		return (EXIT_SUCCESS);
 	texture->data.img = mlx_xpm_file_to_image(mlx_ptr,
-			texture_file, &width, &height);
+			texture_file, &texture->width, &texture->height);
 	if (texture->data.img == NULL)
 	{
 		print_format_error(INVALID_TEXTURE);
@@ -67,8 +61,17 @@ static int	set_texture(
 	texture->data.addr = mlx_get_data_addr(texture->data.img,
 			&(texture->data.bits_per_pixel),
 			&(texture->data.line_length), &(texture->data.endian));
-	texture->height = height;
-	texture->width = width;
+	if (texture->data.addr == NULL)
+	{
+		print_format_error(MLX_ERROR);
+		return (EXIT_FAILURE);
+	}
+	texture->data.byte_per_pixel = texture->data.bits_per_pixel / BITS_PER_BYTE;
+	if (are_dimensions_valid(texture->height, texture->width) == false)
+	{
+		print_format_warning(DIMENSIONS_NOT_SUPPORTED);
+		print_error(ORANGE_PRINT"(%s)\n"NC, texture_file);
+	}
 	return (EXIT_SUCCESS);
 }
 
@@ -79,33 +82,55 @@ static int	set_textures_array(
 {
 	int		ret_val;
 	size_t	i;
+	size_t	j;
 
 	ret_val = EXIT_SUCCESS;
 	i = 0;
 	while (i < TEXTURE_COUNT && ret_val == EXIT_SUCCESS)
 	{
-		ret_val = set_texture(config->textures + i,
-				config->attribute_array[i], mlx_ptr);
+		j = 0;
+		while (j < MAX_TEXTURE_COUNT
+			&& config->attribute_array[i][j] != NULL && ret_val == EXIT_SUCCESS)
+		{
+			ret_val = set_texture(&(config->textures[i][j]),
+					config->attribute_array[i][j], mlx_ptr);
+			++j;
+		}
 		++i;
 	}
 	return (ret_val);
 }
 
+static void	set_dark_status(t_config *const config)
+{
+	if (BONUS)
+	{
+		config->is_dark
+			= (config->attribute_array[E_DARK][0] != NULL
+				&& streq(config->attribute_array[E_DARK][0], DARK_ON));
+	}
+	else
+		config->is_dark = false;
+}
+
 ssize_t	build_config(
 	t_config *const config,
 	char *const *const lines,
-	void *const mlx_ptr
+	void *const mlx_ptr,
+	void *const win_ptr
 	)
 {
 	ssize_t	offset;
 
 	init_config(config);
-	if (mlx_ptr == NULL)
+	if (mlx_ptr == NULL || win_ptr == NULL)
 		return (INVALID_OFFSET);
 	offset = build_attributes(config, lines);
 	if (offset != INVALID_OFFSET)
 	{
-		set_color(config);
+		if (BONUS == false)
+			set_color(config);
+		set_dark_status(config);
 		if (set_textures_array(config, mlx_ptr) == EXIT_FAILURE)
 			offset = INVALID_OFFSET;
 	}

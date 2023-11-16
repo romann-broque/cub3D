@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 13:43:54 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/23 14:40:15 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/16 14:55:01 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ t_map	*init_map(char *const *const lines)
 	const size_t	width = find_max_line_length(lines);
 	t_map			*map;
 
-	if (height > INT_MAX || width > INT_MAX)
+	if (height * width > MAX_MAP_SIZE)
 	{
 		print_format_error(MAP_TOO_BIG);
 		return (NULL);
@@ -55,6 +55,7 @@ t_map	*init_map(char *const *const lines)
 	}
 	map->height = height;
 	map->width = width;
+	map->sprite_array = NULL;
 	map->matrix = init_matrix(height, width, lines);
 	if (map->matrix == NULL)
 	{

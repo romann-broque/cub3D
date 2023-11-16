@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 16:11:15 by rbroque           #+#    #+#             */
-/*   Updated: 2023/10/24 19:59:06 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/09 14:37:27 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,9 @@
 void	display_map(t_win *const window)
 {
 	display_grid(window);
-	display_player_on_map(window);
 }
 
 void	display_minimap(t_win *const window)
 {
 	display_grid(window);
-	display_player_on_minimap(window);
 }

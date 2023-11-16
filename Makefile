@@ -18,6 +18,9 @@ PATH_SRCS	+=	srcs/window/
 PATH_SRCS	+=	srcs/window/data/
 PATH_SRCS	+=	srcs/window/display/
 PATH_SRCS	+=	srcs/window/display/draw/
+PATH_SRCS	+=	srcs/window/display/draw/raycast/
+PATH_SRCS	+=	srcs/window/display/draw/raycast/sprite/
+PATH_SRCS	+=	srcs/window/display/draw/raycast/texture/
 PATH_SRCS	+=	srcs/window/display/line/
 PATH_SRCS	+=	srcs/window/loop/
 PATH_SRCS	+=	srcs/window/loop/events/
@@ -26,6 +29,8 @@ PATH_SRCS	+=	srcs/window/map/init_map/
 PATH_SRCS	+=	srcs/window/map/is_map_valid/
 PATH_SRCS	+=	srcs/window/map/player/
 PATH_SRCS	+=	srcs/window/map/raycast/
+PATH_SRCS	+=	srcs/window/map/sprites/
+PATH_SRCS	+=	srcs/window/map/tile/
 
 ### srcs/
 
@@ -36,6 +41,8 @@ SRCS	 	+=	cub3d.c
 SRCS		+=	is_rgb.c
 SRCS		+=	attribute_utils.c
 SRCS		+=	init_config.c
+SRCS		+=	check_complete_config.c
+SRCS		+=	build_attribute_from_sequence.c
 SRCS		+=	build_config.c
 SRCS		+=	free_config.c
 SRCS		+=	print_config.c
@@ -49,19 +56,26 @@ SRCS	 	+=	set_color.c
 ### srcs/math/
 
 SRCS		+=	conversion.c
+SRCS		+=	are_dimensions_valid.c
+SRCS		+=	distance.c
 
 ### srcs/print/
 
 SRCS		+=	print_format_error.c
+SRCS		+=	print_format_warning.c
+SRCS		+=	print_help.c
+SRCS		+=	print_fps.c
 
 ### srcs/read_file/
 
 SRCS	 	+=	get_file.c
 SRCS		+=	is_file_valid.c
+SRCS		+=	count_lines.c
 
 ### srcs/window/
 
 SRCS	 	+=	init_window.c
+SRCS	 	+=	init_map_in_window.c
 SRCS	 	+=	free_window.c
 SRCS	 	+=	is_window_complete.c
 
@@ -76,19 +90,37 @@ SRCS	 	+=	display_window.c
 SRCS	 	+=	display_map.c
 SRCS	 	+=	display_grid.c
 SRCS	 	+=	display_grid_utils.c
+SRCS	 	+=	display_sprites_on_map.c
 SRCS	 	+=	display_player.c
 SRCS	 	+=	refresh.c
 
-### srcs/window/display/draw
+### srcs/window/display/draw/
 
 SRCS	 	+=	draw_on_map.c
 SRCS	 	+=	draw_on_minimap.c
+SRCS	 	+=	find_screen_pos.c
 SRCS	 	+=	draw_square.c
-SRCS	 	+=	get_wall_texture.c
-SRCS	 	+=	draw_vertical.c
-SRCS	 	+=	draw_vertical_utils.c
 SRCS	 	+=	draw_tile.c
 SRCS	 	+=	put_pixel.c
+
+### srcs/window/display/draw/raycast/
+
+SRCS	 	+=	draw_vertical.c
+SRCS	 	+=	draw_vertical_utils.c
+
+### srcs/window/display/draw/raycast/sprite/
+
+SRCS	 	+=	display_sprites.c
+SRCS	 	+=	draw_sprite.c
+SRCS	 	+=	draw_sprite_stripe.c
+SRCS	 	+=	draw_sprites_utils.c
+SRCS	 	+=	sort_sprites.c
+
+### srcs/window/display/draw/raycast/texture
+
+SRCS	 	+=	get_texture_pos.c
+SRCS	 	+=	get_texture_color.c
+SRCS	 	+=	texture_color_utils.c
 
 ### srcs/window/display/line/
 
@@ -96,11 +128,15 @@ SRCS	 	+=	init_line.c
 SRCS	 	+=	line_utils.c
 SRCS	 	+=	put_line.c
 
+### srcs/window/display/sprites/
+
+
 ### srcs/window/loop/
 
 SRCS	 	+=	loop.c
 SRCS	 	+=	keyboard.c
 SRCS	 	+=	keyboard_utils.c
+SRCS		+=	mouse_click.c
 
 ### srcs/window/loop/events/
 
@@ -108,13 +144,15 @@ SRCS	 	+=	e_close_window.c
 SRCS	 	+=	e_rotation.c
 SRCS	 	+=	e_translation.c
 SRCS	 	+=	e_map_mod.c
-SRCS	 	+=	translation_utils.c
+SRCS	 	+=	e_open_door.c
+SRCS	 	+=	translate.c
+SRCS	 	+=	is_crossable.c
+SRCS	 	+=	get_translated_pos.c
 
 ### srcs/window/map/
 
 SRCS	 	+=	free_map.c
 SRCS	 	+=	print_map.c
-SRCS	 	+=	tile_type.c
 
 ### srcs/window/map/init_map/
 
@@ -128,6 +166,7 @@ SRCS	 	+=	is_map_closed.c
 SRCS	 	+=	is_map_closed_utils.c
 SRCS		+=	is_map_content_valid.c
 SRCS	 	+=	is_map_unique.c
+SRCS		+=	are_doors_surrounded.c
 
 ### srcs/window/map/player/
 
@@ -138,7 +177,22 @@ SRCS	 	+=	set_pos.c
 
 SRCS	 	+=	get_vect.c
 SRCS	 	+=	dda.c
+SRCS	 	+=	cast_utils.c
 SRCS	 	+=	raycaster.c
+
+### srcs/window/map/sprites/
+
+SRCS	 	+=	init_sprites.c
+SRCS	 	+=	refresh_sprites.c
+SRCS	 	+=	sprite_utils.c
+
+### srcs/window/map/tile/
+
+SRCS	 	+=	door.c
+SRCS	 	+=	refresh_tiles.c
+SRCS	 	+=	tile_utils.c
+SRCS	 	+=	tile_mark.c
+SRCS	 	+=	tile_type.c
 
 vpath %.c $(PATH_SRCS)
 
@@ -165,6 +219,15 @@ INCLUDES	+=	-I /usr/includes/
 
 PATH_HEADERS +=	includes/
 
+HEADERS		+=	cub3d_config.h
+HEADERS		+=	cub3d_defines.h
+HEADERS		+=	cub3d_display.h
+HEADERS		+=	cub3d_loop.h
+HEADERS		+=	cub3d_map.h
+HEADERS		+=	cub3d_miscellaneous.h
+HEADERS		+=	cub3d_read_file.h
+HEADERS		+=	cub3d_struct.h
+HEADERS		+=	cub3d_window.h
 HEADERS		+=	cub3d.h
 
 vpath %.h $(PATH_HEADERS)
@@ -234,10 +297,15 @@ CC			=	cc
 
 CFLAGS		+=	-Wall
 CFLAGS		+=	-Wextra
-CFLAGS		+=	-g3
 
 ifneq ($(no_error), true)
 	CFLAGS		+=	-Werror
+endif
+
+ifeq ($(profiler), true)
+	CFLAGS		+=	-pg
+else
+	CFLAGS		+=	-g3
 endif
 
 ifeq ($(debug), true)
@@ -248,12 +316,9 @@ ifeq ($(print_debug), true)
 	CFLAGS	+= -D PRINT_DEBUG=true
 endif
 
-ifeq ($(map), true)
-	CFLAGS	+= -D MAP_DISPLAY=true
-endif
-
-ifeq ($(minimap), true)
-	CFLAGS	+= -D MINIMAP_DISPLAY=true
+ifeq ($(filter bonus,$(MAKECMDGOALS)),bonus)
+	CFLAGS	+= -D BONUS=true
+	BONUS = "bonus"
 endif
 
 ifeq ($(filter test,$(MAKECMDGOALS)),test)
@@ -264,7 +329,7 @@ endif
 #### NAME ####
 ##############
 
-NAME		+=	cub3d
+NAME		+=	cub3D
 
 #################
 #### DISPLAY ####
@@ -330,12 +395,14 @@ test	: all
 	echo -e $(BLUE) "\n====> Building FUNCHECK TESTS <===="$(NC)"\n"
 	$(MAKE) -sC $(FUNCHECK_FOLDER_LIB)
 	$(MAKE) -sC $(FUNCHECK_FOLDER_HOST)
-	$(FUNCHECK_SCRIPT)
+	$(FUNCHECK_SCRIPT) $(BONUS)
+
+bonus: all
 
 cunit: all
 	$(MAKE) -sC $(CUNIT_FOLDER)
 	$(CUNIT) $(VALGRIND)
-	
+
 funcheck: all
 	echo -e $(BLUE) "\n====> Building FUNCHECK TESTS <===="$(NC)"\n"
 	$(MAKE) -sC $(FUNCHECK_FOLDER_LIB)
