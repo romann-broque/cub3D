@@ -70,6 +70,7 @@ SRCS		+=	print_fps.c
 
 SRCS	 	+=	get_file.c
 SRCS		+=	is_file_valid.c
+SRCS		+=	count_lines.c
 
 ### srcs/window/
 
@@ -328,7 +329,7 @@ endif
 #### NAME ####
 ##############
 
-NAME		+=	cub3d
+NAME		+=	cub3D
 
 #################
 #### DISPLAY ####

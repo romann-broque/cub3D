@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 09:39:32 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/15 09:01:13 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/16 14:22:39 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void	init_window(
 			file_content, window->mlx_ptr, window->win_ptr);
 	if (offset == INVALID_OFFSET)
 		return ;
+	offset += count_empty_lines(file_content + offset);
 	init_map_in_window(window, offset, file_content);
 	if (window->map != NULL)
 	{

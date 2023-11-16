@@ -19,7 +19,7 @@ YELLOW="\033[33m"
 BLUE="\033[34m"
 NC="\033[0m"
 
-BIN=./cub3d
+BIN=./cub3D
 
 TESTER_FOLDER=./tests/
 FUNCHECK_FOLDER="${TESTER_FOLDER}"/funcheck_dir/funcheck/
