@@ -8,6 +8,8 @@ cub3d
 .DS_Store
 minilibx-linux
 minilibx-linux.tgz
+*.py
+square_map.cub
 
 # Object files
 *.o
