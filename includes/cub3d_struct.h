@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:08:41 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/14 15:13:58 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/16 12:14:37 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,7 +162,6 @@ typedef struct s_cast
 	t_vect	ray;
 	t_vect	step;
 	t_pos	hitpoint;
-	bool	has_hit;
 	double	hit_dist;
 	double	coeff;
 	double	perp_wall_dist;

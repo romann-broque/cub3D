@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 17:09:05 by lechon            #+#    #+#             */
-/*   Updated: 2023/11/14 17:55:19 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/16 12:14:22 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ bool			are_dimensions_valid(const int height, const int width);
 	// distance.c
 
 double			square_dist(const t_pos *const pos1, const t_pos *const pos2);
-double			dist(const t_pos *const pos1, const t_pos *const pos2);
 
 /////////////////////////////////////////
 /////			  print				/////

@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 11:18:16 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/14 10:10:42 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/16 12:22:53 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static t_sprite	get_sprite(
 	sprite.pos.y = y + SPRITE_YOFFSET;
 	sprite.textures = config->textures[texture_index];
 	sprite.tex_count = get_tex_count(sprite.textures);
-	sprite.is_viewed = true;
+	sprite.is_viewed = false;
 	sprite.time = 0;
 	sprite.is_crossable = (tile_char % 2);
 	return (sprite);

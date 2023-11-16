@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 16:37:04 by jess              #+#    #+#             */
-/*   Updated: 2023/11/13 09:05:33 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/16 12:20:14 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,19 +38,6 @@ static void	swap_sprites(t_win *const window)
 	}
 }
 
-static double	calculate_sprite_distance(
-	double pos_x,
-	double pos_y,
-	double sprite_x,
-	double sprite_y
-)
-{
-	const double	dist1 = pos_x - sprite_x;
-	const double	dist2 = pos_y - sprite_y;
-
-	return (pow(dist1, 2) + pow(dist2, 2));
-}
-
 static void	set_sprite_distance(t_win *const window)
 {
 	const t_player	player = window->map->player;
@@ -64,9 +51,8 @@ static void	set_sprite_distance(t_win *const window)
 		sprites[i].sq_distance = 0;
 		if (sprites[i].is_viewed == true)
 		{
-			sprites[i].sq_distance = calculate_sprite_distance(
-					player.pos.x, player.pos.y,
-					sprites[i].pos.x, sprites[i].pos.y);
+			sprites[i].sq_distance
+				= square_dist(&player.pos, &(sprites[i].pos));
 		}
 		i++;
 	}

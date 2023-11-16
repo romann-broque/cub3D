@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:06:20 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/15 21:49:34 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/16 12:17:31 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,9 @@
 # endif
 
 // NUMBERS
+
+# define POW2_7				128
+# define POW2_8				256
 
 # define EXPECTED_ARG_COUNT			2
 # define INVALID_FD					-1

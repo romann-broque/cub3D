@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 13:13:41 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/15 21:53:39 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/16 12:21:15 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,9 @@ static bool	is_crossable_block(
 )
 {
 	return (is_ground(map, x, y)
-		|| is_door_opened(map, x, y)
-		|| (BONUS == true && is_sprite_crossable(map, x, y)));
+		|| (BONUS == true
+			&& (is_door_opened(map, x, y)
+				|| is_sprite_crossable(map, x, y))));
 }
 
 bool	is_crossable(

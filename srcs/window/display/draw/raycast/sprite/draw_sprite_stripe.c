@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 21:23:12 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/13 21:27:26 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/16 12:17:57 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ static int	get_sprite_tex_x(
 	const int sprite_screen_x,
 	const int i)
 {
-	return ((256 * (i + sprite_height_width / 2 - sprite_screen_x)
-			* texture->width / sprite_height_width) / 256);
+	return ((POW2_8 * (i + sprite_height_width / 2 - sprite_screen_x)
+			* texture->width / sprite_height_width) / POW2_8);
 }
 
 static int	get_sprite_tex_y(
@@ -28,9 +28,9 @@ static int	get_sprite_tex_y(
 	const size_t y
 )
 {
-	const int	d = y * 256 + (sprite_height_width - WINDOW_HEIGHT) * 128;
+	const int	d = y * POW2_8 + (sprite_height_width - WINDOW_HEIGHT) * POW2_7;
 	const int	tex_y
-		= ((d * texture->height) / sprite_height_width) / 256;
+		= ((d * texture->height) / sprite_height_width) / POW2_8;
 
 	return (tex_y);
 }
