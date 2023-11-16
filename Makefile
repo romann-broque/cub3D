@@ -70,6 +70,7 @@ SRCS		+=	print_fps.c
 
 SRCS	 	+=	get_file.c
 SRCS		+=	is_file_valid.c
+SRCS		+=	count_lines.c
 
 ### srcs/window/
 
@@ -126,9 +127,6 @@ SRCS	 	+=	texture_color_utils.c
 SRCS	 	+=	init_line.c
 SRCS	 	+=	line_utils.c
 SRCS	 	+=	put_line.c
-
-### srcs/window/display/sprites/
-
 
 ### srcs/window/loop/
 
