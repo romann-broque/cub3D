@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 13:43:54 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/16 14:42:14 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/16 14:45:46 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ t_map	*init_map(char *const *const lines)
 
 	if (height * width > MAX_MAP_SIZE)
 	{
-		printf("height -> %zu and width --> %zu\n", height, width);
 		print_format_error(MAP_TOO_BIG);
 		return (NULL);
 	}
