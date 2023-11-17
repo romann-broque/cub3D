@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 14:36:03 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/13 21:25:23 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/17 13:09:54 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	draw_sprite(
 )
 {
 	const int	sprite_height_width
-		= abs((int)(WINDOW_HEIGHT / transform_pos.y));
+		= fabs(floor(WINDOW_HEIGHT / transform_pos.y));
 	const int	sprite_screen_x = (int)((WINDOW_WIDTH / 2)
 			* (1 + transform_pos.x / transform_pos.y));
 	t_transform	transform;
