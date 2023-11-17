@@ -8,6 +8,7 @@ D    ./assets/textures/w3d_door.xpm
 2    ./assets/textures/sprites/burning_barrel/burning_barrel1.xpm ./assets/textures/sprites/burning_barrel/burning_barrel2.xpm ./assets/textures/sprites/burning_barrel/burning_barrel3.xpm
 3    ./assets/textures/sprites/skull/skull1.xpm ./assets/textures/sprites/skull/skull2.xpm ./assets/textures/sprites/skull/skull3.xpm ./assets/textures/sprites/skull/skull4.xpm ./assets/textures/sprites/skull/skull5.xpm ./assets/textures/sprites/skull/skull6.xpm ./assets/textures/sprites/skull/skull7.xpm ./assets/textures/sprites/skull/skull8.xpm
 4    ./assets/textures/sprites/green_face/green_face1.xpm ./assets/textures/sprites/green_face/green_face2.xpm ./assets/textures/sprites/green_face/green_face3.xpm ./assets/textures/sprites/green_face/green_face4.xpm ./assets/textures/sprites/green_face/green_face5.xpm ./assets/textures/sprites/green_face/green_face6.xpm
+5    ./assets/textures/sprites/gravity/gravity1.xpm ./assets/textures/sprites/gravity/gravity2.xpm ./assets/textures/sprites/gravity/gravity3.xpm ./assets/textures/sprites/gravity/gravity4.xpm ./assets/textures/sprites/gravity/gravity5.xpm ./assets/textures/sprites/gravity/gravity6.xpm ./assets/textures/sprites/gravity/gravity7.xpm ./assets/textures/sprites/gravity/gravity8.xpm ./assets/textures/sprites/gravity/gravity9.xpm ./assets/textures/sprites/gravity/gravity10.xpm ./assets/textures/sprites/gravity/gravity11.xpm ./assets/textures/sprites/gravity/gravity12.xpm ./assets/textures/sprites/gravity/gravity13.xpm ./assets/textures/sprites/gravity/gravity14.xpm ./assets/textures/sprites/gravity/gravity15.xpm ./assets/textures/sprites/gravity/gravity16.xpm ./assets/textures/sprites/gravity/gravity17.xpm ./assets/textures/sprites/gravity/gravity18.xpm ./assets/textures/sprites/gravity/gravity19.xpm ./assets/textures/sprites/gravity/gravity20.xpm
 6    ./assets/textures/sprites/red_torch/red_torch1.xpm ./assets/textures/sprites/red_torch/red_torch2.xpm ./assets/textures/sprites/red_torch/red_torch3.xpm ./assets/textures/sprites/red_torch/red_torch4.xpm
 8    ./assets/textures/sprites/exploding_barrel/exploding_barrel1.xpm ./assets/textures/sprites/exploding_barrel/exploding_barrel2.xpm ./assets/textures/sprites/exploding_barrel/exploding_barrel3.xpm ./assets/textures/sprites/exploding_barrel/exploding_barrel4.xpm ./assets/textures/sprites/exploding_barrel/exploding_barrel5.xpm
 DARK 1
@@ -17,7 +18,7 @@ DARK 1
                    100000001          100000001          100000001
                   10000000001        10000000001        10000000001
                  100001d100001      100001d100001      1000000000001
-                 100001210000111111110000121000011111111000008000001
+                 100001210000111111110000151000011111111000008000001
                  100001110000D000000D00001110000D000000D000088800001
                  100000000000111111110000000000011111111000008000001
                  1000000000001      1000000000001      1000000000001

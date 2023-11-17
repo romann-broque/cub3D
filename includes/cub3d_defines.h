@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:06:20 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/16 13:17:46 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/17 11:13:43 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@
 # ifdef BONUS
 #  define TEXTURE_COUNT		15
 #  define ATTRIBUTE_COUNT	16
-#  define MAX_TEXTURE_COUNT	15
+#  define MAX_TEXTURE_COUNT	20
 # else
 #  define TEXTURE_COUNT		4
 #  define ATTRIBUTE_COUNT	6
