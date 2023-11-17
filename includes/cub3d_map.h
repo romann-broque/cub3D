@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_map.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jrouillo <jrouillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 17:12:07 by lechon            #+#    #+#             */
-/*   Updated: 2023/11/14 10:15:48 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/17 12:22:20 by jrouillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,6 @@
 
 void			free_tile_matrix(t_tile **const matrix, const size_t size);
 void			free_map(t_map *const map);
-
-// print_map.c
-
-void			print_map(const t_map *const map);
 
 /////////////////////////
 ////     init_map    ////

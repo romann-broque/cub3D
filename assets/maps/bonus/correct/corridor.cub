@@ -1,0 +1,32 @@
+NO    ./assets/textures/doom_hexagone.xpm
+SO    ./assets/textures/doom_hexagone.xpm
+EA    ./assets/textures/doom_hexagone.xpm
+WE    ./assets/textures/doom_hexagone.xpm
+C     ./assets/textures/doom_grid.xpm
+F     ./assets/textures/doom_ground.xpm
+D    ./assets/textures/w3d_door.xpm
+2    ./assets/textures/sprites/burning_barrel/burning_barrel1.xpm ./assets/textures/sprites/burning_barrel/burning_barrel2.xpm ./assets/textures/sprites/burning_barrel/burning_barrel3.xpm
+3    ./assets/textures/sprites/skull/skull1.xpm ./assets/textures/sprites/skull/skull2.xpm ./assets/textures/sprites/skull/skull3.xpm ./assets/textures/sprites/skull/skull4.xpm ./assets/textures/sprites/skull/skull5.xpm ./assets/textures/sprites/skull/skull6.xpm ./assets/textures/sprites/skull/skull7.xpm ./assets/textures/sprites/skull/skull8.xpm
+4    ./assets/textures/sprites/green_face/green_face1.xpm ./assets/textures/sprites/green_face/green_face2.xpm ./assets/textures/sprites/green_face/green_face3.xpm ./assets/textures/sprites/green_face/green_face4.xpm ./assets/textures/sprites/green_face/green_face5.xpm ./assets/textures/sprites/green_face/green_face6.xpm
+6    ./assets/textures/sprites/red_torch/red_torch1.xpm ./assets/textures/sprites/red_torch/red_torch2.xpm ./assets/textures/sprites/red_torch/red_torch3.xpm ./assets/textures/sprites/red_torch/red_torch4.xpm
+8    ./assets/textures/sprites/exploding_barrel/exploding_barrel1.xpm ./assets/textures/sprites/exploding_barrel/exploding_barrel2.xpm ./assets/textures/sprites/exploding_barrel/exploding_barrel3.xpm ./assets/textures/sprites/exploding_barrel/exploding_barrel4.xpm ./assets/textures/sprites/exploding_barrel/exploding_barrel5.xpm
+DARK 1
+
+1111111111111111111111111111111
+1000000000000000000000000000001
+1011111111111111111111111111001
+101                        1001
+1d11111111111111111        1001
+1012121212121212121111111  1001
+1E0000000000000000D000001  1001
+10121212121212121211111d1  1001
+1111111111111111111   101  1001
+                   111101111001
+                   130D0D041001
+                   111101111001
+                   111101111001
+                   160D0D081001
+                   1111d1111001
+                      100000001
+                      100000001
+                      111111111

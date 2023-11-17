@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 09:05:17 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/09 14:24:10 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/17 11:23:32 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,7 @@ static uint32_t	get_color_from_tile(
 		&& is_tile_side(x_pos, y_pos) == false)
 		return (BLACK);
 	else if (is_door(map, tile_pos.x, tile_pos.y))
-	{
-		if (window->mod == E_MAP)
-			return (get_color_from_door_pos(map, tile_pos, x_pos, y_pos));
-		else if (is_tile_side(x_pos, y_pos) == false)
-			return (BLACK);
-	}
+		return (get_color_from_door_pos(map, tile_pos, x_pos, y_pos));
 	return (WHITE);
 }
 
