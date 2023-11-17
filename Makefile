@@ -45,7 +45,6 @@ SRCS		+=	check_complete_config.c
 SRCS		+=	build_attribute_from_sequence.c
 SRCS		+=	build_config.c
 SRCS		+=	free_config.c
-SRCS		+=	print_config.c
 SRCS		+=	is_config_sequence_valid.c
 
 ### srcs/config/color/
@@ -64,7 +63,6 @@ SRCS		+=	distance.c
 SRCS		+=	print_format_error.c
 SRCS		+=	print_format_warning.c
 SRCS		+=	print_help.c
-SRCS		+=	print_fps.c
 
 ### srcs/read_file/
 
@@ -152,7 +150,6 @@ SRCS	 	+=	get_translated_pos.c
 ### srcs/window/map/
 
 SRCS	 	+=	free_map.c
-SRCS	 	+=	print_map.c
 
 ### srcs/window/map/init_map/
 
@@ -310,10 +307,6 @@ endif
 
 ifeq ($(debug), true)
 	CFLAGS	+= -fsanitize=address,undefined
-endif
-
-ifeq ($(print_debug), true)
-	CFLAGS	+= -D PRINT_DEBUG=true
 endif
 
 ifeq ($(filter bonus,$(MAKECMDGOALS)),bonus)

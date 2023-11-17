@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jrouillo <jrouillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 13:50:14 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/13 22:53:14 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/17 12:22:30 by jrouillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@ static int	start_game(const char *const filename)
 	init_window(&window, content);
 	if (is_window_complete(&window) == true)
 	{
-		if (PRINT_DEBUG)
-			print_map(window.map);
 		display_window(&window);
 		ret_val = EXIT_SUCCESS;
 	}

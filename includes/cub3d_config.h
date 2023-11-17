@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_config.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jrouillo <jrouillo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:10:33 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/14 13:51:49 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/11/17 12:23:06 by jrouillo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,6 @@ ssize_t					check_complete_config(ssize_t offset,
 
 void					free_config(t_config *const config,
 							void *const mlx_ptr);
-
-// print_config.c
-
-void					print_config(t_config *const config);
 
 // is_config_sequence_valid.c
 
