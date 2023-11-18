@@ -3,6 +3,7 @@ cub3d
 *.png
 *.jpeg
 *.jpg
+*.gif
 *.d
 .vscode
 .DS_Store
