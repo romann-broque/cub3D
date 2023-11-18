@@ -34,7 +34,7 @@ With these additional features, your exploration becomes even more exciting and 
 ./cub3D maps/42.cub
 ```
 
-![It looks like this](asssets/gameplay.gif)
+![](assets/gameplay.gif)
 
 ### 🔎 Help
 
