@@ -34,6 +34,8 @@ With these additional features, your exploration becomes even more exciting and 
 ./cub3D maps/42.cub
 ```
 
+![It looks like this](asssets/gameplay.gif)
+
 ### 🔎 Help
 
 You can use `-h` or `--help` to get more information about writing a good map.
