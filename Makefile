@@ -294,6 +294,7 @@ CC			=	cc
 
 CFLAGS		+=	-Wall
 CFLAGS		+=	-Wextra
+CFLAGS		+=	-O3
 
 ifneq ($(no_error), true)
 	CFLAGS		+=	-Werror
