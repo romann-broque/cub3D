@@ -58,4 +58,5 @@ make bonus
 
 ### 🔎 Help
 
+If you are in lack of inspiration, you can take a look at some map file examples [here](assets/maps/).
 You can use `-h` or `--help` to get more information about writing a good map.
