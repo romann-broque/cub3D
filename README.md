@@ -27,8 +27,28 @@ With these additional features, your exploration becomes even more exciting and 
 
 ### 🚀 Usage
 
-1. Compile the `cub3D` program.
-2. Execute it with the path to a map file as a parameter.
+1. Clone the repository.
+
+```shell
+git clone --recursive git@github.com:romann-broque/CUB3d.git
+```
+
+2. Install the dependencies
+
+```shell
+sudo apt-get update && sudo apt-get install xorg libxext-dev zlib1g-dev libbsd-dev
+```
+
+3. Compile the `cub3D` program.
+
+```shell
+# without bonuses
+make
+# or for bonuses
+make bonus
+```
+
+4. Execute it with the path to a map file as a parameter.
 
 ```shell
 ./cub3D maps/42.cub
