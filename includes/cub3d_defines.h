@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:06:20 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/17 11:13:43 by rbroque          ###   ########.fr       */
+/*   Updated: 2024/01/05 10:12:35 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@
 # define MOUSE_ROTATE_COEFF	0.3
 
 # ifdef BONUS
-#  define MOVE_SPEED		0.1
-#  define ROTATE_SPEED		7
+#  define MOVE_SPEED		0.05
+#  define ROTATE_SPEED		3
 # else
 #  define MOVE_SPEED		0.05
 #  define ROTATE_SPEED		3
