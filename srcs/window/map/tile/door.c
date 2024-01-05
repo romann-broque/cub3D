@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 09:23:18 by rbroque           #+#    #+#             */
-/*   Updated: 2023/11/07 16:59:59 by rbroque          ###   ########.fr       */
+/*   Updated: 2024/01/05 10:37:43 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,13 @@ static bool	is_player_away(
 	t_tile *const door
 	)
 {
-	return (floor(player->pos.x - door->pos.x) != 0
-		|| floor(player->pos.y - door->pos.y) != 0);
+	const double	delta_x = player->pos.x - door->pos.x;
+	const double	delta_y = player->pos.y - door->pos.y;
+
+	return ((floor(delta_x) != 0
+			&& (delta_x > 1 + COLLISION_DIST || delta_x < -COLLISION_DIST))
+		|| (floor(delta_y) != 0
+			&& (delta_y > 1 + COLLISION_DIST || delta_y < -COLLISION_DIST)));
 }
 
 static void	wait_to_close(

@@ -243,7 +243,7 @@ LIBFT		 =	$(LIBFT_FOLDER)/libft.a
 MLX_FOLDER	=	minilibx-linux/
 MLX			=	$(MLX_FOLDER)/libmlx_Linux.a
 MLX_TAR		=	minilibx-linux.tgz
-MLX_LINK	=	https://cdn.intra.42.fr/document/document/21463/$(MLX_TAR)
+MLX_LINK	=	https://cdn.intra.42.fr/document/document/22794/$(MLX_TAR)
 
 ################
 #### TESTER ####
